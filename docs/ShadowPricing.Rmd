@@ -1,0 +1,75 @@
+---
+title: "Section 10 - Shadow Pricing"
+output: html_document
+---
+
+In the ARC ABM, the Usual Work and School Location models are shadow priced.  Shadow pricing is a technique used to doubly-constrain destination choice models.  In a doubly-constrained model the total number of workers assigned to a workplace TAZ is proportional to the input employment in the TAZ. Typically, there are more jobs than workers in the region, to account for workers that hold multiple jobs.  However, at this time the ARC ABM assigns only one work location per worker. Shadow prices cannot be estimated; instead, they are calculated iteratively within the Usual Work and School Location (UWSL) Model.  Calculating new shadow prices is very time-consuming, therefore the shadow prices are written to a file and can be used in subsequent model runs to cut down computational time. 
+
+When setting up a new model run, the user has to choose between using a previously calculated set of shadow prices (each baseline scenario includes shadow prices), or updating the shadow prices for this model run.  The shadow prices must be updated whenever the synthetic population or the input employment data are modified, for example when preparing a model run for a new scenario year. The shadow prices may also need to be updated when the modeled transportation improvements are significant enough to modify the usual workplace distribution. Note however that in many instances the baseline shadow prices are sufficient for the build alternatives.     
+
+Shadow prices follow the same stratification as the UWSL size terms - that is, the terms in the model that quantify the number of jobs and student enrollment in each destination TAZ.  The size terms vary according to worker occupations and student types, to reflect the different types of jobs and schools that are likely to attract different workers and students.  As such, shadow prices are calculated for each worker occupation and student type subgroup. The procedure works as follows:
+
+*	At the first iteration, the UWSL models are applied, so that work and school locations are predicted for each eligible person in the model.
+*	The model sums, by occupation, the total number of workers assigned to each workplace TAZ.  The following occupation groups are recognized:  white collar jobs, health services jobs, retail and food service jobs, other service jobs, and blue collar jobs).  Similarly, it sums the total number of students of each type (university, pre-driving and driving) assigned to each school TAZ.  
+*	The estimated total workers and students by TAZ are compared against the size term calculated for each occupation and student type.  The shadow price is calculated as the ratio of the size term and the estimated workers, for each TAZ. 
+*	At each subsequent iteration, the UWSL model is applied again, with the addition of the natural log of the shadow price added to the utility function.  The steps are repeated until the shadow prices do not change anymore. 
+
+Note that since the shadow price acts as a destination-specific constant, it will tend to dampen the effect of level of service on work or school location choice.  Some dampening is appropriate since this is a long-term decision.  However, very large shadow prices will tend to make the model insensitive to level of service.  For this reason, it is critical that any user attempting to update the baseline shadow prices review carefully the output from this procedure prior to proceeding with the model run.
+
+
+# Section 10.1 Running Shadow Pricing
+
+There are several options for running shadow pricing, which were previously discussed in this document.  
+
+By default, a baseline set of shadow prices is provided with each model run.  The default procedure is to use these shadow prices for both the first and subsequent feedback loops, without modifications.  This is accomplished by setting the shadow pricing GUI options as shown in Figure 10-1.
+
+
+![Figure 10-1. Shadow Pricing Settings](figs/ShadowPricingSettings.png)
+
+
+This default option results in the fastest model execution, since the UWSL models are applied only once per feedback iteration.
+
+There will be instances where a user will need to revise the shadow prices.  For example, when the scenario under study may use an updated employment projection, it will be necessary to update the shadow prices so that the model fully reflects the revised employment projection.  
+
+To recalculate shadow prices starting from scratch, proceed as follows:
+
+1)	Set the number of minimum feedback loops to 1 (see Figure 10-2).
+2)	Run only the UWSL models (see Figure 10-3).
+3)	Set the household sampling rate to 100% (see Figure 10-3).
+*	Population synthesizer sample percent = 1.0
+4)	Uncheck the following two options, which ensures that the initial iteration is performed without shadow prices:
+*	Use Initial Shadow Pricing File for 1st Feedback Loop.
+*	Always use the Initial Shadow Pricing File for Feedback Loops.
+5)	Set the USWL max iterations for the first feedback loop to 10 or a similar value.
+
+With these settings the model will perform 10 iterations of shadow pricing for both the work and school models, based on a full population sample.  At the end of each iteration the model will write the calculated shadow prices to an output file, and it will write a summary of the convergence (i.e., a comparison to the size terms) to the standard log file (event.log).  If more shadow pricing iterations are desired, this output file can be used as the starting point for additional iterations.
+
+To perform additional shadow pricing iterations, proceed as follows:
+
+1)	Set the number of minimum feedback loops to 1 (see Figure 10-2).
+2)	Run only the UWSL models (see Figure 10-3).
+3)	Set the household sampling rate to 100% (see Figure 10-4).
+*	Population synthesizer sample percent = 1.0
+4)	Set the following two options as indicated, which ensures that the initial iteration is performed with the previously calculated shadow prices:
+*	Use Initial Shadow Pricing File for 1st Feedback Loop [check].
+*	Always use the Initial Shadow Pricing File for Feedback Loops [uncheck].
+5)	Copy the last output shadow pricing file to the input folder and specify its name in the GUI.
+*	Initial usual work and school location choice shadow pricing input file = [filename]
+6)	Set the USWL max iterations for the first feedback loop to 10 or a similar value.
+
+It is essential to use a full population sample when calculating shadow prices.  Only advanced users should attempt to update shadow prices previously created with a different scenario.  The internal calculations use scaling factors based on the number of workers and size terms which, if incorrectly applied, can erroneously scale the calculated shadow prices, rendering the model insensitive to level of service.
+
+
+![Figure 10-2. ARC ABM GUI](figs/ARCABMGUI.png)
+
+![Figure 10-3. CT-RAMP Models to Run](figs/CTRAMPModelsGUI.png)
+
+![Figure 10-4. Other CT-RAMP Settings](figs/OtherCTRAMPGUI.png)
+
+
+
+
+
+
+
+

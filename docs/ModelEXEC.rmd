@@ -1,0 +1,13 @@
+---
+title: "Section 5 - Model EXEC Folder"
+output: html_document
+---
+
+
+The EXEC folder contains the following executables used by the CT-RAMP model:
+
+*	arc_all.jar - the ARC CT-RAMP Java archive file containing all the Java code.
+
+*	filesToKeep.bat - the DOS batch file used for archiving files. It reads fileToKeep.txt for a list of files to keep.
+
+

@@ -1,0 +1,15 @@
+FIELD,Description
+HHID,Unique household ID
+PERID,Unique person ID
+TEMPID,Unexpanded household ID
+DISTRICT,District code (ARC County) in which HH is located
+PUMA,PUMA code for HH record
+TAZ,TAZ (ARC PECAS zone) code in which HH is located
+MAZ,MAZ (ARC TAZ) code in which HH is located
+WGTP,Housing Weight
+FINALPUMSID,Person ID generated during population synthesis
+FINALWEIGHT,Person weight generated during population synthesis
+SPORDER,Person number in HH
+EMPLOYED,Is person employed
+PECAS_OCC,PECAS Occupation code for this person
+*,Other PUMS Person fields

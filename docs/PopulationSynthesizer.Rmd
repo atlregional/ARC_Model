@@ -1,0 +1,81 @@
+---
+title: "Section 2 - Population Synthesizer"
+output: html_document
+---
+
+Population synthesis is a method for creating a fully-enumerated population of the ARC region (persons and households) based on a population sample.  The ARC population synthesizer was developed to be a flexible tool for creating synthetic populations for activity-based modeling.  It takes as an input Census data - specifically the Public Use Microdata Sample (PUMS) -- and zonal-level and regional marginal distributions of households by various characteristics.  These distributions are used as controls or targets which the synthetic population attempts to match.  
+The person and household controls may be specified at three main levels of spatial aggregation - microzones (MAZ), traffic analysis zones (TAZ), and district.  For ARC, these aggregations correspond to TAZs, LUZ (PECAS) zones, and County groups, respectively. Controls at the district level are also known as META-controls.  Some counties were grouped together to form the districts so that each META-geography unit is at least as big as a PUMA.
+The basic steps of the population synthesizer are described below.  The algorithm is illustrated in Figure 2-1 below.
+
+1)	MAZ level control data is aggregated to the Census PUMA level.
+
+2)	PUMS household record weights are list balanced to match PUMA controls.
+
+3)	Weighted households are aggregated by PUMA to META level control categories.
+
+4)	PUMA level totals are factored to match META level control totals.
+
+5)	Factored PUMA level META controls are appended to the original PUMA controls.
+
+6)	Final PUMA household record weights are determined by list balancing to match expanded set of PUMA controls.
+
+7)	After list balancing for the PUMA, a linear programming solver is used to discretize the fractional weights.
+
+8)	By PUMA, households are allocated to TAZs within the PUMA.
+
+9)	The allocation procedure involves list balancing of the PUMA household records to match TAZ control totals (aggregated from MAZ controls).
+
+10)	TAZs are processed in order of number of households in TAZ, from smallest to largest.
+
+11)	Initial weights for the household records are the integer weights determined from final PUMA level balancing.
+
+12)	Only the household records with non-zero initial weights are used for balancing.
+
+13)	After list balancing for the TAZ, a linear programming solver is used to discretize the fractional weights.  The integer weights for all household records that were determined match TAZ controls.
+
+14)	The PUMA level initial weights are reduced by the final TAZ integer weights.
+
+15)	After all TAZs are allocated households, MAZs are allocated households using an identical procedure to TAZ allocation except the set of PUMS records are the non-zero weight records for each TAZ.
+
+16)	The final output table is a table for each MAZ of household records with final integer weights that sum to the number of households in the MAZ.
+
+
+
+![Figure 2-1. PopSyn Flow Chart](figs/PopSynFlowchart.png)
+
+The ARC population synthesis uses the controls summarized in Table 2-1 below.  The seed household and person population were obtained from the 2007-2011 5-Year PUMS datasets. The outputs from the population synthesis process are lists of synthetic households and persons that reside in the 21-county ARC region, as shown in Table 2-2 and Table 2-3.
+
+Table 2-1 ARC Population Synthesis Controls 
+
+```{r,echo=F,,out.height=700,message=F,warning=F,output=F}
+library(tidyverse)
+library(knitr)
+library(DT)
+library(kableExtra)
+Spec21 <- read_csv('data/PopsynControls.csv')
+```
+```{r,echo=F,message=F,out.height=700}
+kable(Spec21, format.args = list(big.mark = ",")) %>%
+  kable_styling("striped",row_label_position = 'r')
+```
+
+Table 2-2 Synthetic Population Household Table in Expanded Form
+
+```{r,echo=F,,out.height=700,message=F,warning=F,output=F}
+Spec22 <- read_csv('data/PopSynHshExpandedForm.csv')
+```
+```{r,echo=F,message=F,out.height=700}
+kable(Spec22, format.args = list(big.mark = ",")) %>%
+  kable_styling("striped",row_label_position = 'r')
+```
+
+
+Table 2-3 Synthetic Population Person Table in Expanded Form
+
+```{r,echo=F,,out.height=700,message=F,warning=F,output=F}
+Spec23 <- read_csv('data/PopSynPopExpandedForm.csv')
+```
+```{r,echo=F,message=F,out.height=700}
+kable(Spec23, format.args = list(big.mark = ",")) %>%
+  kable_styling("striped",row_label_position = 'r')
+```

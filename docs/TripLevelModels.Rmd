@@ -1,0 +1,122 @@
+---
+title: "Section 5 - Trip-Level Models"
+output: html_document
+---
+
+The following sub-sections include descriptions of the trip-level models including:
+
+* Intermediate Stop Frequency
+* Intermediate Stop Location Choice
+* Intermediate Stop Duration
+* Trip Mode Choice
+* Parking Location Choice
+
+# Section 5.1 Intermediate Stop Frequency
+
+Number of Models: 		9 (By purpose plus one model for at-work subtours)
+
+Decision-Making Unit:  		Person 
+
+Model Form: 			Multinomial Logit
+
+Alternatives:  			Maximum of 3 per tour direction, 6 total (see Table 5-1)
+
+The stop frequency choice model determines the number of intermediate stops on the way to and from the primary destination. The ARC ABM recognizes up to three stops in each direction, for a maximum of 8 trips per tour (four on each tour leg).  However, for many tour purposes, the number of intermediate stops observed in the data is significantly less than 3 per direction.  Therefore the alternatives in the intermediate stop models were capped to only the most frequently observed cases, shown in Table 5-1.  In addition, no stops are allowed on drive-transit tours, to ensure that drivers who drive to transit pick up their cars at the end of the tour.
+
+Stop frequency is based on a number of explanatory variables, including household and person attributes, the duration of the tour (with longer durations indicating the potential for more stop-making) the distance from the tour anchor to the primary destination (with intermediate stop-making positively correlated to tour distance), and accessibility and urban form variables.  The stop frequency choice model parameters are shown in Appendix B. 
+
+Table 5-1. Maximum Intermediate Stops by Purpose
+
+```{r,echo=F,,out.height=700,message=F,warning=F,output=F}
+library(tidyverse)
+library(knitr)
+library(DT)
+library(kableExtra)
+spec51 <- read_csv('data/MaxIntermediateStops.csv')
+```
+```{r,echo=F,message=F,out.height=700}
+kable(spec51, format.args = list(big.mark = ",")) %>%
+  kable_styling("striped",row_label_position = 'r')
+```
+
+
+Once the number of intermediate stops is determined, each intermediate stop is assigned a purpose based on a frequency distribution created from observed data.  The distribution is segmented by tour purpose, tour direction (outbound versus return) and person type.  Work tours are also segmented by departure or arrival time period.  The stop purpose frequency distributions are presented in Appendix B.
+
+# Section 5.2 Intermediate Stop Location Choice
+
+Number of Models: 		8 (By purpose plus one model for at-work subtours)
+
+Decision-Making Unit:  		Person 
+
+Model Form: 			Multinomial Logit
+
+Alternatives:  			Zones
+
+The stop location choice model predicts the location of stops along the tour other than the primary destination.  The stop-location model is structured as a multinomial logit model using a zone attraction size variable and route deviation measure as impedance.  The alternatives are sampled from the full set of zones, subject to availability of a zonal attraction size term.  The sampling mechanism is also based on accessibility between tour origin and primary destination, and is subject to certain rules based on tour mode.  All destinations are available for auto tour modes, so long as there is a positive size term for the zone.  Intermediate stops on walk tours must be within 4 miles of both the tour origin and primary destination zones.  Intermediate stops on bike tours must be within 8 miles of both the tour origin and primary destination zones.  Intermediate stops on walk-transit tours must either be within 4 miles walking distance of both the tour origin and primary destination, or have transit access to both the tour origin and primary destination.  Additionally, only short and long walk zones are available destinations on walk-transit tours.
+
+The intermediate stop location choice model works by cycling through stops on tours.  The level-of-service (LOS) variables (including mode choice logsums) are calculated as the additional utility between the last location and the next known location on the tour.   For example, the LOS variable for the first stop on the outbound direction of the tour is based on additional impedance between the tour origin and the tour primary destination.  The LOS variable for the next outbound stop is based on the additional impedance between the previous stop and the tour primary destination.  Stops on return tour legs work similarly, except that the location of the first stop is a function of the additional impedance between the tour primary destination and the tour origin.  The next stop location is based on the additional impedance between the first stop on the return leg and the tour origin, and so on.  Intermediate stop location choice model parameters are given in Appendix B.
+
+
+# Section 5.3 Intermediate Stop Duration
+
+Number of Models: 		1
+
+Decision-Making Unit:  		Person 
+
+Model Form: 			Multinomial logit 
+
+Alternatives:  			30-minute periods
+
+The stop duration model allocates the total time on a tour, as predicted by the time-of-day choice model, into duration for each stop on the tour. The model operates in two stages. The first stage (Stage 1) splits total tour duration into three tour legs defined as inbound leg (the portion of the tour starting from home till the stop before the primary destination), main leg (the portion of the tour starting from the stop before the primary destination and the stop after the primary destination), and outbound leg (the portion of the tour comprising of first stop after the primary destination to home). This model is applied only to those tours that have at least one stop in either direction. The second stage (Stage 2) operates on the inbound and the outbound legs allocating the leg time into the different stops on that leg. This model is applied only if there is more than one stop on the leg.  The parameters of the Stage 1 and Stage 2 models are given in Appendix B.
+
+
+# Section 5.4 Trip Mode Choice
+
+Number of Models: 		8 (By purpose plus one model for at-work subtours)
+
+Decision-Making Unit:  		Person 
+
+Model Form: 			Rule-based
+
+Alternatives:  			15
+
+The trip mode choice model determines the mode for each trip along the tour.  Trip modes are constrained by the main tour mode. The linkage between tour and trip levels is implemented through correspondence rules (which trip modes are allowed for which tour modes).   The model can incorporate asymmetric mode combinations, but in reality, there is a great deal of symmetry between outbound and inbound modes used for the same tour.  In particular, symmetry is enforced for drive-transit tours, by excluding intermediate stops from drive-transit tours.  
+
+The tour and trip mode correspondence rules are shown in Table 14.  Note that in the ARC trip mode choice model, the trip modes are exactly the same as the modes in the tour mode choice model.  However, every trip mode is not necessarily available for every tour mode.  The correspondence rules depend on a kind of hierarchy, which is similar to that used for the definition of transit modes.  The hierarchy is based on the following principles:
+
+1)	Pay trip modes are only available for pay tour modes (for example, drive-alone pay is only available at the trip mode level if drive-alone pay is selected as a tour mode).
+2)	The auto occupancy of the tour mode is determined by the maximum occupancy across all auto trips that make up the tour.  Therefore, the auto occupancy for the tour mode is the maximum auto occupancy for any trip on the tour.
+3)	Transit tours can include auto shared-ride trips for particular legs.  Therefore, "casual carpool", wherein travelers share a ride to work and take transit back to the tour origin, is explicitly allowed in the tour/trip mode choice model structure.
+4)	The walk mode is allowed for any trip on a tour except for drive-alone, wherein the driver must use the vehicle for all trips on the tour.
+5)	The transit mode of the tour is determined by the highest transit mode used for any trip in the tour according to the transit mode hierarchy as described in Figure 5-1.  
+6)	As previously mentioned, free shared-ride modes are also available in transit tours, albeit with a low probability.
+The trip mode choice models explanatory variables include household and person variables, level-of-service between the trip origin and destination according to the time period for the tour leg, urban form variables, and alternative-specific constants segmented by tour mode.  The parameters of the trip mode choice models are given in Appendix B.
+
+![Figure 5-1. Tour and Trip Mode Choice Correspondence Rules](figs/TourTripMC.png)
+
+
+
+# Section 5.5 Parking Location Choice
+
+Number of Models: 		2 (work trips, non-work trips)
+
+Decision-Making Unit:  		Trip 
+
+Model Form: 			Nested logit
+
+Alternatives:  			Zones
+
+The parking location choice model is applied to tours with a destination in the urban/city center areas where parking charges apply.  The ARC ABM incorporates three of the following interrelated sub-models to capture parking conditions in the CBD, and allows for testing various policies:
+
+*	Parking cost model:  determines the average cost of parking in each CBD zone.
+*	Person-free parking eligibility model:  determines for each worker whether he/she has to pay for parking in the CBD.
+*	Parking location choice model:  determines for each tour the primary destination parking location zone.  The nested logit structure consists of an upper level binary choice between parking inside versus outside the modeled destination zone.  At the lower level, the choice of parking zone is modeled for those who did not park in the destination zone.
+
+The parking cost model was designed to produce a forecast of average long-term and short term parking costs for each zone.  Percent free parking available by zone can be utilized in future forecasts and its effects on travel demand forecasts by mode can be tested.  There is also the potential for testing the effects of allocating more or less of the total parking supply in each zone to short-term versus long-term use.   ARC staff delivered parking supply information in terms of free short term, free long term, paid short term and paid long-term parking spaces, which was subsequently geocoded for the new zone system.  
+
+The methodology for calculating long and short term parking rates is as follows.  The 2006 Downtown Parking Demand Management Action Plan parking survey has information on the rates by lot by type of parking.  The long-term rate was calculated as the minimum of the monthly rate (divided by 100), the early bird rate (divided by 8) and the maximum daily rate (divided by 8).  The non-zero rates were weighted by the number of spaces in each category and aggregated to the zonal level.  The short-term rates are calculated as 1.7 times the long-term rates.
+Person-free parking eligibility model is described above under long term choices.
+
+The parking location choice model works in conjunction with the assignment to improve the realism of the auto component of assigned vehicle traffic.  It is applied after the trip destination and mode choices have been simulated.  The destination end of auto-vehicle trips destined for the CBD are reallocated to parking location TAZs in accordance with model results for input to the assignment process.  Two separate models are implemented -- one for work trips and one for non-work trips.  The model is a two-step model where the first "choice" is whether the destination zone is the same as the parking zone and, if false, then the second choice is a location choice from 10 randomly selected CBD zones.  The parking location choice model was asserted based on the Columbus, Ohio, parking location model since no parking location survey was undertaken in Atlanta.  Appendix B contains the model parameters.
+
+The parking location model takes advantage of the individual processing of records in micro-simulation.  All records where a SOV trips is made to a CBD zone are individually re-processed.  If the primary tour destination zone is not chosen for parking, then the record will be updated to indicate that the SOV trip had a different destination.  Since the actual parking supply is used to regulate the allocation of parking locations, at least a rough balance between parking supply and demand is required.  

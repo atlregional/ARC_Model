@@ -1,0 +1,373 @@
+---
+title: "Section 4 - Activity Pattern and Tour-Level Models"
+output: html_document
+---
+
+The following sub-sections include descriptions of the activity pattern and tour-level models including:
+
+* Coordinated Daily Activity Pattern (CDAP) Model
+* Individual Mandatory Tour Frequency
+* Individual Mandatory Tour Time of Day Choice
+* Generation of Joint Household Tours
+* Joint Tour Frequency
+* Joint Tour Composition
+* Joint Tour Participation
+* Joint Tour Primary Destination Choice
+* Joint Tour Time of Day Choice
+* Individual Non-Mandatory Tour Frequency
+* Individual Non-Mandatory Tour Primary Destination Choice
+* Individual Non-Mandatory Tour Time of Day Choice
+* At-Work Sub-Tour Frequency
+* At-Work Sub-Tour Primary Destination Choice
+* At-work Sub-Tour Time of Day Choice
+* Tour Mode Choice Model
+
+# Section 4.1 Coordinated Daily Activity Pattern (CDAP) Model
+
+Number of Models: 		1
+
+Decision-Making Unit:  		Households 
+
+Model Form: 			Multinomial Logit
+
+Alternatives:
+
+*	3 (one-person households)
+*	9 (two-person households)
+*	27 (three-person households)
+*	81 (four-person households)
+*	243 (five-person households)
+*	363 total alternatives
+
+The next set of sub-models relates to personal CDAPs and the generation of individual tours by purpose for all persons in the synthetic population. The CDAP is classified by three main pattern types:
+
+*	Mandatory pattern (M) that includes at least one of the three mandatory activities - work, university or school.  This constitutes either a workday or a university/school day, and may include additional non-mandatory activities such as separate home-based tours or intermediate stops on the mandatory tours. 
+*	Non-mandatory pattern (NM) that includes only individual and/or joint maintenance and discretionary tours.  By virtue of the tour primary purpose definition, maintenance and discretionary tours cannot include travel for mandatory activities.
+*	At-home pattern (H) that includes only in-home activities.  At-home patterns are not distinguished by any specific activity (e.g., work at home, take care of child, being sick, etc.).  Cases with complete absence from town (e.g., business travel) are included in this category.
+
+Statistical analyses conducted with data from Columbus, Ohio, Atlanta and the San Francisco Bay Area have shown that there is an extremely strong correlation between CDAP types of different household members, especially for joint NM and H types.  For this reason, the CDAP for different household members cannot be modeled independently.   Therefore, alternative CDAP types are broken into two groups.  Mandatory activities form the first group; these activities are assumed to be undertaken individually.  The second group contains two patterns - NM and H - that have the potential to be jointly utilized if several household members choose the same pattern.  
+
+The total number of possible CDAP type combinations is significant for large households. However, there are several important considerations that significantly reduce the dimensionality of the simultaneous model.  First of all, mandatory CDAP types are only available for appropriate person types (workers and students).  Even more importantly, intra-household coordination of CDAP types is relevant only for the NM and H patterns.  Thus, simultaneous modeling of CDAP types for all household members is essential only for the trinary choice (M, NM, H), while the sub-choice of the mandatory pattern can be modeled for each person separately.  
+
+The CDAP model features simultaneous modeling of trinary pattern alternatives for all household members with the subsequent modeling of individual alternatives, as shown in Figure 4-1.  Tour frequency choice is a separate choice model conditional upon the choice of alternatives in the trinary choice.  This structure is much more powerful for capturing intra-household interactions than sequential processing. 
+
+Simultaneous modeling of potentially joint alternatives for all household members assumes that for each person only a trinary choice (M, NM, H) is considered. Even for a household of five persons the simultaneous combination of trinary models results in a total of 243 alternatives that is a manageable number in estimation and application.  For the limited number of households of size greater than five, the model is applied to the first five household members by priority while the rest of the household members are processed sequentially, conditional upon the choices made by the first five members.
+
+![Figure 4-1. Day Activity Pattern Type Choice Structure](figs/DayPatternFlowChart.png)
+
+The CDAP model contains a number of explanatory variables including person and household attributes, accessibility measures, and density/urban form variables.  Since the model features intra-household interactions, a number of the parameters in the model are specified as interaction terms.  These terms are based on the contribution to the total utility of an alternative from either a two-person interaction, a three-person interaction, or an entire-household interaction.  For example, the contribution of a two-worker interaction to the utility for each worker to stay home on the simulation day is positive, indicating that it is more likely that both workers will attempt to coordinate their days off.  Similarly, the contribution of a pre-school child to a worker mandatory pattern is negative, indicating the likelihood that if a pre-school child stays at home, a worker also is more likely to stay at home with the child.  The CDAP model parameters were estimated using the 2001 HTS and are given in Appendix B.  Individual daily activity pattern model parameters for non-included persons are also given in the appendix.
+
+# Section 4.2 Individual Mandatory Tour Frequency
+
+Number of Models: 		1
+
+Decision-Making Unit:  		Persons 
+
+Model Form: 			Multinomial Logit
+
+Alternatives:  			5 (1 Work Tour, 2 Work Tours, 1 School Tour, 2 School Tours, 1 Work/1 School Tour)
+
+Based on the CDAP chosen for each person, individual mandatory tours, such as work, school and university tours are generated at person level.  The model is designed to predict the exact number and purpose of mandatory tours (e.g., work and school/university) for each person who chose the mandatory CDAP type at the previous decision-making stage.  Since the CDAP type model at the household level determines which household members engage in mandatory tours, all persons subjected to the individual mandatory tour model implement at least one mandatory tour.  The model has the following five alternatives:
+
+*	One work tour
+*	One school tour
+*	Two or more work tours
+*	Two or more school tours
+*	One work tour plus one school tour
+
+CDAPs and subsequent behavioral models of travel generation include various explanatory variables that relate to household composition, income, car ownership, location of work and school activities, land-use development, residential and employment density, and accessibility factors.  The individual mandatory tour frequency model parameters are given in Appendix B.  
+
+
+# Section 4.3 Individual Mandatory Tour Time of Day Choice
+
+Number of Models: 		1
+
+Decision-Making Unit:  		Persons 
+
+Model Form: 			Multinomial Logit
+
+Alternatives:  			1,176 (combinations of tour departure and arrival half-hour periods)
+
+After individual mandatory tours have been generated, the tour departure time from home and arrival time back at home is chosen simultaneously.  Note that it is not necessary to select the destination of the tour, as this has already been determined in Model 2.1.   The model is a discrete-choice construct that operates with tour departure-from-home and arrival-back-home time combinations as alternatives.  The proposed utility structure is based on "continuous shift" variables, and represents an analytical hybrid that combines the advantages of a discrete-choice structure (flexible in specification and easy to estimate and apply) with the advantages of a duration model (a simple structure with few parameters, and which supports continuous time).  The model has a temporal resolution of a half-hour that is expressed in 1,176 30-minute departure/arrival time alternatives.  The model utilizes direct availability rules for each subsequently scheduled tour, to be placed in the residual time window left after scheduling tours of higher priority.  This conditionality ensures a full consistency for the individual entire-day activity and travel schedule as an outcome of the model. 
+
+The model utilizes household, person, and zonal characteristics, most of which are generic across time alternatives.  However, network LOS variables vary by time of day, and are specified as alternative-specific based on each alternative's departure and arrival time.  By using generic coefficients and variables associated with the departure period, arrival period, or duration, a compact structure of the choice model is created, where the number of alternatives can be arbitrarily large depending on the chosen time unit scale, but the number of coefficients to estimate is limited to a reasonable number.  Duration variables can be interpreted as "continuous shift" factors that parameterize the termination rate in such a way that if the coefficient multiplied by the variable is positive, this means the termination rate is getting lower and the whole distribution is shifted to the longer durations.  Negative values work in the opposite direction, collapsing the distribution toward shorter durations.
+
+In the CT-RAMP model structure, the tour-scheduling model is placed after destination choice and before mode choice.  Thus, the destination of the tour and all related destination and origin-destination attributes are known and can be used as variables in the model estimation.
+The choice alternatives are formulated as tour departure from home/arrival at home half-hour combinations ($g,h$), and the mode choice logsums and bias constants are related to departure/arrival periods ($s,t$). Tour duration is calculated as the difference between the arrival and departure half-hours ($h-g$) and incorporates both the activity duration and travel time to and from the main tour activity, including intermediate stops.
+
+The tour TOD choice utility has the following general form:
+
+![Equation 4-1](figs/TourTODEquation.png)
+
+where,
+
+$V_g$,$V_h$ = departure and arrival time-specific components
+
+$D_{h-g}$ = duration-specific components
+
+$m$ = entire-tour modes (SOV, HOV, walk to transit, drive to transit, non-motorized)
+
+$V_{stm}$ = mode utility for the tour by mode $m$, leaving home in period $s$ (containing half hour $h$) and returning home in period (containing $g$)
+
+$\mu$ = mode choice logsum coefficient
+
+For model estimation, the following practical rules can be used to set the alternative departure/arrival time combinations:
+
+*	Each reported/modeled departure/arrival time is rounded to the nearest half-hour.  
+*	Every possible combination of the 48 departure half-hours with the 48 arrival half-hours (where the arrival half-hour is the same or later than the departure hour) is an alternative.  This gives 48 * (48-1)/2 + 48 = 1,176 choice alternatives. 
+
+The network simulations to obtain travel time and cost skims are implemented for five broad periods:
+
+*	Early A.M. (3:00 AM to 5:59 AM)
+*	A.M. peak (6:00 AM to 9:59 AM)
+*	Midday (10:00 AM to 2:59 PM)
+*	P.M. peak (3:00 PM to 6:59 PM)
+*	Evening (7:00 PM to 2:59 AM)
+
+Mode-choice logsums are used for all relevant combinations of the five time periods above.  The model could include more TOD periods for network simulation, ultimately approaching a resolution of dynamic traffic assignment.  For example, the 7:00-8:00 A.M. and 4:00-5:00 P.M. hours could be singled out of the peak periods to distinguish the morning and evening peak hours from the shoulders of the peaks.  This would lead to a network simulation system with eight time-of-day periods, which is still manageable yet provides better resolution during the periods where congestion is more likely to occur. 
+The individual mandatory tour time-of-day choice model was estimated using the 2011 HTS and the explanatory variables are given in Appendix B.
+
+
+
+# Section 4.4 Generation of Joint Household Tours
+
+Joint travel for non-mandatory activities is modeled explicitly in the form of fully joint tours.  In a fully joint tour all members of the travel party travel together from the very beginning to the end and participate in the same activities along the way.  Fully joint travel accounts for more than 50% of joint travel.  Partially joint travel like carpooling of workers and escorting children are not explicitly considered in the ARC ABM, though they are handled implicitly through shared-ride alternatives in mode choice.
+
+An explicit model of joint travel constitutes one of the primary advantages of the CT-RAMP modeling paradigm.  Each fully joint tour is considered a unit of modeling with a group-wise decision-making for the primary destination, mode, frequency and location of stops, etc.  Formally, modeling joint activities involves two linked stages - see Figure 4-2:
+
+*	A tour generation stage that generates the number of joint tours by purpose/activity type made by the entire household.  This is the joint tour frequency model.
+*	A tour participation stage at which the decision whether to participate or not in each joint tour is made for each household member and tour.  This is the joint tour participation model.  For analytical convenience this model is broken into two sub-models.  The first addresses travel party composition, and the second focuses on person participation choice. 
+
+![Figure 4-2. Mode Structure for Joint Non-Mandatory Tours](figs/JointNMFlowChart.png)
+
+Joint tour party composition is modeled for each tour.  Travel party composition is defined in terms of person categories (e.g., adults and children) participating in each tour. Statistical analysis and model estimation has shown a strong linkage between trip purpose and typical party compositions.  The essence of the joint party composition model is to narrow down the set of possible person participation choices modeled by the subsequent sub-model.  Frequency choice and travel party composition models discussed above generally fall quite readily into the standard discrete choice structure.  Regarding the person participation model, two alternative ways to formulate the choice model have been found (as shown in Figure 4-3).  The first approach (shown on the left of the figure) constitutes entire-party choice. This approach is based on explicitly listing all possible person combinations for the travel party formation.  The disadvantage of this approach is its complexity; in large households, it is not clear how to structure the alternatives, form a choice set, and estimate a model that is relatively easy to interpret.  The second approach (shown on the right) is based on participation choice being modeled for each person sequentially. In this alternative approach, only a binary choice model is calibrated for each activity, party composition and person type. The model iterates through household members, and applies a binary choice to each to determine if the member participates.  The model is constrained to only consider members with available time-windows overlapping with the generated joint tour.  This method is used for modeling joint tour participation in CT-RAMP.  The approach offers simplicity, but at the cost of overlooking potential non-independent participation probabilities across household members.  The joint tour frequency, composition, and participation models are described below.
+
+![Figure 4-3. Travel Party Formation Tours](figs/TravelParty.png)
+
+
+
+# Section 4.5 Joint Tour Frequency
+
+Number of Models: 	1
+
+Decision-Making Unit:  	Households 
+
+Model Form: 		Multinomial Logit
+
+Alternatives:  	21 (No Tours, 1 Tour segmented by purpose, 2 tours segmented by purpose combination)
+
+Joint tour frequencies are generated by households, and include the number and purposes of the joint tours.  Later models determine who in the household participates in the joint tour.  The explanatory variables in the joint tour frequency model include household variables, accessibilities, and other urban form type variables. One of the most significant variables in the joint tour frequency model is the presence and size of overlapping time-windows, which represent the availability of household members to travel together after mandatory tours have been generated and scheduled.   This formulation provides "induced demand" effects on the generation and scheduling of joint tours; the frequency and duration of mandatory tours affects whether or not joint tours are generated.  The joint tour frequency model parameters are given in Appendix B.  
+
+
+# Section 4.6 Joint Tour Composition
+
+Number of Models: 	1
+
+Decision-Making Unit:  	Joint Tour
+
+Model Form: 		Multinomial Logit
+
+Alternatives:  		3 (Adults-only, Children-only, Adults + Children)
+
+Joint tour party composition is modeled for each tour, and determines the person types that participate in the tour. The model is multinomial logit, and explanatory variables include the maximum time window overlaps across adults, children and adults or children after mandatory tours have been scheduled.  Other variables include household structure, area type, and the purpose of the joint tour.  The joint tour composition model parameters are given in Appendix B.  
+
+
+# Section 4.7 Joint Tour Participation
+
+Number of Models: 	1
+
+Decision-Making Unit:  	Persons
+
+Model Form: 		Multinomial Logit
+
+Alternatives:  		2 (Yes or No)
+
+Joint tour participation is modeled for each person and each joint tour.  If the person is does not correspond to the composition of the tour determined in the joint tour composition model, they are ineligible to participate in the tour.  Similarly, persons whose daily activity pattern type is home are excluded from participating.  The model relies on heuristic process to assure that the appropriate persons participate in the tour as per the composition model.  The model follows the logic depicted in Figure 4-4.  Explanatory variables include the person type of the decision-maker, the maximum pair-wise overlaps between the decision-maker and other household members of the same person type (adults or children), household and person variables, and urban form variables.  The joint tour participation model parameters are given in Appendix B. 
+
+![Figure 4-4. Application of the Person Participation Model](figs/AdultChildTravel.png)
+
+# Section 4.8 Joint Tour Primary Destination Choice
+
+Number of Models: 		1
+
+Decision-Making Unit:		Tour 
+
+Model Form: 			Multinomial Logit
+
+Alternatives:  			Zones
+
+The joint tour primary destination choice model determines the location of the tour primary destination.  The destination is chosen for the tour and assigned to all tour participants.  The model works at a zone level, and sampling of destination alternatives is implemented in order to reduce computation time.    Explanatory variables include household and person characteristics, the tour purpose, logged size (i.e. attraction) variables, round-trip mode choice logsum, distance, and other variables.   Note that the mode choice logsum used is based a "representative" time period for joint tours, which is currently off-peak, since the actual time period has not been chosen at this stage of the simulation.  Explanatory variables for the joint tour primary destination choice model are given in Appendix B.
+
+# Section 4.9 Joint Tour Time of Day Choice
+
+Number of Models: 		1
+
+Decision-Making Unit:  		Persons 
+
+Model Form: 			Multinomial Logit
+
+Alternatives:  			1,176 (combinations of tour departure half-hour and arrival half-hour back at home)
+
+ After joint tours have been generated and assigned a primary location, the tour departure time from home and arrival time back at home is chosen simultaneously.    The model is conceptually similar to the one applied for individual mandatory tours.  However, a unique condition applies when applying the time-of-day choice model to joint tours.  That is, the tour departure and arrival period combinations are restricted to only those available for each participant on the tour, after scheduling mandatory activities.  Once the tour departure/arrival time combination is chosen, it is applied to all participants on the tour.  Explanatory variables for the joint tour time-of-day choice model are given in Appendix B.  This model was estimated using the 2011 HTS.
+
+
+# Section 4.10 Individual Non-Mandatory Tour Frequency
+
+Number of Models: 		8 (segmented by 8 person types)
+
+Decision-Making Unit:  		Persons
+
+Model Form: 			Multinomial Logit
+
+Alternatives:  			89 (Corresponding to most frequently observed combinations of
+number of individual maintenance and discretionary tours by purpose)
+
+This model generates all non-mandatory, non-fully-joint tours at the individual person level.  The model determines the number of both maintenance and discretionary tours simultaneously, at the person level, by purpose.  There are six different kinds of maintenance and discretionary activities (escort, shop, other maintenance, eat out, visit, other discretionary), and a large number of possible combinations of each (assuming a maximum of 4 individual maintenance/discretionary tours per day, the number of possible combinations is 6<sup>4</sup> = 1,296 alternatives, many of which are not observed in the data).  Table 4-1 shows a tabulation of person days by number of individual maintenance/discretionary tours by purpose and person-type from the ARC 2011 HTS. It reveals that there are a number of potential choices with few observations, indicating where appropriate collapsing of alternatives can occur.
+
+Table 4-1. Distribution of Person Days by Number of Individual Non-Mandatory Tours
+
+```{r,echo=F,message=F,warning=F,output=F,out.height=700}
+library(kableExtra)
+Spec41 <- read.csv('data/PersonDayNoIndivNM.csv',check.names = F)
+kable(Spec41, format.args = list(big.mark = ",")) %>%
+  kable_styling("striped") %>%
+  add_header_above(c(" " = 1, "Escorting" = 4,"Shopping" = 4,"Maintenance" = 4,"Eating Out" = 4,"Visiting" = 4,"Discretionary" = 4))
+```
+
+
+
+The choice set was therefore simplified to include only the most frequently observed combinations of tours by purpose and number, resulting in a total of 89 alternatives, as shown in Table 4-2.  Certain alternatives are defined as "one or more tours" of a certain purpose.  If such alternatives are chosen, a subsequent frequency model determines the exact number of tours for those cases (either 1 or 2), based on the person type and the number of mandatory and fully joint tours already generated for the decision-maker.   Table 4-3 shows the individual non-mandatory tour extension probabilities; these are expressed as cumulative probabilities for each potential choice of 0, 1, or 2 additional tours.  Only rows with probabilities for at least one additional tour are shown in the table.   Individual non-mandatory tour frequency model parameters are given in Appendix B. 
+
+Table 4-2. Individual Non-Mandatory Tour Frequency Model Alternatives
+
+```{r,echo=F,message=F,warning=F,output=F,out.height=700}
+library(kableExtra)
+Spec42 <- read.csv('data/IndivNMTourFreqAlts.csv',check.names = F)
+kable(Spec42, format.args = list(big.mark = ",")) %>%
+  kable_styling("striped") %>%
+  add_header_above(c(" " = 1, "Number of tours by purpose" = 6))
+```
+
+
+Table 4-3. Individual Non-Mandatory Tour Extension Cumulative Probabilities
+
+```{r,echo=F,message=F,warning=F,output=F,out.height=700}
+library(kableExtra)
+Spec43 <- read.csv('data/IndivNMTourExtCumProb.csv',check.names = F)
+kable(Spec43, format.args = list(big.mark = ",")) %>%
+  kable_styling("striped") %>%
+  add_header_above(c(" " = 4, "Additional Tours" = 3))
+```
+
+# Section 4.11 Individual Non-Mandatory Tour Primary Destination Choice
+
+Number of Models: 		1
+
+Decision-Making Unit: 		Person
+
+Model Form: 			Multinomial Logit
+
+Alternatives:  			Zones
+
+The individual non-mandatory tour primary destination choice model determines the location of the tour primary destination.   The model works at a zone level, and sampling of destination alternatives is implemented in order to reduce computation time.   Explanatory variables include household and person characteristics, the tour purpose, logged size (i.e. attraction) variables, round-trip mode choice logsum, and distance, among others.   The mode choice logsum is based on a "representative" time period for individual non-mandatory tours, which is currently off-peak, since at this stage of the simulation the actual time period has not been chosen.   The model parameters are given in Appendix B.
+
+
+# Section 4.12 Individual Non-Mandatory Tour Time of Day Choice
+
+Number of Models: 		1
+
+Decision-Making Unit:  		Person 
+
+Model Form: 			Multinomial Logit
+
+Alternatives:  			1,176 (combinations of tour departure half-hour and arrival half-hour back at home)
+
+After individual non-mandatory tours have been generated and assigned a primary location, the tour departure time from home and arrival time back at home is chosen simultaneously.  The model structured in the same way as the mandatory tour time-of-day choice model, described above.  The tour departure and arrival period combinations are restricted to only those available for each participant on the tour, after scheduling individual mandatory tours and joint tours.   This model was estimated using the 2011 HTS, and the parameters are given in Appendix B.
+
+
+# Section 4.13 At-Work Sub-Tour Frequency
+
+Number of Models: 		1
+
+Decision-Making Unit:  		Persons
+
+Model Form: 			Multinomial Logit
+
+Alternatives:  			6 (None, 1 eating out tour, 1 business tour, 1 maintenance tour, 2 business tours, 1 eating out tour + 1 business tour)
+
+Work-based sub-tours are modeled last, and are relevant only for those persons who implement at least one work tour. The underlying activities are mostly individual (e.g., business-related and dining-out purposes), but may include some household maintenance functions as well as person and household maintenance tasks.  There are six alternatives in the model, corresponding to the most frequently observed patterns of at-work sub-tours.  The alternatives define both the number of at-work sub-tours and their purpose.  Explanatory variables include household and person attributes, duration of the parent work tour, the number of joint and individual non-mandatory tours already generated in the day, and accessibility and urban form variables.  At-work sub-tour frequency model parameters are given in Appendix B. 
+
+
+# Section 4.14 At-Work Sub-Tour Primary Destination Choice
+
+Number of Models: 		1
+
+Decision-Making Unit: 		Person
+
+Model Form: 			Multinomial Logit
+
+Alternatives:  			Zones
+
+The at-work sub-tour primary destination choice model determines the location of the tour primary destination.   The model works at a zone level, and sampling of destination alternatives is implemented in order to reduce computation time.  Explanatory variables include household and person characteristics, the tour purpose, logged size (i.e. attraction) variables, round-trip mode choice logsum, distance, and other variables.   The mode choice logsum is based on a "representative" time period for individual non-mandatory tours, which is currently off-peak, since at this stage of the simulation the actual time period has not been chosen.  The model is constrained such that only destinations within a reasonable time horizon from the workplace are chosen, so that the tour can be completed within the available time window.  Explanatory variables for the at-work sub-tour primary destination choice model are given in Appendix B.
+
+
+# Section 4.15 At-work Sub-Tour Time of Day Choice
+
+Number of Models: 		1
+
+Decision-Making Unit:  		Person 
+
+Model Form: 			Multinomial Logit
+
+Alternatives:  			1,176 (combinations of tour departure half-hour and arrival half-hour back at home)
+
+After at-work sub-tours have been generated and assigned a primary location, the tour departure time from workplace and arrival time back at the workplace is chosen simultaneously.  The model structured in the same way as the mandatory tour time-of-day choice model, described above.  The tour departure and arrival period combinations are restricted to only those available based on the time window of the parent work tour.  Explanatory variables for the at-work sub-tour tour time-of-day choice model are given in Appendix B.  This model was estimated using the 2011 HTS.
+
+# Section 4.16 Tour Mode Choice Model
+
+Number of Models: 		5 (Work, University, K-12, Non-Mandatory, At-work)
+
+Decision-Making Unit:  		Person 
+
+Model Form: 			Nested Logit
+
+Alternatives:  			15 (See Figure 4-5)
+
+The tour-based modeling approach requires a certain reconsideration of the conventional mode choice structure.  Instead of a single mode choice model pertinent to a four-step structure, there are two different levels where the mode choice decision is modeled: 
+
+*	The tour mode level (upper-level choice),
+*	The trip mode level (lower-level choice conditional upon the upper-level choice).
+
+The tour mode level reflects the most important decisions that a traveler makes in terms of using a private car versus using public transit, non-motorized, or any other mode.  Trip-level decisions correspond to details of the exact mode used for each trip.  The modes identified by the tour mode choice model are listed in Table 4-5. 
+
+The model is distinguished by the following characteristics:
+
+*	Segmentation of the HOV mode by occupancy categories, which is essential for modeling HOV/HOT lanes and policies
+*	Explicit modeling of toll vs. non-toll choices as highway sub-modes, which is essential for modeling highway pricing projects and policies
+*	Distinguishing between certain transit sub-modes that are characterized by their attractiveness, reliability, comfort, convenience, and other characteristics beyond travel time and cost (such as local and premium)
+*	Distinguishing between walk and bike modes if the share of bicycle trips is significant 
+Note that free and pay alternatives for each auto mode provide an opportunity for toll choice as a path choice within the nesting structure.  This requires separate free and pay skims to be provided as inputs to the model (where free paths basically "turn off" all toll and HOT lanes).  Transit skims are segmented by line-haul mode in two major groups, local bus and premium transit.  When building the premium transit skims, local bus routes are allowed to operate as feeder service to MARTA and other premium services.
+
+The tour mode choice model is based on the round-trip level-of-service (LOS) between the tour anchor location (home for home-based tours and work for at-work sub-tours) and the tour primary destination.  The tour mode is chosen based on LOS variables for both directions according to the time periods for the tour departure from the anchor and the arrival back at the anchor. This is one of the fundamental advantages of the tour-based approach.  For example a commuter can have very attractive transit service in the a.m. peak period in the outbound direction, but if the return home time is in the midday or later at night, the commuter may prefer private auto due to lower off-peak transit service. 
+
+The appropriate skim values for the tour mode choice are a function of the TAZ of the tour origin and TAZ of the tour primary destination.  The tour mode choice model contains a number of household and person attributes, including income, auto sufficiency, age, etc.  Urban form variables are also important, particularly related to the choice of non-motorized modes.  Explanatory variables and parameters used in tour mode choice are given in Appendix B.
+
+![Figure 4-5. Tour Mode Choice Model Structure](figs/TourMCStructure.png)
+
+
+<br/>
+
+Table 4-5. Level-of-Service Matrices Used in Tour Mode Choice
+
+
+```{r,echo=F,,out.height=700,message=F,warning=F,output=F}
+library(tidyverse)
+library(knitr)
+library(DT)
+library(kableExtra)
+spec45 <- read_csv('data/TourMCLOS.csv')
+```
+```{r,echo=F,message=F,out.height=700}
+kable(spec45, format.args = list(big.mark = ",")) %>%
+  kable_styling("striped",row_label_position = 'r')
+```

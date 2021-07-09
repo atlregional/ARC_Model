@@ -1,0 +1,271 @@
+---
+title: "Section 13 - Activity Based Model Visualization Tool (ABMVIZ)"
+output: html_document
+---
+
+
+# Section 13.1 Introduction to ABMVIZ
+ABMVIZ is a visualization tool designed to graphically display the forecasting results produced by the activity-based model.  The tool is hosted on the website GitHub and is publicly accessible.  The tool provides graphics for forecasting scenarios modeled by the ARC ABM.    
+
+## Section 13.1.1 ABMVIZ version 2
+The original version of ABMVIZ (version 1) was developed as a desktop-based application built in Adobe AIR (Flash). The current version (version 2) is a web-based tool, hosted on GitHub and scripted using HTML5. 
+
+## Section 13.1.2 Definitions and Acronyms
+
+**Table 13-1 ABMVIZ Definitions and Acronyms**    
+
+```{r,echo=F,message=F,warning=F,output=F,out.height=700}
+library(tidyverse)
+library(knitr)
+library(DT)
+library(kableExtra)
+library(readxl)
+
+T131<- read_excel('data/UserGuideTables.xlsx','T131','B3:C26')
+T131[is.na(T131)] <- ''
+
+kable(T131) %>%
+  kable_styling("striped")
+
+```
+
+## Section 13.1.3 Scenario Explanations
+
+**Table 13-2 Scenario Definitions**    
+
+```{r,echo=F,message=F,warning=F,output=F,out.height=700}
+
+T132<- read_excel('data/UserGuideTables.xlsx','T132','B3:C11')
+T132[is.na(T132)] <- ''
+
+kable(T131) %>%
+  kable_styling("striped")
+
+```
+
+# Section 13.2 Visuals
+
+In the current version, there are nine visuals available for each scenario.  These visuals show the different forecasted conditions of each scenario by presenting the data as a map, chart, or graph.  Each of the descriptions below addresses one of the visuals and provides instructions for interacting with the visual and methods of interpreting the visual.  
+	
+The terms defined here will be used frequently in the descriptions below:
+.	"Mode" refers to how a person is traveling, for example by car or bus or train.  The complete list of modes used in these visuals can be found in Section 13.1.2 Definitions and Acronyms.
+.	"TAZ" stands for Traffic Analysis Zone and refers to a unit of geography common in transportation planning. It should be noted the current version of scenarios uploaded to ABMVIZ are based on the previous model results and structure. In this version, the entire Atlanta metropolitan area is divided into 5,873 internal TAZs.
+
+
+## Section 13.2.1 Persons not at Home
+The Persons Not At Home visual is a 3D map showing how many people in a given TAZ at a given time are away from their home.  Figure 13-1 below displays the locations of the interactive features of the Persons Not At Home visual.  The interactive features are discussed below.
+
+![Figure 13-1. Persons Not At Home Interactive Features](figs/PersonsNotAtHome.png)
+
+Interactive Features List:    
+1)	Time slider    
+2)	Cycle Through Day button    
+3)	Redraw menu    
+4)	View adjustment controls    
+5)	Centroid box    
+6)	Classification menu    
+7)	Classification bar    
+8)	Classification color palette    
+9)	Null color palette    
+
+The primary function of this visual is to demonstrate how people are moving around the city throughout the day.  To activate the cycle, either manually adjust the time slider (found at Location 1) or click the "Cycle Through Day" button (found at Location 2) to automate the 24-hour progression beginning at midnight.  If you would like to adjust the rate at which the hours pass in the automated progression, select a new time from the "Redraw" menu (found at Location 3).  The default view displayed in the map panel can be adjusted using the controls found at Location 4.
+	
+By default, the map is set to display a single column for each TAZ; these columns are located on the centroid of each TAZ.  To display a choropleth color block over the entire TAZ area, instead of just the centroid, uncheck the Centroid box found at Location 5.
+
+The saturation of color in each column represents the classification bracket that the TAZ is currently in.  The Classification menu (found at Location 6) allows the user to set the type of classification system displayed in the visual.  By default, a Quartiles classification system is used, but an Even Interval or a Custom system can be selected.  Once a Classification system is selected at Location 6, the corresponding Classification Bar (found at Location 7) will adjust and can be manipulated directly to create a Custom setting.  The color palette of the Classification system can be adjusted by selecting one of the six alternatives given at Location 8.  To highlight a TAZ with no persons not at home, use the color selector found at Location 9; the default color is white.
+	
+In the Persons Not At Home visual, the relative height of the columns indicates how many people in that TAZ are away from home.  Therefore, the taller the column, the more people are away from home.  When the cycle is automated, the user will notice that during the earliest morning hours and latest evening hours, the columns are almost flat across the map, indicating that most people are at home.  As the day progresses, the columns grow much taller and cluster around job-rich areas such as Midtown and Cumberland.  The tallest columns are typically seen around the airport and the Emory University/CDC area.  These tall columns represent a large number of people concentrated into a small area.
+
+
+## Section 13.2.2 Person Group Day Pattern
+The Person Group, by Day Pattern visual is a bar chart showing a summary of the projected population's typically daily travel pattern.  Figure 13-2 below displays the locations of the interactive features of the Person Group, by Day Pattern visual.  The interactive features are discussed below.
+
+![Figure 13-2. Person Group Day Pattern Interactive Features](figs/PersonGroupDayPattern.png)
+
+Interactive Features List:    
+1)	Display toggle    
+2)	Day Pattern toggle (H = Home, M = Mandatory, N = Non-mandatory)    
+3)	Data choice toggle    
+
+The primary function of this visual is to describe how the individuals in a given "person group" are expected to routinely travel.  For example, in the scenario pictured in Figure 13-2, it is expected that 1,860,250 people classified as "Full-time Workers" make "Mandatory" trips to work on a daily basis.
+
+By default, the visual displays all three types of trips (home, mandatory, and non-mandatory) at the same time.  To choose which types of trip to display, toggle between the options found at Location 1 in Figure 13-2.  To see a single type of trip, double click on its toggle button.  The visual can either show the different trip types as individual bars grouped next to each other, or as a single bar with all trip types stacked together.  Use the buttons found at Location 2 to choose the display method.
+
+The data displayed in the visual can be manipulated with the toggles found at Location 3.  The first option is to switch the person type and day pattern rows.  By default, the visual displays each person group on the y-axis and displays three bars (representing the three day patterns) per person group.  If the "Swap bars and legend" button is toggled, the visual will display the three day patterns on the y-axis and will display a bar for each of the eight person groups per day pattern.  Additionally, the visual can display a percentage for each bar (instead of a count) by toggling the "Showing as Percentage" button.  To determine the exact count or percentage of a particular bar, hover the mouse over the bar, as seen in Figure 13-3 below.
+
+![Figure 13-3. Hover Results of Person Group Day Pattern](figs/PersonGroupHover.png)
+
+In the Person Group, by Day Pattern visual, "H" represents home activities, "M" represents mandatory activities, and "N" represents non-mandatory activities.
+
+## Section 13.2.3 Trip Mode by County
+The Trip Mode, by County visual is a combination bar group and map showing the breakdown of modes used by each county in the region.  Figure 13-4 below displays the locations of the interactive features of the Trip Mode, by County visual.  The interactive features are discussed below.
+
+![Figure 13-4. Trip Mode by County Interactive Features](figs/TripModeByCountyInteractiveFeatures.png)
+
+Interactive Features List:     
+1)	Mode selection list    
+2)	Stacked toggle button    
+3)	County List    
+4)	Trip mode selection menu    
+5)	Classification selection menu    
+6)	Classification bar    
+7)	Color palette selection list    
+8)	Null color palette selector    
+9)	Bubble toggle    
+10)	"Cycle Through Maps" button    
+11)	"Redraw" menu    
+
+The left side of the Trip Mode, by County visual is a bar graph showing the 20 counties composing the Atlanta region.  Each county is given a single bar with each of the 15 possible modes represented in a different color and stacked together.  The toggle buttons found at Location 1 on Figure 13-4 allow the user to choose which modes are displayed on the bar graph.  Multiple modes can be selected, or, to display a single mode, double click that mode's toggle button.  To see each mode as a separate bar, instead of all modes stacked into one bar, toggle the button found at Location 2.  Hovering the mouse over any county name found at Location 3 will thickly outline that county on the map seen on the right side of the visual.
+
+Hovering the mouse over any of the bars will thickly outline that county and display an exact count of the mode hovered over.  Figure 13-5 below gives an example of these hovering motions.
+
+![Figure 13-5. Hover Results of Trip Mode by County](figs/TripModeByCountyHover.png)
+
+The map displays the intensity of use of a selected mode by TAZ across the 20-county region.  The mode to be displayed can be selected from the drop-down menu found at Location 4.  The default classification system for the map is Quartiles, and the user can select a different classification system from the drop-down menu found at Location 5.  When a classification system is selected, the classification bar (found at Location 6) will automatically adjust and can be manually manipulated to a custom setting.
+
+The default color palette is blue, but a different color palette can be chosen from the options found at Location 7.  To highlight the TAZs in which the selected mode is not used by any person, adjust the color displayed in the selector found at Location 8.  To display bubbles overs the TAZs (instead of the default choropleth polygons), toggle the "Bubbles" button found at Location 9.
+
+The map can be automated to cycle through all of the available mode choices by clicking the "Cycle Through Maps" button found at Location 10.  The rate at which the modes shift can be adjusted by selecting a new rate from the "Redraw" menu found at Location 11.
+
+The Trip Mode, by County visual is useful for comparing the volume of trips undertaken by different counties and TAZs in the region.  It is obvious that driving alone will remain the dominant trip mode for years to come, however, there is significant interest in alternative modes throughout the region.  The map portion illustrates the intensity of use of a particular mode by more heavily saturating the TAZs where use is higher.  Because of the outline and zoom functionality of the map, it is easy to examine individual TAZs for specific mode choice patterns.
+
+
+## Section 13.2.4 Time Use
+The Time Use visual is a graphic showing the breakdown of how people in different Person Groups are likely to spend their time.  Figure 13-6 below displays the locations of the interactive features of the Time Use visual.  The interactive features are discussed below.
+
+![Figure 13-6. Time Use Interactive Features](figs/TimeUseInteractiveFeatures.png)
+
+Interactive Features List:     
+1.	Person Group selection menu    
+2.	Trip purpose buttons    
+3.	Display type buttons    
+
+The Time Use visual summarizes the different types of trips each Person Group is expected to make throughout an average day.  By default, the visual displays information about all Person Groups averaged together.  To select a single Person Group, use the menu found at Location 1.  To choose which trip purposes are displayed in the visual, toggle the color-coded buttons found at Location 2.  
+
+The data in the Time Use visual is given as a percentage by default.  To change the presentation method to count instead, use the buttons found at Location 3.  
+
+Once the desired inputs are selected, the user can hover over the visual to see exact percentages or counts for any given hour (see Figure 13-7 below for an example).
+
+![Figure 13-7. Time Use Hover Results](figs/TimeUseHover.png)
+
+The Time Use visual is important for understanding how different Person Groups typically spend their time.  Because the visual uses percentages, it can be difficult to interpret.  The overwhelming blue section in the default view represents the percentage of people who are at home, which is many people for the majority of the day.  From the morning rush hour to the evening rush hour, the well in the middle of the visual grows, meaning that more people are away from home.  
+
+## Section 13.2.5 Trip Mode
+The Trip Mode visual is a sunburst chart showing the breakdown of modes used in a given scenario.  Figure 13-8 below displays the locations of the interactives features of the Trip Mode visual.  The interactive features are discussed below.
+
+![Figure 13-8. Trip Mode Interactive Features](figs/TripModeInteractiveFeatures.png)
+
+Interactive Features List:     
+1.	Mode selection menu    
+2.	Mode selection rings    
+
+By default, the Trip Mode visual displays a summary of all modes used on an average day.  To narrow down the modes displays, choose from the mode selection menu found at Location 1.  The list is both color-coded and hierarchically organized.  Those modes indented in the list are more specific categories of the mode under which it is nested.  For example, under "All" (all modes) is "Transit" (transit modes) and under "Transit" is "KNR" (kiss-and-ride access/egress to transit) and under "KNR" is "KNR_PRMTRN" (kiss-and-ride access/egress to premium transit).  Figure 13-9 below represents the user filtering out all modes expect Auto modes.  
+
+Alternatively, the user can narrow the modes displayed by clicking on the color-coded rings found at Location 2.  The gray core is inert, but each subsequent ring represents a different level in the hierarchy of modes.  The innermost ring corresponds to the first-level indented modes "Auto," "Nonmotorized," "School_Bus," and "Transit."  The second ring corresponds to the second-level indented modes "DriveAlone," "Shared2," "Shared3," "Bike," "Walk," "KNR," "PNR," and "Walk_Transit."  The third ring corresponds to the third-level modes and so on.  Clicking on any of these rings will focus on that mode and level within the hierarchy, and filter out all other modes.  
+
+Hovering the mouse over any of the rings at any level of focus will display both the percentage and count of that particular mode on the right side of the visual (see Figure 13-9 below for an example).
+
+![Figure 13-9. Trip Mode Hover Results](figs/TripModeHover.png)
+
+The center-most ring represents the broadest categorization of modes, as general as "Auto," and the user can see that the dark blue ring representing "Auto" is the first, and therefore the most common, mode chosen.  The second and third rings show the various subsets of the broader classifications, and the entirety of the subset is given only as much space as the larger classification needed.  For example, in the first ring, the maroon segment representing "Nonmotorized" modes takes up a small portion of the ring.  The subsets of "Nonmotorized" are "Walk" and "Bike," which together take up portions of the second ring equal to that of the "Nonmotorized" portion of the first ring.  The system of concentric rings makes it easy to compare the prevalence of various modes.
+
+## Section 13.2.6 Radar Charts
+The Radar Charts visual is a collection of radar charts showing the combinational effect of four measures for a given location.  Figure 13-10 displays the locations of the interactive features of the Radar Charts visual, and the features are discussed below.
+
+![Figure 13-10. Radar Charts Interactive Features](figs/RadarInteractiveFeatures.png)
+
+Interactive Features List:        
+1.	Title bars    
+
+Radar charts represent 21 major activity centers in metro Atlana.  By default, they are displayed in alphabetical order.  To reorder the plots to better compare specific regions, click and drag the title bars (found at Locations 1) into the appropriate order.  Exact percentages and numbers for each of the four metrics can be found by hovering the mouse over the terminal point of any of the metrics (see Figure 13-11 below).
+
+![Figure 13-11. Radar Charts Hover Results](figs/RadarHover.png)
+
+The Radar Charts are best for quick visual comparisons of the activity centers around the region.  Each of the metrics is configured to cover a larger area of the circle if the region performs "better" at that particular metric.  Additionally, the saturation of color increases proportionally with the size of the area covered.  
+
+## Section 13.2.7 Transit
+
+The Transit visual displays the number of boardings/alightings for the daily total, each time-period, and rail versus local/express bus. The base visual is provided in Figure 13-12. The visual includes several dynamic functions allowing the user to switch between Total, Early AM, AM Peak, Midday, PM Peak, Evening, and Air Passenger results as shown in Figure 13-13. The user can always switch between boardings and alightings and toggle between Rail and Bus as shown in Figure 13-14 and Figure 13-15. There is also flexibility to control the minimum and maximum radius of the bubbles through use of the Dot Radius slider shown in Figure 13-16.  To change the minimum radius, the user slides the dot on the left back and forth. Similarly, to change the maximum radius, the user can slide the dot on the right back and forth. 
+
+![Figure 13-12. Base Transit Visual](figs/BaseTransitVisual.png)
+
+![Figure 13-13. Time Period Drop Down](figs/TransitTODDropdown.png)
+
+![Figure 13-14. Boardings / Alightings Dropdown](figs/BoardingsAlightingsDropdown.png)
+
+![Figure 13-15. Rail / Bus Toggle](figs/RailBusToggle.png)
+
+![Figure 13-16. Dot Radius Slider](figs/TransitDotSlider.png)
+
+
+
+## Section 13.2.8 Trip O&D
+The Trip O&D visual displays desire lines between ARC's predefined super districts. The visual allows the user to switch between all trips, work trips (defined as any trip occurring on a work tour), and non-work trips. The user can also view the desire lines by single occupancy vehicles (SOV), high occupancy vehicles (HOV), or transit trips. The base visual is provided in Figure 13-17 where the thickness of the line denotes the relative magnitude of the total trips between super districts.  The trip purpose drop-down window is provided in Figure 13-18 and the trip mode drop-down is shown in Figure 13-19.
+
+The user has the flexibility to set the minimum and maximum line thickness using the line thickness slider as shown in Figure 13-20. The slider on the left sets the minimum thickness and the slider on the right sets the maximum thickness.  Similarly, the user can use the slider for line opacity to determine how many desire lines are displayed. An example of how the line opacity slider affects the visual is provided in Figure 13-21. The figure includes a side-by-side comparison where the line thickness was held constant, but the line opacity was modified for the lower values. As illustrated, moving the slider to the right for the lower values results in more OD flows being displayed.
+
+![Figure 13-17. Base Trip O&D Visual](figs/BaseTripOD.png)
+
+![Figure 13-18. Trip O&D Purpose Dropdown](figs/TripODPurposeDropdown.png)
+
+![Figure 13-19. Trip O&D Mode Drop Down](figs/TripODModeDropdown.png)
+
+![Figure 13-20. Trip O&D Line Thickness and Opacity](figs/TripODLineOpacity.png)
+
+![Figure 13-21. Trip O&D Line Opacity Example](figs/TripODLineOpacityExample.png)
+
+
+## Section 13.2.9 Travel Sheds
+The travel shed visual is a TAZ-level illustration of AM peak condition travel time to selected activity centers (Downtown, Airport, Perimeter).  The map is color coded in 15-minute time increments up to 60 minutes as shown in the base visual in Figure 13-22. The user can choose between one of the three activity centers using the drop down menu shown in Figure 13-23 and also switch between Drive Alone, Walk to Transit, and Drive to Transit as shown in Figure 13-24.
+
+![Figure 13-22. Base Travel Shed Visual](figs/BaseTravelShed.png)
+
+![Figure 13-23. Travel Shed Activity Center Drop Down](figs/TravelShedActivityCenterDropdown.png)
+
+![Figure 13-24. Travel Shed Mode Drop Down](figs/TravelShedModeDropdown.png)
+
+
+
+## Section 13.2.10 Scenario Comparison
+The scenario comparison feature allows the user to compare two pre-loaded scenarios against one another. When accessing the ABMVIZ website, there are two drop-down windows for the scenario comparison (see Figure 13-25 and Figure 13-26). To select the base scenario for comparison, the user should select the desired scenario from the left-most drop-down and the scenario to compare against in the right-most drop down. After selecting the scenarios, the user must left click Submit under the drop-down window which will open the comparison tabs shown in Figure 13-27. Currently, the comparison feature is only active for the Transit Boardings/Alightings and the Trip Origin/Destination visuals and the other visuals are greyed out and cannot be selected. When viewing comparison scenarios, if the visuals do not display, it is indicative that one or more of the scenario data files is missing.
+
+![Figure 13-25. ABMVIZ Comparison](figs/ABMVIZComparison.png)
+
+
+![Figure 13-26. Scenario Comparison Drop Down](figs/ScenarioComparisonDropdown.png)
+
+
+![Figure 13-27. Scenario Comparison Availability](figs/ScenarioComparisonAvailability.png)
+
+The visual for the transit comparison functions similarly to the standalone scenario visual with the ability to select the boardings or alightings by time-period and for rail versus express/local bus. However, the comparison also includes the ability to see the increase or decrease in ridership at all transit stop nodes by introducing two bubble colors, one for an increase and one for a decrease. It is important to note that the differences are in relation to the selected base scenario. The base scenario is selected as RP2030 and the comparison scenario selected is the RP2040 in the example provided in Figure 13-28. An increase in the transit boardings indicates that the RP2040 scenario had more boardings than the RP2030 scenario while a decrease indicates less in RP2040 as compared to RP2030.  The visual includes the ability to hover over any transit stop node and see the following information (see Figure 13-29):
+
+*	Station name (if the node is a premium station)
+*	Difference (comparison scenario - base scenario)
+*	Actual values from both scenarios (base scenario, comparison scenario)
+*	Percentage difference (difference / base scenario)
+
+
+![Figure 13-28. Transit Boardings / Alightings Scenario Comparison Example](figs/ScenarioComparisonExample.png)
+
+
+There will be cases where a stop node is in one scenario but not another.  In these cases, the percentage cannot be calculated and is listed as "NA".  The scenario without the stop node will also have a value listed as "NA".  Figure 13-29 includes an example of a case where the stop node is coded in both scenarios and a case where the stop node only occurs in the comparison scenario.  In the example, the values shown are as follows:
+
+Avondale
+*	1,207 = difference between RP2040 and RP2030 (5,840 - 4,633)
+*	4,633 = RP2030 boardings
+*	5,840 = RP2040 boardings
+*	26.0% = percentage difference between RP2040 and RP2030 (1,207 / 4,633)
+
+Wesley Chapel
+*	7,857 = difference between RP2040 and RP2030 (7,857 - 0)
+*	NA = RP2030 boardings, node not coded
+*	7,857 = RP2040 boardings
+*	NA = node not coded in one of the scenarios (RP2030 in this case)
+
+![Figure 13-29. Transit Boardings / Alightings Stop Node Consistency Examples](figs/StopNodeConsistencyExample.png)
+
+The Trip O&D comparison follows a similar design as the Transit comparison where the primary functions of the original visual are included in the comparison with the addition of the ability to see the increase and decrease in OD flows. Like the transit comparison, the OD comparison includes the ability to hover over a desire line to display the base scenario values and the comparison scenario values, along with the percentage difference.  
+
+![Figure 13-30. Trip O&D Scenarion Comparison Example](figs/TripODComparisonExample.png)
+
+

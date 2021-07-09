@@ -1,0 +1,151 @@
+TourCat,auto_suff,ModeABM,totTours
+At-Work Subtours,0 Auto,Shared 2,3540
+At-Work Subtours,0 Auto,Walk,5572
+At-Work Subtours,0 Auto,Wlk AllTrn,1094
+At-Work Subtours,0 Auto,Wlk PremOnly,297
+At-Work Subtours,Autos <  Workers,Bike,1409
+At-Work Subtours,Autos <  Workers,Drive Alone,26511
+At-Work Subtours,Autos <  Workers,Shared 2,31299
+At-Work Subtours,Autos <  Workers,Shared 3+,3292
+At-Work Subtours,Autos <  Workers,Walk,21008
+At-Work Subtours,Autos <  Workers,Wlk AllTrn,667
+At-Work Subtours,Autos <  Workers,Wlk PremOnly,295
+At-Work Subtours,Autos >= Workers,Bike,349
+At-Work Subtours,Autos >= Workers,Drive Alone,432026
+At-Work Subtours,Autos >= Workers,Shared 2,100755
+At-Work Subtours,Autos >= Workers,Shared 3+,56295
+At-Work Subtours,Autos >= Workers,Walk,51718
+At-Work Subtours,Autos >= Workers,Wlk AllTrn,540
+At-Work Subtours,Autos >= Workers,Wlk PremOnly,1076
+Individual Non-mandatory Tours,0 Auto,Bike,2652
+Individual Non-mandatory Tours,0 Auto,KNR AllTrn,1552
+Individual Non-mandatory Tours,0 Auto,KNR PremOnly,354
+Individual Non-mandatory Tours,0 Auto,Shared 2,30644
+Individual Non-mandatory Tours,0 Auto,Shared 3+,9843
+Individual Non-mandatory Tours,0 Auto,Walk,29025
+Individual Non-mandatory Tours,0 Auto,Wlk AllTrn,13219
+Individual Non-mandatory Tours,0 Auto,Wlk PremOnly,1609
+Individual Non-mandatory Tours,Autos <  Workers,Bike,1117
+Individual Non-mandatory Tours,Autos <  Workers,Drive Alone,65171
+Individual Non-mandatory Tours,Autos <  Workers,KNR AllTrn,496
+Individual Non-mandatory Tours,Autos <  Workers,KNR PremOnly,473
+Individual Non-mandatory Tours,Autos <  Workers,PNR PremOnly,176
+Individual Non-mandatory Tours,Autos <  Workers,Shared 2,73735
+Individual Non-mandatory Tours,Autos <  Workers,Shared 3+,41002
+Individual Non-mandatory Tours,Autos <  Workers,Walk,10722
+Individual Non-mandatory Tours,Autos <  Workers,Wlk AllTrn,2574
+Individual Non-mandatory Tours,Autos <  Workers,Wlk PremOnly,429
+Individual Non-mandatory Tours,Autos >= Workers,Bike,10151
+Individual Non-mandatory Tours,Autos >= Workers,Drive Alone,991792
+Individual Non-mandatory Tours,Autos >= Workers,KNR AllTrn,1062
+Individual Non-mandatory Tours,Autos >= Workers,KNR PremOnly,844
+Individual Non-mandatory Tours,Autos >= Workers,PNR AllTrn,82
+Individual Non-mandatory Tours,Autos >= Workers,PNR PremOnly,682
+Individual Non-mandatory Tours,Autos >= Workers,Shared 2,575984
+Individual Non-mandatory Tours,Autos >= Workers,Shared 3+,490334
+Individual Non-mandatory Tours,Autos >= Workers,Walk,69960
+Individual Non-mandatory Tours,Autos >= Workers,Wlk AllTrn,4344
+Individual Non-mandatory Tours,Autos >= Workers,Wlk PremOnly,898
+Joint Non-mandatory Tours,0 Auto,KNR AllTrn,364
+Joint Non-mandatory Tours,0 Auto,Shared 2,1558
+Joint Non-mandatory Tours,0 Auto,Shared 3+,6903
+Joint Non-mandatory Tours,0 Auto,Walk,5570
+Joint Non-mandatory Tours,0 Auto,Wlk AllTrn,2593
+Joint Non-mandatory Tours,0 Auto,Wlk PremOnly,233
+Joint Non-mandatory Tours,Autos <  Workers,Shared 2,38322
+Joint Non-mandatory Tours,Autos <  Workers,Shared 3+,39497
+Joint Non-mandatory Tours,Autos <  Workers,Walk,11399
+Joint Non-mandatory Tours,Autos <  Workers,Wlk AllTrn,528
+Joint Non-mandatory Tours,Autos <  Workers,Wlk PremOnly,72
+Joint Non-mandatory Tours,Autos >= Workers,Bike,1458
+Joint Non-mandatory Tours,Autos >= Workers,KNR AllTrn,194
+Joint Non-mandatory Tours,Autos >= Workers,PNR PremOnly,162
+Joint Non-mandatory Tours,Autos >= Workers,Shared 2,438122
+Joint Non-mandatory Tours,Autos >= Workers,Shared 3+,446483
+Joint Non-mandatory Tours,Autos >= Workers,Walk,20836
+Joint Non-mandatory Tours,Autos >= Workers,Wlk AllTrn,768
+Joint Non-mandatory Tours,Autos >= Workers,Wlk PremOnly,252
+School Tours,0 Auto,KNR AllTrn,461
+School Tours,0 Auto,School Bus,30406
+School Tours,0 Auto,Shared 2,4209
+School Tours,0 Auto,Shared 3+,743
+School Tours,0 Auto,Walk,4072
+School Tours,0 Auto,Wlk AllTrn,4600
+School Tours,0 Auto,Wlk PremOnly,333
+School Tours,Autos <  Workers,Bike,183
+School Tours,Autos <  Workers,Drive Alone,1757
+School Tours,Autos <  Workers,KNR AllTrn,441
+School Tours,Autos <  Workers,KNR PremOnly,219
+School Tours,Autos <  Workers,PNR PremOnly,338
+School Tours,Autos <  Workers,School Bus,62931
+School Tours,Autos <  Workers,Shared 2,7352
+School Tours,Autos <  Workers,Shared 3+,15994
+School Tours,Autos <  Workers,Walk,3321
+School Tours,Autos <  Workers,Wlk AllTrn,2259
+School Tours,Autos <  Workers,Wlk PremOnly,176
+School Tours,Autos >= Workers,Bike,3226
+School Tours,Autos >= Workers,Drive Alone,30140
+School Tours,Autos >= Workers,KNR AllTrn,971
+School Tours,Autos >= Workers,KNR PremOnly,681
+School Tours,Autos >= Workers,PNR PremOnly,616
+School Tours,Autos >= Workers,School Bus,475148
+School Tours,Autos >= Workers,Shared 2,130989
+School Tours,Autos >= Workers,Shared 3+,228187
+School Tours,Autos >= Workers,Walk,19436
+School Tours,Autos >= Workers,Wlk AllTrn,3557
+School Tours,Autos >= Workers,Wlk PremOnly,411
+University Tours,0 Auto,Bike,1566
+University Tours,0 Auto,KNR AllTrn,415
+University Tours,0 Auto,KNR PremOnly,342
+University Tours,0 Auto,Shared 2,237
+University Tours,0 Auto,Wlk AllTrn,4246
+University Tours,0 Auto,Wlk PremOnly,1073
+University Tours,Autos <  Workers,Drive Alone,4259
+University Tours,Autos <  Workers,KNR AllTrn,590
+University Tours,Autos <  Workers,KNR PremOnly,521
+University Tours,Autos <  Workers,PNR AllTrn,63
+University Tours,Autos <  Workers,PNR PremOnly,789
+University Tours,Autos <  Workers,Shared 2,857
+University Tours,Autos <  Workers,Walk,196
+University Tours,Autos <  Workers,Wlk AllTrn,2115
+University Tours,Autos <  Workers,Wlk PremOnly,783
+University Tours,Autos >= Workers,Bike,681
+University Tours,Autos >= Workers,Drive Alone,48007
+University Tours,Autos >= Workers,KNR AllTrn,633
+University Tours,Autos >= Workers,KNR PremOnly,955
+University Tours,Autos >= Workers,PNR AllTrn,71
+University Tours,Autos >= Workers,PNR PremOnly,2133
+University Tours,Autos >= Workers,Shared 2,12034
+University Tours,Autos >= Workers,Shared 3+,4688
+University Tours,Autos >= Workers,Walk,444
+University Tours,Autos >= Workers,Wlk AllTrn,3116
+University Tours,Autos >= Workers,Wlk PremOnly,1433
+Work Tours,0 Auto,KNR AllTrn,1874
+Work Tours,0 Auto,KNR PremOnly,835
+Work Tours,0 Auto,Shared 2,14513
+Work Tours,0 Auto,Shared 3+,3681
+Work Tours,0 Auto,Walk,4003
+Work Tours,0 Auto,Wlk AllTrn,26832
+Work Tours,0 Auto,Wlk PremOnly,2372
+Work Tours,Autos <  Workers,Bike,2526
+Work Tours,Autos <  Workers,Drive Alone,116242
+Work Tours,Autos <  Workers,KNR AllTrn,1721
+Work Tours,Autos <  Workers,KNR PremOnly,2105
+Work Tours,Autos <  Workers,PNR AllTrn,304
+Work Tours,Autos <  Workers,PNR PremOnly,2334
+Work Tours,Autos <  Workers,Shared 2,91513
+Work Tours,Autos <  Workers,Shared 3+,23544
+Work Tours,Autos <  Workers,Walk,5057
+Work Tours,Autos <  Workers,Wlk AllTrn,10133
+Work Tours,Autos <  Workers,Wlk PremOnly,2167
+Work Tours,Autos >= Workers,Bike,8834
+Work Tours,Autos >= Workers,Drive Alone,1170293
+Work Tours,Autos >= Workers,KNR AllTrn,1892
+Work Tours,Autos >= Workers,KNR PremOnly,3036
+Work Tours,Autos >= Workers,PNR AllTrn,744
+Work Tours,Autos >= Workers,PNR PremOnly,12284
+Work Tours,Autos >= Workers,Shared 2,256490
+Work Tours,Autos >= Workers,Shared 3+,119220
+Work Tours,Autos >= Workers,Walk,6323
+Work Tours,Autos >= Workers,Wlk AllTrn,9423
+Work Tours,Autos >= Workers,Wlk PremOnly,3254

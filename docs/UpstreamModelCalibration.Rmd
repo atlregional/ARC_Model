@@ -1,0 +1,562 @@
+---
+title: "Section 3 - Long-term Choice Model"
+output: html_document
+params:
+  properties_file: ""
+---
+
+
+```{r echo=FALSE, warning = FALSE, message=FALSE,progress=FALSE, verbose=FALSE,  fig.width=10, fig.height=6}
+options(scipen = 99)
+knitr::opts_chunk$set(echo = TRUE)
+# script to compare model outputs with the survey
+source(params$properties_file)
+.libPaths( c( .libPaths()))
+
+library(data.table)
+library(tidyverse)
+library(readxl)
+library(knitr)
+library(kableExtra)
+library(gridExtra)
+
+```
+
+```{r echo=FALSE, warning = FALSE, message=FALSE,progress=FALSE, verbose=FALSE,  fig.width=10, fig.height=6}
+# A Fill NA function for easy use with DT
+fillna = function(DT) {
+  DT_ret <- copy(DT %>% data.table)
+  for (j in seq_len(ncol(DT_ret)))
+    set(DT_ret,which(is.na(DT_ret[[j]])),j,0)
+  return(DT_ret)
+}
+# Reading data files
+hh <- fread(paste0(runloc,'/hhData',iteration,'.csv'))
+psn <- fread(paste0(runloc,'/personData',iteration,'.csv'))
+wsLoc <- fread(paste0(runloc,'/wsLocResults',iteration,'.csv')) %>% select(-WorkSubZone,-SchoolSubZone,-HomeSubZone) %>% mutate(numPerson = 1/sampleRate) %>% data.table
+geographicCwalk <- fread('./Data/geographicCwalk.csv')
+zoneData <- fread('./Data/zoneData.csv')
+setkey(geographicCwalk,MAZ)
+
+hh <- hh %>% left_join(zoneData[,.(zone,areatype)],by=c('taz'='zone')) %>% data.table
+
+hh <- hh %>% mutate(
+  incomCat = ifelse(income<=10000,'Income $0 to $10k',
+                    ifelse(income<=20000,'Income $10k to $20k',
+                           ifelse(income<=30000,'Income $20k to $30k',
+                                  ifelse(income<=50000,'Income $30k to $50k',
+                                         ifelse(income<=100000,'Income $50k to $100k',
+                                                ifelse(income<=100000000000,'Income greater than $100k','DK'
+                                                )))))))
+hh <- hh %>% mutate(
+  AREATCat = ifelse(areatype %in% c(5,6),'SuburbRes_Exurb',
+                    ifelse(areatype %in% c(7),'Rural','Others')),
+  AREATCat = factor(AREATCat,levels=c('Others','SuburbRes_Exurb','Rural'))) %>% data.table
+
+hh <- hh %>% left_join(geographicCwalk %>% select(MAZ,REGION,DISTRICT),by=c('taz'='MAZ'))
+
+
+wsLoc <- wsLoc %>% mutate(isHomeBasedWorker = ifelse(WorkLocation==9999,1,0)) # identify the home-based workers
+wsLoc <- wsLoc %>% mutate(WorkLocation=ifelse(isHomeBasedWorker==1,HomeTAZ,WorkLocation)) # Assign work location to be same as home location for home-based workers.
+
+
+wsLoc <- wsLoc %>% data.table
+wsLoc$HomeCounty <- geographicCwalk[list(wsLoc$HomeTAZ),REGION] # Lookup Home County
+wsLoc$WorkCounty <- geographicCwalk[list(wsLoc$WorkLocation),REGION] # Lookup Home County
+wsLoc$SchoolCounty <- geographicCwalk[list(wsLoc$SchoolLocation),REGION] # Lookup Home County
+
+```
+
+
+
+
+
+# Section 3.1 Work-From-Home Model
+
+Work-from-home model predicts whether a worker is home-based-worker or not. A home-based worker does not have an out-of-home work location. The regional travel survey 2011 is used to estimate the model. The model was calibrated to the 2015 American Community Survey (ACS) 1 year share of workforce usually working from home. Table 3-1 shows the comparison between the target and model values.
+
+```{r echo=FALSE, warning = FALSE, message=FALSE,progress=FALSE, verbose=FALSE,  fig.width=10, fig.height=6}
+
+targetWorkAtHome <- read_excel('data/ARC_CalibrationTargets.xlsx',sheet = 'WorkLocation',range = 'C2',col_names = 'TargetWFH')
+workAtHomeWorkers <- wsLoc %>% filter(isHomeBasedWorker==1)
+
+statVal <- round(100*nrow(workAtHomeWorkers)/nrow(wsLoc[!is.na(WorkCounty),]),3)
+
+df1 <- data.frame(Percentage=c(targetWorkAtHome$TargetWFH,statVal)) %>% mutate(Percentage=round(Percentage,2))
+
+df1<- df1 %>% rowwise() %>% mutate(Percentage=paste0(Percentage,'%'))
+row.names(df1) <- c('Target Work-From-Home','Model Work-From-Home')
+x <- kable(df1, caption = "Table 3-1. Work-From-Home Comparison", format="html")  %>% 
+kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
+gsub("<thead>.*</thead>", "", x)
+
+```
+
+
+
+# Section 3.2 Work Location Model
+
+The work destination choice model predicts the usual work location for all workers in the population. The model uses size terms to capture the number and type of jobs available in a zone, as well as the employment-related "attractiveness" of a zone. The size terms are stratified by occupation and were developed from 2007-2011 ACS Public Use Microdata Sample (PUMS) data. Each worker was coded according to their occupation category, consistent with PECAS occupations, and their NAICS industry category, consistent with the model input employment data. Then the size terms were calculated by cross-tabulating workers by occupation and industry, and calculating for each industry the share of workers in each occupation category. These shares, shown in Table 3-2, are the size term coefficients. The size term coefficients were not updated as part of the calibration performed in 2018.
+
+```{r echo=FALSE, warning = FALSE, message=FALSE,progress=FALSE, verbose=FALSE,  fig.width=10, fig.height=6}
+
+sizeTerm <- read_csv('../ctrampModels/DestinationChoiceSizeCoefficients.csv') %>% filter(purpose=='WORK') %>%
+    select(-purpose,-segment,-pop,-hshld,-univ,-EnrollDS,-EnrollPD) %>% t() %>% data.frame()
+
+row.names(sizeTerm) <- c("Agriculture, Forestry, Fishing","Mining, Oil","Utilities","Construction","Manufacturing","Wholesale trade","Retail trade","Transportation, Warehousing","Information","Finance, Insurance","Real Estate","Professional, Science, Technical","Management","Administrative, Support, Waste management","Education","Health care","Arts, Entertainment, Recreation","Accommodation, Food Service","Other non-public administration","Public administration")
+names(sizeTerm) <- c("White Collar","Services","Health","Retail And Food","Blue Collar")
+
+```
+
+
+```{r echo=FALSE, warning = FALSE, message=FALSE,progress=FALSE, verbose=FALSE,  fig.width=10, fig.height=6}
+
+kable(sizeTerm, caption = "Table 3-2. Work Location Choice Size Terms")   %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive")) 
+
+```
+
+
+## Shadow Price Calibration
+
+The work location model utilizes an iterative shadow pricing mechanism in order to match workers at their workplace to input employment totals.  The shadow prices are written to a file and can be used in subsequent model runs to cut down computational time. The shadow price computation is done by setting the maximum number of iterations to 10 and running the work location model. The initial work location result and the final work location result at a TAZ level is plotted in Figure 3-1a and 3-1b. Figure 3-2 shows the convergence of the shadow pricing algorithm. The X axis is the shadow pricing iteration number and Y axis is the percentage of TAZs with workers that are not more than 5% different from the TAZ employment (for TAZs with at an employment of at least 100).
+
+```{r echo=FALSE, warning = FALSE, message=FALSE,progress=FALSE, verbose=FALSE,  fig.width=10, fig.height=6}
+
+sllSP <- lapply(paste0('data/SP/work/',list.files('data/SP/work/',pattern = ".csv")),read_csv)
+emp <- read_csv('../Inputs/EMP15.csv')
+critArray <- list()
+for(i in seq_along((sllSP)))
+{
+    mdlResult <- sllSP[[i]] %>% mutate(totWorkers = work_whitecollar_modeledDests + work_services_modeledDests + work_health_modeledDests + 
+                              work_retailandfood_modeledDests + work_bluecollar_modeledDests) %>% 
+        select(zone,totWorkers)
+    empNorm <- emp %>% mutate(Emp = Emp* sum(mdlResult$totWorkers) /sum(Emp)) %>% select(TAZ,Emp)
+    sllSP[[i]] <- empNorm %>% left_join(mdlResult,by=c('TAZ'='zone')) %>% 
+        mutate(satisfyCrit = ifelse(totWorkers/Emp>0.95 & totWorkers/Emp<1.05,1,0))
+    critArray <- rbind(critArray,c(i,round(100*mean(sllSP[[i]]$satisfyCrit[sllSP[[i]]$Emp>100],na.rm=T),2)))
+}
+```
+
+
+
+```{r echo=FALSE, warning = FALSE, message=FALSE,progress=FALSE, verbose=FALSE,  fig.width=6, fig.height=6}
+p1 <- ggplot(sllSP[[1]] , aes(Emp, totWorkers))
+p1 <- p1 + geom_point()+geom_abline(slope=1,color='#2ca25f')+labs(title='Figure 3-1a. Scatter Plot in the First Iteration')+
+    xlab('Target')+ylab('Modeled')
+```
+
+
+```{r echo=FALSE, warning = FALSE, message=FALSE,progress=FALSE, verbose=FALSE,  fig.width=10, fig.height=5}
+p2 <- ggplot(sllSP[[10]] , aes(Emp, totWorkers))
+p2 <- p2 + geom_point()+geom_abline(slope=1,color='#2ca25f')+labs(title='Figure 3-1b. Scatter Plot after Convergence')+
+    xlab('Target')+ylab('')
+grid.arrange(p1, p2, ncol=2)
+
+# allDF <- cbind.data.frame(sllSP[[1]]$Emp,
+#                sllSP[[1]]$totWorkers,
+#                sllSP[[2]]$totWorkers,
+#                sllSP[[3]]$totWorkers,
+#                sllSP[[4]]$totWorkers,
+#                sllSP[[5]]$totWorkers,
+#                sllSP[[6]]$totWorkers,
+#                sllSP[[7]]$totWorkers,
+#                sllSP[[8]]$totWorkers,
+#                sllSP[[9]]$totWorkers,
+#                sllSP[[10]]$totWorkers
+#                )
+# 
+# names(allDF) <- c('ScaledEmp',paste0('workers_iter',1:10))
+# 
+# write_csv(allDF,'allDF.csv')
+
+```
+
+
+```{r echo=FALSE, warning = FALSE, message=FALSE,progress=FALSE, verbose=FALSE,  fig.width=6, fig.height=6}
+convDF <- unlist(critArray) %>% matrix(ncol=2) %>% data.frame() 
+convDF$X1 <- as.factor(convDF$X1)
+
+ggplot(data=convDF, aes(x=X1, y=X2, group=1)) +
+  geom_line() + geom_point() + labs(title='Figure 3-2. Shadow Price convergence plot')+
+    xlab('Iteration') + ylab('Percentage TAZs with error within +/- 5%')+
+    ylim(c(0,60))
+
+```
+
+## County-County Worker Flow{.tabset .tabset-fade .tabset-pills}
+
+```{r echo=FALSE, warning = FALSE, message=FALSE,progress=FALSE, verbose=FALSE,  fig.width=10, fig.height=6}
+
+targetC2C <- read_excel('data/ARC_CalibrationTargets.xlsx',sheet = 'WorkLocation',range = 'B6:W27')
+targetSum <- targetC2C %>% summarise_at(vars(Barrow:Walton),sum) %>% t() %>% sum()
+
+statTable <- dcast.data.table(wsLoc[!is.na(WorkCounty),],HomeCounty~WorkCounty,value.var='numPerson',fun.aggregate = sum,fill = 0)
+totModel <- statTable[,lapply(.SD,sum),.SDcols=2:22] %>% t() %>% sum()
+forScatterPlot <- statTable %>% gather('DestCounty','ModelFlow',-HomeCounty) %>% 
+    full_join(targetC2C %>% gather('DestCounty','TargetFlow',-County), by=c('HomeCounty'='County','DestCounty'))
+lm_mdl <- (lm(ModelFlow ~ TargetFlow, data = forScatterPlot))
+
+f <- function(num, scaleFactor) round(num*scaleFactor,3)
+targetSumScaled <- targetC2C  %>% mutate_at(vars(Barrow:Walton), f, scaleFactor = totModel/targetSum)
+
+statTable <- statTable %>% full_join(statTable %>% summarise_at(vars(Barrow:Walton),sum) %>% mutate(HomeCounty='Total')) %>% as.tibble()
+targetSumScaled <- targetSumScaled %>% full_join(targetSumScaled %>% summarise_at(vars(Barrow:Walton),sum) %>% mutate(County='Total'))
+
+statTable <- statTable %>% as.tibble() %>% mutate(Total = rowSums(.[2:22]))
+targetSumScaled <- targetSumScaled %>% mutate(Total = rowSums(.[2:22]))
+setnames(statTable, old=c("HomeCounty"), new=c("Home County"))
+
+f <- function(num, denom) num/denom
+
+statTablePct <- statTable %>% mutate_at(vars(Barrow:Total),f, denom = quote(Total))
+targetSumScaledPct <- targetSumScaled %>% mutate_at(vars(Barrow:Total),f, denom = quote(Total))
+diffPercentage <- statTablePct
+diffPercentage[2:ncol(diffPercentage)] <- diffPercentage[2:ncol(diffPercentage)] - targetSumScaledPct[2:ncol(diffPercentage)]
+
+f <- function(num, numsig) ifelse(abs(round(num*100,numsig))>0.01,paste0(round(num*100,numsig),"%"),"")
+statTablePct <- statTablePct %>% mutate_at(vars(Barrow:Total),f, numsig = 0)
+targetSumScaledPct <- targetSumScaledPct %>% mutate_at(vars(Barrow:Total),f, numsig = 0)
+diffPercentage <- diffPercentage %>% mutate_at(vars(Barrow:Total),f, numsig = 1)
+
+
+
+```
+
+Table 3-3a and Table 3-3b show the county-to-county worker flows from the ACS data (Fratared to 2015 employment totals and 2015 workers at residence totals) and the estimated data respectively. The ACS data have been scaled to the model totals. Table 3-4c shows the differences in percentages between these two sets of data. As can be seen from these differences, the estimated data do not deviate much from the observed data. This fact is further established by visualizing this comparison as a scatterplot (Figure 3-3) - the fitted line (black line) closely follows the best fit 45 degree line (green line). The correlation coefficient for these two sets of data points is `r round(summary(lm_mdl)$r.squared,3)`. 
+
+
+
+### Absolute Terms
+
+
+```{r echo=FALSE, warning = FALSE, message=FALSE,progress=FALSE, verbose=FALSE,  fig.width=10, fig.height=6}
+
+kable(targetSumScaled %>% mutate_at(vars(Barrow:Total),round) %>% mutate_at(vars(Barrow:Total),format,big.mark=','),
+      caption='Table 3-3a. ACS 2006-2010 (CTPP) SCALED TO 2015 WORKER FLOWS',align='r')  %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive")) %>%
+  scroll_box(width = "1000px")
+
+```
+
+
+```{r echo=FALSE, warning = FALSE, message=FALSE,progress=FALSE, verbose=FALSE,  fig.width=10, fig.height=6}
+
+kable(statTable %>% mutate_at(vars(Barrow:Total),round) %>% mutate_at(vars(Barrow:Total),format,big.mark=','),
+      caption='Table 3-3b. CT-RAMP MODEL WORKER FLOWS',align='r')  %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive")) %>%
+  scroll_box(width = "1000px")
+
+```
+
+
+```{r echo=FALSE, warning = FALSE, message=FALSE,progress=FALSE, verbose=FALSE,  fig.width=10, fig.height=6}
+
+
+diffTable <- statTable %>% as.tibble()
+diffTable[,2:ncol(diffTable)] <- diffTable[,2:ncol(diffTable)] - targetSumScaled[,2:ncol(diffTable)]
+kable(diffTable %>% mutate_at(vars(Barrow:Total),round) %>% mutate_at(vars(Barrow:Total),format,big.mark=','),
+      caption='Table 3-3c. MODEL - Target (Difference)',align='r')  %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive")) %>%
+  scroll_box(width = "1000px")
+
+```
+
+### Percentage Terms
+
+```{r echo=FALSE, warning = FALSE, message=FALSE,progress=FALSE, verbose=FALSE}
+kable(targetSumScaledPct,caption='Table 3-4a. ACS 2006-2010 (CTPP) SCALED TO 2015 WORKER FLOWS')  %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive")) %>%
+  scroll_box(width = "1000px")
+```
+
+```{r echo=FALSE, warning = FALSE, message=FALSE,progress=FALSE, verbose=FALSE,  fig.width=10, fig.height=6}
+
+kable(statTablePct, caption='Table 3-4b. CT-RAMP MODEL WORKER FLOWS')  %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive")) %>%
+  scroll_box(width = "1000px")
+
+```
+
+
+```{r echo=FALSE, warning = FALSE, message=FALSE,progress=FALSE, verbose=FALSE,  fig.width=10, fig.height=6}
+
+kable(diffPercentage, caption = 'Table 3-4c. MODEL - Target (Percentage Point Difference)')   %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive")) %>%
+  scroll_box(width = "1000px")
+
+```
+
+### Scatterplot
+
+```{r echo=FALSE, warning = FALSE, message=FALSE,progress=FALSE, verbose=FALSE,  fig.width=9, fig.height=7}
+p <- ggplot(forScatterPlot %>% filter(TargetFlow>1000), aes(ModelFlow, TargetFlow))
+p <- p + geom_point()+geom_abline(slope=1,color='#2ca25f')
+p + geom_abline(intercept = coef(lm_mdl)[1], slope = coef(lm_mdl)[2]) + labs(title= 'Figure 3-3. Estimated and Scaled ACS Home County to Work County Worker Flows',color='#2c7fb8')
+
+```
+
+## Work Location Distance Summary
+
+```{r echo=FALSE, warning = FALSE, message=FALSE,progress=FALSE, verbose=FALSE,  fig.width=10, fig.height=6}
+
+wTFDTarget <- read_excel('data/ARC_CalibrationTargets.xlsx',sheet = 'WorkLocation',range = 'B34:G134')
+load('Data/daSkim.RData')
+setkeyv(wsLoc,c('HomeTAZ','WorkLocation'))
+wLoc <- merge(wsLoc,daSkim,by.x=c('HomeTAZ','WorkLocation'),by.y=c('OrigTAZ','DestTAZ'))
+wLoc <- wLoc %>% left_join(hh %>% select(hh_id,incomCat,AREATCat),by=c('HHID'='hh_id')) %>% data.table
+
+wTLFD <- wLoc  %>% filter(WorkLocation!=HomeTAZ) %>% mutate(distCat = floor(DaDist)+1) %>%  group_by(distCat) %>%
+  summarise(numWork = sum(numPerson)) %>%
+  mutate(PctWorkersModel = round(100*numWork / sum(numWork),2)) %>% 
+  right_join(data.frame(distCat=1:100),by='distCat') %>% data.table
+wTLFD <- fillna(wTLFD)
+
+tlfd_Summary <- left_join(
+    wTFDTarget %>% mutate(PctWorkersSurvey = round(AllWorkers/sum(AllWorkers)*100,2)) %>% select(distCat,PctWorkersSurvey),
+    wTLFD %>% select(distCat,PctWorkersModel)
+) %>% gather(source,value,-distCat)
+
+```
+
+A comparison of observed and estimated distance trip frequency is shown in Figure 3-4. Only the workers who do not work-from-home and who have a work location outside of the home TAZ are included in the comparison. Table 3-5 shows the mean work location distance for different segment of workers. The table shows reasonable match between the survey targets and the models outputs.
+
+```{r echo=FALSE, warning = FALSE, message=FALSE,progress=FALSE, verbose=FALSE,  fig.width=10, fig.height=6}
+gg <- ggplot(tlfd_Summary,
+       aes(x=distCat,y=value, group=source,color=source))+
+  geom_line(size=1)+theme_bw() +
+  labs(title=paste0("Figure 3-4. Work Location Distance Frequency"),
+         x="Distance (miles)",
+        y="Percentage",
+        color='source')+
+    scale_x_continuous(limits = c(0, 50))
+plot(gg)
+
+```
+
+```{r echo=FALSE, warning = FALSE, message=FALSE,progress=FALSE, verbose=FALSE,  fig.width=10, fig.height=6}
+
+meanDistanceTarget <- read_excel('data/ARC_CalibrationTargets.xlsx',sheet = 'WorkLocation',range = 'B137:C151')
+
+statTable0 <- wLoc[WorkLocation!=HomeTAZ,.(MeanDistance=round(weighted.mean(DaDist,numPerson),2))][,Segment:='Overall']
+statTable1 <- wLoc[WorkLocation!=HomeTAZ,.(MeanDistance=round(weighted.mean(DaDist,numPerson),2)),by='PersonType']
+statTable2 <- wLoc[WorkLocation!=HomeTAZ,.(MeanDistance=round(weighted.mean(DaDist,numPerson),2)),by='incomCat'][order(incomCat),]
+statTable3 <- wLoc[WorkLocation!=HomeTAZ,.(MeanDistance=round(weighted.mean(DaDist,numPerson),2)),by='AREATCat'][order(AREATCat),]
+
+statTable <- rbindlist(list(statTable0,rbindlist(list(statTable1,statTable2,statTable3)) %>% rename(Segment=PersonType)),use.names = T)
+
+statCompare <- left_join(meanDistanceTarget %>% rename(TargetDistance=MeanDistance),statTable %>% rename(`Model Distance`=MeanDistance)) %>% rename(`Target Distance`=TargetDistance)
+
+```
+
+
+```{r echo=FALSE, warning = FALSE, message=FALSE,progress=FALSE, verbose=FALSE,  fig.width=10, fig.height=6}
+
+statCompare %>% kable(caption='Table 3-5. Average Target and Model Work Distance (in Miles)') %>%
+  kable_styling("striped", full_width = F) %>%
+  group_rows("By Person Type", 2, 5) %>%
+  group_rows("By Household Income Category", 6, 11) %>% 
+  group_rows("By TAZ Type", 12,14)
+
+```
+
+# Section 3.3 School Location Model
+
+Two school location choice models are applied, one for K-12 students and one for college students. The K-12 school destination choice model predicts the usual school location for all grade-level students. As part of the calibration performed in 2018, the school enrollment data was updated with the actual numbers. This improved the school location model significantly. Only a few rounds of shadow pricing iterations were required. The distance K factors used earlier could be dropped and only a single distance squared term was used in the calibration. Table 3-6 below shows the mean distance and percentage intrazonal for different student types.
+
+```{r echo=FALSE, warning = FALSE, message=FALSE,progress=FALSE, verbose=FALSE,  fig.width=10, fig.height=6}
+
+schoolDistanceTarget <- read_excel('data/ARC_CalibrationTargets.xlsx',sheet = 'SchoolLocation',range = 'B3:D7')
+
+setkeyv(wsLoc,c('HomeTAZ','SchoolLocation'))
+sLoc <- merge(wsLoc,daSkim,by.x=c('HomeTAZ','SchoolLocation'),by.y=c('OrigTAZ','DestTAZ'))
+
+statTable <- sLoc %>% group_by(PersonType) %>% summarise(averageDistance = round(mean(DaDist),2),
+                                            pctIntraZonal = round(100*mean(HomeTAZ==SchoolLocation),1) ) %>%
+  mutate(PersonType=factor(PersonType,levels=c('University student','Student of driving age','Student of non-driving age','Child too young for school'))) %>%
+  arrange(PersonType)
+
+schoolDistanceCompare <- merge(schoolDistanceTarget,statTable,by='PersonType')
+names(schoolDistanceCompare) <- c('Person Type','Distance (in Miles)','% Intrazonal','Distance (in Miles)','% Intrazonal')
+
+kable(schoolDistanceCompare,caption = 'Table 3-6. Average School Distance and Percentage Intrazonal') %>% 
+  kable_styling("striped", full_width = F)  %>%
+  add_header_above(c(" " = 1, "Target" = 2, "Model" = 2))
+  
+
+```
+
+## Shadow Price Calibration
+
+The shadow price computation is done by setting the maximum number of iterations to 4 and running the school (and university) location model. The initial school location result and the final school location result at a TAZ level is plotted in Figure 3-5a and 3-5b. Figure 3-6 shows the convergence of the shadow pricing algorithm. The X axis is the shadow pricing iteration number and Y axis is the percentage of TAZs with students that are not more than 5% different from the TAZ enrollment.
+
+```{r echo=FALSE, warning = FALSE, message=FALSE,progress=FALSE, verbose=FALSE,  fig.width=10, fig.height=6}
+
+sllSP <- lapply(paste0('data/SP/school/',list.files('data/SP/school/',pattern = ".csv")),read_csv)
+critArray <- list()
+for(i in seq_along((sllSP)))
+{
+    sllSP[[i]] <- sllSP[[i]] %>% mutate(totSizeScaled = school_drive_sizeScaled + school_predrive_sizeScaled ,
+                                       totModeledDests = school_drive_modeledDests +school_predrive_modeledDests) %>% 
+        select(zone,totSizeScaled,totModeledDests)
+    sllSP[[i]] <- sllSP[[i]] %>% 
+        mutate(satisfyCrit = ifelse(totSizeScaled/totModeledDests>0.95 & totSizeScaled/totModeledDests<1.05,1,0))
+    critArray <- rbind(critArray,c(i,round(100*mean(sllSP[[i]]$satisfyCrit[sllSP[[i]]$totSizeScaled>100],na.rm=T),2)))
+}
+```
+
+
+
+```{r echo=FALSE, warning = FALSE, message=FALSE,progress=FALSE, verbose=FALSE,  fig.width=6, fig.height=6}
+p1 <- ggplot(sllSP[[1]] , aes(totSizeScaled, totModeledDests))
+p1 <- p1 + geom_point()+geom_abline(slope=1,color='#2ca25f')+labs(title='Figure 3-5a. Scatter Plot in the First Iteration')+
+    xlab('Target')+ylab('Modeled')
+```
+
+
+```{r echo=FALSE, warning = FALSE, message=FALSE,progress=FALSE, verbose=FALSE,  fig.width=10, fig.height=5}
+p2 <- ggplot(sllSP[[4]] , aes(totSizeScaled, totModeledDests))
+p2 <- p2 + geom_point()+geom_abline(slope=1,color='#2ca25f')+labs(title='Figure 3-5b. Scatter Plot after Convergence')+
+    xlab('Target')+ylab('')
+grid.arrange(p1, p2, ncol=2)
+
+```
+
+
+```{r echo=FALSE, warning = FALSE, message=FALSE,progress=FALSE, verbose=FALSE,  fig.width=6, fig.height=6}
+convDF <- unlist(critArray) %>% matrix(ncol=2) %>% data.frame() 
+convDF$X1 <- as.factor(convDF$X1)
+
+ggplot(data=convDF, aes(x=X1, y=X2, group=1)) +
+  geom_line() + geom_point() + labs(title='Figure 3-6. Shaodw Price Convergence Plot')+
+    xlab('Iteration') + ylab('Percentage TAZs with error within +/- 5%')+
+    ylim(c(0,60))
+
+```
+
+
+# Section 3.4 Auto Ownership Model
+
+The auto-ownership model predicts the total number of vehicles available in a household. The ACS 2011-2015 release data was used as the benchmark. The auto-ownership model required several rounds of calibration because of the dropping of certain non-intuitive accessibility terms, and auto-ownership district constants. In addition to the calibration with respect to number of workers in the household, calibration for matching the auto ownership by household income category was also performed. Table 3-7 below shows the result after calibration by number of workers in the household. 
+
+```{r echo=FALSE, warning = FALSE, message=FALSE,progress=FALSE, verbose=FALSE,  fig.width=10, fig.height=6}
+
+aoTarget1 <- read_excel('data/ARC_CalibrationTargets.xlsx',sheet = 'AutoOwnership',range = 'B2:F7')
+aoTarget2 <- read_excel('data/ARC_CalibrationTargets.xlsx',sheet = 'AutoOwnership',range = 'B9:F31')
+aoTarget3 <- read_excel('data/ARC_CalibrationTargets.xlsx',sheet = 'AutoOwnership',range = 'B33:F40')
+
+hh <- hh %>% mutate(autoCat = ifelse(autos==0,'Zero Auto',
+                                     ifelse(autos==1,'One Auto',
+                                            ifelse(autos==2,'Two Auto','Three Auto'))),
+                    NumWorkers = ifelse(workers==0,'0 Worker',
+                                     ifelse(workers==1,'1 Worker',
+                                            ifelse(workers==2,'2 Workers','3+ Workers')))
+                    )
+
+
+aoTarget1 <- aoTarget1 %>% gather(autoCat,Share,-NumWorkers)
+m_summary1 <- hh %>% group_by(NumWorkers,autoCat) %>% summarise(numHH=n()/sampleRate) %>% 
+    mutate(Share=numHH/sum(numHH))  %>% 
+    full_join(
+        hh %>% group_by(autoCat) %>% summarise(numHH=n()/sampleRate) %>% 
+    mutate(Share=numHH/sum(numHH),NumWorkers='Total') 
+    ) %>% select(-numHH)
+
+summDF1 <- aoTarget1 %>% mutate(source='Target') %>% full_join(
+    m_summary1 %>% mutate(source='Model')
+) %>% mutate(Percentage = round(Share*100,1),source=factor(source,c('Target','Model')),
+             autoCat = factor(autoCat,c('Zero Auto','One Auto','Two Auto','Three Auto'))) %>% 
+    select(-Share) %>% spread(NumWorkers,Percentage) 
+
+
+aoTarget2 <- aoTarget2 %>% gather(autoCat,Share,-County)
+m_summary2 <- hh %>% group_by(REGION,autoCat) %>% summarise(numHH=n()/sampleRate) %>% 
+    mutate(Share=numHH/sum(numHH))  %>% 
+    full_join(
+        hh %>% group_by(autoCat) %>% summarise(numHH=n()/sampleRate) %>% 
+    mutate(Share=numHH/sum(numHH),REGION='Total') 
+    ) %>% select(-numHH) %>% rename(County=REGION)
+
+summDF2 <- aoTarget2 %>% mutate(source='Target') %>% full_join(
+    m_summary2 %>% mutate(source='Model')
+) %>% mutate(Percentage = round(Share*100,1),source=factor(source,c('Target','Model')),
+             autoCat = factor(autoCat,c('Zero Auto','One Auto','Two Auto','Three Auto'))) %>% 
+    select(-Share) %>% spread(County,Percentage) 
+
+aoTarget3 <- aoTarget3 %>% gather(autoCat,Share,-`Income Category`)
+m_summary3 <- hh %>% group_by(incomCat,autoCat) %>% summarise(Share=n()/sampleRate) %>% 
+    full_join(
+        hh %>% group_by(autoCat) %>% summarise(Share=n()/sampleRate) %>% 
+    mutate(incomCat='Total') 
+    ) %>% rename(`Income Category`=incomCat)
+
+scaleFac <- sum(m_summary3$Share[m_summary3$`Income Category`=='Total'])/sum(aoTarget3$Share[aoTarget3$`Income Category`=='Total'])
+aoTarget3 <- aoTarget3 %>% mutate(Share = Share*scaleFac)
+
+summDF3 <- aoTarget3 %>% mutate(source='Target') %>% full_join(
+    m_summary3 %>% mutate(source='Model')
+) %>% mutate(source=factor(source,c('Target','Model')),
+             autoCat = factor(autoCat,c('Zero Auto','One Auto','Two Auto','Three Auto'))) %>% 
+    spread(`Income Category`,Share) 
+
+summDF3 <- summDF3 %>% full_join(summDF3 %>% group_by(source) %>% summarise_at(vars(`Income $10k to $20k`:Total),sum) %>% mutate(autoCat='Total'))  
+
+
+summDF4 <- aoTarget3 %>% mutate(source='Target') %>% full_join(
+    m_summary3 %>% mutate(source='Model')
+) %>% mutate(source=factor(source,c('Target','Model')),
+             autoCat = factor(autoCat,c('Zero Auto','One Auto','Two Auto','Three Auto'))) %>% 
+    arrange(`Income Category`) %>% 
+    spread(`Income Category`,Share) %>% filter(autoCat!='Total') 
+
+f <- function(num) round(num/sum(num)*100,1)
+summDF4 <- summDF4 %>% group_by(source) %>% mutate_if(is.numeric,f)%>% 
+  ungroup()
+
+````
+
+```{r echo=FALSE, warning = FALSE, message=FALSE,progress=FALSE, verbose=FALSE,  fig.width=10, fig.height=6}
+
+dfForPlot <- summDF1 %>% select(3:7) %>% t() %>% data.frame() %>% rownames_to_column()
+names(dfForPlot) <- c('Number of Workers',rep(c('Target','Model'),4))
+  
+kable(dfForPlot, caption = 'Table 3-7. Auto Ownership Percent Share by Number of Workers') %>% kable_styling("striped", full_width = T)  %>%
+  add_header_above(c(" "=1, "Zero Auto" = 2, "One Auto" = 2,"Two Auto" = 2, "Three Auto" = 2))
+```
+
+The model results were compared to the observed data at a county level to establish the correctness of the spatial distribution. Table 3-8 shows the observed and the estimated shares of auto ownership level for each of the 21 counties. Based on this comparison it can be ascertained that the model is performing reasonably well at a county level.
+
+```{r echo=FALSE, warning = FALSE, message=FALSE,progress=FALSE, verbose=FALSE,  fig.width=10, fig.height=6}
+
+dfForPlot <- summDF2 %>% select(3:23) %>% t() %>% data.frame() %>% rownames_to_column()
+names(dfForPlot) <- c('County',rep(c('Target','Model'),4))
+  
+kable(dfForPlot, caption = 'Table 3-8. Auto Ownership Percent Share by County') %>% kable_styling("striped", full_width = T)  %>%
+  add_header_above(c(" "=1, "Zero Auto" = 2, "One Auto" = 2,"Two Auto" = 2, "Three Auto" = 2))
+```
+Table 3-9 and Table 3-10 shows the auto ownership model result segmented by household income. Table 3-9 is in terms of absolute number of households and Table 3-10 is in terms of percentage share for different auto ownership levels. As can be seen from these two tables, during the calibration the zero auto ownership  (the most crucial ownership level) match for the lower income households is done using the absolute number of households rather than the percentage shares. The reason is that the model had fewer households in those lower income categories compared to the target.
+
+```{r echo=FALSE, warning = FALSE, message=FALSE,progress=FALSE, verbose=FALSE,  fig.width=10, fig.height=6}
+dfForPlot3 <- summDF3 %>% select(3:9) %>% t() %>% data.frame() %>% rownames_to_column() %>% rename(`Household Income`=rowname)
+dfForPlot3 <- dfForPlot3 %>% mutate_if(is.numeric,round,0) %>% 
+    mutate_if(is.numeric,format,big.mark = ",",justify='right')
+                     
+names(dfForPlot3) <- c('Household Income',rep(c('Target','Model'),5))
+  
+kable(dfForPlot3,caption = 'Table 3-9: Number of Households with Different Auto Ownership Levels',align='c') %>% kable_styling("striped", full_width = T)  %>%
+  add_header_above(c(" "=1, "Zero Auto" = 2, "One Auto" = 2,"Two Auto" = 2, "Three Auto" = 2,"Total"=2))
+```
+
+```{r echo=FALSE, warning = FALSE, message=FALSE,progress=FALSE, verbose=FALSE,  fig.width=10, fig.height=6}
+dfForPlot4 <- summDF4 %>% select(3:9) %>% t() %>% data.frame() %>% rownames_to_column() %>% rename(`Household Income`=rowname)
+dfForPlot4 <- dfForPlot4 %>% mutate_if(is.numeric,round,1)  %>% mutate_if(is.numeric,function(x) paste0(x,'%')) %>% 
+    mutate_if(is.numeric,format,big.mark = ",",justify='right')
+                     
+names(dfForPlot4) <- c('Household Income',rep(c('Target','Model'),4))
+#dfForPlot4 = dfForPlot4[-1,]
+  
+kable(dfForPlot4,caption = 'Table 3-10: Number of Households with Different Auto Ownership Levels (percentages)',align='c') %>% kable_styling("striped", full_width = T)  %>%
+  add_header_above(c(" "=1, "Zero Auto" = 2, "One Auto" = 2,"Two Auto" = 2, "Three Auto" = 2))
+```
+
+

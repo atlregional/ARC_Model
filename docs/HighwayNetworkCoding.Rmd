@@ -1,0 +1,215 @@
+---
+title: "Section 8 - Highway Network Coding"
+output: html_document
+---
+
+This section provides further information regarding the coding of highway projects using the new Cube geodatabase format.
+
+# Section 8.1 Cube Geodatabase
+
+ARC's ABM transportation networks include model year networks stored in the Cube geodatabase format.  Network editing is done in a master ArcGIS geodatabase and is converted with Python and Cube scripts to individual year networks in Cube.  These networks are further consolidated by non-transit link attributes that maintain cross-roadway and centroid connections to produce the transportation networks used in ARC's ABM.  This consolidation process reduces the number of links in the model network which results in significantly shorter run time.
+
+Newer versions of Cube include a Data Manager which allows managing multiple geodatabases efficiently.  To access the Data Manager, click the Data Manager from the toolbar as shown in Figure 8-1. This opens the Data Manager on the right side of the Cube window.  To add a geodatabase, click the Add Data button as illustrated by Figure 8-2.  This will prompt the user to browse for the geodatabase location as shown in Figure 8-3.  Once selecting the geodatabase, the Data Manager window will contain the geodatabase and contents of it as shown in Figure 8-4 and Figure 8-5.
+
+![Figure 8-1. Accessing Data Manager](figs/AccessingDataManager.png)
+
+![Figure 8-2. Adding Data](figs/AddingData.png)
+
+![Figure 8-3. Browse to Geodatabase](figs/BrowseGeodatabase.png)
+
+![Figure 8-4. Data Manager with Geodatabase](figs/DataManagerGeodatabase.png)
+
+![Figure 8-5. Files Stored in Geodatabase](figs/FilesStoredGeodatabase.png)
+
+To open one of the networks stored in the geodatabase, double click any one of the files.  This will add the network to the Table of Contents as illustrated in Figure 8-6 as well as add the data to the GIS window.
+
+![Figure 8-6. Table of Contents](figs/TableOfContents.png)
+
+# Section 8.2 Mapping Attributes 
+
+Many of the Cube features for mapping attributes remain the same; however, there is added functionality for users more accustomed to ArcGIS.  This section covers how to map an attribute with new functionality for users that may not have experience with ArcGIS.  
+
+To utilize the ArcGIS functionality for mapping, right click on the link layer in the TOC and select Properties as illustrated in 
+Figure 8-7.  After the window opens as shown in Figure 8-8, click Advanced Properties.
+
+This will open the Advanced Properties window shown in Figure 8-9.  There are a number of tabs that can be useful for mapping.  The Symbology tab is useful for mapping link attributes.  When this tab is selected, the user will see Features, Categories, Quantities, Charts, and Multiple Attributes in the window to the left for Symbology options.  To make the network attributes one single color, select Features - Single Symbol.  This will prompt the user to select the line type, color, width, etc. as shown in Figure 8-10.
+
+A more likely scenario is creating a color coded map that differentiates between attributes such as facility types or number of lanes.  In these cases, the Categories Symbology is more useful.  To color code facility types for example, click Categories and select Unique Values, then select Add All Values as shown in Figure 8-11.  From here, the user can modify the line type, color, width, etc. for each facility type.
+
+![Figure 8-7. Layer Properties](figs/LayerProperties.png)
+
+![Figure 8-8. Highway Layer Properties Menu](figs/HighwayLayerProperties.png)
+
+![Figure 8-9. Advanced Properties](figs/AdvancedProperties.png)
+
+![Figure 8-10. Single Symbol Symbology](figs/SingleSymbol.png)
+
+![Figure 8-11. Categories Symbology](figs/CategoriesSymbol.png)
+
+# Section 8.3 Coding Projects
+
+Coding highway projects in the geodatabase structure is much different than the previous coding format.  This section describes how to enable the geodatabase editor, changing link attributes, creating new facilities, one-way versus two-editing, and the use of geodatabase log files.
+
+When working in the geodatabase structure, the user must select the layer to edit in both the Layers window and in the TOC to make it the active layer as shown in Figure 8-12.  To enable editing, the user must select Editor - Start Editing as illustrated in Figure 8-13.  This will activate the editor functions allowing the user to make modifications to the active layer through use of the editor functions shown in Figure 8-14.
+
+![Figure 8-12. Selecting Layer for Editing](figs/SelectLayer.png)
+
+![Figure 8-13. Enable Editing](figs/StartEditing.png)
+
+![Figure 8-14. Editor Functions](figs/EditorFunctions.png)
+
+To change existing attributes, the user would select the Edit Feature icon.  To select a link for editing, use the pointer and left click.  This will highlight the link and shape vertices as shown in Figure 8-15.  Once selected, this will also open the Feature Explorer window for the link.  The Feature Explorer window contains the general directionality of the link for the a-node/b-node architecture along with the links attributes by A-B Value and B-A Value.  The A-B Value is always based on which directionality is highlighted on the left side of the Feature Explorer window.  Therefore, when the user is modifying only one-direction of a two-way link, careful attention must be paid to which direction is selected.  To change an attribute, left click in the A-B or B-A values and type the changes.
+
+There are two steps necessary to make the edits permanent in the geodatabase.  The save and undo buttons will become activated whenever attributes are modified.  To save the modifications, click the checkmark.  Note that this has not permanently saved the edits to the geodatabase, but rather, temporarily saves the edits to allow the user to continue editing other links.  To make the edits permanent, the user must click Editor - Save Edits as shown in Figure 8-16.
+
+![Figure 8-15. Feature Explorer](figs/FeatureExplorer.png)
+
+![Figure 8-16. Save Edits](figs/SaveEdits.png)
+
+To code new facilities, the user must select the Create Feature button which looks like a pencil.  Once selected, the pointer will change into a pencil.  To add a link from an existing node, left click once on the existing node.  To add shape vertices, left click once for each desired location.  To create a link terminus, double click either at an existing node or the desired endpoint location.  These steps are illustrated in Figure 8-17.  To save the link, the user must click the checkmark as well as the save edits from the editor menu.  
+
+In the old editing format, the user could copy a link and then use the paste feature to ensure the attributes were the same for entire facility.  The geodatabase still provides this option; however, the process is different.  In the Feature Explorer window, there is an icon to Set Current Feature Attributes as Template which is shown in Figure 8-18.  When adding new facilities, the user could select a similar facility and use this feature to use the attributes.  Then all new links will have the same attributes as in the template.  If no template is used, the new facilities will have all of its attributes set to zero for numeric fields or blank for character fields.
+
+![Figure 8-17. New Facilites with Vertices](figs/NewFacilities.png)
+
+![Figure 8-18. Feature Template](figs/FeatureTemplate.png)
+
+When adding new links in edit mode, it is important to understand the difference between one-way and two-editing.  Once start editing has been enabled, the user can toggle off/on the two-way edit option (program defaults to two-way editing).  If the user wants to add a two-way facility, then the two-way edit should be toggled to on.  Conversely, if the user wishes to add a one-way facility, the two-way edit should be toggled to off, otherwise the program will inherently add in the link as two-way even if attributes are only coded in one direction.  The two-editing toggle is provided in Figure 8-19.
+
+![Figure 8-19. Two-Way vs. One-Way Editing](figs/OneWayTwoWayEditing.png)
+
+When coding new projects, the user will be required to determine a project's facility type (FACTYPE).  The available facility types for vehicle use and their definitions are provided below:
+
+1.	Interstate / Freeway = Limited access highway mainline serving trips traveling longer distances.  These facilities do not provide direct access to land use activities.  Access is limited to fully grade-separated interchanges.
+*	Examples: I-75, I-85, I-20, GA-400
+2.	Expressway = High speed controlled access highway serving trips traveling longer distances but typically not as long as freeways.  These facilities are not designed to provide direct access to land use activities.  Traffic is typically separated by concrete barriers.  
+*	Examples: Langford Parkway, Monroe Bypass
+3.	Parkway = these facilities are typically not designed to freeway / expressway standards (sharper curves, steeper grades, and narrower lanes).  In rural areas, a limited number of traffic signals can provide some access to land use activities.  Traffic is typically separated by grass medians.
+*	Examples: Buford Spring Connector, Rockmart Highway
+4.	Freeway HOV Buffer Separated = same as interstate / freeway but for HOV.  Separated from general purpose lanes by striping.
+*	Examples: I-75 HOV lanes, I-85 HOV lanes
+5.	Freeway HOV Barrier Separated = same as interstate / freeway but for HOV.  Separated from general purpose lanes by concrete barrier.
+6.	Freeway Truck Only = same as interstate / freeway but for truck only.
+7.	System to System Ramp = Freeway to freeway ramps.
+*	Examples: I-85 / I-285 Interchange, I-75 / Canton Road Connector Interchange
+8.	Exit Ramp = Off-ramp to a controlled intersection.
+*	Examples: I-75 off ramps to Windy Hill Road, Pleasant Hill Road off ramps to Buford Highway
+9.	Entrance Ramp = On-ramp from a controlled intersection.
+*	Examples:  I-75 on ramps from Windy Hill Road, Pleasant Hill Road on ramps from Buford Highway
+10.	Principal Arterial = Major road with a higher emphasis on serving thru trips with less access to adjacent property.    Minimum of four lanes.  Common characteristics include fewer curb cuts, raised medians, and limited signal density.  Turn lanes provided at most intersections.
+*	Examples: Cobb Parkway, Camp Creek Parkway
+11.	Minor Arterial = Medium road with a balance of serving thru trips and providing access to adjacent property.  Often provide movement between collectors and principal arterials.  Typical cross sections of two to four lanes.  Typically does not include on-street parking.
+*	Examples: Howell Mill Road, Briarcliff Road
+12.	Arterial HOV = same as minor arterial but for HOV.
+13.	Arterial Truck Only = same as minor arterial but truck only.
+14.	Collector = Minor road with a primary purpose of providing connectivity to/from arterials and to serve adjacent properties.  Does not typically include a median.  May include on-street parking.
+*	Examples: Joseph E Boone Boulevard, Lullwater Road, Ferst Drive
+
+
+The ABM includes some new link attributes which are important to highway network coding.  The traffic assignment is not an operational assignment; therefore, the action of vehicles crossing multiple lanes of traffic to access the HOV lanes from general purpose (GP) lanes is not explicitly modeled.  To reflect that there is some motivation to not perform this maneuver in certain conditions (short trips, uncongested conditions), a flag was attached to the "slip-links" that connect the GP lanes with the HOV lanes called HOVMERGE where a '1' indicates the link is an HOV merge link.  For those links with the flag, an additional 5 seconds is added to the travel time.
+
+To reflect that ramps with small curve radii (i.e. loop ramps) have observed lower free-flow speeds, an attribute was added to the network called RAMPFLAG where a '1' indicates the ramp operates at lower free-flow speeds than other ramps.  Ramps with this attribute will be assigned a 35 MPH free-flow speed.
+
+When performing traffic assignments and comparing observed and estimated model speeds, it was noted that the model was generally overestimated travel speeds on freeway links near major system-to-system interchanges.  These interchanges typically have high volumes of traffic transitioning from one freeway to another which causes delay associated with the impacts of operational movements such as weaving through multiple lanes of traffic.  As mentioned previously, the ABM traffic assignment is not an operational assignment which limits its ability to accurately reflect the operational issues that cause delay.  To mitigate these issues, a link attribute was added to the network to identify the freeway approach and departure links at these major interchanges called WEAVEFLAG where a '1' indicates the link as a weaving section.  The volume-delay relationships on links with this flag are applied with a different curve than normal freeway sections where the modified curve results in more speed reduction at lower volume to capacity ratios than a normal freeway section.
+
+![Figure 8-20. HOV Merge Coding](figs/HOVMerge.png)
+
+![Figure 8-21. Loop Ramp Coding](figs/LoopRamp.png)
+
+![Figure 8-22. Weave Flag](figs/WeaveFlag.png)
+
+
+# Section 8.4 Notes on Link Attributes
+
+Users must pay special attention to certain link attributes, especially when using existing link templates to create new links (i.e. copying and pasting link attributes).  These attributes are potentially unnoticed when copying templates because they are perhaps not considered as important as other attributes when coding; however, they can have direct impacts to forecast results.  For example, if a user were to copy data from a link with an existing TOLLID and not update that attribute appropriately, incorrect tolls will be applied in the model which will have a substantial impact in the results.  These attributes are as follows:
+
+*	TOLLID / GPID:  These attributes are related to how tolls are applied at the link level, and in the case of GPID, the application of the toll optimization routine.
+*	HOVMERGE: When flagged, this attribute results in additional travel time on a link to reflect that vehicles must typically cross lanes of traffic to access HOV lanes.
+*	RAMPFLAG: When flagged, this attribute indicates the ramp is a loop-type ramp (i.e. small radius) and reduces the free-flow speed to reflect the geometry.
+*	WEAVEFLAG: When flagged, this attribute indicates that the link is an approach or departure from a major system-to-system interchange which is treated with a different volume-delay function than a normal freeway segment.
+*	EASPD: This attribute represents the observed early AM period speeds from the NPMRDS.  Where coded, this speed is used along with a lookup table of speeds to compute the free-flow speed used in the model (average of observed and lookup value).  As such, these values should not be used on new roadways, as there is no observed speed available.  
+
+
+# Section 8.5 Toll Optimization
+
+As the ABM includes toll and non-toll in both tour and trip mode choice, the toll prices have an effect on the toll eligible demand.  When introducing a new toll lane that is managed with pricing, the user will likely need to perform an iterative process in which the ABM is run to generate toll demands which are then run through a series of highway assignments where the tolls are optimized.  The new toll prices are then fed into another ABM run to estimate new demands and the process continues until the demand and toll prices stabilize.  The full process is shown in Figure 8-23.  As the process can take time, the inner loop of the methodology has been automated for ARC.  
+
+
+![Figure 8-23. Toll Optimization Process](figs/TollOptimization.png)
+
+
+The toll optimization process is working towards an equilibrium between the generalized costs between the managed lanes and the general-purpose lanes.  This optimization might be different from maximizing revenue.  For managed lane corridor studies, it is the user's responsibility to determine the most appropriate toll rates for those studies.  This process is intended to assist in finding a logical balance between travel time savings and tolls.  
+
+The first step in the process is to ensure that the general-purpose lanes and managed lanes have a unique attribute for comparing the generalized costs.  This is handled using two attributes in the network, GPID and TOLLID.  The GPID and TOLLID for a parallel segment must be coded with the same ID number to inform the optimization routine which segments are to be compared against one another.  The segments should be treated uniquely for all managed lane entry/exit points.  A managed lane facility could have numerous segments across the length of the corridor.  As the optimization routine is comparing generalized costs, it is important to ensure the segment coding between the general-purpose lanes and managed lanes have similar break points and therefore, similar segment distances.  An example of the coding of the two attributes is provided in Figure 8-24.
+
+![Figure 8-24. Network Coding for Toll Optimization](figs/NetworkCodingTollOptimization.png)
+
+
+As toll demand is generated by the CT-RAMP routine, the toll optimization process uses input from a full model run of the scenario year.  The toll optimization routine has an expected directory structure which is provided in Figure 8-25.  The user should create a new folder entitled TollOptimization in the root of the model directory and copy the following files from the model run:
+*	TOLLS{year}.DBF
+*	ARC{year}HY_A.NET
+*	LOD{year}@PER@.NET (EA, AM, MD, PM, EV)
+*	TollOptimization.S
+
+
+![Figure 8-25. Toll Optimization Directory Structure](figs/TollOptimizationDirectoryStructure.png)
+
+As there are five time periods with varying levels of congestion, the tolls must be optimized for each time period separately.  The current automated routine requires the user to select which period is being optimized.  This was done because certain periods will likely require more iterations than others.  The Voyager script includes the five periods and the user simply selects which period to optimize by commenting out the other periods.  Note that in application, the user maybe required to manually adjust tolls particularly for uncongested conditions where the travel time savings is negligible.  In ARC's testing, this was done to ensure some level of traffic (even minimal) in the managed lanes during uncongested conditions to reflect that some vehicles do use the lanes.  The code showing how the user selects a period is provided in Figure 8-26.  The user can also select the number of optimization loops for the selected period by modifying the token {iters} in the code as shown in Figure 8-26.  As some periods are more congested than others, those periods may require more loops through the toll adjustment to reach equilibrium.  Note that if the user runs a few loops but realizes more loops are needed, the process would be started from the previous final loop results (i.e. not starting over from the beginning).  This allows the user to run a few loops and then analyze the results in a more efficient manner.
+
+
+![Figure 8-26. Period for Optimization](figs/PeriodOptimization.png)
+
+![Figure 8-27. Optimization Loops](figs/OptimizationLoops.png)
+
+
+The user is also required to set up the loops for the number of segments being optimized.  Here, the user can select which segments are desired for optimization.  Any segments not entered will not be optimized during the routine.  The user must change the number of loops defined by IDS and then set the appropriate TLID for the IDS loop as shown in Figure 8-28.  In this example, the user added two additional segments for optimization which required the IDS loop changing from 10 to 12 and also adding the TLID for 101 and 102 for loops 11 and 12.
+
+![Figure 8-28. Toll IDs for Optimization](figs/TollIDsOptimization.png)
+
+The optimization routine includes several outputs:
+*	TOLL_DATA@PER@@ITERS@.DBF
+*	NEWTOLLS@PER@@ITERS@.DBF
+*	TOLLS{year}.DBF
+
+TOLL_DATA@PER@@ITERS@.DBF - This file provides the information the optimization routine is using for each segment and is generated for each period and iteration loop that is run (note that if the user runs a few loops for a period and then determines the need to run more loops, these files will be overwritten the second time through the iteration process).  A sample output is provided in Figure 8-29 where the columns are as follows:
+
+*	TOLLID - segment ID
+*	EXTPMILE - existing per mile toll (cents) for the current iteration
+*	GPTIME  - general purpose lane travel time (minutes)
+*	GPDIST - general purpose lane travel distance (miles)
+*	MLTIME - managed lane travel time (minutes)
+*	MLDIST - managed lane travel distance (miles)
+*	MLTOLL - managed lane segment toll total (dollars)
+*	GPGC - general purpose lane generalized cost
+*	MLGC - managed lane generalized cost
+*	GCDIF - generalized cost difference (MLGC - GPGC)
+*	NEWTOLL - revised segment toll total (dollars)
+*	NEWPMILE - revised per mile toll (cents)
+*	GPSOV - general purpose lane SOV volume
+*	GPHOV2 - general purpose lane HOV2 volume
+*	GPHOV 3- general purpose lane HOV3 volume
+*	MLSOV - managed lane SOV volume
+*	MLHOV2 - managed lane HOV2 volume
+*	MLHOV 3- managed  lane HOV3 volume
+*	MLSOVSHR - managed lane share of SOV trips
+*	MLHOV2SHR - managed lane share of HOV2 trips
+*	MLHOV3SHR - managed lane share of HOV3 trips
+
+NEWTOLLS@PER@@ITERS@.DBF - This file provides the TOLLID and revised TOLL for the segments selected for optimization.  A sample output is provided in Figure 8-30.
+
+TOLLS{year}.DBF - This file is the final output that would be used to begin a new full model run.  Note that this file is updated for each period and iteration that the user runs.  A sample output is provided in Figure 8-31.  The file includes the TOLLID, the per-mile toll rates (in cents) for each time period, and whether the toll is fixed or applied on a per mile basis.
+
+The toll optimization output also includes the loaded networks for each period and iteration that the user runs.  These are the same as the standard model run loaded networks and allow the user to manually inspect the loadings as desired.
+
+![Figure 8-29. Sample Optimization Output File](figs/SampleTollOptimizationOutput.png)
+
+![Figure 8-30. New Tolls Sample Files (Optimized Only)](figs/NewTollsSample.png)
+
+![Figure 8-31. New Toll Input File](figs/NewTollInput.png)
+
+
+As noted previously, the ABM includes toll / non-toll as an alternative mode choice.  Therefore, after optimizing the tolls, the user must re-run the ABM to generate new toll / non-toll demand tables.  It is possible that the new demand tables will require further optimization of the per-mile toll rates in the assignment where the user runs through the optimization routine again.  In that case, the user must copy all files from the model re-run that were listed as input into the TollOptimization folder (i.e. overwrite the ones that were previously used).  This process should continue until the user determines the toll demand and toll rates have reached a level of equilibrium.
+
+
+
+

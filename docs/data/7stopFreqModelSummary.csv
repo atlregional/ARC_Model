@@ -1,0 +1,261 @@
+"TourType","Purpose","nstops","num"
+"Mandatory","School","0 out 0 in",802357
+"Mandatory","School","0 out 1 in",111102
+"Mandatory","School","0 out 2 in",44328
+"Mandatory","School","0 out 3 in",19455
+"Mandatory","School","1 out 0 in",43883
+"Mandatory","School","1 out 1 in",30898
+"Mandatory","School","1 out 2 in",5415
+"Mandatory","School","1 out 3 in",3500
+"Mandatory","School","2 out 0 in",5172
+"Mandatory","School","2 out 1 in",3843
+"Mandatory","School","2 out 2 in",3422
+"Mandatory","School","2 out 3 in",4698
+"Mandatory","School","3 out 0 in",1005
+"Mandatory","School","3 out 1 in",78
+"Mandatory","School","3 out 2 in",246
+"Mandatory","School","3 out 3 in",1371
+"Mandatory","University","0 out 0 in",68679
+"Mandatory","University","0 out 1 in",15984
+"Mandatory","University","1 out 0 in",8335
+"Mandatory","University","1 out 1 in",6323
+"Mandatory","Work","0 out 0 in",980380
+"Mandatory","Work","0 out 1 in",310050
+"Mandatory","Work","0 out 2 in",96697
+"Mandatory","Work","0 out 3 in",60867
+"Mandatory","Work","1 out 0 in",146456
+"Mandatory","Work","1 out 1 in",105244
+"Mandatory","Work","1 out 2 in",44141
+"Mandatory","Work","1 out 3 in",23181
+"Mandatory","Work","2 out 0 in",38560
+"Mandatory","Work","2 out 1 in",29677
+"Mandatory","Work","2 out 2 in",15892
+"Mandatory","Work","2 out 3 in",8298
+"Mandatory","Work","3 out 0 in",21401
+"Mandatory","Work","3 out 1 in",13789
+"Mandatory","Work","3 out 2 in",9474
+"Mandatory","Work","3 out 3 in",8079
+"Individual Non-Mandatory","Discretionary","0 out 0 in",294695
+"Individual Non-Mandatory","Discretionary","0 out 1 in",66853
+"Individual Non-Mandatory","Discretionary","0 out 2 in",13991
+"Individual Non-Mandatory","Discretionary","0 out 3 in",6163
+"Individual Non-Mandatory","Discretionary","1 out 0 in",38785
+"Individual Non-Mandatory","Discretionary","1 out 1 in",18680
+"Individual Non-Mandatory","Discretionary","1 out 2 in",5376
+"Individual Non-Mandatory","Discretionary","1 out 3 in",2091
+"Individual Non-Mandatory","Discretionary","2 out 0 in",7343
+"Individual Non-Mandatory","Discretionary","2 out 1 in",3915
+"Individual Non-Mandatory","Discretionary","2 out 2 in",696
+"Individual Non-Mandatory","Discretionary","2 out 3 in",1308
+"Individual Non-Mandatory","Discretionary","3 out 0 in",4634
+"Individual Non-Mandatory","Discretionary","3 out 1 in",1668
+"Individual Non-Mandatory","Discretionary","3 out 2 in",203
+"Individual Non-Mandatory","Discretionary","3 out 3 in",506
+"Individual Non-Mandatory","EatOut","0 out 0 in",61406
+"Individual Non-Mandatory","EatOut","0 out 1 in",10019
+"Individual Non-Mandatory","EatOut","0 out 2 in",1742
+"Individual Non-Mandatory","EatOut","0 out 3 in",790
+"Individual Non-Mandatory","EatOut","1 out 0 in",12530
+"Individual Non-Mandatory","EatOut","1 out 1 in",6202
+"Individual Non-Mandatory","EatOut","1 out 2 in",550
+"Individual Non-Mandatory","EatOut","1 out 3 in",54
+"Individual Non-Mandatory","EatOut","2 out 0 in",2174
+"Individual Non-Mandatory","EatOut","2 out 1 in",827
+"Individual Non-Mandatory","EatOut","2 out 2 in",445
+"Individual Non-Mandatory","EatOut","2 out 3 in",287
+"Individual Non-Mandatory","EatOut","3 out 0 in",1055
+"Individual Non-Mandatory","EatOut","3 out 1 in",266
+"Individual Non-Mandatory","EatOut","3 out 2 in",162
+"Individual Non-Mandatory","EatOut","3 out 3 in",23
+"Individual Non-Mandatory","Escorting","0 out 0 in",556657
+"Individual Non-Mandatory","Escorting","0 out 1 in",85514
+"Individual Non-Mandatory","Escorting","0 out 2 in",20977
+"Individual Non-Mandatory","Escorting","0 out 3 in",10382
+"Individual Non-Mandatory","Escorting","1 out 0 in",45484
+"Individual Non-Mandatory","Escorting","1 out 1 in",17604
+"Individual Non-Mandatory","Escorting","1 out 2 in",5434
+"Individual Non-Mandatory","Escorting","1 out 3 in",3320
+"Individual Non-Mandatory","Escorting","2 out 0 in",18258
+"Individual Non-Mandatory","Escorting","2 out 1 in",1298
+"Individual Non-Mandatory","Escorting","2 out 2 in",1041
+"Individual Non-Mandatory","Escorting","2 out 3 in",485
+"Individual Non-Mandatory","Escorting","3 out 0 in",11203
+"Individual Non-Mandatory","Escorting","3 out 1 in",1620
+"Individual Non-Mandatory","Escorting","3 out 2 in",34
+"Individual Non-Mandatory","Escorting","3 out 3 in",220
+"Individual Non-Mandatory","Maintenance","0 out 0 in",227177
+"Individual Non-Mandatory","Maintenance","0 out 1 in",68951
+"Individual Non-Mandatory","Maintenance","0 out 2 in",25172
+"Individual Non-Mandatory","Maintenance","0 out 3 in",20084
+"Individual Non-Mandatory","Maintenance","1 out 0 in",31763
+"Individual Non-Mandatory","Maintenance","1 out 1 in",14176
+"Individual Non-Mandatory","Maintenance","1 out 2 in",6877
+"Individual Non-Mandatory","Maintenance","1 out 3 in",8566
+"Individual Non-Mandatory","Maintenance","2 out 0 in",15147
+"Individual Non-Mandatory","Maintenance","2 out 1 in",7124
+"Individual Non-Mandatory","Maintenance","2 out 2 in",1541
+"Individual Non-Mandatory","Maintenance","2 out 3 in",1252
+"Individual Non-Mandatory","Maintenance","3 out 0 in",6884
+"Individual Non-Mandatory","Maintenance","3 out 1 in",2487
+"Individual Non-Mandatory","Maintenance","3 out 2 in",1585
+"Individual Non-Mandatory","Maintenance","3 out 3 in",2535
+"Individual Non-Mandatory","Shopping","0 out 0 in",228002
+"Individual Non-Mandatory","Shopping","0 out 1 in",63853
+"Individual Non-Mandatory","Shopping","0 out 2 in",19832
+"Individual Non-Mandatory","Shopping","0 out 3 in",8824
+"Individual Non-Mandatory","Shopping","1 out 0 in",87006
+"Individual Non-Mandatory","Shopping","1 out 1 in",28239
+"Individual Non-Mandatory","Shopping","1 out 2 in",16724
+"Individual Non-Mandatory","Shopping","1 out 3 in",6344
+"Individual Non-Mandatory","Shopping","2 out 0 in",26386
+"Individual Non-Mandatory","Shopping","2 out 1 in",11248
+"Individual Non-Mandatory","Shopping","2 out 2 in",5038
+"Individual Non-Mandatory","Shopping","2 out 3 in",3509
+"Individual Non-Mandatory","Shopping","3 out 0 in",14714
+"Individual Non-Mandatory","Shopping","3 out 1 in",7359
+"Individual Non-Mandatory","Shopping","3 out 2 in",2408
+"Individual Non-Mandatory","Shopping","3 out 3 in",2787
+"Individual Non-Mandatory","Social/Visit","0 out 0 in",118685
+"Individual Non-Mandatory","Social/Visit","0 out 1 in",13620
+"Individual Non-Mandatory","Social/Visit","0 out 2 in",3358
+"Individual Non-Mandatory","Social/Visit","0 out 3 in",1428
+"Individual Non-Mandatory","Social/Visit","1 out 0 in",16412
+"Individual Non-Mandatory","Social/Visit","1 out 1 in",6517
+"Individual Non-Mandatory","Social/Visit","1 out 2 in",1136
+"Individual Non-Mandatory","Social/Visit","1 out 3 in",106
+"Individual Non-Mandatory","Social/Visit","2 out 0 in",4344
+"Individual Non-Mandatory","Social/Visit","2 out 1 in",1576
+"Individual Non-Mandatory","Social/Visit","2 out 2 in",960
+"Individual Non-Mandatory","Social/Visit","2 out 3 in",536
+"Individual Non-Mandatory","Social/Visit","3 out 0 in",2158
+"Individual Non-Mandatory","Social/Visit","3 out 1 in",534
+"Individual Non-Mandatory","Social/Visit","3 out 2 in",306
+"Individual Non-Mandatory","Social/Visit","3 out 3 in",43
+"Joint","Discretionary","0 out 0 in",80943
+"Joint","Discretionary","0 out 1 in",17888
+"Joint","Discretionary","0 out 2 in",3906
+"Joint","Discretionary","0 out 3 in",1696
+"Joint","Discretionary","1 out 0 in",8153
+"Joint","Discretionary","1 out 1 in",1351
+"Joint","Discretionary","1 out 2 in",1438
+"Joint","Discretionary","1 out 3 in",570
+"Joint","Discretionary","2 out 0 in",2060
+"Joint","Discretionary","2 out 1 in",1059
+"Joint","Discretionary","2 out 2 in",183
+"Joint","Discretionary","2 out 3 in",333
+"Joint","Discretionary","3 out 0 in",1208
+"Joint","Discretionary","3 out 1 in",477
+"Joint","Discretionary","3 out 2 in",71
+"Joint","Discretionary","3 out 3 in",143
+"Joint","EatOut","0 out 0 in",40474
+"Joint","EatOut","0 out 1 in",4481
+"Joint","EatOut","0 out 2 in",1169
+"Joint","EatOut","0 out 3 in",455
+"Joint","EatOut","1 out 0 in",5929
+"Joint","EatOut","1 out 1 in",1379
+"Joint","EatOut","1 out 2 in",358
+"Joint","EatOut","1 out 3 in",27
+"Joint","EatOut","2 out 0 in",1502
+"Joint","EatOut","2 out 1 in",548
+"Joint","EatOut","2 out 2 in",352
+"Joint","EatOut","2 out 3 in",169
+"Joint","EatOut","3 out 0 in",732
+"Joint","EatOut","3 out 1 in",162
+"Joint","EatOut","3 out 2 in",104
+"Joint","EatOut","3 out 3 in",13
+"Joint","Maintenance","0 out 0 in",41442
+"Joint","Maintenance","0 out 1 in",18606
+"Joint","Maintenance","0 out 2 in",4987
+"Joint","Maintenance","0 out 3 in",3663
+"Joint","Maintenance","1 out 0 in",8500
+"Joint","Maintenance","1 out 1 in",7503
+"Joint","Maintenance","1 out 2 in",1277
+"Joint","Maintenance","1 out 3 in",1551
+"Joint","Maintenance","2 out 0 in",889
+"Joint","Maintenance","2 out 1 in",1265
+"Joint","Maintenance","2 out 2 in",308
+"Joint","Maintenance","2 out 3 in",237
+"Joint","Maintenance","3 out 0 in",1289
+"Joint","Maintenance","3 out 1 in",435
+"Joint","Maintenance","3 out 2 in",305
+"Joint","Maintenance","3 out 3 in",452
+"Joint","Shopping","0 out 0 in",55323
+"Joint","Shopping","0 out 1 in",14033
+"Joint","Shopping","0 out 2 in",3385
+"Joint","Shopping","0 out 3 in",1713
+"Joint","Shopping","1 out 0 in",17744
+"Joint","Shopping","1 out 1 in",14181
+"Joint","Shopping","1 out 2 in",2459
+"Joint","Shopping","1 out 3 in",2094
+"Joint","Shopping","2 out 0 in",6977
+"Joint","Shopping","2 out 1 in",2847
+"Joint","Shopping","2 out 2 in",1240
+"Joint","Shopping","2 out 3 in",802
+"Joint","Shopping","3 out 0 in",2368
+"Joint","Shopping","3 out 1 in",2263
+"Joint","Shopping","3 out 2 in",636
+"Joint","Shopping","3 out 3 in",685
+"Joint","Social/Visit","0 out 0 in",18845
+"Joint","Social/Visit","0 out 1 in",1656
+"Joint","Social/Visit","0 out 2 in",523
+"Joint","Social/Visit","0 out 3 in",235
+"Joint","Social/Visit","1 out 0 in",1963
+"Joint","Social/Visit","1 out 1 in",386
+"Joint","Social/Visit","1 out 2 in",181
+"Joint","Social/Visit","1 out 3 in",13
+"Joint","Social/Visit","2 out 0 in",663
+"Joint","Social/Visit","2 out 1 in",246
+"Joint","Social/Visit","2 out 2 in",137
+"Joint","Social/Visit","2 out 3 in",92
+"Joint","Social/Visit","3 out 0 in",355
+"Joint","Social/Visit","3 out 1 in",85
+"Joint","Social/Visit","3 out 2 in",55
+"Joint","Social/Visit","3 out 3 in",8
+"At-Work","EatOut","0 out 0 in",350527
+"At-Work","EatOut","0 out 1 in",30934
+"At-Work","EatOut","0 out 2 in",6840
+"At-Work","EatOut","0 out 3 in",3332
+"At-Work","EatOut","1 out 0 in",18813
+"At-Work","EatOut","1 out 1 in",10121
+"At-Work","EatOut","1 out 2 in",1133
+"At-Work","EatOut","1 out 3 in",2509
+"At-Work","EatOut","2 out 0 in",5930
+"At-Work","EatOut","2 out 1 in",936
+"At-Work","EatOut","2 out 2 in",91
+"At-Work","EatOut","2 out 3 in",849
+"At-Work","EatOut","3 out 0 in",1348
+"At-Work","EatOut","3 out 1 in",1009
+"At-Work","EatOut","3 out 2 in",226
+"At-Work","EatOut","3 out 3 in",216
+"At-Work","Maintenance","0 out 0 in",97283
+"At-Work","Maintenance","0 out 1 in",8787
+"At-Work","Maintenance","0 out 2 in",1828
+"At-Work","Maintenance","0 out 3 in",946
+"At-Work","Maintenance","1 out 0 in",5526
+"At-Work","Maintenance","1 out 1 in",2956
+"At-Work","Maintenance","1 out 2 in",314
+"At-Work","Maintenance","1 out 3 in",648
+"At-Work","Maintenance","2 out 0 in",1604
+"At-Work","Maintenance","2 out 1 in",252
+"At-Work","Maintenance","2 out 2 in",20
+"At-Work","Maintenance","2 out 3 in",225
+"At-Work","Maintenance","3 out 0 in",375
+"At-Work","Maintenance","3 out 1 in",252
+"At-Work","Maintenance","3 out 2 in",42
+"At-Work","Maintenance","3 out 3 in",61
+"At-Work","WorkRelated","0 out 0 in",133086
+"At-Work","WorkRelated","0 out 1 in",23460
+"At-Work","WorkRelated","0 out 2 in",2563
+"At-Work","WorkRelated","0 out 3 in",1346
+"At-Work","WorkRelated","1 out 0 in",14095
+"At-Work","WorkRelated","1 out 1 in",7679
+"At-Work","WorkRelated","1 out 2 in",429
+"At-Work","WorkRelated","1 out 3 in",909
+"At-Work","WorkRelated","2 out 0 in",2280
+"At-Work","WorkRelated","2 out 1 in",353
+"At-Work","WorkRelated","2 out 2 in",42
+"At-Work","WorkRelated","2 out 3 in",314
+"At-Work","WorkRelated","3 out 0 in",513
+"At-Work","WorkRelated","3 out 1 in",356
+"At-Work","WorkRelated","3 out 2 in",82
+"At-Work","WorkRelated","3 out 3 in",70

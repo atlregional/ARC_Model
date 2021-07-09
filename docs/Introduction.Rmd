@@ -1,0 +1,121 @@
+---
+title: "Section 1 - ARC Travel Demand Model Introduction"
+output: html_document
+---
+
+The purpose of this report is to document the calibration and validation of the Atlanta Regional Commission's (ARC) travel demand model. ARC is the metropolitan planning organization for the metro Atlanta region, which for the purposes of the travel demand model includes 21 counties.  The travel demand model includes numerous components which are described in subsequent sections.  There are four primary components that predict the different types of trips in the 21-county area which are as follows:
+
+* CT-RAMP
+* External Model
+* Air Passenger Model
+* Truck Model
+
+After these models predict the overall magnitude, distribution, and mode choice of these trips, they are assigned to both the highway and transit systems within the region.  
+
+![Figure 1-1. ARC Model Components.](figs/introModule.png)
+
+# Section 1.1 Model Area
+
+The ARC model area includes the 21 counties as illustrated in Figure 1-2.  These counties consist of 5,922 traffic analysis zones (TAZs) which are the primary geographic boundaries used in the model to represent the location of persons and employment.  The TAZs are aggregations of 2010 Census blocks and were created such that they nest within Census tract boundaries.  The TAZs are numbered sequentially by county as shown in Table 1-1.  
+
+--------------------------------
+COUNTY	 FIPS CODE	 TAZ RANGE
+------- ----------- ------------
+Fulton		13121	1-1296
+
+DeKalb		13089	1297-1943
+
+Cobb		13067	1944-2508
+
+Gwinnett	13135	2509-3006
+
+Rockdale	13247	3007-3141
+
+Henry		13151	3142-3386
+
+Clayton		13063	3387-3624
+
+Fayette		13113	3625-3830
+
+Douglas		13097	3831-3988
+
+Cherokee	13057	3989-4209
+
+Coweta		13077	4210-4437
+
+Forsyth		13117	4438-4631
+
+Paulding	13223	4632-4771
+
+Bartow		13015	4772-4942
+
+Carroll		13045	4943-5119
+
+Spalding	13255	5120-5263
+
+Newton		13217	5264-5407
+
+Walton		13297	5408-5530
+
+Barrow		13013	5531-5635
+
+Hall		13139	5636-5873
+
+Dawson		13085	5874-5922
+------------------------------
+:Table 1-1. County TAZ Numbering
+
+
+![Figure 1-2. ARC Model Area](figs/introCountyMap.png)
+
+# Section 1.2 Calibration / Validation Data Sources
+Numerous sources were used to both calibrate and validate the regional model. The sources include data readily available through online webpages, data provided by other agencies, and data that ARC and other regional planning partners collected. These include the following:
+
+* Household Travel Survey
+* Transit On-Board Survey
+* Census - American Community Survey
+* Traffic Counts
+* Speeds
+* Transit Ridership
+* Origin-Destination Flows
+
+# Section 1.2.1 Household Travel Survey
+
+In 2011, a household travel survey was conducted in the 20-county region (Dawson County was not part of the model area at that time) which gathered information from more than 10,000 households within the region. The survey has been used extensively for estimating and calibrating the activity based model component of ARC's model, CT-RAMP. As the model base year was updated from 2010 to 2015, the survey was re-expanded to represent 2015 conditions. The full household travel survey report can found on ARC's website: (https://atlantaregional.org/transportation-mobility/modeling/household-travel-survey/).
+
+# Section 1.2.2 Transit On-Board Survey
+A regional transit survey was conducted in 2009-2010 to provide travel characteristics of transit users in the region. The survey included approximately 50,000 respondents from six of the region's transit operators:
+
+* Cherokee Area Transportation System (CATS)
+* Cobb Community Transit (CCT)
+* Gwinnett County Transit (GCT)
+* GRTA Xpress Bus
+* Hall Area Transit (HAT)
+* Metropolitan Atlanta Rapid Transit Authority (MARTA)
+
+Similar to the household travel survey, the on-board survey was also re-expanded to represent 2015 conditions with the update of the model base year. The full on-board survey report is available on ARC's website: (https://atlantaregional.org/transportation-mobility/modeling/regional-board-transit-survey/).
+
+# Section 1.2.3 Census - American Community Survey
+Census data was used to calibrate and validate several components of CT-RAMP. These included the following:
+
+* Work-at-home shares
+* Five-year CTPP county-to-county worker flows
+* Size terms by occupation for work location choice model
+* Auto ownership by number of workers, county, and income
+
+Model comparisons to census data are provided in subsequent sections.
+
+# Section 1.2.4 Traffic Counts
+The Georgia Department of Transportation (GDOT) maintains an extensive traffic counting program throughout the state. The traffic counts are joined to ARC's highway network links using the unique combination of the county FIPS code and count station number. In total, there are more than 5,000 count locations represented in ARC's model. These counts are used to validate the highway assignment and set the total vehicles entering/exiting the region for the base year at the external model boundary. Many of these count locations include truck percentages which were used in validation of the truck model updates. Also, there are a number of locations that include hourly data used to validate the model's time-of-day choices. GDOT counts are available using their Traffic Analysis & Data Application (https://gdottrafficdata.drakewell.com/publicmultinodemap.asp).
+
+
+# Section 1.2.5 Speeds
+Observed speeds were obtained from FHWA's National Performance Management Research Data Set (NPMRDS). The raw speeds were provided in five minute time periods for individual traffic message channels (TMCs). After reviewing the data, a procedure was developed to remove outliers such that the speeds would represent a typical weekday. Once the outliers were removed, the speeds were averaged to match ARC's five modeled time periods. A TMC attribute was added for links in the network which was used to join the observed speeds for comparison to the highway assignment output. 
+
+# Section 1.2.6 Regional Transit Ridership
+Where available, transit ridership was obtained from the regional transit providers. This included route level boardings for buses. For MARTA rail stations, the data provided included station entries and station boarding totals. This information was used to compare the model estimated results from the transit assignments. 
+
+# Section 1.2.7 Origin-Destination Flows
+The widespread use of mobile devices with location data available allows for the estimation of origin-destination (OD) flows that can be used to validate regional model. ARC purchased this type of data with the primary intention of using it to update the external component of the model; however, in the future the data will also be used to validate the model's representation of internal OD flows as well. More information on this data is provided in the section describing the external model.
+
+

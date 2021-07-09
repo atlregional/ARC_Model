@@ -1,0 +1,521 @@
+---
+title: "Section 7 - Model Outputs"
+output: html_document
+---
+
+This section documents the output files that are used on a regular basis when reviewing model results.  It includes attributes added to the highway networks, travel time skims, CT-RAMP output files, and trip tables.
+
+# Section 7.1 Highway Networks
+
+The list of highway networks created throughout the model process is provided in Table 7-1.  Most of the networks are intermediate files which are referenced in later model steps.  The attributes that are added during a model run are provided in Table 7-2.  Note that not all of the attributes can be found in all the networks listed.  For example, the volumes by vehicle type will only be located in the loaded highway networks.
+
+**Table 7-1 List of Highway Networks**    
+
+```{r,echo=F,message=F,warning=F,output=F,out.height=700}
+library(tidyverse)
+library(knitr)
+library(DT)
+library(kableExtra)
+library(readxl)
+
+T71<- read_excel('data/UserGuideTables.xlsx','T71','B3:C12')
+T71[is.na(T71)] <- ''
+
+kable(T71) %>%
+  kable_styling("striped")
+```
+
+**Table 7-2 Highway Network Added Attributes**    
+
+```{r,echo=F,message=F,warning=F,output=F,out.height=700}
+
+T72<- read_excel('data/UserGuideTables.xlsx','T72','B3:C35')
+T72[is.na(T72)] <- ''
+
+kable(T72) %>%
+  kable_styling("striped")
+```
+
+
+
+# Section 7.2 Highway and Transit Skims
+
+During model application, a number of highway and transit skim files are created by time period which provide information regarding zone to zone travel times, distances, etc. for both highway and transit travel.  A list of the most important files is provided in Table 7-3.  There are other matrices created for different applications in the model; however, all of them are built from the files listed.  Table 7-4 through Table 7-7 shows the format of the highway and transit skims.  The distance and IVT tables include intra-zonal distance and time.  
+
+The format of the transit skim tables is different because the model now uses PT rather than TRNBUILD.  Previously, all transit travel times were in hundreds (i.e. 1 minute was expressed as 100).  With the switch to PT, the travel times are in real units.   The transit skims are stratified differently in this model.  Before the transit skims were stratified by local service only and combined local and premium service.  In the new version, the all transit (ALLTRN) skims represents combined local bus and premium service while premium (PREMIUM) skims represents premium service only.
+
+**Table 7-3 Highway and Transit Skim Files**    
+
+```{r,echo=F,message=F,warning=F,output=F,out.height=700}
+
+T73<- read_excel('data/UserGuideTables.xlsx','T73','B3:C19')
+T73[is.na(T73)] <- ''
+
+kable(T73) %>%
+  kable_styling("striped")
+```
+
+**Table 7-4 Highway Non-Toll Skim Tables**    
+
+```{r,echo=F,message=F,warning=F,output=F,out.height=700}
+
+T74<- read_excel('data/UserGuideTables.xlsx','T74','B3:C6')
+T74[is.na(T74)] <- ''
+
+kable(T74) %>%
+  kable_styling("striped")
+```
+
+**Table 7-5 Highway Toll Eligible Skim Tables**    
+
+```{r,echo=F,message=F,warning=F,output=F,out.height=700}
+
+T75<- read_excel('data/UserGuideTables.xlsx','T75','B3:C7')
+T75[is.na(T75)] <- ''
+
+kable(T75) %>%
+  kable_styling("striped")
+```
+
+
+**Table 7-6 Walk Access / Walk Egress Transit Skim Tables**    
+
+```{r,echo=F,message=F,warning=F,output=F,out.height=700}
+
+T76<- read_excel('data/UserGuideTables.xlsx','T76','B3:D17')
+T76[is.na(T76)] <- ''
+
+kable(T76) %>%
+  kable_styling("striped")
+```
+
+**Table 7-7 Drive Access or Egress Transit Skim Tables**    
+
+```{r,echo=F,message=F,warning=F,output=F,out.height=700}
+
+T77<- read_excel('data/UserGuideTables.xlsx','T77','B3:D19')
+T77[is.na(T77)] <- ''
+
+kable(T77) %>%
+  kable_styling("striped")
+```
+
+
+# Section 7.3 Air Passenger
+
+The air passenger model has also been converted to Cube script from FORTRAN.  However, the file formats are the same as in previous versions.  The air passenger model generates a vehicle and transit trip table.  The vehicle trip table is called VEHOUT{year}.MTT and the format is provided in Table 7-8.  The transit trip table is called TRNOUT{year}.MTT with the format provided in Table 7-9.
+
+**Table 7-8 Air Passenger Vehicle Tables**    
+
+```{r,echo=F,message=F,warning=F,output=F,out.height=700}
+
+T78<- read_excel('data/UserGuideTables.xlsx','T78','B3:D8')
+T78[is.na(T78)] <- ''
+
+kable(T78) %>%
+  kable_styling("striped")
+```
+
+**Table 7-9 Air Passenger Transit Tables**    
+
+```{r,echo=F,message=F,warning=F,output=F,out.height=700}
+
+T79<- read_excel('data/UserGuideTables.xlsx','T79','B3:D10')
+T79[is.na(T79)] <- ''
+
+kable(T79) %>%
+  kable_styling("striped")
+```
+
+
+# Section 7.4 Externals
+
+Portions of the external model were previously applied in FORTRAN executables.  In the new model, all components of the externals are handled within the Cube script.  The internal-external station passenger car productions are created in a text file called IEPRD{year}.PRN with the format shown in Table 7-10.  The internal-external passenger car attractions are stored in a text file called IEPA_B{year}_ATT.NEW with the format shown in Table 7-11.
+
+**Table 7-10 Internal-External Passenger Car Productions**    
+
+```{r,echo=F,message=F,warning=F,output=F,out.height=700}
+
+T710<- read_excel('data/UserGuideTables.xlsx','T710','B3:C8')
+T710[is.na(T710)] <- ''
+
+kable(T710) %>%
+  kable_styling("striped")
+```
+
+**Table 7-11 Internal-External Passenger Car Attractions**    
+
+```{r,echo=F,message=F,warning=F,output=F,out.height=700}
+
+T711<- read_excel('data/UserGuideTables.xlsx','T711','B3:C8')
+T711[is.na(T711)] <- ''
+
+kable(T711) %>%
+  kable_styling("striped")
+```
+
+After trip distribution, the internal-external passenger car trips are stored in two trip tables:
+
+*	IEWRKM{year}.VTT: internal-external passenger car work trips
+*	IENWKM{year}.VTT: internal-external passenger car non-work trips
+
+The basic format of the two trip tables is the same although the table names are slightly different. The formats are provided in Table 7-12.  The external-external passenger car output is a trip table called EEPC20{year}.VTT shown in Table 7-13.
+
+**Table 7-12 Internal-External Passenger Car Trip Tables**    
+
+```{r,echo=F,message=F,warning=F,output=F,out.height=700}
+
+T712<- read_excel('data/UserGuideTables.xlsx','T712','B3:D5')
+T712[is.na(T712)] <- ''
+
+kable(T712) %>%
+  kable_styling("striped")
+```
+
+**Table 7-13 External-External Passenger Car Trip Table**    
+
+```{r,echo=F,message=F,warning=F,output=F,out.height=700}
+
+T713<- read_excel('data/UserGuideTables.xlsx','T713','B3:D4')
+T713[is.na(T713)] <- ''
+
+kable(T713) %>%
+  kable_styling("striped")
+```
+
+
+The internal-external trip ends for commercial vehicle, medium truck, and heavy trucks are created and stored in the text file CMHEXT.PRN.  The format of this file is shown in Table 7-14.  The external model also creates the initial external-external vehicle tables which are later modified in the commercial vehicle and truck model.  The name of the initial file is called CMHEE.TRP and the format is shown in Table 7-15.
+
+**Table 7-14 External Station Truck Trip File**    
+
+```{r,echo=F,message=F,warning=F,output=F,out.height=700}
+
+T714<- read_excel('data/UserGuideTables.xlsx','T714','B3:C7')
+T714[is.na(T714)] <- ''
+
+kable(T714) %>%
+  kable_styling("striped")
+```
+
+**Table 7-15 External-External Truck Trip Tables**    
+
+```{r,echo=F,message=F,warning=F,output=F,out.height=700}
+
+T715<- read_excel('data/UserGuideTables.xlsx','T715','B3:D6')
+T715[is.na(T715)] <- ''
+
+kable(T715) %>%
+  kable_styling("striped")
+```
+
+
+
+# Section 7.5 Commercial Vehicle and Trucks
+
+The file formats of the commercial vehicle and truck model have not changed in the newer model version.  The program produces an initial internal-internal and internal-external file called CMH.TRP. Note that this file is not used for assignment.  The file format is provided in Table 7-16.  The final tables used for the assignment are as follows the format provided in Table 7-17.
+
+*	COM.TRP: commercial vehicles
+*	MTK.TRP: medium duty trucks
+*	HTKbypass.TRP: heavy duty trucks that cannot enter I-285 boundary
+*	HTKnobypass.TRP: heavy duty trucks that can enter I-285 boundary
+
+**Table 7-16 Initial Internal-Internal / Internal-External Truck Trip Table**    
+
+```{r,echo=F,message=F,warning=F,output=F,out.height=700}
+
+T716<- read_excel('data/UserGuideTables.xlsx','T716','B3:D9')
+T716[is.na(T716)] <- ''
+
+kable(T716) %>%
+  kable_styling("striped")
+```
+
+
+**Table 7-17 Final Truck Trip Tables**    
+
+```{r,echo=F,message=F,warning=F,output=F,out.height=700}
+
+T717<- read_excel('data/UserGuideTables.xlsx','T717','B3:D8')
+T717[is.na(T717)] <- ''
+
+kable(T717) %>%
+  kable_styling("striped")
+```
+
+
+# Section 7.6 CT-RAMP Output Files
+
+The core outputs from the CT-RAMP model component are summarized in Table 7-18.
+
+**Table 7-18 CT-RAMP Model Output Files**    
+
+```{r,echo=F,message=F,warning=F,output=F,out.height=700}
+
+T718<- read_excel('data/UserGuideTables.xlsx','T718','B3:C14')
+T718[is.na(T718)] <- ''
+
+kable(T718) %>%
+  kable_styling("striped")
+```
+
+
+## Section 7.6.1 Shadow Pricing
+
+The shadow pricing results for each shadow pricing iteration are written to the file, ShadowPricing_ {loop}_{shadowPricingIterations}.csv.
+
+## Section 7.6.2 Usual Work and School Location
+
+The usual work and school location choice results are written to wsLocResults_{loop}.csv.  The results file consists of the data fields shown in Table 7-19. The usual work location choice model now includes a "work from home" component. These workers are considered ones who work permanently out of their homes and not someone who telecommutes occasionally. In the WorkLocation column, these workers are denoted with a number of 9999. The person type in the table is defined in Table 7-20.
+
+**Table 7-19 Usual Work and School Location Choice Output File Fields** 
+```{r,echo=F,message=F,warning=F,output=F,out.height=700}
+
+T719<- read_excel('data/UserGuideTables.xlsx','T719','B3:C17')
+T719[is.na(T719)] <- ''
+
+kable(T719) %>%
+  kable_styling("striped")
+```
+
+**Table 7-20 Person Type Codes**    
+
+```{r,echo=F,message=F,warning=F,output=F,out.height=700}
+
+T720<- read_excel('data/UserGuideTables.xlsx','T720','B3:C11')
+T720[is.na(T720)] <- ''
+
+kable(T720) %>%
+  kable_styling("striped")
+```
+
+
+## Section 7.6.3 Auto Ownership
+
+The number of autos per household is written to aoResults.csv.
+
+## Section 7.6.4 Household Attribution
+
+The household attribution results for each feedback loop are written to hhData_{loop}.csv. The file has the following fields: 
+
+**Table 7-21 Household Output File Fields**    
+
+```{r,echo=F,message=F,warning=F,output=F,out.height=700}
+
+T721<- read_excel('data/UserGuideTables.xlsx','T721','B3:C32')
+T721[is.na(T721)] <- ''
+
+kable(T721) %>%
+  kable_styling("striped")
+```
+
+
+## Section 7.6.5 Population Attribution
+
+The person attribution results for each feedback loop are written to personData_{loop}.csv. The file has the following fields: 
+
+**Table 7-22 Person Output File Fields**    
+
+```{r,echo=F,message=F,warning=F,output=F,out.height=700}
+
+T722<- read_excel('data/UserGuideTables.xlsx','T722','B3:C14')
+T722[is.na(T722)] <- ''
+
+kable(T722) %>%
+  kable_styling("striped")
+```
+
+
+## Section 7.6.6 Coordinated Activity Pattern (CDAP)
+
+The results of the CDAP model are written to cdapResults_{loop}.csv.
+
+**Table 7-23 CDAP Output File Fields**    
+
+```{r,echo=F,message=F,warning=F,output=F,out.height=700}
+
+T723<- read_excel('data/UserGuideTables.xlsx','T723','B3:C8')
+T723[is.na(T723)] <- ''
+
+kable(T723) %>%
+  kable_styling("striped")
+```
+
+
+## Section 7.6.7 Individual Tour Records
+
+Individual tours for each CT-RAMP feedback loop are written to indivTourData_{loop}.csv.  The final feedback loop version is written to indivTourData.csv. Table 7-24 lists data fields in the output file. The tour mode used in this file is categorized in Table 7-25.
+
+**Table 7-24 Individual Tours Output File Fields**    
+
+```{r,echo=F,message=F,warning=F,output=F,out.height=700}
+
+T724<- read_excel('data/UserGuideTables.xlsx','T724','B3:C29')
+T724[is.na(T724)] <- ''
+
+kable(T724) %>%
+  kable_styling("striped")
+```
+
+**Table 7-25 Trip / Tour Mode Codes**    
+
+```{r,echo=F,message=F,warning=F,output=F,out.height=700}
+
+T725<- read_excel('data/UserGuideTables.xlsx','T725','B3:D18')
+T725[is.na(T725)] <- ''
+
+kable(T725) %>%
+  kable_styling("striped")
+```
+
+
+## Section 7.6.8 Joint Tour Records
+
+Joint tours for each CT-RAMP feedback loop are written to jointTourData_{loop}.csv.  The final feedback loop version is written to jointTripData.csv. Table 7-26 lists data fields in the output file. 
+
+**Table 7-26 Joint Tours Output File Fields**    
+
+```{r,echo=F,message=F,warning=F,output=F,out.height=700}
+
+T726<- read_excel('data/UserGuideTables.xlsx','T726','B3:C28')
+T726[is.na(T726)] <- ''
+
+kable(T726) %>%
+  kable_styling("striped")
+```
+
+
+## Section 7.6.9 Individual Trip Records
+
+Individual trips for each CT-RAMP feedback loop are written to indivTripData_{loop}.csv.  The final feedback loop version is written to indivTripData.csv. Table 7-27 lists data fields in the output file.
+
+**Table 7-27 Individual Trips Output File Fields**    
+
+```{r,echo=F,message=F,warning=F,output=F,out.height=700}
+
+T727<- read_excel('data/UserGuideTables.xlsx','T727','B3:C21')
+T727[is.na(T727)] <- ''
+
+kable(T727) %>%
+  kable_styling("striped")
+```
+
+
+## Section 7.6.10 Joint Trip Records
+
+Joint trips for each CT-RAMP feedback loop are written to jointTripData_{loop}.csv.  The final feedback loop version is written to jointTripData.csv. Table 7-28 lists data fields in the output file.
+
+**Table 7-28 Joint Trips Output File Fields**    
+
+```{r,echo=F,message=F,warning=F,output=F,out.height=700}
+
+T728<- read_excel('data/UserGuideTables.xlsx','T728','B3:C20')
+T728[is.na(T728)] <- ''
+
+kable(T728) %>%
+  kable_styling("striped")
+```
+
+
+
+## Section 7.6.11 Trip Data
+
+The trips table, tripData_{loop}.csv, consists of the individual trips and the joint trips in expanded form. It also contains joined household and person fields. The data fields are provided in Table 7-29.
+
+**Table 7-29 CT-RAMP Trips Data Output File Fields**    
+
+```{r,echo=F,message=F,warning=F,output=F,out.height=700}
+
+T729<- read_excel('data/UserGuideTables.xlsx','T729','B3:C51')
+T729[is.na(T729)] <- ''
+
+kable(T729) %>%
+  kable_styling("striped")
+```
+
+## Section 7.6.12 CT-RAMP Tables
+
+The CT-RAMP trip files are converted from CSV format to Cube matrices via Cube Voyager script.  For highway modes, the trips represent vehicles whereas other modes represent person trips.  The tables are named as follows:
+
+*	TRIPS_INDIV_EA.TPP (AM, MD, PM, EV): individual trip tables by period
+*	TRIPS_JOINT_EA.TPP (AM, MD, PM, EV): joint trip tables by period
+*	TRIPSEA.TPP (AM, MD, PM, EV): combined trip tables by period
+
+The tables are split by travel mode and are formatted as shown in Table 7-30.
+
+**Table 7-30 CT-RAMP Trip Table Format**    
+
+```{r,echo=F,message=F,warning=F,output=F,out.height=700}
+
+T730<- read_excel('data/UserGuideTables.xlsx','T730','B3:D22')
+T730[is.na(T730)] <- ''
+
+kable(T730) %>%
+  kable_styling("striped")
+```
+
+
+# Section 7.7 Time of Day Trip Tables
+
+This section details the format of the time-of-day (TOD) vehicle trip tables which are used in the period level highway assignments.  The passenger car trip tables are stored in the following five files in the format shown in Table 7-31 with the format of the tables provided in Table 7-32.
+
+*	TODEA{year}.VTT: EA period passenger car trip table
+*	TODAM{year}.VTT: AM period passenger car trip table
+*	TODMD{year}.VTT: Midday period passenger car trip table
+*	TODPM{year}.VTT: PM period passenger car trip table
+*	TODEV{year}.VTT: Evening / late night period passenger car trip table
+
+
+**Table 7-31 Passenger Car TOD Trip Table File**    
+
+```{r,echo=F,message=F,warning=F,output=F,out.height=700}
+
+T731<- read_excel('data/UserGuideTables.xlsx','T731','B3:D7')
+T731[is.na(T731)] <- ''
+
+kable(T731) %>%
+  kable_styling("striped")
+```
+
+The TOD vehicle trip files utilized for the highway assignment include the split by occupancy and toll/non-toll for each period.  
+
+*	TODEA{year}_asgn.VTT: EA period vehicle trip table
+*	TODAM{year}_asgn.VTT: AM period vehicle trip table
+*	TODMD{year}_asgn.VTT: Midday period vehicle trip table
+*	TODPM{year}_asgn.VTT: PM period vehicle trip table
+*	TODEV{year}_asgn.VTT: Evening / late night period vehicle trip table
+
+**Table 7-32 TOD Trip Table Assignment File**    
+
+```{r,echo=F,message=F,warning=F,output=F,out.height=700}
+
+T732<- read_excel('data/UserGuideTables.xlsx','T732','B3:D9')
+T732[is.na(T732)] <- ''
+
+kable(T732) %>%
+  kable_styling("striped")
+```
+
+
+# Section 7.8 Transit Assignment Output
+
+This section details the format of the transit assignment output which include time of day, mode of access/egress, and the mix of transit modes as shown in Table 7-33.  The primary assignment outputs used for route analysis are named as follows:
+
+@access mode@_@transit mix@_@egress mode@_@period@.DBF
+
+*	Access mode = WLK, KNR, or PNR
+*	Transit mix = ALLTRN or PRMTRN
+*	Period = EA, AM, MD, PM, EV, AIRPASS
+
+The output files are standard Public Transport output files from assignment loadings.  Please refer to the Cube User guide for an explanation of the attributes in the output file.
+
+**Table 7-33 Transit Assignments**    
+
+```{r,echo=F,message=F,warning=F,output=F,out.height=700}
+
+T733<- read_excel('data/UserGuideTables.xlsx','T733','B3:E36')
+T733[is.na(T733)] <- ''
+
+kable(T733) %>%
+  kable_styling("striped")
+```
+

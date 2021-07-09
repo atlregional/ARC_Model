@@ -1,0 +1,7 @@
+Allocation Type,Low Income Number of Households,Medium-Low Income Number of Households,Medium-High Income Number of Households,High Income Number of Households,Number of Jobs
+Residents on business,0.001302,0.006525,0.008314,0.012414,-
+Non-residents on business,-,-,-,-,0.008748
+Residents non-business,0.004218,0.009454,0.015035,0.018057,-
+Non-residents non-business (private residences),0.001107,0.002131,0.008232,0.01187,-
+Non-residents non-business (non-private residences),-,-,-,-,0.005138
+Income range,"<$23,999","$24,000 - $59,999","$60,000 - $118,999","> $119,000",

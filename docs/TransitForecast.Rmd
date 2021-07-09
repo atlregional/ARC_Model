@@ -1,0 +1,85 @@
+---
+title: "Section 12 - Transit Project Level Forecast"
+output: html_document
+---
+
+When applying the model for the Regional Transportation Plan (RTP), all steps are applied from start to finish in what is called a "full-model application".  In this application, the model includes a feedback loop where the resulting travel times from highway assignment are "fed back" into the demand models.  This is done to ensure consistency between travel times used for the demand choices and the travel times computed after assignment of these trips to the network.  It is well documented in the modeling community that the feedback loop process introduces some level of variability into the results.  This variability is often negligible when viewing aggregate regional results; however, when analyzing a single project, this variability can make it difficult to isolate the differences solely based on the project.  
+
+To mitigate this effect, the model is only partially run for a Build Scenario where a number of inputs into the mode choice models are consistent with the No Build Scenario.  Previous guidance from the Federal Transit Administration (FTA) for New Starts funding involved transit project sponsors using the SUMMIT application to demonstrate that project benefits were being isolated to the actual project and that the variability associated with feedback loops and assignment weren't being accumulated.  This was done by using as many consistent inputs into the mode choice model as possible between the No Build and Build scenarios, and while the new guidance no longer requires the SUMMIT model, the lessons learned from its use still remain.  
+
+In a trip-based model (TBM), this approach was straightforward as the demand tables from the No Build scenario could be copied into the Build directory and then certain components of the model could be executed separately.  Therefore, in the TBM, the person demand in this application would be identical.  For a transit project, the only difference in the Build Scenario from the No Build Scenario would be the transit level-of-service skims.
+
+However, in the activity-based model (ABM), the project level forecast is applied in a slightly different manner due to the nature of ABMs.  The ABM includes two levels of mode choice - one at the tour level and one at the trip level which occurs after tour modes have been chosen.  Trip mode choice is highly dependent on tour level mode choice because the availability of modes at the trip level is dependent on the mode chosen for the tour.   For example, if a person's tour mode choice to/from work is transit, they do not have a car available to them to make drive alone trips throughout the work day.  Because of this, the ABM project level forecast does involve the use of more model components than the previous TBM and the application of these components must be done in a specific manner.
+
+**Important note: This should not be considered official guidance from FTA.  It is the project sponsor's responsibility to engage FTA in the methods that will be used for developing transit forecasts as part of a New Starts application.** 
+
+
+# Section 12.1 No Build Scenario
+The No Build Scenario is actually run in the same manner as is used for the RTP which is running the full model from start to finish.  However, because the model holds choices in memory, the user must keep the household manager open at the end of the No Build run while closing the nodes.  In some applications of the model, the Cube script has been modified to launch and close the nodes from script.  It is imperative that the household manager not be closed after the No Build Scenario finishes; therefore, the automated closing of the Java nodes must be removed in this application. 
+
+How to handle the file management is at the user's discretion, but there are a number of files from the No Build run that the user must either copy to another location or modify the file names.  The approach used in testing for ARC was to create a No Build directory and copy the CT-RAMP specific output and travel time skims into that directory.  These specific files are as follows:
+
+*	hhData.CSV
+*	indivTourData.CSV
+*	indivTripData.CSV
+*	jointTourData.CSV
+*	jointTripData.CSV
+*	personData.CSV
+*	tripData.CSV
+*	All highway and transit travel skims
+
+If not copied or renamed, these CT-RAMP generated files will be overwritten in the Build scenario application.  To shut down the Java node, the user can simply open the Java window and click the 'X' to close the window.  It is recommended that the user pay attention to which Java window is associated with the node upon launching the node initially.  An example of the Java node upon launching is provided below.  
+
+![Figure 12-1. Example Java Node Window](figs/JavaNodeWindow.png)
+
+
+# Section 12.2 Build Scenario
+The Build scenario needs to be re-run in the same directory as the original No Build scenario where the household manager is still open, and the nodes should be restarted.  The user will need to re-build the transit skims to reflect the Build Scenario transit service.  Preferably, this is done using the same background highway network as previously used to develop the No Build scenario skims.  This means that the user should give thought to how the Build Scenario will be coded prior to running the No Build scenario.  For example, if highway links require splitting to incorporate the Build project, it is recommended that those network splits are made in the no build as well.    Ideally, both the No Build and Build transit routes would work seamlessly with the same highway network to ensure as little variation as possible.  
+
+Upon creation of the Build Scenario transit skims, the user must replace the No Build skims in the model directory.  The last step prior to running CT-RAMP is updating the properties file (arcTourBased.properties) to only apply certain components of CT-RAMP.  Basically, all models through the generation of tours are not re-run, but all models from tour mode choice and onward are run.  This is done through use of the True/False keywords in the properties file (each component and keyword is detailed in the next subsection).  Once the Build scenario completes CT-RAMP, the user must again determine how to manage the output files for later use.  In testing for ARC, similar to the No Build scenario, the CT-RAMP specific files and skims were copied into a different directory for the Build scenario.  
+
+
+# Section 12.3 Step by Step Application
+
+The following outlines the steps:
+
+1.	Regular run of ARC Model - call this result the No Build scenario    
+2.	Close the nodes and restart the nodes for the next run    
+3.	Household manager should remain open after the No Build run    
+4.	Update the input transit skims to run the Build scenario     
+5.	Change the properties file as follows    
+*	RunModel.RestartWithHhServer= immc    
+*	RunModel.UsualWorkAndSchoolLocationChoice= False    
+*	RunModel.AutoOwnership= False    
+*	RunModel.FreeParking= False     
+*	RunModel.CoordinatedDailyActivityPattern= False    
+*	RunModel.IndividualMandatoryTourFrequency= False    
+*	RunModel.MandatoryTourDepartureTimeAndDuration= False    
+*	RunModel.JointTourFrequency= False    
+*	RunModel.JointTourLocationChoice= False    
+*	RunModel.JointTourDepartureTimeAndDuration= False    
+*	RunModel.IndividualNonMandatoryTourFrequency= False    
+*	RunModel.IndividualNonMandatoryTourLocationChoice= False    
+*	RunModel.IndividualNonMandatoryTourDepartureTimeAndDuration= False    
+*	RunModel.AtWorkSubTourFrequency= False    
+*	RunModel.AtWorkSubTourLocationChoice= False    
+*	RunModel.AtWorkSubTourDepartureTimeAndDuration= False    
+
+Following models are rerun (no change in their setting):
+
+* RunModel.MandatoryTourModeChoice= True
+* RunModel.JointTourModeChoice= True
+* RunModel.IndividualNonMandatoryTourModeChoice= True
+* RunModel.AtWorkSubTourModeChoice= True
+* RunModel.StopFrequency= True
+* RunModel.StopLocation= True
+* RunModel.StopTiming= True
+* RunModel.TripModeChoice= True
+
+Note: The files wsLocResults.csv, cdapResults.csv, and aoResults.csv are not generated again as there will be no change in these files. All other inputs are recreated using the new inputs.
+
+
+
+
+
+

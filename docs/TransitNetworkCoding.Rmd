@@ -1,0 +1,208 @@
+---
+title: "Section 9 - Transit Network Coding"
+output: html_document
+---
+
+This section provides guidance for coding transit routes in the new model.  As discussed previously, the transit component has been transitioned from TRNBULD to PT.  While much of the transit coding remains similar to previous versions, there are also some major revisions discussed below.
+
+# Section 9.1 Non-Transit and Transit Modes
+
+With the addition of KNR, the non-transit modes have been modified.  The model includes five non-transit modes which are shown in Table 9-1.  The mode 1 walk connectors represent both access and egress.  The KNR and PNR connectors are also generated in both directions; however, either the access or egress mode has to be walk (i.e. PNR access - transit - walk egress).  The directionality is also period specific as previously discussed.  The station / feeder mode is generated using the FACTYPE 53 links coded in the network to ensure connectivity between feeder buses and rail stations.  The mode 5 transfer links are other transfer opportunities between transit stops that are not explicitly coded in the network (e.g. bus stops in close proximity to one another).  These transfer links are generated up to a tenth of mile between transit stops.  All connectors are created utilizing PT's GENERATE command.  
+
+Real transit modes are similar to previous model versions and are provided in Table 9-2.  There are five modes available for each operator: 1) Local bus 2) Heavy rail 3) Express bus 4) Light rail and 5) Premium BRT.  In addition, there is one commuter rail mode.  The model also includes place holders for new projects.  This is primarily intended for transit studies to allow detailed extraction of trip information for project trips.
+
+
+**Table 9-1 Non-Transit Modes**    
+
+```{r,echo=F,message=F,warning=F,output=F,out.height=700}
+library(tidyverse)
+library(knitr)
+library(DT)
+library(kableExtra)
+library(readxl)
+
+T91<- read_excel('data/UserGuideTables.xlsx','T91','B3:C8')
+T91[is.na(T91)] <- ''
+
+kable(T91) %>%
+  kable_styling("striped")
+
+```
+
+**Table 9-2 Transit Modes**    
+
+```{r,echo=F,message=F,warning=F,output=F,out.height=700}
+
+T92<- read_excel('data/UserGuideTables.xlsx','T92','B3:C46')
+T92[is.na(T92)] <- ''
+
+kable(T92) %>%
+  kable_styling("striped")
+
+```
+
+
+# Section 9.2 Transit Route File Structure
+
+While there are similarities in the route structure within the geodatabase framework, there are also many differences which will be discussed in more detail in this section.  However, the line files can be exported into their native text format and in that regard, remain much the same as in previous model versions.  Once in the text file, the structure of the transit route files in PT is basically the same as TRNBUILD.  The file is still in text format consisting of individual lines with nodes corresponding to the highway network.  An example route is shown in Figure 9-1.  The primary differences are the attributes that can be coded.  For instance, HEADWAY replaces FREQ. 
+ 
+PT also allows for the coding of short names and long names of transit routes via NAME and LONGNAME.  For ARC, NAME has been designated for operator and route number while LONGNAME is the actual route name.  The NAME attribute can be up to 28 characters while LONGNAME can be up to 50 characters.
+
+The attributes that are utilized in coding are as follows:
+
+*	NAME - operator name and route number
+*	MODE - mode number of route
+*	OPERATOR - route operator (corresponds to operator in system data file)
+*	LONGNAME - route name (e.g. Coronet)
+*	ONEWAY - true / false indicator if route operates in only one direction
+*	HEADWAY[1] - early AM headway in minutes
+*	HEADWAY[2] - AM peak headway in minutes
+*	HEADWAY[3] - mid-day period headway in minutes
+*	HEADWAY[4] - PM peak headway in minutes
+*	HEADWAY[5] - evening / late night headway in minutes
+*	CIRCULAR - true / false indicator if route operates in circular fashion.  Not necessary for routes that do not operate in this manner.
+*	DWELL_C - dwell time in minutes to be assessed at each transit stop  
+
+![Figure 9-1. Route Structure Text Format](figs/RouteStructureText.png)
+
+As was the case in the previous model, the transit routes are split into two files to distinguish between premium and non-premium routes.  Premium routes consist of heavy rail, express bus, light rail, BRT, and commuter rail.  Non-premium routes include local buses and express buses.  When choosing the appropriate mode, the user should consider how the route operates.  The followings are guidelines for mode definitions:
+
+Non-Premium:
+*	Local bus - routes operating on surface streets with numerous stops.  Operate in mixed use traffic.
+*	Shuttle bus - short distance routes distributing passengers back and forth at activity centers or university campuses.  
+
+Premium:
+*	Express bus - routes operating on high speed facilities (e.g. interstates) with few intermediate stops.  Routes typically serve park-and-ride lots in the suburbs and distribute passengers around an activity center. 
+*	BRT - routes operating in high speed access controlled facilities (managed lanes) or within exclusive bus-ways.  Intermediate rail-type stations provided including passenger amenities such as covered stations, platform boarding, etc.
+*	Heavy / Light rail - routes operating on tracks in exclusive right-of-way.  In some cases, light rail may also operate in the street as well.
+*	Commuter rail - routes operating on main line railroad track carrying passengers to and from work around major activity centers.
+
+
+# Section 9.3 Transit Route Coding
+
+Route coding in PT via the geodatabase has similarities to TRNBUILD but also some notable differences.  In the Data Manager window shown in Figure 9-2, the user can expand the transit files and double click any of them to open the layers.  Note that since the transit networks overlay the highway network, this will also add the highway network into the TOC and GIS window as illustrated by Figure 9-3. 
+
+![Figure 9-2. Opening Route File](figs/OpenRouteFiles.png)
+
+![Figure 9-3. Route File TOC](figs/RouteFileTOC.png)
+
+
+Once a transit layer is open, displaying individual or multiple lines is similar to previous versions of Cube.  To select a line or lines, click the Display Lines icon (Figure 9-4) in the toolbar.  A new window will open containing all the routes currently available in the network as shown in Figure 9-5.  By scrolling through the list, the user can select an individual route or multiple routes by left clicking on the desired routes.  Once the routes are selected, click OK and the GIS window will open with the route(s) selected.
+
+
+![Figure 9-4. Selecting Transit Line for Display](figs/SelectTransitLine.png)
+
+![Figure 9-5. Displaying Transit Lines](figs/DisplayTransitLines.png)
+
+To edit a transit route, editing must be enabled in the same manner as for highway coding (make transit layer active and then click Editor - Start Editing).  To edit route attributes, the user must select the Edit Feature pointer (same as in highway edit mode).  Using the pointer, click on a route to open the Feature Explorer which will also highlight the route as shown in Figure 9-6.  
+
+In the Feature Explorer window, the route attributes are stored in the Line tab (Figure 9-7).  This tab includes all route attributes that are available; however, most are not used.  To change a route attribute, click in the appropriate field and manually type the change.
+
+![Figure 9-6. Selected Transit Line for Editing](figs/SelectedLineEditing.png)
+
+
+![Figure 9-7. Route Attributes](figs/RouteAttributes.png)
+
+
+
+The Feature Explorer contains a Route Edit function that is used for modifying the alignment of an existing route and is depicted in Figure 9-8.  Using the route editor in the GIS window is similar to the standard Cube editor.  When in edit mode, the pointer will appear and allow the user to select a beginning node where the alignment is to change.  Then, then the user left clicks on desired stop locations and the program will route the transit line through the network to the stop.  
+
+![Figure 9-8. Route Edit](figs/RouteEdit.png)
+
+For example, if the user would like to change the alignment of the route shown in Figure 9-9 to follow the black links with stops at the nodes highlighted, with the route selected, click Route Edit.  The user should click on the node where the alignment is changing which in the case of Figure 9-9 is node 19718 (note that the directionality of how the route is coded is important).  To code stops at the highlighted nodes, the user should use the pointer to left click on those nodes.  Cube will automatically add the non-stops nodes that occur between the highlighted nodes.  When modifying the route alignment, Cube displays both the old and new alignment as shown in Figure 9-10.  To tie the alignment together, the user needs to click on the first node where the route is back on the original alignment (node 19675 in Figure 9-9).  When the modifications are complete, the user should press the ESC key which ends the route editing.  However, the route modifications are not changed until the user clicks the green checkmark to save the edits.  Conversely, if the user is unsatisfied with the edits, the user can click the crossed-out checkmark to cancel the edits.  
+
+![Figure 9-9. Route Alignment](figs/RouteAlignment.png)
+
+
+![Figure 9-10. Route Modification](figs/RouteModification.png)
+
+To create a new route, click on the Create Feature which looks like a pencil in the editor tool bar.  To start a new route, left click on the desired starting point node.  To code the route alignment, left click on each preferred stop location until the full alignment is coded.  Prior to saving the edits, the user must give the route a name and mode.  It is helpful to have the transit system data file available to ensure proper attribute coding.  For example, to add a new MARTA bus, the mode would be 14 and the operator set to 1.
+
+Alternatively, if the user prefers using the previous coding environment, the transit files can be exported from the geodatabase to a *.lin file.  This is accomplished by right-clicking on a transit line layer in the Data Manager window and then selecting Export as shown in Figure 9-11 which produces the Transit Line Layer Export GUI as shown in Figure 9-12.  This allows the user to open the text files and change frequencies, dwell times, etc. which can be more efficient in a text editor than clicking individual routes in the GIS window.  Once the changes are complete, the transit file needs to be imported back into the geodatabase as shown in Figure 9-13 which produces the Transit Line Layer Import GUI as shown in Figure 9-14.  Prior to importing, the transit layer in the geodatabase being updated needs to be deleted.  This is done by right-clicking the layer and selecting Delete from the Data Manager window.  To import the revised transit line file, left-click the Import/Export Data button in the Data Manager as shown in Figure 9-14.  
+
+![Figure 9-11. Exporting from Data Manager](figs/ExportDataManager.png)
+
+![Figure 9-12. Transit Line Layer Export](figs/TransitLineExport.png)
+
+![Figure 9-13. Importing from Data Manager](figs/ImportDataManager.png)
+
+![Figure 9-14. Transit Line Layer Import](figs/TransitLineImport.png)
+
+## Section 9.3.1 Dwell Time Coding
+
+Previously, bus speeds were calculated as function of the highway speeds by applying factors based on facility types and area types.  This process was limited because two routes operating in the same alignment would have the same travel speeds even if one route provided limited stops while the other included numerous stops.  In the new model, the bus speeds are still based on the highway speeds.  However, with the conversion from TRNBUILD to PT, dwell times can be added at each coded stop to more accurately reflect the speeds.  The dwell times are coded for each route by use of the variable DWELL or DWELL_C.  If viewing the transit network in text format, the variable should be placed after the first node and is coded in minutes.  The coded dwell time will be applied to the previous node and all subsequent stop nodes.  If operating in the GIS window, to update the dwell time, the user must first be in edit mode.  Then, once a route is selected for editing, click the Nodes tab as shown in Figure 9-15.  This contains node specific attributes for routes, including the dwell time.  Right-click the column labeled DWELL and select Multi Cell Edit.  This will open another window as shown in Figure 9-16.  In this window, the user can select the appropriate nodes for updating the dwell time or apply a dwell time to the entire route.  This is done by selecting the first node in the From Row and the last node in the To Row and then setting the cell value to the desired number.
+
+In validation of the bus speeds, the dwell times for local buses were set to 0.5 while express buses were set to 1.0.  This is reasonable given that express buses have fewer stops and generally more people boarding/alighting per stop.  The coded MARTA rail routes do not include dwell times in the route file.  This is because the coded MARTA rail link speeds include the dwell times.  When coding fixed guide-way, it is important the user be aware of how the dwell times are represented.  
+
+
+![Figure 9-15. Dwell Time Coding 1](figs/DwellTimeCoding1.png)
+
+![Figure 9-16. Dwell Time Coding 2](figs/DwellTimeCoding2.png)
+
+
+
+
+
+## Section 9.3.2 Circular Route Coding
+
+The conversion from TRNBUILD to PT also allows for more accurate coding of route alignments by use of circular coding logic.  The CIRCULAR variable is a route specific attribute that informs the program whether or not to invoke circular logic in path building.  If CIRCULAR is coded as '1', the program treats the route in a circular manner.  The default is linear so for non-circular routes, the user can exclude the CIRCULAR variable from the route.  The circular logic allows for a route to have the same beginning and ending node without forcing a transfer at that node.  In Figure 9-17, the route starts at the airport and then runs clockwise.  In TRNBUILD, if the boarding and alighting nodes were as labeled, the program would force a transfer at the route start/end node.  However, in reality passengers would stay on the bus which is reflected in PT using the CIRCULAR variable.  
+
+![Figure 9-17. Circular Coding Example 1](figs/CircularCoding1.png)
+
+
+The circular logic is also helpful when routes operate on one-way facilities and/or have deviating alignments by direction.  For example, there are numerous buses operating in the downtown area where this is the case.  One example is provided in Figure 9-18.  The route operates on one-way streets in downtown and has a different alignment on the eastern portion of the route.  Previously, this route would have been coded as two separate routes to reflect this pattern.  With the circular logic, the entire alignment can be coded as one route.  Where the route doubles back on itself the coding can be a bit difficult because Cube doesn't allow the backtracking without the user clicking on each individual node and holding down either the Shift key or the Alt key.  The Shift key will make the node a stop node while the Alt key will result in a non-stop node.  
+
+Alternatively, the user could initially code the alignment as two separate one-way routes and then open the route text file in order to merge the routes together.  The user would copy/paste the reverse direction nodes at the end of the other route and then delete the reverse route.  A simple example of how the copy/paste would work is shown in Figure 9-19.  In this example, once the user pasted the backtracking nodes to 'TestRoute', the route called 'TestRoute2' would be deleted from the text file.
+
+![Figure 9-18. Circular Coding Example 2](figs/CircularCoding2.png)
+
+![Figure 9-19. Circular Coding Example 3](figs/CircularCoding3.png)
+
+
+# Section 9.4 Transit Related Highway Network Coding
+
+A number of modifications have been made in the representation of transit in the highway network in relation to station coding, park-and-ride coding, and fixed guide-way transit.  
+
+## Section 9.4.1 Station Coding
+
+The link-based coding of stations is similar to the previous version in that transit only links are recommended to represent stations, feeder buses, park-and-ride lots, and transfer links.  However, there have been additional link types added along with node level coding.  The facility types for coding a station with descriptions are:
+
+*	FACTYPE 50: Feeder bus access to station.  
+*	FACTYPE 52: PNR access to parking lot
+*	FACTYPE 53: Transfer between feeder buses and station
+*	FACTYPE 55 (new): Connection between PNR lot and transit station/feeder bus nodes
+*	FACTYPE 98 (new): Pedestrian access to station
+*	FACTYPE 99 (new): Fixed guide-way links for transit (e.g. MARTA rail)
+
+The station coding can become pretty complex as shown in the example in Figure 9-20.  This example is of the MARTA Oakland City Station.  The station includes a feeder bus node, PNR lot, and special pedestrian access.  The FACTYPE 55 links were added due to the conversion from TRNBUILD to PT.  For generating PNR access links, PT requires a direct connection to the transit stop.  For example, if the FACTYPE 55 link were not coded between the PNR node and feeder bus node, drive access paths would not be available to the feeder buses.  
+
+The FACTYPE 98 links were added to represent direct pedestrian access that is not currently reflected in the model network by the road system.  There are numerous examples of this throughout the region including at the Oakland City station.  An aerial photograph of this station is provided in Figure 9-21.  As shown in the aerial, the station is bordered on the east side by railroad tracks.  There is a portal located east of the railroad tracks which allows transit patrons access to the station under the railroad tracks.  The FACTYPE 98 link is coded to represent this access.  Otherwise, the transit paths from the east would require a longer walk using the coded road system.   
+
+![Figure 9-20. Station Coding Example](figs/StationCodingExample.png)
+
+![Figure 9-21. Station Aerial](figs/StationAerial.png)
+
+
+## Section 9.4.2 Transit Coding Highway Node Attributes
+Several node attributes have been added to the highway network to facilitate transit coding for rail stations and PNR lots.  For station coding, the new attributes are STATION and STAFLAG.  The STATION attribute is a text field allowing the user to include the station name.  The STAFLAG attribute is a numeric field which should be coded as a '1' to indicate a station.  This allows the user to manually view station locations.  It is used in Cube Voyager scripts to post-process model results in order to summarize station boardings.  The model also uses STAFLAG as an indicator to allow for longer KNR access connectors to nodes designated as stations as the transit on-board survey data revealed the tendency of longer trips to the MARTA rail stations than ordinary transit stops.  Figure 9-22 is an example of how the Oakland City station is coded in the node attributes.
+
+Previously, PNR lot coding was handled using text files where the user was required to code the PNR lot nodes in two separate files to represent major and minor lots.  This has been streamlined by adding two PNR flags to the node attributes.  To designate a node as a PNR lot, the user sets the PNR attribute to '1'.  To designate the lot as a major lot, the user sets the PNR_MAJOR attribute to '1'.  The model then reads these attributes to in determining the allowable drive access time to the lot.  Currently, the major lots allow for a 40-minute drive time while the minor lots allow for a 10-minute drive time.  A major lot should generally include extensive parking spaces (approximately 1,000 spaces or more).  However, there are some cases where smaller lots could be designated as major lots when the expected market would exceed the 10-minute threshold.  These would include end-of-line locations.  In the case of the base year, the suburban PNR lots serving express buses are a good example of where the 10-minute threshold is not sufficient.  The new PNR attributes make coding more efficient by allowing the user to manually review lot locations and the major lot designation without having to open multiple files as was previously the case.
+
+
+![Figure 9-22. Node Attributes](figs/NodeAttributes.png)
+
+
+## Section 9.4.3 Fixed Guideway Coding
+
+The fixed guide-way coding has been substantially modified.  Previously, the MARTA rail links were coded in a separate text file.  In the new model version, a new facility type (FACTYPE=99) has been included providing the user the ability to code fixed guide-way links directly in the highway network.  Additionally, the user is required to code several link attributes to represent the fixed guide-way speeds, distances, and travel times.  The attributes are:
+
+*	TRNDIST = station to station distance (miles)
+*	TRNSPD = station to station average speed (MPH)
+*	TRNTIME = station to station travel time (minutes)
+
+For the speed and time, it is recommended the average speeds and travel times include the dwell times associated with passenger boarding and alighting.  In the base year, the fixed guide-way links only include MARTA rail.  However, the new facility type could be utilized for any new fixed guide-way projects.  With the attributes part of the input highway network, it allows the user to manually review the fixed guide-way coding without opening multiple files.
+
+
+
+
+

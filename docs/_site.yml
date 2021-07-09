@@ -1,0 +1,83 @@
+name: ARC-model
+output_dir: .
+navbar:
+  title: "ARC Model Documentation"
+  left:
+    - text: "Home"
+      href: index.html
+    - text: "User Guide"
+      menu:
+        - text: "Overview"
+          href: Overview.html
+        - text: "Setup"
+          href: Setup.html    
+        - text: "Running Population Synthesizer"
+          href: RunPopSyn.html    
+        - text: "Running the Model"
+          href: RunModel.html    
+        - text: "Model EXEC Folder"
+          href: ModelEXEC.html    
+        - text: "Model Inputs"
+          href: ModelInputs.html    
+        - text: "Model Outputs"
+          href: ModelOutputs.html    
+        - text: "Highway Network Coding"
+          href: HighwayNetworkCoding.html    
+        - text: "Transit Network Coding"
+          href: TransitNetworkCoding.html    
+        - text: "Shadow Pricing"
+          href: ShadowPricing.html    
+        - text: "Accessibility Calculator"
+          href: AccessibilityCalculator.html    
+        - text: "Transit Project Level Forecast"
+          href: TransitForecast.html    
+        - text: "Activity Based Model Visualization Tool (ABMVIZ)"
+          href: ABMVIZ.html    
+        - text: "Appendix"
+          href: UserGuideAppendix.html    
+    - text: "Specification"
+      menu:
+        - text: "Model Framework"
+          href: ModelFramework.html
+        - text: "Population Synthesizer"
+          href: PopulationSynthesizer.html
+        - text: "Long Term Choice Models"
+          href: LongTermChoiceModels.html    
+        - text: "Activity Patternand Tour Level Models"
+          href: ActivityPatternandTourLevelModels.html
+        - text: "Trip Level Models"
+          href: TripLevelModels.html
+        - text: "Appendix A"
+          href: SpecReportAppendixA.html   
+        - text: "Appendix B"
+          href: SpecReportAppendixB.html            
+    - text: "Calibration"
+      menu:
+        - text: "Introduction"
+          href: Introduction.html
+        - text: "Population Synthesizer"
+          href: PopSyn.html
+        - text: "CT-RAMP"
+          href: Ctramp.html    
+        - text: "External Model"
+          href: ExternalModel.html
+        - text: "Air Passenger Model"
+          href: AirPassengerModel.html
+        - text: "Truck Model"
+          href: TruckModel.html   
+        - text: "Trip Assignment"
+          href: TripAssignment.html             
+  right:
+    - icon: fa-github fa-lg
+      href: https://atlregional.github.io/ARC_Model
+output:
+  html_document:
+    toc: true
+    toc_depth: 2
+    toc_float:
+      collapsed: false
+    includes:
+        after_body: include/after_body.html
+    css: styles.css
+    highlight: textmate
+    theme: yeti

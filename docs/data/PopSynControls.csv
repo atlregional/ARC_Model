@@ -1,0 +1,7 @@
+Control,Categories,Geography,Data Source
+Number of HHs,N/A,Region,ARC socio-economic forecast
+Number of HH by income (2010$),"0-25k, 25k-60k,60k-120k, 120k plus",MAZ (ARC TAZ),ARC socio-economic forecast
+Number of HH by HH size,"1,2,3,4,5,6 plus",MAZ (ARC TAZ),ARC socio-economic forecast
+Number of HH by workers,"0,1,2,3 plus",MAZ (ARC TAZ),CTPP 2010
+Number of persons by age,"0-14, 15-24, 25-34, 35-44, 45-54, 55-64,65-74, 75-84, 85 plus",District (ARC County group),ARC socio-economic forecast
+Number of persons by occupation,"CL23WhiteCollar, CL24Services, CL25Health, CL26Retail, CL27BlueCollar",TAZ (ARC PECAS zone),"PECAS model, CTPP PECAS zone level worker distribution, and total regional employment"

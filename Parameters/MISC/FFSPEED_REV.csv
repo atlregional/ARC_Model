@@ -1,0 +1,20 @@
+FACTYPE,ATYPE1,ATYPE2,ATYPE3,ATYPE4,ATYPE5,ATYPE6,ATYPE7,NAME
+0,7,11,11,11,11,14,14,centroid connector
+1,62,63,63,63,64,65,66,interstate/freeway
+2,43,46,49,52,55,58,61,expressway
+3,43,46,49,52,55,58,61,parkway
+4,64,65,65,65,66,67,68,freeway HOV (concurrent)
+5,64,65,65,65,66,67,68,freeway HOV (barrier sep)
+6,62,63,63,63,64,65,66,freeway truck only
+7,50,50,50,55,55,55,55,system to system ramp
+8,50,50,50,50,50,50,50,exit ramp
+9,45,45,45,50,50,50,50,entrance ramp
+10,23,26,31,35,41,48,53,principal arterial
+11,21,26,29,33,38,43,48,minor arterial
+12,21,26,29,33,38,43,48,arterial HOV
+13,21,26,29,33,38,43,48,arterial truck only
+14,17,23,24,26,30,35,45,collector
+50,12,12,12,12,12,12,12,transit only
+51,20,20,20,20,20,20,20,transit only
+52,20,20,20,20,20,20,20,transit only
+53,20,20,20,20,20,20,20,transit only

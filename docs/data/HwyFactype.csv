@@ -1,0 +1,6 @@
+Facility Type,Observations,Observed Counts,Estimated Volumes,RMSE,%RMSE,Volume/Count Ratio
+Interstate / Freeway,786,42472000,41428000,8360,15%,0.98
+Principal Arterial,1491,21190000,20364000,4902,34%,0.96
+Minor Arterial,3828,26485000,25644000,2999,43%,0.97
+Collector,3929,9170000,7933000,1822,78%,0.87
+Ramps,1083,11585637,10717384,4641,43%,0.93

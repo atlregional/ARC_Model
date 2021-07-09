@@ -1,0 +1,20 @@
+FACTYPE,ADDCAP,NAME
+0,0,centroid connector
+1,1200,interstate/freeway
+2,900,expressway
+3,600,parkway
+4,900,freeway HOV (concurrent)
+5,900,freeway HOV (barrier sep)
+6,900,freeway truck only
+7,900,system to system ramp 
+8,0,exit ramp
+9,0,entrance ramp
+10,300,principal arterial
+11,300,minor arterial
+12,300,arterial HOV
+13,300,arterial truck only
+14,300,collector
+50,0,transit only
+51,0,transit only
+52,0,transit only
+53,0,transit only

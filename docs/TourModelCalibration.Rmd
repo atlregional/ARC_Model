@@ -1,0 +1,323 @@
+---
+title: "Section 3 - Tour Models Calibration"
+output: html_document
+params:
+  properties_file: ""
+---
+
+
+```{r echo=FALSE, warning = FALSE, message=FALSE,progress=FALSE, verbose=FALSE,  fig.width=10, fig.height=6}
+options(scipen = 99)
+knitr::opts_chunk$set(echo = TRUE)
+.libPaths( c( .libPaths()))
+
+library(data.table)
+library(tidyverse)
+library(readxl)
+library(knitr)
+library(kableExtra)
+library(gridExtra)
+library(plotly)
+
+```
+
+```{r echo=FALSE, warning = FALSE, message=FALSE,progress=FALSE, verbose=FALSE,  fig.width=10, fig.height=6}
+
+targetCDAP <- read_excel('data/ARC_CalibrationTargets.xlsx',sheet = 'CDAP',range = 'A1:G9')
+targetTourFreq <- read_excel('data/ARC_CalibrationTargets.xlsx',sheet = 'TourFreq',range = 'A1:E1000') %>% filter(!is.na(tour_category))
+targetTourTOD <- read_excel('data/ARC_CalibrationTargets.xlsx',sheet = 'TourTOD',range = 'A1:F5000') %>% filter(!is.na(TourType))
+targetTourLoc <- read_excel('data/ARC_CalibrationTargets.xlsx',sheet = 'TourLoc',range = 'A1:D1000') %>% filter(!is.na(TourType))
+targetTourLoc <- targetTourLoc %>% mutate(num=ifelse(bin==59,0,num))
+
+modelCDAP <- read_csv('data/3cdapModelSummary.csv')
+modelMandTourFreq <- read_csv('data/4mtf_model.csv')
+modelTourFreq <- read_csv('data/4tfModelSummary.csv')
+modelTourTOD <- read_csv('data/5tourTODModelSummary.csv')
+modelTourLoc <- read_csv('data/6tourLocModelSummary.csv')
+
+```
+
+# Section 3.5 Coordinated Daily Activity Pattern Model 
+
+The Coordinated Daily Activity Pattern model determines the daily activity pattern (DAP) type of each household member. The model assigns one of the three daily activity patterns to each household member - mandatory (M), non-mandatory (N) or home (H). The model was calibrated with the *at home* pattern as the base category. The DAP results are presented below in Table 3-11a and Table 3-11b. 
+
+```{r echo=FALSE, warning = FALSE, message=FALSE,progress=FALSE, verbose=FALSE,  fig.width=10, fig.height=6}
+
+targetCDAP2 <- targetCDAP %>% select(1,6,7,5) %>% mutate_if(is.numeric,function(x) paste0(round(x,1),'%') )
+names(targetCDAP2) <- c('Person Type','M','N','H')
+kable(targetCDAP2,caption = 'Table 3-11a. DAP Observed Shares by person type') %>% 
+  kable_styling("striped", full_width = F)
+
+
+modelCDAP2 <- modelCDAP %>% select(1,6,7,5) %>% mutate_if(is.numeric,function(x) round(x,1)) %>% replace_na(list(`%M`=0)) %>% 
+  mutate_if(is.numeric,function(x) paste0(x,'%') )
+names(modelCDAP2) <- c('Person Type','M','N','H')
+
+kable(modelCDAP2,caption = 'Table 3-11b. DAP Model Shares by person type') %>% 
+  kable_styling("striped", full_width = F)
+
+```
+
+# Section 3.6 Tour Frequency Models
+
+The tour frequency models determine the number of tours for each activity purpose. The models are segmented by person type and separate models are estimated for mandatory tours, individual non-mandatory tours and joint non-mandatory tours. The next three sections describe the calibration results for these three models.
+
+## Mandatory Tour Frequency
+
+The mandatory tour frequency model is applied to those persons in the population assigned a mandatory daily activity pattern. This model generates, at a minimum, one mandatory tour per person with the different alternatives being one work tour, one school tour, two work tours, two school tours, and one work tour plus one school tour. The alternative specific constants for this model are segmented along person types. The model results match the survey results closely and hence no calibration adjustments were required.
+
+```{r echo=FALSE, warning = FALSE, message=FALSE,progress=FALSE, verbose=FALSE,  fig.width=10, fig.height=6}
+targetMandTourFreq <- read_excel('data/ARC_CalibrationTargets.xlsx',sheet = 'TourFreq',range = 'H1:R7') %>% 
+    mutate_if(is.numeric,round) %>% 
+    select(1,10,11,7,8,9) %>% replace(is.na(.),0) %>% 
+    mutate_if(is.numeric,paste0,'%')
+
+names(targetMandTourFreq) <- c('Person type','1 Work Tour', '2 Work Tours', '1 School Tour', '2 School Tours', 'Work and School Tours' )
+
+kable(targetMandTourFreq,caption = 'Table 3-12a. Survey Mandatory Tour Frequency by Person Type',align='r') %>% 
+  kable_styling("striped", full_width = F)
+
+mtf_model <- modelMandTourFreq %>% 
+    mutate_if(is.numeric,round) %>% 
+    select(1,10,11,7,8,9) %>% replace(is.na(.),0) %>% 
+    mutate_if(is.numeric,paste0,'%')
+
+names(mtf_model) <- c('Person type','1 Work Tour', '2 Work Tours', '1 School Tour', '2 School Tours', 'Work and School Tours' )
+
+kable(mtf_model,caption = 'Table 3-12b. Model Mandatory Tour Frequency by Person Type',align='r') %>% 
+  kable_styling("striped", full_width = F)
+
+
+```
+
+## Individual Non-Mandatory Tour Frequency
+
+The individual non-mandatory tour frequency model predicts the number of non-mandatory tours by tour purpose for each household member who has been assigned a mandatory or a non-mandatory daily activity pattern. As with the mandatory tour frequency model, this model is also segmented by person type. It is a two-stage model. First, by tour purpose, it predicts the total number of tours undertaken by the person on a restricted alternative set. The alternatives are 0, 1 and 2+ for escorting tours and 0 and 1+ for shopping, maintenance, eating out, visiting and other discretionary tours. Second, the model uses observed probability distributions to assign 0, 1 or 2 tours conditional on the tour purpose, person type, whether or not the person has a mandatory tour and whether or not the person has a joint tour in her/his activity pattern. This approach reduces the large number of potential alternatives significantly.
+Model calibration was performed on the model that predicts the choice among the restricted set of alternatives. It was found that once this model predicted tour frequency shares reasonably close to the observed ones, the observed probability distributions ensured the correct match to the overall number. The base alternative for calibrating the non-mandatory tour frequency model is the 0 (zero) frequency alternative for each tour purpose.
+In addition to calibrating to the number of tours by purpose, additional calibration was performed to ensure that the total number of tours by person type matches the observed distributions. To this effect, alternative specific constants were added to the model, respectively for 1, 2 and 3+ tours across all purposes. This calibration was performed simultaneously with the tour frequency by tour purpose calibration. The results of this calibration are presented below in Tables 3-13a and 3-13b. 
+
+
+```{r echo=FALSE, warning = FALSE, message=FALSE,progress=FALSE, verbose=FALSE,  fig.width=10, fig.height=6}
+
+inm1 <-  targetTourFreq %>% filter(tour_category=='Individual Non-Mandatory')
+inm1 <- inm1 %>% rowwise() %>% mutate(firstPart = map(agg2,str_split,'_')[[1]][[1]][1],secondPart = map(agg2,str_split,'_')[[1]][[1]][2] )
+inm1 <- inm1 %>% group_by(agg1,firstPart) %>% mutate(pct = round(100*num/sum(num)),pctsum=sum(pct)) %>% select(-num,-tour_category,-summary) %>% ungroup() %>% select(-firstPart)
+
+inm1 <- inm1 %>% mutate(pct = ifelse(secondPart==0,pct+100-pctsum,pct)) %>% select(-pctsum,-secondPart)
+inm2 <- inm1 %>% spread(key = 'agg2',value = 'pct') 
+inm3 <- inm2 %>% select(1, 8,9,10,  14,15,16, 11,12,13,   5,6,7, 2,3,4,  17,18,19      )
+inm3 <- inm3 %>% mutate(agg1=factor(agg1,levels=c('Full-time worker','Part-time worker','College student','Non-working adult','Non-working senior','Driving-age student','Non-driving student','Pre-school'))) %>% arrange(agg1)
+
+names(inm3) <- c('','0','1','2','0','1','2','0','1','2','0','1','2','0','1','2','0','1','2')
+    
+kable(inm3,caption = 'Table 3-13a: Survey Non-Mandatory Tour Frequency by Person Type (in percentages)') %>% 
+  kable_styling(c("striped", "hover"), full_width = F)  %>%
+  add_header_above(c("Person Type" = 1, 'Escorting'=3, 'Shopping'=3, 'Maintenance'=3, 'Eating Out'=3, 'Visiting'=3, 'Discretionary'=3 ))%>%
+  column_spec(c(1,4,7,10,13,16,19), border_right = T)
+
+
+m_inm1 <-  modelTourFreq %>% filter(tour_category=='Individual Non-Mandatory')
+m_inm1 <- m_inm1 %>% rowwise() %>% mutate(firstPart = map(agg2,str_split,'_')[[1]][[1]][1],secondPart = map(agg2,str_split,'_')[[1]][[1]][2] )
+m_inm1 <- m_inm1 %>% group_by(agg1,firstPart) %>% mutate(pct = round(100*num/sum(num)),pctsum=sum(pct)) %>% select(-num,-tour_category,-summary) %>% ungroup() %>% select(-firstPart) 
+m_inm1 <- m_inm1 %>% mutate(pct = ifelse(secondPart==0,pct+100-pctsum,pct)) %>% select(-pctsum,-secondPart)
+
+m_inm2 <- m_inm1 %>% spread(key = 'agg2',value = 'pct') 
+m_inm3 <- m_inm2 %>% select(1, 8,9,10,  14,15,16, 11,12,13,   5,6,7, 2,3,4,  17,18,19      )
+m_inm3 <- m_inm3 %>% mutate(agg1=factor(agg1,levels=c('Full-time worker','Part-time worker','College student','Non-working adult','Non-working senior','Driving-age student','Non-driving student','Pre-school'))) %>% arrange(agg1)
+
+names(m_inm3) <- c('','0','1','2','0','1','2','0','1','2','0','1','2','0','1','2','0','1','2')
+    
+kable(m_inm3,caption = 'Table 3-13b: Model Non-Mandatory Tour Frequency by Person Type') %>% 
+  kable_styling(c("striped", "hover"), full_width = F)  %>%
+  add_header_above(c("Person Type" = 1, 'Escorting'=3, 'Shopping'=3, 'Maintenance'=3, 'Eating Out'=3, 'Visiting'=3, 'Discretionary'=3 )) %>%
+  column_spec(c(1,4,7,10,13,16,19), border_right = T)
+
+```
+
+
+## Joint Tour Frequency
+
+The joint tour frequency models are applied to determine the total number of joint tours undertaken by the household. The model uses tour frequency (0, 1 and 2+) and purpose combinations as the alternatives. The characteristics of the joint tour are also determined by sequentially applying a tour party composition model and then a person participation model. The Figure 3-7 compares the number of joint tours undertaken by household of different size in the target data and in the model output. The results show that the target data and the model output are reasonably close. No calibration was required for the joint tour frequency models.   
+
+
+```{r echo=FALSE, warning = FALSE, message=FALSE,progress=FALSE, verbose=FALSE,  fig.width=10, fig.height=8}
+
+targetJointTourFreq <- read_excel('data/ARC_CalibrationTargets.xlsx',sheet = 'TourFreq',range = 'A1:E1000') %>% 
+    filter(summary=='numtour_hhs') %>% select(-1,-2)
+names(targetJointTourFreq) <- c('numTours','hh_size','totHH')
+targetJointTourFreq <- targetJointTourFreq %>% mutate(numTours=ifelse(numTours>2,2,numTours)) %>% group_by(hh_size,numTours) %>% 
+    summarise(totHH=sum(totHH))
+
+modelTourFreq <- modelTourFreq %>% filter(summary=='numtour_hhs') %>% select(-1,-2)
+names(modelTourFreq) <- c('numTours','hh_size','totHH')
+
+jntFreqSumm <- targetJointTourFreq %>% mutate(source='Target') %>% full_join(
+    modelTourFreq %>% mutate(source='Model')
+) %>% group_by(source,hh_size) %>% 
+    mutate(share = round(100*totHH/sum(totHH))) %>% ungroup() %>% 
+    mutate(hh_size=paste0(hh_size,' Person Household'))
+
+p2 <- ggplot(data=jntFreqSumm,aes(x=numTours,y=share, fill=source)) +
+        geom_bar(stat="identity", position = "dodge")+
+    labs(title=paste0("Figure 3-7. Percentage Share of Households with 0, 1 and 2 Joint Tours by Household Size") ,
+         x="Number of Joint Tours",
+        y="Percentage",
+        color='source')+
+      #scale_y_continuous(limits=c(0,100))+
+  facet_wrap(~hh_size,ncol = 2)+
+  theme(legend.title=element_blank(),
+          axis.text.x=element_text(hjust  = 1))    
+p2
+
+```
+
+
+# Section 3.7 Tour Time of Day Choice Models 
+
+The tour time-of-day choice model simultaneously predicts the tour start and tour end times. In the ARC ABM, the tour start and end times are represented with a resolution of 30 minutes, or 48 time-bins per day. The model is segmented by tour purpose. While models for some tour purposes were estimated jointly , the calibration was performed separately by tour purpose. The mandatory tour time of-day choice models did not require calibration. The non-mandatory tour models required minor adjustments to the alternative specific constants. Specifically, models that were jointly estimated (for example - Maintenance/Shopping and Social/Discretionary) required additional constants to clearly capture purpose-specific peaking patterns. 
+The tour time-of-day choice models employ shift effects to capture the tails of the diurnal distributions. This specification ensures that extreme periods (very short durations or very long durations) have the maximum disutility and hence are less likely to be chosen. However, in application the alternative would still get a non-zero probability even though the observed percentage share might be zero. This discrepancy was addressed by adding negative constants to certain time bins. 
+The three dimensions of the model - departure, arrival and duration - are correlated though not perfectly so. As such, when two dimensions are adjusted, the third generally self-adjusts. The dimensions to adjust were chosen based on deviation from the observed patterns.
+Alternative specific constants were applied to periods that showed a material difference relative to the observed data.  The base alternative is represented by all those periods for which no alternative specific constant is being specified. There is no need to explicitly define one and scale all others as was done with some of the previous models.
+Figure 3-8a through Figure 3-8i compare the observed and the predicted temporal profiles of tours by purpose.
+
+
+```{r echo=FALSE, warning = FALSE, message=FALSE,progress=FALSE, verbose=FALSE,  fig.width=12, fig.height=5}
+
+targetTourTOD1 <- targetTourTOD %>% filter(SummaryType=='Purpose') %>% group_by(TourType,Category,Statistic,Period) %>% summarise(numTour=sum(numTour)) %>% 
+    group_by(TourType,Category,Statistic) %>% mutate(Percentage = round(numTour/sum(numTour)*100,1))
+    
+modelTourTOD1 <- modelTourTOD %>% filter(SummaryType=='Purpose') %>% group_by(TourType,Category,Statistic,Period) %>% summarise(numTour=sum(numTour)) %>% 
+    group_by(TourType,Category,Statistic) %>% mutate(Percentage = round(numTour/sum(numTour)*100,1))
+
+tourTOD1 <- targetTourTOD1 %>% mutate(source='Survey') %>% full_join(
+    modelTourTOD1 %>% mutate(source='Model')
+) %>% mutate(source=paste(source,Statistic))
+ 
+plotArrDepDur <- function(dfArrDep,dfDur, purposeName, figName ){
+    scale_colour_discrete <- function(...) scale_color_brewer(palette="Set2")
+    
+  p1 <- ggplot(data=dfArrDep,
+               aes(x=Period,y=Percentage, colour=source)) +
+        geom_line(size=1)+
+    labs(title=paste0(figName,"Depart Time, Arrive Time and Duration of ", purposeName, " Tour") ,
+         x="Arrival and Departure from Home",
+        y="Percentage",
+        color='source')+
+      #scale_y_continuous(limits=c(0,40))+
+    theme(legend.title=element_blank())+
+    scale_x_continuous(breaks=c(10,18,26,34),
+                             labels=c("8 AM","12 Noon",
+                                "4 PM","8 PM"))
+  
+  # scale_colour_discrete <- function(...) scale_color_brewer(palette="Oranges")
+  
+  p3 <- ggplot(data=dfDur,
+               aes(x=Period,y=Percentage, colour=source)) +
+        geom_line(size=1)+
+    labs(
+         x="Duration (hours)",
+        y="Percentage",
+        color='source')+
+      #scale_y_continuous(limits=c(0,50))+
+      theme_bw()+
+      theme(legend.title=element_blank())+
+    scale_x_continuous(breaks=c(4,8,16,24),
+                             labels=c("2 hrs","4 hrs",
+                                    "8 hrs","12 hrs"))+
+      scale_color_brewer(palette="Set1")
+    
+  
+  return(list(p1,p3))
+}
+
+pp <- plotArrDepDur(tourTOD1 %>% filter(Statistic!='Duration' & Category=='Work'),
+              tourTOD1 %>% filter(Statistic=='Duration'& Category=='Work'),'Work','Figure 3-8a. ')
+pp[[1]];pp[[2]]
+
+pp <- plotArrDepDur(tourTOD1 %>% filter(TourType=='Mandatory' & Statistic!='Duration' & Category=='University'),
+              tourTOD1 %>% filter(TourType=='Mandatory' & Statistic=='Duration'& Category=='University'),'University','Figure 3-8b. ')
+pp[[1]];pp[[2]]
+
+pp <- plotArrDepDur(tourTOD1 %>% filter(Statistic!='Duration' & Category=='School'),
+              tourTOD1 %>% filter(Statistic=='Duration'& Category=='School'),'School','Figure 3-8c. ')
+pp[[1]];pp[[2]]
+
+pp <- plotArrDepDur(tourTOD1 %>% filter(TourType=='Individual Non-Mandatory' & Statistic!='Duration' & Category=='Escorting'),
+              tourTOD1 %>% filter(TourType=='Individual Non-Mandatory' & Statistic=='Duration'& Category=='Escorting'),'Escorting','Figure 3-8d. ')
+pp[[1]];pp[[2]]
+
+pp <- plotArrDepDur(tourTOD1 %>% filter(TourType=='Individual Non-Mandatory' & Statistic!='Duration' & Category=='Maintenance'),
+              tourTOD1 %>% filter(TourType=='Individual Non-Mandatory' & Statistic=='Duration'& Category=='Maintenance'),'Maintenance','Figure 3-8e. ')
+pp[[1]];pp[[2]]
+
+pp <- plotArrDepDur(tourTOD1 %>% filter(TourType=='Individual Non-Mandatory' & Statistic!='Duration' & Category=='EatOut'),
+              tourTOD1 %>% filter(TourType=='Individual Non-Mandatory' & Statistic=='Duration'& Category=='EatOut'),'EatOut','Figure 3-8f. ')
+pp[[1]];pp[[2]]
+
+pp <- plotArrDepDur(tourTOD1 %>% filter(TourType=='Individual Non-Mandatory' & Statistic!='Duration' & Category=='Social'),
+              tourTOD1 %>% filter(TourType=='Individual Non-Mandatory' & Statistic=='Duration'& Category=='Social'),'Social','Figure 3-8g. ')
+pp[[1]];pp[[2]]
+
+pp <- plotArrDepDur(tourTOD1 %>% filter(TourType=='Individual Non-Mandatory' & Statistic!='Duration' & Category=='Discretionary'),
+              tourTOD1 %>% filter(TourType=='Individual Non-Mandatory' & Statistic=='Duration'& Category=='Discretionary'),'Discretionary','Figure 3-8h. ')
+pp[[1]];pp[[2]]
+
+tourTOD2 <- tourTOD1 %>% group_by(TourType,source,Statistic,Period) %>% summarise(numTour=sum(numTour)) %>% ungroup() %>% group_by(TourType,source,Statistic) %>% 
+    mutate(Percentage=round(numTour/sum(numTour)*100,1))
+
+pp <- plotArrDepDur(tourTOD2 %>% filter(TourType=='At-Work' & Statistic!='Duration'),
+              tourTOD2 %>% filter(TourType=='At-Work' & Statistic=='Duration'),'At-Work','Figure 3-8i. ')
+pp[[1]];pp[[2]]
+
+```
+
+# Section 3.8 Non-Mandatory Tour Primary Destination Choice 
+
+
+The non-mandatory tour primary destination choice model determines the location of the tour primary destination for each of the six non-mandatory tour purposes. Size terms for non-mandatory tours were not revised during this calibration. During the 2018 calibration effort, the models were calibrated to targets from the 2011 ARC Household Travel Survey expanded to the 2015 base year conditions. Summaries of the tour length frequency distributions and average tour length were developed for both estimated and observed data. The calibration was done with the aim of matching the shape of the observed tour length frequency curves (the distance between the tour origin and primary destination). All of the models required additional adjustments to the constants on the distance terms in order to better match observed trip length frequency distributions.
+
+The coefficients computed when added to the respective distance bin would change their probability such that the estimated trip length will more closely match the observed trip length. These adjustments are then regressed on the linear and the polynomial terms of the variable which are in the destination choice model (such as linear distance, distance-squared, distance-cubed and log of distance). The coefficients obtained on each of the terms in this regression serve to explain the difference in the observed and the predicted distributions. In addition, a few of the tour purposes required bin specific constants to capture the steep observed trip length frequency curve in the short distance bins. Also, it was ensured that the utility functions computed resulted in a monotonically decreasing function with respect to distance. If that was not the case, distances were capped accordingly. 
+
+```{r echo=FALSE, warning = FALSE, message=FALSE,progress=FALSE, verbose=FALSE,  fig.width=10, fig.height=6}
+
+tldfSumm1 <- full_join(
+    targetTourLoc %>% mutate(source='Survey'),
+    modelTourLoc %>% mutate(source='Model')) %>% 
+    group_by(TourType,Purpose,source) %>% mutate(Percentage=round(100*num/sum(num),1))
+
+tldfSumm2 <- full_join(
+    targetTourLoc %>% mutate(source='Survey'),
+    modelTourLoc %>% mutate(source='Model')) %>% 
+    group_by(TourType,bin,source) %>% summarise(num=sum(num)) %>% group_by(TourType,source) %>% 
+    mutate(Percentage=round(100*num/sum(num),1))
+
+
+plotTLFDFor <- function(dfPurp,purposeName,figName){
+    
+  p1 <- ggplot(data=dfPurp,
+               aes(x=bin,y=Percentage, colour=source)) +
+        geom_line(size=1)+
+    labs(title=paste0(figName,"Tour Length Frequency Distribution: ",purposeName) ,
+         x="Distance in miles",
+        y="Percentage",
+        color='source')+
+      #scale_y_continuous(limits=c(0,40))+
+    theme(legend.title=element_blank())
+  return(p1)
+  
+}
+
+plotTLFDFor(tldfSumm1 %>% filter(TourType=='Individual Non-Mandatory' & Purpose=='Escorting' ), 'Escorting Tours','Figure 3-9a. ')
+plotTLFDFor(tldfSumm1 %>% filter(TourType=='Individual Non-Mandatory' & Purpose=='Maintenance' ), 'Maintenance Tours','Figure 3-9b. ')
+plotTLFDFor(tldfSumm1 %>% filter(TourType=='Individual Non-Mandatory' & Purpose=='Shopping' ), 'Shopping Tours','Figure 3-9c. ')
+plotTLFDFor(tldfSumm1 %>% filter(TourType=='Individual Non-Mandatory' & Purpose=='EatOut' ), 'EatOut Tours','Figure 3-9d. ')
+plotTLFDFor(tldfSumm1 %>% filter(TourType=='Individual Non-Mandatory' & Purpose=='Social' ), 'Social Tours','Figure 3-9e. ')
+plotTLFDFor(tldfSumm1 %>% filter(TourType=='Individual Non-Mandatory' & Purpose=='Discretionary' ), 'Discretionary Tours','Figure 3-9f. ')
+
+plotTLFDFor(tldfSumm2 %>% filter(TourType=='At-Work'), 'At-Work Sub-Tours','Figure 3-9g. ')
+
+
+```
+
+
+

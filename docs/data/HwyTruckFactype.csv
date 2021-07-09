@@ -1,0 +1,7 @@
+Facility Type,Observations,Volume / Count Ratio,Observations,Medium Truck Volume / Count Ratio,Heavy Truck Volume / Count Ratio
+Interstate,84,1.19,72,1.51,0.88
+Expressway / Parkway,106,1.10,64,0.88,0.83
+Ramps,20,0.77,3,1.24,0.96
+Arterials,3953,0.91,1042,0.92,1.04
+Collectors,1903,0.65,214,0.84,1.68
+Total,6066,0.96,1395,1.10,0.94

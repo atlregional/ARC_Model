@@ -1,0 +1,898 @@
+---
+title: "Appendix B"
+output: html_document
+---
+
+This appendix includes the parameters that were estimated for all the different sub-models in CT-RAMP. It does not reflect the modifications as a result of model calibration. The calibration report will include all the latest model parameters obtained after base year model calibration.
+
+**Table B-1 Work from Home Model Parameters**    
+
+* Observations = 13,337    
+* Akaike information criterion (ARC) = 8520.9    
+
+```{r,echo=F,message=F,warning=F,output=F,out.height=700}
+library(tidyverse)
+library(knitr)
+library(DT)
+library(kableExtra)
+library(readxl)
+
+read_excel_round <- function(fname,ftab,frange){
+  tempTab <- read_excel(fname,ftab,frange)
+  dimtempTab <- dim(tempTab)
+  options(warn=-1)
+  for(iloop in 1:dimtempTab[1]){
+    for(jloop in 1:dimtempTab[2]){
+      if(is.numeric(tempTab[iloop,jloop])){
+        tempTab[iloop,jloop] <- round(tempTab[iloop,jloop],7)
+        print(tempTab[iloop,jloop])
+      }
+      else{
+        numVal <- as.numeric(tempTab[iloop,jloop])
+        tempTab[iloop,jloop] <- ifelse(!is.na(numVal),as.character(round(numVal,7)),tempTab[iloop,jloop])  
+      }
+      
+    }
+  }
+  options(warn=0)
+  return(tempTab)
+}
+
+B1<- read_excel_round('data/ModelSpecificationTables.xlsx','B1','B3:D17')
+B1[is.na(B1)] <- ''
+
+
+kable(B1, format.args = list(big.mark = ",")) %>%
+  kable_styling("striped") %>% 
+        add_header_above(c(" " = 1, "Work from Home Choice"=2))
+```
+
+
+**Table B-2 Workplace Location Choice Model**
+
+* Obserations = 7,938    
+* Final log likelihood = -47,775.1    
+* Rho-squared = 0.190    
+
+```{r,echo=F,message=F,warning=F,output=F,out.height=700}
+B2 <- read_excel_round('data/ModelSpecificationTables.xlsx','B2','B3:D34')
+B2[is.na(B2)] <- ''
+
+B2_append <- read_excel('data/ModelSpecificationTables.xlsx','B2','A3:A34',col_names = 'vec')
+B2_append <- B2_append[!is.na(B2_append$vec),]
+
+
+kable(B2, format.args = list(big.mark = ","),col.names = c('','','')) %>%
+  kable_styling("striped") %>%
+    add_header_above(c("Explanatory variables"=1,"Coeff."=1,"t-Stat"=1)) %>%
+     add_indent(B2_append$vec)
+```
+*The values shown for the size term variables are the exponentiated coefficients.*
+
+**Table B-3 K-12 and University School Location Choice Model Parameters**
+
+K-12    
+* Obserations = 2,552    
+* Final log likelihood = -1,724    
+* Rho-squared = 0.434    
+
+University    
+* Obserations = 912    
+* Final log likelihood = -4,529    
+* Rho-squared = 0.331    
+
+```{r,echo=F,message=F,warning=F,output=F,out.height=700}
+
+B3<- read_excel_round('data/ModelSpecificationTables.xlsx','B3','B3:F19')
+B3[is.na(B3)] <- ''
+
+B3_append <- read_excel('data/ModelSpecificationTables.xlsx','B3','A3:A19',col_names = 'vec')
+B3_append <- B3_append[!is.na(B3_append$vec),]
+
+
+kable(B3, format.args = list(big.mark = ","),col.names = c('','','','','')) %>%
+  kable_styling("striped") %>% 
+    add_header_above(c("Explanatory variables"=1,"Coeff."=1,"t-Stat"=1,	"Coeff."=1,"t-Stat"=1)) %>%
+        add_header_above(c(" " = 1, "Usual School Location K-12"=2,		"Usual School Location University"=2)) %>% 
+     add_indent(B3_append$vec)
+```
+
+*The values shown for the size term variables are the exponentiated coefficients.*
+
+
+**Table B-4 Auto Ownership Model Parameters**
+
+* Obserations = 10,278    
+* Final log likelihood = -8,539    
+* Rho-squared(0) = 0.371    
+* Rho-squared (constants) = 0.305   
+
+```{r,echo=F,message=F,warning=F,output=F,out.height=700}
+
+B4<- read_excel_round('data/ModelSpecificationTables.xlsx','B4','B3:J59')
+B4[is.na(B4)] <- ''
+
+B4_append <- read_excel('data/ModelSpecificationTables.xlsx','B4','A3:A59',col_names = 'vec')
+B4_append <- B4_append[!is.na(B4_append$vec),]
+
+
+kable(B4, format.args = list(big.mark = ","),col.names = c('','','','','','','','','')) %>%
+  kable_styling("striped") %>% 
+    add_header_above(c("Explanatory variables"=1,"Coeff."=1,"t-Stat"=1,	"Coeff."=1,"t-Stat"=1,"Coeff."=1,"t-Stat"=1,"Coeff."=1,"t-Stat"=1)) %>%
+        add_header_above(c(" " = 1, "0 cars"=2,		"1 car"=2,		"2 cars"=2,		"3+ cars"=2)) %>% 
+     add_indent(B4_append$vec)
+```
+
+
+**Table B-5 Free Parking Eligibility Model Parameters**
+
+```{r,echo=F,message=F,warning=F,output=F,out.height=700}
+
+B5<- read_excel_round('data/ModelSpecificationTables.xlsx','B5','B3:D9')
+B5[is.na(B5)] <- ''
+
+
+kable(B5, format.args = list(big.mark = ",")) %>%
+  kable_styling("striped") %>% 
+        add_header_above(c(" " = 1, "Free Parking Choice"=2))
+```
+
+**Table B-6 Coordinated Daily Activity Pattern Model Parameters**
+
+* Obserations = 13,677    
+* Final log likelihood = -19,404    
+* Rho-squared(0) = 0.422    
+* Rho-squared (constants) = 0.264   
+
+```{r,echo=F,message=F,warning=F,output=F,out.height=700}
+
+B6<- read_excel_round('data/ModelSpecificationTables.xlsx','B6','B3:H114')
+B6[is.na(B6)] <- ''
+
+B6_append <- read_excel('data/ModelSpecificationTables.xlsx','B6','A3:A114',col_names = 'vec')
+B6_append <- B6_append[!is.na(B6_append$vec),]
+
+
+kable(B6, format.args = list(big.mark = ","),col.names = c('','','','','','','')) %>%
+  kable_styling("striped") %>% 
+    add_header_above(c("Explanatory variables"=1,"Coefficient"=1,"t-Stat"=1,"Coefficient"=1,"t-Stat"=1,"Coefficient"=1,"t-Stat"=1)) %>%  
+        add_header_above(c(" "=1,"Mandatory"=2,"Non-Mandatory"=2,"Home All Day"=2)) %>%
+     add_indent(B6_append$vec)
+```
+
+
+**Table B-7 Individual Mandatory Tour Frequency Model Parameters**
+
+* Initial likelihood (zero coefficients) = -23,277    
+* Likelihood with constants only = -13,041
+* Final likelihood = -4,487    
+* Rho-squared(0) = 0.807    
+* Rho-squared (constants) = 0.656   
+
+```{r,echo=F,message=F,warning=F,output=F,out.height=700}
+
+B7<- read_excel_round('data/ModelSpecificationTables.xlsx','B7','B3:G112')
+B7[is.na(B7)] <- ''
+
+B7_append <- read_excel('data/ModelSpecificationTables.xlsx','B7','A3:A112',col_names = 'vec')
+B7_append <- B7_append[!is.na(B7_append$vec),]
+
+
+kable(B7, format.args = list(big.mark = ","),col.names = c('','','','','','')) %>%
+  kable_styling("striped") %>% 
+    add_header_above(c("Person Type" = 1, "1 Work Tour" = 1, "2+ Work Tours" = 1,"1 School Tour" = 1,"2+ School Tours" = 1,"1 Work & 1 School Tour" = 1)) %>% 
+        add_header_above(c("Explanatory variables"=1,"Coefficient & t-Stat Choice Alternative"=5)) %>%
+     add_indent(B7_append$vec)
+```
+
+
+**Table B-8 Work Tour Time of Day Choice Model Parameters**
+
+* Obserations = 9,317    
+* Final log likelihood = -49,912    
+* Rho-squared(0) = 0.237    
+* Rho-squared (constants) = 0.039
+
+```{r,echo=F,message=F,warning=F,output=F,out.height=700}
+
+B8<- read_excel_round('data/ModelSpecificationTables.xlsx','B8','B3:D119')
+B8[is.na(B8)] <- ''
+
+B8_append <- read_excel('data/ModelSpecificationTables.xlsx','B8','A3:A119',col_names = 'vec')
+B8_append <- B8_append[!is.na(B8_append$vec),]
+
+
+kable(B8, format.args = list(big.mark = ","),col.names = c('','','')) %>%
+  kable_styling("striped") %>%
+    add_header_above(c("Explanatory variables"=1,"Coeff."=1,"t-Stat"=1)) %>%
+     add_indent(B8_append$vec)
+```
+
+
+**Table B-9 University Tour Time of Day Choice Model Parameters**
+
+* Obserations = 370    
+* Final log likelihood = -2,231    
+* Rho-squared(0) = 0.143    
+* Rho-squared (constants) = -0.147
+
+```{r,echo=F,message=F,warning=F,output=F,out.height=700}
+
+B9<- read_excel_round('data/ModelSpecificationTables.xlsx','B9','B3:D53')
+B9[is.na(B9)] <- ''
+
+B9_append <- read_excel('data/ModelSpecificationTables.xlsx','B9','A3:A53',col_names = 'vec')
+B9_append <- B9_append[!is.na(B9_append$vec),]
+
+
+kable(B9, format.args = list(big.mark = ","),col.names = c('','','')) %>%
+  kable_styling("striped") %>%
+    add_header_above(c("Explanatory variables"=1,"Coeff."=1,"t-Stat"=1)) %>%
+     add_indent(B9_append$vec)
+```
+
+
+**Table B-10 School (K-12) Tour Time of Day Choice Model Parameters**
+
+* Obserations = 4,698    
+* Final log likelihood = -19,159    
+* Rho-squared(0) = 0.421    
+* Rho-squared (constants) = 0.001
+
+```{r,echo=F,message=F,warning=F,output=F,out.height=700}
+
+B10<- read_excel_round('data/ModelSpecificationTables.xlsx','B10','B3:D75')
+B10[is.na(B10)] <- ''
+
+B10_append <- read_excel('data/ModelSpecificationTables.xlsx','B10','A3:A75',col_names = 'vec')
+B10_append <- B10_append[!is.na(B10_append$vec),]
+
+
+kable(B10, format.args = list(big.mark = ","),col.names = c('','','')) %>%
+  kable_styling("striped") %>%
+    add_header_above(c("Explanatory variables"=1,"Coeff."=1,"t-Stat"=1)) %>%
+     add_indent(B10_append$vec)
+```
+
+
+**Table B-11 Joint Tour Frequency Model Parameters**
+
+* Obserations = 8,367    
+* Final log likelihood = -6,836    
+* Rho-squared(0) = 0.732    
+* Rho-squared (constants) = 0.103
+
+```{r,echo=F,message=F,warning=F,output=F,out.height=700}
+
+B11A<- read_excel_round('data/ModelSpecificationTables.xlsx','B11','B4:H34')
+B11A[is.na(B11A)] <- ''
+
+B11A_append <- read_excel('data/ModelSpecificationTables.xlsx','B11','A4:A34',col_names = 'vec')
+B11A_append <- B11A_append[!is.na(B11A_append$vec),]
+
+
+kable(B11A, format.args = list(big.mark = ","),col.names = c('','','','','','','')) %>%
+  kable_styling("striped") %>% 
+    add_header_above(c("Explanatory variables"=1,"Coeff."=1,"t-Stat"=1,	"Coeff."=1,"t-Stat"=1,"Coeff."=1,"t-Stat"=1)) %>%
+        add_header_above(c(" " = 1, "Stay Home"=2,		"Shopping"=2,		"Maintenance"=2)) %>% 
+           add_header_above(c(" " = 1, "Tour Purpose"=6)) %>% 
+     add_indent(B11A_append$vec)
+```
+
+```{r,echo=F,message=F,warning=F,output=F,out.height=700}
+
+B11B<- read_excel_round('data/ModelSpecificationTables.xlsx','B11','B41:H73')
+B11B[is.na(B11B)] <- ''
+
+B11B_append <- read_excel('data/ModelSpecificationTables.xlsx','B11','A41:A73',col_names = 'vec')
+B11B_append <- B11B_append[!is.na(B11B_append$vec),]
+
+
+kable(B11B, format.args = list(big.mark = ","),col.names = c('','','','','','','')) %>%
+  kable_styling("striped") %>% 
+    add_header_above(c("Explanatory variables"=1,"Coeff."=1,"t-Stat"=1,	"Coeff."=1,"t-Stat"=1,"Coeff."=1,"t-Stat"=1)) %>%
+        add_header_above(c(" " = 1, "Visit"=2,		"Discretionary"=2,		"Eating Out"=2)) %>% 
+           add_header_above(c(" " = 1, "Tour Purpose"=6)) %>% 
+     add_indent(B11B_append$vec)
+```
+
+Notes:    
+$^{*}$ The number of people in the household with an out of home (non) mandatory pattern, capped at 3    
+$^{**}$ 1.0 is added to the windows before taking the natural log. 16 hours of the day are used to calculate time windows (630 to 2230)    
+$^{***}$ A single constant was used for each alternative. Constant for purpose combinations applies to all columns.     
+All variables except constants are multiplied by 2 in the 2+ tour alternatives.    
+
+**Table B-12 Joint Tour Party Composition Model Parameters**
+
+```{r,echo=F,message=F,warning=F,output=F,out.height=700}
+
+B12<- read_excel_round('data/ModelSpecificationTables.xlsx','B12','B4:E30')
+B12[is.na(B12)] <- ''
+
+B12_append <- read_excel('data/ModelSpecificationTables.xlsx','B12','A4:A30',col_names = 'vec')
+B12_append <- B12_append[!is.na(B12_append$vec),]
+
+
+kable(B12, format.args = list(big.mark = ","),col.names = c('','','','')) %>%
+  kable_styling("striped") %>% 
+    add_header_above(c("Explanatory variables"=1,"Coeff."=1,"Coeff."=1,"Coeff."=1)) %>%
+        add_header_above(c(" " = 1, "Adult"=1,		"Children"=1,		"Mixed"=1)) %>% 
+           add_header_above(c(" " = 1, "Party Size Composition"=3)) %>% 
+     add_indent(B12_append$vec)
+```
+
+
+**Table B-13 Joint Tour Participation Model Parameters**
+
+```{r,echo=F,message=F,warning=F,output=F,out.height=700}
+
+B13<- read_excel_round('data/ModelSpecificationTables.xlsx','B13','B3:D71')
+B13[is.na(B13)] <- ''
+
+B13_append <- read_excel('data/ModelSpecificationTables.xlsx','B13','A3:A71',col_names = 'vec')
+B13_append <- B13_append[!is.na(B13_append$vec),]
+
+
+kable(B13, format.args = list(big.mark = ","),col.names = c('','','')) %>%
+  kable_styling("striped") %>% 
+    add_header_above(c("Explanatory variables"=1,"Coeff."=1,"Coeff."=1)) %>%
+        add_header_above(c(" " = 1, "TRUE"=1,		"FALSE"=1)) %>% 
+     add_indent(B13_append$vec)
+```
+
+
+**Table B-14 Maintenance Tour Destination Choice Model Parameters**
+
+Escort Tours    
+* Obserations = 2,332    
+* Final log likelihood = -11,386    
+* Rho-squared(0) = 0.343    
+
+Shopping Tours    
+* Obserations = 4,576    
+* Final log likelihood = -21,575    
+* Rho-squared(0) = 0.365    
+
+Other Maintenance    
+* Obserations = 3,075    
+* Final log likelihood = -16,522    
+* Rho-squared(0) = 0.277    
+
+```{r,echo=F,message=F,warning=F,output=F,out.height=700}
+
+B14<- read_excel_round('data/ModelSpecificationTables.xlsx','B14','B3:H26')
+B14[is.na(B14)] <- ''
+
+B14_append <- read_excel('data/ModelSpecificationTables.xlsx','B14','A3:A26',col_names = 'vec')
+B14_append <- B14_append[!is.na(B14_append$vec),]
+
+
+kable(B14, format.args = list(big.mark = ","),col.names = c('','','','','','','')) %>%
+  kable_styling("striped") %>% 
+    add_header_above(c("Explanatory variables"=1,"Coeff."=1,"t-Stat"=1,"Coeff."=1,"t-Stat"=1,"Coeff."=1,"t-Stat"=1)) %>%
+        add_header_above(c(" " = 1, "Escort"=2,		"Shopping"=2,		"Other Maintenance"=2)) %>% 
+     add_indent(B14_append$vec)
+```
+
+Notes:    
+$^{*}$ The values of the size variable coefficients are given in exponentiated form, exp(coef).    
+
+
+**Table B-15 Discretionary Tour Destination Choice Model Parameters**
+
+Escort Tours    
+* Obserations = 1,317    
+* Final log likelihood = -6,626    
+* Rho-squared(0) = 0.323    
+
+Shopping Tours    
+* Obserations = 779    
+* Final log likelihood = -4,507    
+* Rho-squared(0) = 0.221    
+
+Other Maintenance    
+* Obserations = 2,737    
+* Final log likelihood = -14,667    
+* Rho-squared(0) = 0.279    
+
+```{r,echo=F,message=F,warning=F,output=F,out.height=700}
+
+B15<- read_excel_round('data/ModelSpecificationTables.xlsx','B15','B3:H20')
+B15[is.na(B15)] <- ''
+
+B15_append <- read_excel('data/ModelSpecificationTables.xlsx','B15','A3:A20',col_names = 'vec')
+B15_append <- B15_append[!is.na(B15_append$vec),]
+
+
+kable(B15, format.args = list(big.mark = ","),col.names = c('','','','','','','')) %>%
+  kable_styling("striped") %>% 
+    add_header_above(c("Explanatory variables"=1,"Coeff."=1,"t-Stat"=1,"Coeff."=1,"t-Stat"=1,"Coeff."=1,"t-Stat"=1)) %>%
+        add_header_above(c(" " = 1, "Eating Out"=2,		"Social/Visit"=2,		"Other Discretionary"=2)) %>% 
+     add_indent(B15_append$vec)
+```
+
+Notes:    
+$^{*}$ The values of the size variable coefficients are given in exponentiated form, exp(coef).    
+
+
+**Table B-16 Escort Tour Time of Day Choice Model Parameters**
+
+* Obserations = 2,978    
+* Final log likelihood = -12,914    
+* Rho-squared(0) = 0.327    
+* Rho-squared(constants) = 0.048    
+
+```{r,echo=F,message=F,warning=F,output=F,out.height=700}
+
+B16<- read_excel_round('data/ModelSpecificationTables.xlsx','B16','B3:D89')
+B16[is.na(B16)] <- ''
+
+B16_append <- read_excel('data/ModelSpecificationTables.xlsx','B16','A3:A89',col_names = 'vec')
+B16_append <- B16_append[!is.na(B16_append$vec),]
+
+
+kable(B16, format.args = list(big.mark = ","),col.names = c('','','')) %>%
+  kable_styling("striped") %>% 
+    add_header_above(c("Explanatory variables"=1,"Coeff."=1,"t-Stat"=1)) %>%
+     add_indent(B16_append$vec)
+```
+
+**Table B-17 Shopping and Maintenance Tour Time of Day Choice Model Parameters**
+
+* Obserations = 5,460    
+* Final log likelihood = -28,438    
+* Rho-squared(0) = 0.210    
+* Rho-squared(constants) = 0.043    
+
+```{r,echo=F,message=F,warning=F,output=F,out.height=700}
+
+B17<- read_excel_round('data/ModelSpecificationTables.xlsx','B17','B3:D115')
+B17[is.na(B17)] <- ''
+
+B17_append <- read_excel('data/ModelSpecificationTables.xlsx','B17','A3:A115',col_names = 'vec')
+B17_append <- B17_append[!is.na(B17_append$vec),]
+
+
+kable(B17, format.args = list(big.mark = ","),col.names = c('','','')) %>%
+  kable_styling("striped") %>% 
+    add_header_above(c("Explanatory variables"=1,"Coeff."=1,"t-Stat"=1)) %>%
+     add_indent(B17_append$vec)
+```
+
+
+**Table B-18 Eat Out Tour Time of Day Choice Model Parameters**
+
+* Obserations = 775    
+* Final log likelihood = -3,660    
+* Rho-squared(0) = 0.234    
+* Rho-squared(constants) = -0.014    
+
+```{r,echo=F,message=F,warning=F,output=F,out.height=700}
+
+B18<- read_excel_round('data/ModelSpecificationTables.xlsx','B18','B3:D96')
+B18[is.na(B18)] <- ''
+
+B18_append <- read_excel('data/ModelSpecificationTables.xlsx','B18','A3:A96',col_names = 'vec')
+B18_append <- B18_append[!is.na(B18_append$vec),]
+
+
+kable(B18, format.args = list(big.mark = ","),col.names = c('','','')) %>%
+  kable_styling("striped") %>% 
+    add_header_above(c("Explanatory variables"=1,"Coeff."=1,"t-Stat"=1)) %>%
+     add_indent(B18_append$vec)
+```
+
+
+**Table B-19 Social and Discretionary Tour Time of Day Choice Model Parameters**
+
+* Obserations = 3,408        
+* Final log likelihood = -17,352    
+* Rho-squared(0) = 0.181    
+* Rho-squared(constants) = 0.030    
+
+```{r,echo=F,message=F,warning=F,output=F,out.height=700}
+
+B19<- read_excel_round('data/ModelSpecificationTables.xlsx','B19','B3:D114')
+B19[is.na(B19)] <- ''
+
+B19_append <- read_excel('data/ModelSpecificationTables.xlsx','B19','A3:A114',col_names = 'vec')
+B19_append <- B19_append[!is.na(B19_append$vec),]
+
+
+kable(B19, format.args = list(big.mark = ","),col.names = c('','','')) %>%
+  kable_styling("striped") %>% 
+    add_header_above(c("Explanatory variables"=1,"Coeff."=1,"t-Stat"=1)) %>%
+     add_indent(B19_append$vec)
+```
+
+
+**Table B-20 At-Work Sub-Tour Frequency Choice Model Parameters**
+
+```{r,echo=F,message=F,warning=F,output=F,out.height=700}
+
+B20<- read_excel_round('data/ModelSpecificationTables.xlsx','B20','B3:H30')
+B20[is.na(B20)] <- ''
+
+B20_append <- read_excel('data/ModelSpecificationTables.xlsx','B20','A3:A30',col_names = 'vec')
+B20_append <- B20_append[!is.na(B20_append$vec),]
+
+
+kable(B20, format.args = list(big.mark = ","),col.names = c('','','','','','','')) %>%
+  kable_styling("striped") %>% 
+    add_header_above(c("Explanatory variables"=1,"No Sub-Tour"=1,"1 Eating"=1,"1 Business"=1,"1 Maintenance"=1,"2 Business"=1,"2 Eating and Business"=1)) %>%
+     add_indent(B20_append$vec)
+```
+
+Notes:    
+$^{*}$ Area types are as follows: cbd=1, urban=2,3 suburban=4,5,6 rural=7.    
+
+
+**Table B-21 At-Work Sub-Tour Destination Choice Model Parameters**
+
+```{r,echo=F,message=F,warning=F,output=F,out.height=700}
+
+B21<- read_excel_round('data/ModelSpecificationTables.xlsx','B21','B3:C24')
+B21[is.na(B21)] <- ''
+
+B21_append <- read_excel('data/ModelSpecificationTables.xlsx','B21','A3:A24',col_names = 'vec')
+B21_append <- B21_append[!is.na(B21_append$vec),]
+
+
+kable(B21, format.args = list(big.mark = ","),col.names = c('','')) %>%
+  kable_styling("striped") %>% 
+    add_header_above(c("Explanatory variables"=1,"Coefficient"=1)) %>%
+     add_indent(B21_append$vec)
+```
+
+
+**Table B-22 At-Work Sub-Tour Time of Day Choice Model Parameters**
+
+* Obserations = 1,212        
+* Final log likelihood = -4,919    
+* Rho-squared(0) = 0.263    
+* Rho-squared(constants) = 0.016    
+
+```{r,echo=F,message=F,warning=F,output=F,out.height=700}
+
+B22<- read_excel_round('data/ModelSpecificationTables.xlsx','B22','B3:D58')
+B22[is.na(B22)] <- ''
+
+B22_append <- read_excel('data/ModelSpecificationTables.xlsx','B22','A3:A58',col_names = 'vec')
+B22_append <- B22_append[!is.na(B22_append$vec),]
+
+
+kable(B22, format.args = list(big.mark = ","),col.names = c('','','')) %>%
+  kable_styling("striped") %>% 
+    add_header_above(c("Explanatory variables"=1,"Coefficient"=1,"t-Stat"=1)) %>%
+     add_indent(B22_append$vec)
+```
+
+
+**Table B-23 Work Tour Mode Choice Model Parameters**
+
+* Obserations = 11,067        
+* Final log likelihood = -4,765    
+* Rho-squared(0) = 0.570    
+* Rho-squared(constants) = 0.363    
+
+```{r,echo=F,message=F,warning=F,output=F,out.height=700}
+
+B23<- read_excel_round('data/ModelSpecificationTables.xlsx','B23','B4:E74')
+B23[is.na(B23)] <- ''
+
+B23_append <- read_excel('data/ModelSpecificationTables.xlsx','B23','A4:A74',col_names = 'vec')
+B23_append <- B23_append[!is.na(B23_append$vec),]
+
+
+kable(B23, format.args = list(big.mark = ","),col.names = c('','','','')) %>%
+  kable_styling("striped") %>% 
+    add_header_above(c("Explanatory variables"=1,"Coefficient"=1,"t-Stat"=1,"Coefficient"=1)) %>%
+        add_header_above(c(" "=1,"Estimated Parameters"=2,"Application Parameters"=1)) %>%
+     add_indent(B23_append$vec)
+```
+
+Notes:    
+$^{*}$ Refer to the Model Calibration report for the value of the mode and market-specific constants.    
+
+
+**Table B-24 School (K-12) and University Tour Mode Choice Model Parameters**
+
+* Obserations = 3,792        
+* Final log likelihood = -2,690    
+* Rho-squared(0) = 0.353    
+* Rho-squared(constants) = 0.285    
+
+```{r,echo=F,message=F,warning=F,output=F,out.height=700}
+
+B24<- read_excel_round('data/ModelSpecificationTables.xlsx','B24','B4:F66')
+B24[is.na(B24)] <- ''
+
+B24_append <- read_excel('data/ModelSpecificationTables.xlsx','B24','A4:A66',col_names = 'vec')
+B24_append <- B24_append[!is.na(B24_append$vec),]
+
+
+kable(B24, format.args = list(big.mark = ","),col.names = c('','','','','')) %>%
+  kable_styling("striped") %>% 
+    add_header_above(c("Explanatory variables"=1,"Coefficient"=1,"t-Stat"=1,"Coefficient"=1,"Coefficient"=1)) %>%
+        add_header_above(c(" "=1,"Estimated Parameters"=2,"Application Parameters School"=1,"Application Parameters University"=1)) %>%
+     add_indent(B24_append$vec)
+```
+
+
+Notes:    
+$^{*}$ Refer to the Model Calibration report for the value of the mode and market-specific constants.    
+
+
+**Table B-25 Non-Mandatory Tour and At-Work Sub-Tour Mode Choice Model Parameters**
+
+* Obserations = 14,437        
+* Final log likelihood = -6,057    
+* Rho-squared(0) = 0.607    
+* Rho-squared(constants) = 0.473    
+
+```{r,echo=F,message=F,warning=F,output=F,out.height=700}
+
+B25<- read_excel_round('data/ModelSpecificationTables.xlsx','B25','B4:E83')
+B25[is.na(B25)] <- ''
+
+B25_append <- read_excel('data/ModelSpecificationTables.xlsx','B25','A4:A83',col_names = 'vec')
+B25_append <- B25_append[!is.na(B25_append$vec),]
+
+
+kable(B25, format.args = list(big.mark = ","),col.names = c('','','','')) %>%
+  kable_styling("striped") %>% 
+    add_header_above(c("Explanatory variables"=1,"Coefficient"=1,"t-Stat"=1,"Coefficient"=1)) %>%
+        add_header_above(c(" "=1,"Estimated Parameters"=2,"Application Parameters"=1)) %>%
+     add_indent(B25_append$vec)
+```
+
+
+Notes:    
+$^{*}$ Refer to the Model Calibration report for the value of the mode and market-specific constants.  
+
+**Table B-26 Work Tour Stop Frequency Model Parameters**
+
+* Final log likelihood = -16,160    
+* Rho-squared(0) = 0.4489    
+
+```{r,echo=F,message=F,warning=F,output=F,out.height=700}
+
+B26<- read_excel_round('data/ModelSpecificationTables.xlsx','B26','B3:D47')
+B26[is.na(B26)] <- ''
+
+B26_append <- read_excel('data/ModelSpecificationTables.xlsx','B26','A4:A47',col_names = 'vec')
+B26_append <- B26_append[!is.na(B26_append$vec),]
+
+
+kable(B26, format.args = list(big.mark = ","),col.names = c('','','')) %>%
+  kable_styling("striped") %>% 
+    add_header_above(c("Explanatory variables"=1,"Coefficient"=1,"t-Stat"=1)) %>%
+     add_indent(B26_append$vec)
+```
+
+
+**Table B-27 University and School (K-12) Tour Stop Frequency Model Parameters**
+
+University    
+* Final log likelihood = -444    
+* Rho-squared(0) = 0.4032    
+
+School (K-12)    
+* Final log likelihood = -503    
+* Rho-squared(0) = 0.5452    
+
+```{r,echo=F,message=F,warning=F,output=F,out.height=700}
+
+B27<- read_excel_round('data/ModelSpecificationTables.xlsx','B27','B3:F23')
+B27[is.na(B27)] <- ''
+
+B27_append <- read_excel('data/ModelSpecificationTables.xlsx','B27','A4:A23',col_names = 'vec')
+B27_append <- B27_append[!is.na(B27_append$vec),]
+
+
+kable(B27, format.args = list(big.mark = ","),col.names = c('','','','','')) %>%
+  kable_styling("striped") %>% 
+    add_header_above(c("Explanatory variables"=1,"Coefficient"=1,"t-Stat"=1,"Coefficient"=1,"t-Stat"=1)) %>%
+     add_indent(B27_append$vec)
+```
+
+
+**Table B-28 Escort, Shop, and Maintenance Tour Stop Frequency Model Parameters**
+
+Escort    
+* Final log likelihood = -2,219    
+* Rho-squared(0) = 0.475    
+
+Shop    
+* Final log likelihood = -6,222    
+* Rho-squared(0) = 0.190    
+
+Maintenance    
+* Final log likelihood = -2,579    
+* Rho-squared(0) = 0.319    
+
+```{r,echo=F,message=F,warning=F,output=F,out.height=700}
+
+B28<- read_excel_round('data/ModelSpecificationTables.xlsx','B28','B4:H42')
+B28[is.na(B28)] <- ''
+
+B28_append <- read_excel('data/ModelSpecificationTables.xlsx','B28','A4:A42',col_names = 'vec')
+B28_append <- B28_append[!is.na(B28_append$vec),]
+
+
+kable(B28, format.args = list(big.mark = ","),col.names = c('','','','','','','')) %>%
+  kable_styling("striped") %>% 
+    add_header_above(c("Explanatory variables"=1,"Coefficient"=1,"t-Stat"=1,"Coefficient"=1,"t-Stat"=1,"Coefficient"=1,"t-Stat"=1)) %>%
+        add_header_above(c(" "=1,"Escort"=2,"Shopping"=2,"Other Maintenance"=2)) %>%
+     add_indent(B28_append$vec)
+```
+
+
+**Table B-29 Eat Out, Visit, and Other Discretionary Tour Stop Frequency Model Parameters**
+
+Eat Out and Visit    
+* Final log likelihood = -2,032    
+* Rho-squared(0) = 0.306    
+
+Other Discretionary    
+* Final log likelihood = -1,963    
+* Rho-squared(0) = 0.379    
+
+```{r,echo=F,message=F,warning=F,output=F,out.height=700}
+
+B29<- read_excel_round('data/ModelSpecificationTables.xlsx','B29','B4:F27')
+B29[is.na(B29)] <- ''
+
+B29_append <- read_excel('data/ModelSpecificationTables.xlsx','B29','A4:A27',col_names = 'vec')
+B29_append <- B29_append[!is.na(B29_append$vec),]
+
+
+kable(B29, format.args = list(big.mark = ","),col.names = c('','','','','')) %>%
+  kable_styling("striped") %>% 
+    add_header_above(c("Explanatory variables"=1,"Coefficient"=1,"t-Stat"=1,"Coefficient"=1,"t-Stat"=1)) %>%
+        add_header_above(c(" "=1,"Eat Out & Visit"=2,"Other Discretionary"=2)) %>%
+     add_indent(B29_append$vec)
+```
+
+
+**Table B-30 Stop Purpose Frequency Distribution, Outbound Tour Leg**
+
+```{r,echo=F,message=F,warning=F,output=F,out.height=700}
+
+B30<- read_excel_round('data/ModelSpecificationTables.xlsx','B30','B4:N65')
+B30[is.na(B30)] <- ''
+
+kable(B30, format.args = list(big.mark = ","),col.names = c('','','','','','','','','','','','','')) %>%
+  kable_styling("striped") %>% 
+    add_header_above(c("Tour Purpose"=1,"Time of Day"=1,"Person Type"=1,"Work"=1,"Univ."=1,"School"=1,"Escort"=1,"Shop"=1,"Maint."=1,"Eat out"=1,"Visit"=1,"Discr."=1,"Total"=1)) %>%
+        add_header_above(c(" "=3,"Stop Purpose"=10))
+```
+
+
+
+**Table B-31 Stop Purpose Frequency Distribution, Inbound Tour Leg**
+
+
+```{r,echo=F,message=F,warning=F,output=F,out.height=700}
+
+B31<- read_excel_round('data/ModelSpecificationTables.xlsx','B31','B4:N63')
+B31[is.na(B31)] <- ''
+
+kable(B31, format.args = list(big.mark = ","),col.names = c('','','','','','','','','','','','','')) %>%
+  kable_styling("striped") %>% 
+    add_header_above(c("Tour Purpose"=1,"Time of Day"=1,"Person Type"=1,"Work"=1,"Univ."=1,"School"=1,"Escort"=1,"Shop"=1,"Maint."=1,"Eat out"=1,"Visit"=1,"Discr."=1,"Total"=1)) %>%
+        add_header_above(c(" "=3,"Stop Purpose"=10))
+```
+
+
+**Table B-32 Intermediate Stop Destination Choice Models (Impedance Variables)**
+
+```{r,echo=F,message=F,warning=F,output=F,out.height=700}
+
+B32<- read_excel_round('data/ModelSpecificationTables.xlsx','B32','B3:D24')
+B32[is.na(B32)] <- ''
+
+B32_append <- read_excel('data/ModelSpecificationTables.xlsx','B32','A4:A24',col_names = 'vec')
+B32_append <- B32_append[!is.na(B32_append$vec),]
+
+
+kable(B32, format.args = list(big.mark = ","),col.names = c('','','')) %>%
+  kable_styling("striped") %>% 
+    add_header_above(c("Explanatory variables"=1,"Coefficient"=1,"t-Stat"=1)) %>%
+     add_indent(B32_append$vec)
+```
+
+
+**Table B-33 Intermediate Stop Destination Choice Models (Size Variables)**
+
+* Observations = 22,049    
+* Final log likelihood = -104,049    
+* Rho-squared(0) = 0.363    
+
+```{r,echo=F,message=F,warning=F,output=F,out.height=700}
+
+B33<- read_excel_round('data/ModelSpecificationTables.xlsx','B33','B4:J13')
+B33[is.na(B33)] <- ''
+
+B33_append <- read_excel('data/ModelSpecificationTables.xlsx','B33','A4:A13',col_names = 'vec')
+B33_append <- B33_append[!is.na(B33_append$vec),]
+
+
+kable(B33, format.args = list(big.mark = ","),col.names = c('','','','','','','','','')) %>%
+  kable_styling("striped") %>% 
+    add_header_above(c("Tour Purpose"=1,"exp(c)"=1,"t-Stat"=1,"exp(c)"=1,"t-Stat"=1,"exp(c)"=1,"t-Stat"=1,"exp(c)"=1,"t-Stat"=1)) %>%
+        add_header_above(c(" "=1,"Retail"=2,"Service"=2,"Other"=2,"Households"=2)) %>%
+     add_indent(B33_append$vec)
+```
+
+
+**Table B-34 Work, University, and At-Work Trip Mode Choice Model Parameters**
+
+```{r,echo=F,message=F,warning=F,output=F,out.height=700}
+
+B34<- read_excel_round('data/ModelSpecificationTables.xlsx','B34','B4:F24')
+B34[is.na(B34)] <- ''
+
+B34_append <- read_excel('data/ModelSpecificationTables.xlsx','B34','A4:A24',col_names = 'vec')
+B34_append <- B34_append[!is.na(B34_append$vec),]
+
+
+kable(B34, format.args = list(big.mark = ","),col.names = c('','','','','')) %>%
+  kable_styling("striped") %>% 
+    add_header_above(c("Explanatory Variables"=1,"Coefficient"=1,"Ratio"=1,"Coefficient"=1,"Ratio"=1)) %>%
+        add_header_above(c(" "=1,"Work and University Tours"=2,"At-Work Tours"=2)) %>%
+     add_indent(B34_append$vec)
+```
+
+Notes:    
+$^{*}$ Refer to the Model Calibration report for the value of the mode and market-specific constants.  
+
+**Table B-35 School and Non-Mandatory Trip Mode Choice Model Parameters**
+
+```{r,echo=F,message=F,warning=F,output=F,out.height=700}
+
+B35<- read_excel_round('data/ModelSpecificationTables.xlsx','B35','B4:F24')
+B35[is.na(B35)] <- ''
+
+B35_append <- read_excel('data/ModelSpecificationTables.xlsx','B35','A4:A24',col_names = 'vec')
+B35_append <- B35_append[!is.na(B35_append$vec),]
+
+
+kable(B35, format.args = list(big.mark = ","),col.names = c('','','','','')) %>%
+  kable_styling("striped") %>% 
+    add_header_above(c("Explanatory Variables"=1,"Coefficient"=1,"Ratio"=1,"Coefficient"=1,"Ratio"=1)) %>%
+        add_header_above(c(" "=1,"School Tours"=2,"Non-Mandatory Tours"=2)) %>%
+     add_indent(B35_append$vec)
+```
+
+Notes:    
+$^{*}$ Refer to the Model Calibration report for the value of the mode and market-specific constants.  
+
+
+**Table B-36 Parking Location Choice Model Parameters**
+
+```{r,echo=F,message=F,warning=F,output=F,out.height=700}
+
+B36<- read_excel_round('data/ModelSpecificationTables.xlsx','B36','B5:J15')
+B36[is.na(B36)] <- ''
+
+kable(B36, format.args = list(big.mark = ","),col.names = c('','','','','','','','','')) %>%
+  kable_styling("striped") %>% 
+    add_header_above(c("Explanatory Variables"=1,"Coefficient"=1,"t-Stat"=1,"Coefficient"=1,"t-Stat"=1,"Coefficient"=1,"t-Stat"=1,"Coefficient"=1,"t-Stat"=1)) %>%
+        add_header_above(c(" "=1,"Mandatory Trips"=2,"Non-Mandatory Trips"=2,"Mandatory Trips"=2,"Non-Mandatory Trips"=2)) %>%
+            add_header_above(c(" "=1,"Paid Parkers"=4,"Free Parkers"=4))
+
+```
+
+```{r,echo=F,message=F,warning=F,output=F,out.height=700}
+
+B36a<- read_excel_round('data/ModelSpecificationTables.xlsx','B36','B17:F22')
+B36a[is.na(B36a)] <- ''
+
+kable(B36a, format.args = list(big.mark = ","),col.names = c('','','','','')) %>%
+  kable_styling("striped") %>% 
+        add_header_above(c("Estimation Statistics"=1,"Mandatory Trips"=1,"Non-Mandatory Trips"=1,"Mandatory Trips"=1,"Non-Mandatory Trips"=1)) %>%
+            add_header_above(c(" "=1,"Paid Parkers"=2,"Free Parkers"=2))
+
+```
+

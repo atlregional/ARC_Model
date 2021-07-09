@@ -1,0 +1,856 @@
+---
+title: "Section 3 - Stop and Mode Choice Model Calibration"
+output: html_document
+---
+
+```{r echo=FALSE, warning=FALSE, message=FALSE, progress=FALSE, verbose=FALSE,  fig.width=10, fig.height=6}
+options(scipen = 99)
+knitr::opts_chunk$set(echo = TRUE)
+.libPaths( c( .libPaths()))
+
+library(data.table)
+library(tidyverse)
+library(readxl)
+library(knitr)
+library(kableExtra)
+library(gridExtra)
+library(plotly)
+
+```
+
+```{r echo=FALSE, warning = FALSE, message=FALSE,progress=FALSE, verbose=FALSE,  fig.width=10, fig.height=6}
+
+targetStopFreq        <- read_excel("data/ARC_CalibrationTargets.xlsx", sheet = "StopFreq", range = "A1:D1000")
+targetStopLoc         <- read_excel("data/ARC_CalibrationTargets.xlsx", sheet = "StopLoc",  range = "A1:D1000") 
+targetWorkTourMode    <- read_excel("data/ARC_CalibrationTargets.xlsx", sheet = "TourMode", range = "A4:E21")
+targetUnivTourMode    <- read_excel("data/ARC_CalibrationTargets.xlsx", sheet = "TourMode", range = "A26:E43")
+targetSchoolTourMode  <- read_excel("data/ARC_CalibrationTargets.xlsx", sheet = "TourMode", range = "A48:E65")
+targetIndivNonMan     <- read_excel("data/ARC_CalibrationTargets.xlsx", sheet = "TourMode", range = "A70:E87")
+targetJointNonMan     <- read_excel("data/ARC_CalibrationTargets.xlsx", sheet = "TourMode", range = "A92:E109")
+targetAtWorkTourMode  <- read_excel("data/ARC_CalibrationTargets.xlsx", sheet = "TourMode", range = "A114:E131")
+
+targetWorkTripMode    <- read_excel("data/ARC_CalibrationTargets.xlsx", sheet = "TripMode", range = "A4:N16")
+targetUnivTripMode    <- read_excel("data/ARC_CalibrationTargets.xlsx", sheet = "TripMode", range = "A23:N35")
+targetSchoolTripMode  <- read_excel("data/ARC_CalibrationTargets.xlsx", sheet = "TripMode", range = "A42:N54")
+targetIndivNMTripMode <- read_excel("data/ARC_CalibrationTargets.xlsx", sheet = "TripMode", range = "A61:N73")
+targetJointNMTripMode <- read_excel("data/ARC_CalibrationTargets.xlsx", sheet = "TripMode", range = "A80:N92")
+targetAtWorkTripMode  <- read_excel("data/ARC_CalibrationTargets.xlsx", sheet = "TripMode", range = "A99:N111")
+
+
+modelStopFreq  <- read_csv("data/7stopFreqModelSummary.csv")
+modelStopLoc   <- read_csv("data/8OODModelSummary.csv")
+modelTourMode   <- read_csv("data/9TourModeChoiceSummary.csv")
+modelTripMode <- read_csv("data/10TripModeChoiceSummary.csv")
+
+```
+# Section 3.9 Intermediate Stop Frequency Model
+
+The individual tour stop frequency model predicts the number of stops for each person by primary tour purpose (work, school, university, shopping, escorting, maintenance, discretionary, visiting, and eating). The number of stops is predicted by tour direction - outbound (stops made between home and the primary destination) versus inbound (stops made on the way back home). Thus the models have 16 alternatives: the number of inbound stops (0 through 3) combined with the number of outbound stops (0 through 3). The base alternative for calibrating the individual tour stop frequency model is the 0 outbound and 0 inbound stops alternative. Several runs through the model were done to achieve satisfactory levels of calibration. 
+Table 3-14a shows the target intermediate stop frequency shares for each tour purpose, while Table 3-14b shows the model estimated tour stop frequency probabilities by tour purpose. The model matches the observed stop frequency shares reasonably close.
+
+```{r echo=FALSE, warning=FALSE, message=FALSE, progress=FALSE, verbose=FALSE, fig.width=10, fig.height=6}
+
+targetStopFreq <- targetStopFreq %>% 
+    filter(!is.na(num)) %>% 
+    select(2:4) %>%
+    mutate(nstops = gsub("out", "outbound,", nstops),
+           nstops = gsub("in", "inbound", nstops),
+           Purpose = ifelse(Purpose %in% c("EatOut", "Social/Visit"), 
+                            "Social/Eating Out", Purpose)) %>% 
+    group_by(Purpose, nstops) %>% 
+    summarise(num = sum(num)) %>% 
+    ungroup() %>% 
+    mutate(Purpose = factor(Purpose, levels = c("Work", "University", "School", "Escorting",
+                                                "Shopping", "Maintenance", "Social/Eating Out", 
+                                                "Discretionary", "WorkRelated")),
+           groupsum = ave(num, Purpose, FUN = sum),
+           pct = sprintf("%1.2f%%", num/groupsum*100)) %>% 
+    select(Purpose, nstops, pct) %>% 
+    spread(Purpose, pct)
+
+targetStopFreq[is.na(targetStopFreq)] <- "0.00%"
+
+names(targetStopFreq) <- c("Stop Frequency", "Work", "University", "School", "Escort",
+                           "Shop", "Maintenance", "Social/Eating Out", "Discretionary", 
+                           "Work-Based")
+kable(targetStopFreq,caption = "Table 3-14a. Survey Tour Stop Frequency by Tour Purpose") %>% 
+  kable_styling("striped", full_width = F) %>% 
+  column_spec(1, width = "30em") 
+
+
+modelStopFreq <- modelStopFreq %>% 
+    filter(!is.na(num)) %>% 
+    select(2:4) %>%
+    mutate(nstops = gsub("out", "outbound,", nstops),
+           nstops = gsub("in", "inbound", nstops),
+           Purpose = ifelse(Purpose %in% c("EatOut", "Social/Visit"), 
+                            "Social/Eating Out", Purpose)) %>% 
+    group_by(Purpose, nstops) %>% 
+    summarise(num = sum(num)) %>% 
+    ungroup() %>% 
+    mutate(Purpose = factor(Purpose, levels = c("Work", "University", "School", "Escorting",
+                                                "Shopping", "Maintenance", "Social/Eating Out", 
+                                                "Discretionary", "WorkRelated")),
+           groupsum = ave(num, Purpose, FUN = sum),
+           pct = sprintf("%1.2f%%", num/groupsum*100)) %>% 
+    select(Purpose, nstops, pct) %>% 
+    spread(Purpose, pct)
+
+modelStopFreq[is.na(modelStopFreq)] <- "0.00%"
+
+names(modelStopFreq) <- c("Stop Frequency", "Work", "University", "School", "Escort",
+                           "Shop", "Maintenance", "Social/Eating Out", "Discretionary", 
+                           "Work-Based")
+kable(modelStopFreq, caption = "Table 3-14b. Model Tour Stop Frequency by Tour Purpose") %>% 
+  kable_styling("striped", full_width = F) %>% 
+  column_spec(1, width = "30em") 
+
+```
+
+# Section 3.10 Intermediate Stop Location Choice Model
+
+This model predicts the location of each intermediate stop (each location other than the primary destination) on the tour. The total number of stops is determined by the stop frequency model described above. The ARC stop location model was calibrated to match the target distributions. The stop location choice is determined based on deviation from the shortest path to the primary destination from the current origin. This technique, also known as "rubber-banding" relies on out-of-direction distance to determine the stop location.
+The calibration of the stop location choice model involves generating the out-of-direction distance distributions for the stops from the survey and comparing them with the observed data. The calibration process is similar to the process described for the tour destination choice model - the distance terms are adjusted using regression based adjustments until the shape of the observed curves and estimated curves converge. Bin specific adjustments were also incorporated to get the shape correct. 
+
+
+```{r echo=FALSE, warning=FALSE, message=FALSE, progress=FALSE, verbose=FALSE, fig.width=10, fig.height=6}
+
+oodd <- full_join(
+    targetStopLoc %>%  mutate(source = "Survey") %>% rename(tourpurp = TOURPURP), 
+    modelStopLoc  %>%  mutate(source = "Model")) %>% 
+    filter(!is.na(num)) %>% 
+    select(-tour_category) %>% 
+    group_by(source, tourpurp, bin) %>% 
+    summarise(num = sum(num)) %>% 
+    ungroup() %>% 
+    mutate(groupsum = ave(num, paste0(source, tourpurp), FUN = sum),
+           pct = round(num/groupsum, 2),
+           tourpurp = ifelse(tourpurp %in% c("EatOut", "Eatout"), "Eat-Out", tourpurp),
+           tourpurp = ifelse(tourpurp == "Social/Visit", "Social", tourpurp))
+
+oodd$pct[is.na(oodd$pct)] <- 0
+
+plotTLFDFor <- function(dfPurp, purposeName, tableNum){
+    
+  p1 <- ggplot(data = dfPurp,
+               aes(x = bin, y = pct, colour=source)) +
+        geom_line(size = 1) +
+    labs(title = paste0("Figure ", tableNum, ". Out-of-Direction Distance - ", purposeName),
+         x = "Distance (Miles)",
+         y = "Percentage",
+         color = "source") +
+    scale_y_continuous(limits = c(0, 0.45),
+                       breaks = seq(0, 0.45, 0.05), 
+                       labels = scales::percent)+
+    scale_x_continuous(limits = c(-1, 49),
+                       breaks = seq(-1, 49, 2))
+    theme(legend.title=element_blank())
+  
+  return(p1)
+  
+}
+
+
+plotTLFDFor(oodd %>% filter(tourpurp == "Work" ), "Work Tour", "3-10a") 
+plotTLFDFor(oodd %>% filter(tourpurp == "University" ), "University Tour", "3-10b") 
+plotTLFDFor(oodd %>% filter(tourpurp == "School" ), "School Tour", "3-10c") 
+plotTLFDFor(oodd %>% filter(tourpurp == "Escorting" ), "Escort Tour", "3-10d") 
+plotTLFDFor(oodd %>% filter(tourpurp == "Maintenance" ), "Maintenance Tour", "3-10e") 
+plotTLFDFor(oodd %>% filter(tourpurp == "Shopping" ), "Shopping Tour", "3-10f") 
+plotTLFDFor(oodd %>% filter(tourpurp == "Eat-Out" ), "Eat-Out Tour", "3-10g") 
+plotTLFDFor(oodd %>% filter(tourpurp == "Social" ), "Social Tour", "3-10h") 
+plotTLFDFor(oodd %>% filter(tourpurp == "Discretionary" ), "Discretionary Tour", "3-10i") 
+
+```
+
+# Section 3.11 Tour Mode Choice Model
+
+The tour mode choice model uses a nested logit model to predict the tour mode for each tour. Tour mode share summaries were prepared by tour purpose and auto sufficiency. The data for the calibration of trip and tour mode choice uses the 2011 Household Travel Survey (HTS) as the primary source for the tour mode share information. The travel survey is a rich source of tour level information. However, the survey did not have sufficient coverage for transit trips - hence the 2010 Transit On-Board Survey data, expanded to 2015 conditions, was used to augment the transit mode choice information. The transit survey is a trip intercept survey that gives detailed information about transit trips. The following steps were used to process the transit trip data into tour data: 
+
+1.	Summaries of tour mode choice from the household survey were prepared by tour purpose and auto sufficiency. Transit trips by tour purpose and auto sufficiency were summarized from the on-board survey.
+
+2.	The summaries were inspected for logical consistency. The following updates were made to the summaries:
+
+    * The park and ride mode share for the school purpose was asserted as zero. Any observed data for this segment was added to the work tour as it was likely that the survey was responded by individuals who worked at school (such as teachers) and hence got miscoded as school tours. 
+    * The drive alone tour for joint tours was asserted as zero - the data was very sparse for this segment and hence there was no significant loss of data points because of this change.
+    * The drive alone tours under the zero auto household market were reallocated to the auto deficient market. 
+    * School bus tours for non-school purposes were reallocated to the school tour purpose. 
+3.	Next, the average number of trips per tour was derived for each access mode (walk access, park and ride, and kiss and ride) and tour purpose using the household survey. The implied number of transit tours from the on-board survey could be derived in a straightforward manner by dividing the total transit trips by the 2011 HTS average trips per tour, by purpose and mode. This approach ensures that the estimate of trips per tour is completely consistent with the home interview survey and that the transit tour targets are consistent with the transit trip targets observed in the on-board survey.
+4.	Further, the totals derived in step 3 were split into the different auto sufficiency segments based on the observed percentage of transit trips by tour purpose, auto sufficiency and access mode as implied by the on-board survey.
+5.	Finally, the number of transit tours by transit access mode and auto sufficiency was held constant, and total tours for other modes were scaled to match the total number of tours generated in the model by tour purpose and auto sufficiency. This ensures that the total transit trips, which are based upon observed on-board survey data expanded to transit boardings, will be matched well when the model is applied.
+
+### Base Category for Calibration
+
+The tour mode choice model has all of the detailed modes represented in the trip mode choice model described below. The base modes include Drive Alone, Shared Ride 2 persons, Shared Ride 3+ persons, Bike, Walk, Walk-Transit, Park-and-Ride Transit, and Kiss-and-Ride Transit. Each auto mode includes both free and pay sub-modes, and each transit mode includes both an all-transit option and a premium-only sub-mode option. However, the sub-modes are not considered in later models; in effect, even though utilities are being calculated for each sub-mode, only the base modes described above influence later choices such as stop location and trip mode. 
+The calibration process therefore focuses on matching the base modes by tour purpose and auto sufficiency. The sub-mode constants (such as the MARTA rail constant that measures the non-included attributes of MARTA rail compared to local bus) are introduced in tour mode choice, but held consistent from their calibrated trip mode choice value. That is, since tour mode choice is applied to round-trip travel characteristics, the sub-mode constants are doubled in terms of equivalent in-vehicle time minutes. This ensures consistent elasticities in tour mode choice and trip mode choice, and provides sensitivity in sub-mode options in tour mode choice, as well as time-of-day choice and destination choice through tour mode choice logsums. For the zero auto households market, Shared Ride 2 persons mode is used as the base category. In all other cases except for joint tours, the drive alone mode was held as the base category. For joint tours the Shared Ride 2 persons mode is fixed as the base category for all auto sufficiency markets as drive alone is not available by default. Tour mode choice was also calibrated to ensure that the transit use in individuals in households with different income levels match the observed transit use.
+
+The results of the calibration are shown in Tables 3-15a through 3-15n. 
+
+```{r echo=FALSE, warning=FALSE, message=FALSE, progress=FALSE, verbose=FALSE, fig.width=10, fig.height=6}
+
+formatTourMode <- function(df) {
+    
+    # get tour percentage
+    tourPct <- data.frame(mapply("/", df[,-1], df[17, -1])) %>% mutate_all(scales::percent)
+    
+    # format tour numbers with comma seperator
+    df[, -1] <- format(data.frame(round(df[, -1], 0)), big.mark = ",", scientific = FALSE)
+    
+    # combine numbers and percentage
+    df <- cbind(df, tourPct)
+    colnames(df)[9] <- "Total2"
+    
+    df <- df %>% 
+        mutate(Mode = gsub("Wlk", "Walk", Mode), 
+               Mode = gsub("AllTrn", "All Transit", Mode),
+               Mode = gsub("PremOnly","Premium Only", Mode))
+
+    names(df) <- c("Mode", "Zero Car", "Autos < Workers", "Autos >= Workers", "Total",
+                   "Zero Car", "Autos < Workers", "Autos >= Workers", "Total")
+    
+    return(df)
+}
+
+
+modeList <- data.frame(Mode = c("Drive Alone", "Shared 2", "Shared 3+", "Walk", "Bike", 
+                                "Walk All Transit", "Walk Premium Only", "PNR All Transit",
+                                "PNR Premium Only", "KNR All Transit", "KNR Premium Only", 
+                                "School Bus"))
+
+
+modelTourModeSumm <- function(tourMode) {
+    
+    if (tourMode != "all") {
+        df <- modelTourMode %>% 
+            filter(TourCat == tourMode) %>% 
+            select(-TourCat) 
+    } else {
+        df <- modelTourMode %>% 
+            select(-TourCat) %>% 
+            group_by(auto_suff, ModeABM) %>% 
+            summarise(totTours = sum(totTours)) %>% 
+            ungroup()
+    }
+
+    df <- df %>% 
+        spread(auto_suff, totTours) %>% 
+        mutate(ModeABM = gsub("Wlk", "Walk", ModeABM), 
+               ModeABM = gsub("AllTrn", "All Transit", ModeABM),
+               ModeABM = gsub("PremOnly","Premium Only", ModeABM))
+    df <- full_join(modeList, df, by = c("Mode" = "ModeABM"))
+    df[is.na(df)] <- 0
+
+    # get row total
+    df$Total <- rowSums(df[1:12, 2:4])  
+    
+    # sum up key categories
+    df2 <- rbind(df,  c("Walk-Transit", colSums(df[6:7, 2:5])))
+    df2 <- rbind(df2, c("PNR-Transit",  colSums(df[8:9, 2:5])))
+    df2 <- rbind(df2, c("KNR-Transit",  colSums(df[10:11, 2:5])))
+    df2 <- rbind(df2, c("Premium Transit", colSums(df[c(7, 9, 11), 2:5])))
+    df2 <- rbind(df2, c("Total", colSums(df[, 2:5])))
+    
+    # convert columns from characters back to numbers
+    df2[, 2:5] <- as.data.frame(sapply(df2[,2:5], as.numeric))
+    
+    return(df2)
+
+}
+
+#small fix to rearrange the 'Total' row of non-transit modes
+rearrange_df <- function(df3){
+  target <- c("Drive Alone","Shared 2","Shared 3+","Walk", "Bike", "Walk All Transit", "Walk Premium Only", "PNR All Transit", "PNR Premium Only", "KNR All Transit", "KNR Premium Only", "School Bus","Total","Walk-Transit", "PNR-Transit","KNR-Transit", "Premium Transit")
+  df3 <- df3[match(target, df3$Mode),]
+  row.names(df3) <- NULL
+  return(df3)
+}
+
+
+
+# Work Tour 
+targetWorkFormatted  <- formatTourMode(targetWorkTourMode)
+targetWorkFormatted <- rearrange_df(targetWorkFormatted)
+
+kable(targetWorkFormatted, caption = "Table 3-15a. Tour Mode Choice - Observed Mode Shares Work Tours") %>% 
+  kable_styling(c("striped", "bordered"), full_width = F) %>% 
+  column_spec(1, width = "15em") %>% 
+  column_spec(c(1,4,5,8), border_right = T) %>% 
+  group_rows(group_label = NULL, start_row = 1, end_row = 12) %>% 
+  group_rows(group_label = NULL, start_row = 13, end_row = 13) %>% 
+  group_rows(group_label = NULL, start_row = 14, end_row = 17)
+
+modelWorkTour <- modelTourModeSumm("Work Tours")
+modelWorkFormatted <- rearrange_df(formatTourMode(modelWorkTour))
+
+
+kable(modelWorkFormatted, caption = "Table 3-15b. Tour Mode Choice - Estimated Mode Shares Work Tours") %>% 
+  kable_styling(c("striped", "bordered"), full_width = F) %>% 
+  column_spec(1, width = "15em") %>% 
+  column_spec(c(1,4,5,8), border_right = T) %>% 
+  group_rows(group_label = NULL, start_row = 1, end_row = 12) %>% 
+  group_rows(group_label = NULL, start_row = 13, end_row = 13) %>% 
+  group_rows(group_label = NULL, start_row = 14, end_row = 17)
+    
+
+# University Tour
+
+targetUnivFormatted  <- rearrange_df(formatTourMode(targetUnivTourMode))
+
+kable(targetUnivFormatted, caption = "Table 3-15c. Tour Mode Choice - Observed Mode Shares University Tours") %>% 
+  kable_styling(c("striped", "bordered"), full_width = F) %>% 
+  column_spec(1, width = "15em") %>% 
+  column_spec(c(1,4,5,8), border_right = T) %>% 
+  group_rows(group_label = NULL, start_row = 1, end_row = 12) %>% 
+  group_rows(group_label = NULL, start_row = 13, end_row = 13) %>% 
+  group_rows(group_label = NULL,start_row = 14, end_row = 17)
+
+
+modelUnivTour <- modelTourModeSumm("University Tours")
+modelUnivFormatted <- rearrange_df(formatTourMode(modelUnivTour))
+
+kable(modelUnivFormatted, caption = "Table 3-15d. Tour Mode Choice - Estimated Mode Shares University Tours") %>% 
+  kable_styling(c("striped", "bordered"), full_width = F) %>% 
+  column_spec(1, width = "15em") %>% 
+  column_spec(c(1,4,5,8), border_right = T) %>% 
+  group_rows(group_label = NULL, start_row = 1, end_row = 12) %>% 
+  group_rows(group_label = NULL, start_row = 13, end_row = 13) %>% 
+  group_rows(group_label = NULL,start_row = 14, end_row = 17)
+
+
+# School Tour
+
+targetSchoolFormatted  <- rearrange_df(formatTourMode(targetSchoolTourMode))
+
+kable(targetSchoolFormatted, caption = "Table 3-15e. Tour Mode Choice - Observed Mode Shares School Tours") %>% 
+  kable_styling(c("striped", "bordered"), full_width = F) %>% 
+  column_spec(1, width = "15em") %>% 
+  column_spec(c(1,4,5,8), border_right = T) %>% 
+  group_rows(group_label = NULL, start_row = 1, end_row = 12) %>% 
+  group_rows(group_label = NULL, start_row = 13, end_row = 13) %>% 
+  group_rows(group_label = NULL,start_row = 14, end_row = 17) 
+
+
+modelSchoolTour <- modelTourModeSumm("School Tours")
+modelSchoolFormatted <- rearrange_df(formatTourMode(modelSchoolTour))
+
+kable(modelSchoolFormatted, caption = "Table 3-15f. Tour Mode Choice - Estimated Mode Shares School Tours") %>% 
+  kable_styling(c("striped", "bordered"), full_width = F) %>% 
+  column_spec(1, width = "15em") %>% 
+  column_spec(c(1,4,5,8), border_right = T) %>% 
+  group_rows(group_label = NULL, start_row = 1, end_row = 12) %>% 
+  group_rows(group_label = NULL, start_row = 13, end_row = 13) %>% 
+  group_rows(group_label = NULL,start_row = 14, end_row = 17)
+
+
+# Individual Non-Mandatory Tour
+
+targetIndivNMFormatted  <- rearrange_df(formatTourMode(targetIndivNonMan))
+
+kable(targetIndivNMFormatted, caption = "Table 3-15g. Tour Mode Choice - Observed Mode Shares Individual Non-Mandatory Tours") %>% 
+  kable_styling(c("striped", "bordered"), full_width = F) %>% 
+  column_spec(1, width = "15em") %>% 
+  column_spec(c(1,4,5,8), border_right = T) %>% 
+  group_rows(group_label = NULL, start_row = 1, end_row = 12) %>% 
+  group_rows(group_label = NULL, start_row = 13, end_row = 13) %>% 
+  group_rows(group_label = NULL,start_row = 14, end_row = 17)
+
+
+modelIndivNMTour <- modelTourModeSumm("Individual Non-mandatory Tours")
+modelIndivNMFormatted <- rearrange_df(formatTourMode(modelIndivNMTour))
+
+kable(modelIndivNMFormatted, caption = "Table 3-15h. Tour Mode Choice - Estimated Mode Shares Individual Non-Mandatory Tours") %>% 
+  kable_styling(c("striped", "bordered"), full_width = F) %>% 
+  column_spec(1, width = "15em") %>% 
+  column_spec(c(1,4,5,8), border_right = T) %>% 
+  group_rows(group_label = NULL, start_row = 1, end_row = 12) %>% 
+  group_rows(group_label = NULL, start_row = 13, end_row = 13) %>% 
+  group_rows(group_label = NULL,start_row = 14, end_row = 17)
+
+
+# Individual Non-Mandatory Tour
+
+targetJointNMFormatted  <- rearrange_df(formatTourMode(targetJointNonMan))
+
+kable(targetJointNMFormatted, caption = "Table 3-15i. Tour Mode Choice - Observed Mode Shares Joint Non-Mandatory Tours") %>% 
+  kable_styling(c("striped", "bordered"), full_width = F) %>% 
+  column_spec(1, width = "15em") %>% 
+  column_spec(c(1,4,5,8), border_right = T) %>% 
+  group_rows(group_label = NULL, start_row = 1, end_row = 12) %>% 
+  group_rows(group_label = NULL, start_row = 13, end_row = 13) %>% 
+  group_rows(group_label = NULL,start_row = 14, end_row = 17)
+
+modelJointNMTour <- modelTourModeSumm("Joint Non-mandatory Tours")
+modelJointNMFormatted <- rearrange_df(formatTourMode(modelJointNMTour))
+
+kable(modelJointNMFormatted, caption = "Table 3-15j. Tour Mode Choice - Estimated Mode Shares Joint Non-Mandatory Tours") %>% 
+  kable_styling(c("striped", "bordered"), full_width = F) %>% 
+  column_spec(1, width = "15em") %>% 
+  column_spec(c(1,4,5,8), border_right = T) %>% 
+  group_rows(group_label = NULL, start_row = 1, end_row = 12) %>% 
+  group_rows(group_label = NULL, start_row = 13, end_row = 13) %>% 
+  group_rows(group_label = NULL,start_row = 14, end_row = 17) 
+
+
+# At-Work Tour
+
+targetAtWorkFormatted  <- rearrange_df(formatTourMode(targetAtWorkTourMode))
+
+kable(targetAtWorkFormatted, caption = "Table 3-15k. Tour Mode Choice - Observed Mode Shares At-Work Sub-Tours") %>% 
+  kable_styling(c("striped", "bordered"), full_width = F) %>% 
+  column_spec(1, width = "15em") %>% 
+  column_spec(c(1,4,5,8), border_right = T) %>% 
+  group_rows(group_label = NULL, start_row = 1, end_row = 12) %>% 
+  group_rows(group_label = NULL, start_row = 13, end_row = 13) %>% 
+  group_rows(group_label = NULL,start_row = 14, end_row = 17)
+
+modelAtWorkTour <- modelTourModeSumm("At-Work Subtours")
+modelAtWorkFormatted <- rearrange_df(formatTourMode(modelAtWorkTour))
+
+kable(modelAtWorkFormatted, caption = "Table 3-15l. Tour Mode Choice - Estimated Mode Shares At-Work Sub-Tours") %>% 
+  kable_styling(c("striped", "bordered"), full_width = F) %>% 
+  column_spec(1, width = "15em") %>% 
+  column_spec(c(1,4,5,8), border_right = T) %>% 
+  group_rows(group_label = NULL, start_row = 1, end_row = 12) %>% 
+  group_rows(group_label = NULL, start_row = 13, end_row = 13) %>% 
+  group_rows(group_label = NULL,start_row = 14, end_row = 17)
+
+
+# All TourSs
+
+targetAllTours <- targetWorkTourMode[, 2:5] + 
+                  targetUnivTourMode[, 2:5] +
+                  targetSchoolTourMode[, 2:5] +
+                  targetIndivNonMan[, 2:5] +
+                  targetJointNonMan[, 2:5] +  
+                  targetAtWorkTourMode[, 2:5]
+targetAllTours <- cbind(targetWorkTourMode$Mode, targetAllTours)
+
+colnames(targetAllTours)[1] <- "Mode"
+
+targetAllFormatted  <- rearrange_df(formatTourMode(targetAllTours))
+
+kable(targetAllFormatted, caption = "Table 3-15m. Tour Mode Choice - Observed Mode Shares All Tours") %>% 
+  kable_styling(c("striped", "bordered"), full_width = F) %>% 
+  column_spec(1, width = "15em") %>% 
+  column_spec(c(1,4,5,8), border_right = T) %>% 
+  group_rows(group_label = NULL, start_row = 1, end_row = 12) %>% 
+  group_rows(group_label = NULL, start_row = 13, end_row = 13) %>% 
+  group_rows(group_label = NULL,start_row = 14, end_row = 17)
+
+modelAllTours <- modelTourModeSumm("all")
+modelAllFormatted <- rearrange_df(formatTourMode(modelAllTours))
+
+kable(modelAllFormatted, caption = "Table 3-15n. Tour Mode Choice - Estimated Mode Shares All Tours") %>% 
+  kable_styling(c("striped", "bordered"), full_width = F) %>% 
+  column_spec(1, width = "15em") %>% 
+  column_spec(c(1,4,5,8), border_right = T) %>% 
+  group_rows(group_label = NULL, start_row = 1, end_row = 12) %>% 
+  group_rows(group_label = NULL, start_row = 13, end_row = 13) %>% 
+  group_rows(group_label = NULL,start_row = 14, end_row = 17)
+
+```
+
+
+
+
+
+
+
+# Section 3.12 Trip Mode Choice Model
+
+The trip mode choice model determines the mode used by the individual at the trip level. It uses a *mode-switching* framework. In essence, it computes the probability of a trip mode being chosen conditional on the tour mode. This model was calibrated to ensure the trip mode shares match by tour purpose and tour mode. Similar to the tour mode choice model, the calibration targets for the trip mode choice model use both the 2011 HTS and the 2009-2010 Transit On-Board Survey. The approach to create the trip mode choice calibration targets is similar to those already described above under tour mode choice. Note that if there were no household survey transit trips observed for a specific mode, symmetry (no mode switching) was assumed.
+
+The base alternative for calibrating the trip mode choice model was as follows:
+
+* For drive-alone tours, the base alternative was the drive alone trip mode
+* For shared-ride 2 persons tours, the base alternative was shared-ride two-person trip mode 
+* For shared-ride 3+ person tours, the base alternative was the shared-ride three-plus trip mode
+* For walk tours - no mode switching was allowed
+* For walk-transit tours, the base alternative was the walk-transit trip mode
+* PNR and KNR assume symmetry - hence no constants were applied. 
+
+Tables 3-16a through 3-16x shows the results of the trip mode choice calibration. Tables 3-17a and 3-17b shows the target and model transit trips by household home district and household income category.
+
+```{r echo=FALSE, warning=FALSE, message=FALSE, progress=FALSE, verbose=FALSE, fig.width=10, fig.height=6}
+
+tourModeList <- data.frame(Mode = c("Drive Alone", "Shared 2", "Shared 3+",
+                                    "Walk", "Bike", "Walk-Transit", "PNR-Transit",
+                                    "KNR-Transit", "School Bus"), 
+                           stringsAsFactors = F)
+tripModeList <- data.frame(matrix(ncol = 14, nrow = 0))
+colnames(tripModeList) <- colnames(targetWorkTripMode)
+
+processModelTrips <- function(tourPurp) {
+    
+    df <- modelTripMode %>% 
+        filter(TourCat == tourPurp) %>% 
+        select(-TourCat) %>% 
+        mutate(ModeABMTour = ifelse(grepl("Wlk", ModeABMTour), "Walk-Transit", ModeABMTour),
+               ModeABMTour = ifelse(grepl("PNR", ModeABMTour), "PNR-Transit", ModeABMTour),
+               ModeABMTour = ifelse(grepl("KNR", ModeABMTour), "KNR-Transit", ModeABMTour)) %>% 
+        group_by(ModeABMTour, ModeABMTrip) %>% 
+        summarise(totTrip = sum(totTrip)) %>% 
+        spread(ModeABMTrip, totTrip) 
+
+    df <- full_join(tourModeList, df, by = c("Mode" = "ModeABMTour")) 
+
+    colnames(df)[1] <- "Tour Mode"
+    df <- plyr::rbind.fill(tripModeList, df)
+
+    df[is.na(df)] <- 0
+    df$Total = rowSums(df[, 2:13])
+
+    df <- df %>% 
+        mutate(WlkTrn = `Wlk AllTrn` + `Wlk PremOnly`,
+               PNR = `PNR AllTrn` + `PNR PremOnly`,
+               KNR = `KNR AllTrn` + `KNR PremOnly`)
+    
+    df <- rbind(df, c("Total", colSums(df[1:9, 2:17])))
+    df[, 2:17] <- as.data.frame(sapply(df[, 2:17], as.numeric))
+    
+    colnames(df)[2:4]  <- c("SOV", "SR2", "SR3+")
+    colnames(df)[7:12] <- substr(colnames(df)[7:12], 1, 7)
+    colnames(df)[13]   <- "SchBus"
+    
+    return(df)
+    
+}
+
+processTargetTrips <- function(target, model) {
+    
+    model <- model[1:9, ]
+    
+    target[is.na(target)] <- 0
+
+    df <- rbind(target[c(1:5, 12),], 
+                c("Walk-Transit", colSums(target[6:7, 2:14])))
+    df <- rbind(df, c("PNR-Transit", colSums(target[8:9, 2:14])))
+    df <- rbind(df, c("KNR-Transit", colSums(target[10:11, 2:14])))
+    
+    df[, 2:14] <- as.data.frame(sapply(df[, 2:14], as.numeric))
+    
+    df <- full_join(tourModeList, df, by = c("Mode" = "Tour Mode"))
+    df[is.na(df)] <- 0
+    
+    df <- df %>% 
+        mutate(fac = ifelse(Total > 0, model$Total/Total, 0)) %>% 
+        mutate_at(vars(`Drive Alone`:Total), funs(.*fac)) %>% 
+        mutate(WlkTrn = `Wlk AllTrn` + `Wlk PremOnly`,
+               PNR = `PNR AllTrn` + `PNR PremOnly`,
+               KNR = `KNR AllTrn` + `KNR PremOnly`) %>% 
+        select(-fac) %>% 
+        filter("Tour Mode" != "Total")
+
+    df <- rbind(df, c("Total", colSums(df[1:9, 2:17])))
+    
+    df[, 2:17] <- as.data.frame(sapply(df[,2:17], as.numeric))
+    
+    colnames(df)[2:4]  <- c("SOV", "SR2", "SR3+")
+    colnames(df)[7:12] <- substr(colnames(df)[7:12], 1, 7)
+    colnames(df)[13]   <- "SchBus"
+    
+    return(df)
+    
+}
+
+createPctTable <- function(tripdf) {
+
+    pctdf <- tripdf %>% 
+        mutate_at(vars(c(SOV:SchBus, WlkTrn:KNR)), 
+                  funs(ifelse(Total==0, 0, ./Total))) %>% 
+        mutate(Total = ifelse(Total == 0, 0, 1)) 
+    
+
+    pctdf[, -1] <- round(pctdf[, -1], 2) %>% mutate_all(scales::percent)
+    
+    return(pctdf)
+    
+}
+
+
+# ----------------------- Work Tour -------------------------------------
+
+modelWork  <- processModelTrips("Work Tours")
+targetWork <- processTargetTrips(targetWorkTripMode, modelWork)
+
+#changing the column name as mentioned in the comment
+setnames(modelWork, old=c("Wlk Pre","PNR Pre","KNR Pre"), new=c("Wlk Premium","PNR Premium","KNR Premium"))
+setnames(targetWork, old=c("Wlk Pre","PNR Pre","KNR Pre"), new=c("Wlk Premium","PNR Premium","KNR Premium"))
+
+modelWorkPct  <- createPctTable(modelWork)
+targetWorkPct <- createPctTable(targetWork)
+
+modelWork[, -1]  <- format(data.frame(round(modelWork[, -1], 0)), big.mark = ",", scientific = FALSE)
+targetWork[, -1] <- format(data.frame(round(targetWork[, -1], 0)), big.mark = ",", scientific = FALSE)
+
+
+kable(targetWork, caption = "Table 3-16a. Trip Mode Choice by Tour Purpose and Tour Mode - Observed Trip Mode Summary: Work Tours") %>% 
+  kable_styling(c("striped", "bordered"), full_width = F) %>% 
+  column_spec(1, width = "20em") %>% 
+  column_spec(c(1, 13, 14, 17), border_right = T) %>% 
+  add_header_above(c(" " = 1, "Trip Mode" = 12, " " = 1, "Transit Totals" = 3)) 
+
+
+kable(targetWorkPct, caption = "Table 3-16b. Trip Mode Choice by Tour Purpose and Tour Mode - Observed Trip Mode Shares: Work Tours") %>% 
+  kable_styling(c("striped", "bordered"), full_width = F) %>% 
+  column_spec(1, width = "15em") %>% 
+  column_spec(c(1, 13, 14, 17), border_right = T) %>% 
+  add_header_above(c(" " = 1, "Trip Mode" = 12, " " = 1, "Transit Totals" = 3)) 
+
+
+kable(modelWork, caption = "Table 3-16c. Trip Mode Choice by Tour Purpose and Tour Mode - Estimated Trip Mode Summary: Work Tours") %>% 
+  kable_styling(c("striped", "bordered"), full_width = F) %>% 
+  column_spec(1, width = "15em") %>% 
+  column_spec(c(1, 13, 14, 17), border_right = T) %>% 
+  add_header_above(c(" " = 1, "Trip Mode" = 12, " " = 1, "Transit Totals" = 3)) 
+
+
+kable(modelWorkPct, caption = "Table 3-16d. Trip Mode Choice by Tour Purpose and Tour Mode - Estimated Trip Mode Shares: Work Tours") %>% 
+  kable_styling(c("striped", "bordered"), full_width = F) %>% 
+  column_spec(1, width = "15em") %>% 
+  column_spec(c(1, 13, 14, 17), border_right = T) %>% 
+  add_header_above(c(" " = 1, "Trip Mode" = 12, " " = 1, "Transit Totals" = 3)) 
+
+
+# ----------------------- University Tour -------------------------------------
+
+modelUniv  <- processModelTrips("University Tours")
+targetUniv <- processTargetTrips(targetUnivTripMode, modelUniv)
+
+setnames(modelUniv, old=c("Wlk Pre","PNR Pre","KNR Pre"), new=c("Wlk Premium","PNR Premium","KNR Premium"))
+setnames(targetUniv, old=c("Wlk Pre","PNR Pre","KNR Pre"), new=c("Wlk Premium","PNR Premium","KNR Premium"))
+
+modelUnivPct  <- createPctTable(modelUniv)
+targetUnivPct <- createPctTable(targetUniv)
+
+modelUniv[, -1]  <- format(data.frame(round(modelUniv[, -1], 0)), big.mark = ",", scientific = FALSE)
+targetUniv[, -1] <- format(data.frame(round(targetUniv[, -1], 0)), big.mark = ",", scientific = FALSE)
+
+
+kable(targetUniv, caption = "Table 3-16e. Trip Mode Choice by Tour Purpose and Tour Mode - Observed Trip Mode Summary: University Tours") %>% 
+  kable_styling(c("striped", "bordered"), full_width = F) %>% 
+  column_spec(1, width = "15em") %>% 
+  column_spec(c(1, 13, 14, 17), border_right = T) %>% 
+  add_header_above(c(" " = 1, "Trip Mode" = 12, " " = 1, "Transit Totals" = 3)) 
+
+
+kable(targetUnivPct, caption = "Table 3-16f. Trip Mode Choice by Tour Purpose and Tour Mode - Observed Trip Mode Shares: University Tours") %>% 
+  kable_styling(c("striped", "bordered"), full_width = F) %>% 
+  column_spec(1, width = "15em") %>% 
+  column_spec(c(1, 13, 14, 17), border_right = T) %>% 
+  add_header_above(c(" " = 1, "Trip Mode" = 12, " " = 1, "Transit Totals" = 3)) 
+
+
+kable(modelUniv, caption = "Table 3-16g. Trip Mode Choice by Tour Purpose and Tour Mode - Estimated Trip Mode Summary: University Tours") %>% 
+  kable_styling(c("striped", "bordered"), full_width = F) %>% 
+  column_spec(1, width = "15em") %>% 
+  column_spec(c(1, 13, 14, 17), border_right = T) %>% 
+  add_header_above(c(" " = 1, "Trip Mode" = 12, " " = 1, "Transit Totals" = 3)) 
+
+
+kable(modelUnivPct, caption = "Table 3-16h. Trip Mode Choice by Tour Purpose and Tour Mode - Estimated Trip Mode Shares: University Tours") %>% 
+  kable_styling(c("striped", "bordered"), full_width = F) %>% 
+  column_spec(1, width = "15em") %>% 
+  column_spec(c(1, 13, 14, 17), border_right = T) %>% 
+  add_header_above(c(" " = 1, "Trip Mode" = 12, " " = 1, "Transit Totals" = 3)) 
+
+
+# ----------------------- School Tour -------------------------------------
+
+modelSchool  <- processModelTrips("School Tours")
+targetSchool <- processTargetTrips(targetSchoolTripMode, modelSchool)
+
+setnames(modelSchool, old=c("Wlk Pre","PNR Pre","KNR Pre"), new=c("Wlk Premium","PNR Premium","KNR Premium"))
+setnames(targetSchool, old=c("Wlk Pre","PNR Pre","KNR Pre"), new=c("Wlk Premium","PNR Premium","KNR Premium"))
+
+modelSchoolPct  <- createPctTable(modelSchool)
+targetSchoolPct <- createPctTable(targetSchool)
+
+modelSchool[, -1]  <- format(data.frame(round(modelSchool[, -1], 0)), big.mark = ",", scientific = FALSE)
+targetSchool[, -1] <- format(data.frame(round(targetSchool[, -1], 0)), big.mark = ",", scientific = FALSE)
+
+
+kable(targetSchool, caption = "Table 3-16i. Trip Mode Choice by Tour Purpose and Tour Mode - Observed Trip Mode Summary: School Tours") %>% 
+  kable_styling(c("striped", "bordered"), full_width = F) %>% 
+  column_spec(1, width = "15em") %>% 
+  column_spec(c(1, 13, 14, 17), border_right = T) %>% 
+  add_header_above(c(" " = 1, "Trip Mode" = 12, " " = 1, "Transit Totals" = 3)) 
+
+
+kable(targetSchoolPct, caption = "Table 3-16j. Trip Mode Choice by Tour Purpose and Tour Mode - Observed Trip Mode Shares: School Tours") %>% 
+  kable_styling(c("striped", "bordered"), full_width = F) %>% 
+  column_spec(1, width = "15em") %>% 
+  column_spec(c(1, 13, 14, 17), border_right = T) %>% 
+  add_header_above(c(" " = 1, "Trip Mode" = 12, " " = 1, "Transit Totals" = 3)) 
+
+
+kable(modelSchool, caption = "Table 3-16k. Trip Mode Choice by Tour Purpose and Tour Mode - Estimated Trip Mode Summary: School Tours") %>% 
+  kable_styling(c("striped", "bordered"), full_width = F) %>% 
+  column_spec(1, width = "15em") %>% 
+  column_spec(c(1, 13, 14, 17), border_right = T) %>% 
+  add_header_above(c(" " = 1, "Trip Mode" = 12, " " = 1, "Transit Totals" = 3)) 
+
+
+kable(modelSchoolPct, caption = "Table 3-16l. Trip Mode Choice by Tour Purpose and Tour Mode - Estimated Trip Mode Shares: School Tours") %>% 
+  kable_styling(c("striped", "bordered"), full_width = F) %>% 
+  column_spec(1, width = "15em") %>% 
+  column_spec(c(1, 13, 14, 17), border_right = T) %>% 
+  add_header_above(c(" " = 1, "Trip Mode" = 12, " " = 1, "Transit Totals" = 3)) 
+
+# ----------------------- Individual Non-Mandatory Tour -------------------------------------
+
+modelIndivNM  <- processModelTrips("Individual Non-mandatory Tours")
+targetIndivNM <- processTargetTrips(targetIndivNMTripMode, modelIndivNM)
+
+setnames(modelIndivNM, old=c("Wlk Pre","PNR Pre","KNR Pre"), new=c("Wlk Premium","PNR Premium","KNR Premium"))
+setnames(targetIndivNM, old=c("Wlk Pre","PNR Pre","KNR Pre"), new=c("Wlk Premium","PNR Premium","KNR Premium"))
+
+modelIndivNMPct  <- createPctTable(modelIndivNM)
+targetIndivNMPct <- createPctTable(targetIndivNM)
+
+modelIndivNM[, -1]  <- format(data.frame(round(modelIndivNM[, -1], 0)), big.mark = ",", scientific = FALSE)
+targetIndivNM[, -1] <- format(data.frame(round(targetIndivNM[, -1], 0)), big.mark = ",", scientific = FALSE)
+
+
+kable(targetIndivNM, caption = "Table 3-16m. Trip Mode Choice by Tour Purpose and Tour Mode - Observed Trip Mode Summary: Individual Non-mandatory Tours") %>% 
+  kable_styling(c("striped", "bordered"), full_width = F) %>% 
+  column_spec(1, width = "15em") %>% 
+  column_spec(c(1, 13, 14, 17), border_right = T) %>% 
+  add_header_above(c(" " = 1, "Trip Mode" = 12, " " = 1, "Transit Totals" = 3)) 
+
+
+kable(targetIndivNMPct, caption = "Table 3-16n. Trip Mode Choice by Tour Purpose and Tour Mode - Observed Trip Mode Shares: Individual Non-mandatory Tours") %>% 
+  kable_styling(c("striped", "bordered"), full_width = F) %>% 
+  column_spec(1, width = "15em") %>% 
+  column_spec(c(1, 13, 14, 17), border_right = T) %>% 
+  add_header_above(c(" " = 1, "Trip Mode" = 12, " " = 1, "Transit Totals" = 3)) 
+
+
+kable(modelIndivNM, caption = "Table 3-16o. Trip Mode Choice by Tour Purpose and Tour Mode - Estimated Trip Mode Summary: Individual Non-mandatory Tours") %>% 
+  kable_styling(c("striped", "bordered"), full_width = F) %>% 
+  column_spec(1, width = "15em") %>% 
+  column_spec(c(1, 13, 14, 17), border_right = T) %>% 
+  add_header_above(c(" " = 1, "Trip Mode" = 12, " " = 1, "Transit Totals" = 3)) 
+
+
+kable(modelIndivNMPct, caption = "Table 3-16p. Trip Mode Choice by Tour Purpose and Tour Mode - Estimated Trip Mode Shares: Individual Non-mandatory Tours") %>% 
+  kable_styling(c("striped", "bordered"), full_width = F) %>% 
+  column_spec(1, width = "15em") %>% 
+  column_spec(c(1, 13, 14, 17), border_right = T) %>% 
+  add_header_above(c(" " = 1, "Trip Mode" = 12, " " = 1, "Transit Totals" = 3))
+
+
+# ----------------------- Joint Non-Mandatory Tour -------------------------------------
+
+modelJointNM  <- processModelTrips("Joint Non-mandatory Tours")
+targetJointNM <- processTargetTrips(targetJointNMTripMode, modelJointNM)
+
+setnames(modelJointNM, old=c("Wlk Pre","PNR Pre","KNR Pre"), new=c("Wlk Premium","PNR Premium","KNR Premium"))
+setnames(targetJointNM, old=c("Wlk Pre","PNR Pre","KNR Pre"), new=c("Wlk Premium","PNR Premium","KNR Premium"))
+
+modelJointNMPct  <- createPctTable(modelJointNM)
+targetJointNMPct <- createPctTable(targetJointNM)
+
+modelJointNM[, -1]  <- format(data.frame(round(modelJointNM[, -1], 0)), big.mark = ",", scientific = FALSE)
+targetJointNM[, -1] <- format(data.frame(round(targetJointNM[, -1], 0)), big.mark = ",", scientific = FALSE)
+
+
+kable(targetJointNM, caption = "Table 3-16q. Trip Mode Choice by Tour Purpose and Tour Mode - Observed Trip Mode Summary: Joint Non-mandatory Tours") %>% 
+  kable_styling(c("striped", "bordered"), full_width = F) %>% 
+  column_spec(1, width = "15em") %>% 
+  column_spec(c(1, 13, 14, 17), border_right = T) %>% 
+  add_header_above(c(" " = 1, "Trip Mode" = 12, " " = 1, "Transit Totals" = 3)) 
+
+
+kable(targetJointNMPct, caption = "Table 3-16r. Trip Mode Choice by Tour Purpose and Tour Mode - Observed Trip Mode Shares: Joint Non-mandatory Tours") %>% 
+  kable_styling(c("striped", "bordered"), full_width = F) %>% 
+  column_spec(1, width = "15em") %>% 
+  column_spec(c(1, 13, 14, 17), border_right = T) %>% 
+  add_header_above(c(" " = 1, "Trip Mode" = 12, " " = 1, "Transit Totals" = 3)) 
+
+
+kable(modelJointNM, caption = "Table 3-16s. Trip Mode Choice by Tour Purpose and Tour Mode - Estimated Trip Mode Summary: Joint Non-mandatory Tours") %>% 
+  kable_styling(c("striped", "bordered"), full_width = F) %>% 
+  column_spec(1, width = "15em") %>% 
+  column_spec(c(1, 13, 14, 17), border_right = T) %>% 
+  add_header_above(c(" " = 1, "Trip Mode" = 12, " " = 1, "Transit Totals" = 3)) 
+
+
+kable(modelJointNMPct, caption = "Table 3-16t. Trip Mode Choice by Tour Purpose and Tour Mode - Estimated Trip Mode Shares: Joint Non-mandatory Tours") %>% 
+  kable_styling(c("striped", "bordered"), full_width = F) %>% 
+  column_spec(1, width = "15em") %>% 
+  column_spec(c(1, 13, 14, 17), border_right = T) %>% 
+  add_header_above(c(" " = 1, "Trip Mode" = 12, " " = 1, "Transit Totals" = 3))
+
+
+# ----------------------- At-Work Sub-Tour -------------------------------------
+
+modelAtWork  <- processModelTrips("At-Work Subtours")
+targetAtWork <- processTargetTrips(targetAtWorkTripMode, modelAtWork)
+
+setnames(modelAtWork, old=c("Wlk Pre","PNR Pre","KNR Pre"), new=c("Wlk Premium","PNR Premium","KNR Premium"))
+setnames(targetAtWork, old=c("Wlk Pre","PNR Pre","KNR Pre"), new=c("Wlk Premium","PNR Premium","KNR Premium"))
+
+modelAtWorkPct  <- createPctTable(modelAtWork)
+targetAtWorkPct <- createPctTable(targetAtWork)
+
+modelAtWork[, -1]  <- format(data.frame(round(modelAtWork[, -1], 0)), big.mark = ",", scientific = FALSE)
+targetAtWork[, -1] <- format(data.frame(round(targetAtWork[, -1], 0)), big.mark = ",", scientific = FALSE)
+
+
+kable(targetAtWork, caption = "Table 3-16u. Trip Mode Choice by Tour Purpose and Tour Mode - Observed Trip Mode Summary: At-Work Sub-Tours") %>% 
+  kable_styling(c("striped", "bordered"), full_width = F) %>% 
+  column_spec(1, width = "15em") %>% 
+  column_spec(c(1, 13, 14, 17), border_right = T) %>% 
+  add_header_above(c(" " = 1, "Trip Mode" = 12, " " = 1, "Transit Totals" = 3)) 
+
+
+kable(targetAtWorkPct, caption = "Table 3-16v. Trip Mode Choice by Tour Purpose and Tour Mode - Observed Trip Mode Shares: At-Work Sub-Tours") %>% 
+  kable_styling(c("striped", "bordered"), full_width = F) %>% 
+  column_spec(1, width = "15em") %>% 
+  column_spec(c(1, 13, 14, 17), border_right = T) %>% 
+  add_header_above(c(" " = 1, "Trip Mode" = 12, " " = 1, "Transit Totals" = 3)) 
+
+
+kable(modelAtWork, caption = "Table 3-16w. Trip Mode Choice by Tour Purpose and Tour Mode - Estimated Trip Mode Summary: At-Work Sub-Tours") %>% 
+  kable_styling(c("striped", "bordered"), full_width = F) %>% 
+  column_spec(1, width = "15em") %>% 
+  column_spec(c(1, 13, 14, 17), border_right = T) %>% 
+  add_header_above(c(" " = 1, "Trip Mode" = 12, " " = 1, "Transit Totals" = 3)) 
+
+
+kable(modelAtWorkPct, caption = "Table 3-16x. Trip Mode Choice by Tour Purpose and Tour Mode - Estimated Trip Mode Shares: At-Work Sub-Tours") %>% 
+  kable_styling(c("striped", "bordered"), full_width = F) %>% 
+  column_spec(1, width = "15em") %>% 
+  column_spec(c(1, 13, 14, 17), border_right = T) %>% 
+  add_header_above(c(" " = 1, "Trip Mode" = 12, " " = 1, "Transit Totals" = 3))
+
+```
+
+```{r echo=FALSE, warning=FALSE, message=FALSE, progress=FALSE, verbose=FALSE, fig.width=8, fig.height=6}
+
+targetTripModeIncSummary    <- read_excel("data/ARC_CalibrationTargets.xlsx", sheet = "TripMode", range = "AI4:AP27") %>% mutate_if(is.numeric,round) %>% mutate_if(is.numeric,format,big.mark=',')
+modelTripModeIncSummary     <- read_excel("data/ARC_CalibrationTargets.xlsx", sheet = "TripMode", range = "AI32:AP55") %>% mutate_if(is.numeric,round) %>% mutate_if(is.numeric,format,big.mark=',')
+
+#Changed the name to addressed the comment
+targetTripModeIncSummary$`Home District`[8] <- "Atlanta DeKalb"
+modelTripModeIncSummary$`Home District`[8] <- "Atlanta DeKalb"
+
+colNameVec <- c('Home District', 'Income < $5k' ,'Income $5k to $10k', 'Income $10k to $20k' ,'Income $20k to $30k' ,'Income $30k to $40k' ,'Income > $40k', 'All Households')
+names(targetTripModeIncSummary) <- colNameVec
+names(modelTripModeIncSummary) <- colNameVec
+
+kable(targetTripModeIncSummary,caption='Table 3-17a. Target Transit Trips by Household Home District and Household Income Category',align='r') %>% 
+     kable_styling(c("striped", "bordered"), full_width = F) %>% 
+  column_spec(2:8, width = "1em")
+
+
+kable(modelTripModeIncSummary,caption='Table 3-17b. Model Transit Trips by Household Home District and Household Income Category',align='r') %>% 
+     kable_styling(c("striped", "bordered"), full_width = T) %>% 
+  column_spec(2:8, width = "2.5cm")
+
+```
+
+
+
+

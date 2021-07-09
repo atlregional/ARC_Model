@@ -1,0 +1,69 @@
+---
+title: "Section 11 - Accessibility Calculator"
+output: html_document
+---
+
+The accessibility calculator computes for each LUZ pair the logsum-based accessibilities for 2 time-of-day periods (off-peak, peak), 4 income categories (low, medium, high, very high), and 3 auto sufficiency categories (zero autos, number of autos greater than number of workers, number of autos less than or equal to number of workers).  Thus, a total of 24 origin-based accessibilities are produced for each LUZ.
+
+# Section 11.1 Running the Calculator
+
+The accessibility calculator is included in the ARC CT-RAMP Java archive file, arc.jar.  It is currently set up to run on a single machine using 8 threads but can be configured to utilize additional computational resources through the "accessibility.properties" file under the project directory.  
+
+To run the calculator:
+
+1.	Set Project.Directory in "accessibility.properties" to the current project directory.
+2.	Run the batch file "Config/RunAccessibility.bat" under DOS command.
+
+# Section 11.2 Required Files
+
+Table 11-1 lists the files required to run the accessibility calculator.  All the input .csv and .xls files are specified through accessibility.properties. 
+
+**Table 11-1 Files Needed to Run the Accessibility Calculator**    
+
+```{r,echo=F,message=F,warning=F,output=F,out.height=700}
+library(tidyverse)
+library(knitr)
+library(DT)
+library(kableExtra)
+library(readxl)
+
+T111<- read_excel('data/UserGuideTables.xlsx','T111','B3:C12')
+T111[is.na(T111)] <- ''
+
+kable(T111) %>%
+  kable_styling("striped")
+
+```
+ 
+
+# Section 11.3 Output Files
+
+The calculator produces 24 output files, one for each combination of time-of-day periods, income category, and auto sufficiency category.  Table 11-2 lists the names of the accessibility 24 files and Table 11-3 describes the fields in each of these files.  The calculator also produces a column-wise merge of all 24 accessibilities in "all_accessibilities.csv".  All output files are written to the "accessibility" sub-directory under the project folder. 
+
+**Table 11-2 Accessibility Files Produced by the Accessibility Calculator**    
+
+```{r,echo=F,message=F,warning=F,output=F,out.height=700}
+
+T112<- read_excel('data/UserGuideTables.xlsx','T112','B3:C27')
+T112[is.na(T112)] <- ''
+
+kable(T112) %>%
+  kable_styling("striped")
+
+```
+
+**Table 11-3 Content of Accessibility Files**    
+
+```{r,echo=F,message=F,warning=F,output=F,out.height=700}
+
+T113<- read_excel('data/UserGuideTables.xlsx','T113','B3:C7')
+T113[is.na(T113)] <- ''
+
+kable(T113) %>%
+  kable_styling("striped")
+
+```
+
+
+
+

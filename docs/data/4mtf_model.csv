@@ -1,0 +1,7 @@
+"Person_Type","School1","School2","Work_School","Work1","Work2","%School1","%School2","%Work_School","%Work1","%Work2","Pshort"
+"Full-time worker",,,,1492533,64050,,,,95.89,4.11,"Full-time worker"
+"Part-time worker",,,,221410,12169,,,,94.79,5.21,"Part-time worker"
+"College student",84570,5506,3739,34891,1366,65.02,4.23,2.87,26.82,1.05,"University student"
+"Driving-age student",175923,3633,4443,,,95.61,1.97,2.41,,,"Student of driving age"
+"Non-driving student",687834,6414,,,,99.08,0.92,,,,"Student of non-driving age"
+"Pre-school",192479,,,,,100,,,,,"Child too young for school"

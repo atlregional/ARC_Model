@@ -1,0 +1,16 @@
+Number,Mode Description
+1,Auto Drive Alone (Free)
+2,Auto Drive Alone (Pay)
+3,Auto 2 Person Carpool (Free)
+4,Auto 2 Person Carpool (Pay)
+5,Auto 3 plus Person Carpool (Free)
+6,Auto 3 plus Person Carpool (Pay)
+7,Walk
+8,Bike
+9,Walk-All-Transit
+10,Walk-Premium Transit-Only
+11,PNR-All-Transit
+12,PNR-Premium Transit-Only
+13,KNR-All-Transit
+14,KNR-Premium Transit-Only
+15,School Bus

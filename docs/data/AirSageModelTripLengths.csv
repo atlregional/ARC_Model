@@ -1,0 +1,5 @@
+Purpose,Facility,AirSage,Model,% Difference,Coincidence Ratio
+Home-based work,Interstate,41.8,42.8,2%,0.86
+Home-based work,Non-Interstate,39.7,41.3,4%,0.9
+Non-work,Interstate,36.5,37.1,1%,0.83
+Non-work,Non-Interstate,36.4,37.2,2%,0.89

@@ -1,0 +1,86 @@
+---
+title: "Section 2 - Population Synthesizer"
+output: html_document
+---
+
+
+```{r echo=FALSE, warning = FALSE, message=FALSE,progress=FALSE, verbose=FALSE,  fig.width=10, fig.height=6}
+library(data.table)
+library(tidyverse)
+library(readxl)
+library(knitr)
+library(kableExtra)
+library(gridExtra)
+library(plotly)
+PopSynStats <- read_excel('data/PopSynStats.xlsx','PopSynStats','A1:H30')
+PopSynStats2 <- PopSynStats %>% select(-geoStr,-controlName)
+
+obsLevelData <- read_excel('data/PopSynStats.xlsx','obsLevelData','A1:F82782')
+
+```
+
+This section describes the validation of the population synthesis procedure. The validation of the procedure involves assessing the convergence of the synthesis routine by comparing output synthetic population with the controls. Table 2-1 summarizes the comparison. At a regional level, for each control, the table shows the total number of records (household/person) desired by the control, the total number of records synthesized, the percentage difference between the synthesized totals and the control totals and the percentage root mean squared error and the standard deviation of the absolute error.
+
+
+```{r echo=FALSE, warning = FALSE, message=FALSE,progress=FALSE, verbose=FALSE,  fig.width=10, fig.height=6}
+
+PopSynStats2  %>% mutate_at(vars(Observed:Predicted),format,big.mark=',') %>% kable(caption='Table 2-1. Validation Summary for controls',align='r') %>%
+  kable_styling("striped", full_width = F) %>%
+  group_rows("MAZ Controls ", 1, 15) %>%
+  group_rows("TAZ Controls ", 16, 20) %>% 
+  group_rows("Meta Controls", 21,29)
+
+```
+
+The results in Table 2-1 indicate that the population synthesizer does reasonably well in matching the controls overall, as can be observed by the low absolute and percentage differences across all controls. Clearly, for all three geographies, the synthesizer is able to match the controls very well as can be inferred from the low RMSE and the standard deviations. However, there is more variation at any geography in matching controls that represent a relatively small market (such as household size 6 plus or workers = 0). This is simply an artifact of the multiple dimensions that are being constrained coupled with the lack of records in the seed data for these market segments, leading to somewhat more difficulty in accurately sampling the correct number of records that match all of the constraints for specific geographies. 
+
+Finally, Figure 2-1 visualizes the mean bias and +/- one standard deviation for the controls – the figure reinforces the results discussed just now.
+
+```{r echo=FALSE, warning = FALSE, message=FALSE,progress=FALSE, verbose=FALSE,  fig.width=9, fig.height=15}
+
+p2 <- ggplot(PopSynStats, aes(x = Controls, y=`% Diff`)) +
+  geom_point(shape = 15, colour = "steelblue", size = 2)+
+  geom_errorbar(data = PopSynStats, aes(ymin=`% Diff`-STDEV,ymax=`% Diff`+STDEV), width=0.2, colour = "steelblue") +
+  scale_x_discrete(limits=rev(levels(PopSynStats$controlName))) + 
+  # geom_hline(xintercept=c(0)) +
+  labs(x = NULL, y="Percentage Difference [+/- SDEV]", title = "Figure 2-1. ARC Controls Validation") +
+  coord_flip(ylim = c(-100, 100)) +
+  theme_bw(base_size = 12) +
+  theme(plot.title=element_text(size=16, lineheight=.9, face="bold", vjust=1))
+
+p2 %>% ggplotly()
+
+```
+
+Figure 3-2 and Figure 3-3 below shows the scatterplot for two different controls: one for the total households which is synthesized with very low bias and RMSE and for the number of households with size 6 or more, which is synthesized with higher bias and RMSE. Each point in the scatter plot represent the control and synthesized numbers for the corresponding control. The scatter plot again confirms the earlier conclusion about the convergence for these two controls.
+
+
+```{r echo=FALSE, warning = FALSE, message=FALSE,progress=FALSE, verbose=FALSE,  fig.width=7, fig.height=7}
+df1 <- obsLevelData %>% filter(controlCat=='HH')
+mdl <- lm(Synthesized ~ 0 + Control, data = df1)
+rsq <- signif(summary(mdl)$adj.r.squared, 5)
+gg <- ggplot(df1, aes(Control, Synthesized))+
+    geom_point() + geom_smooth(method = "lm", se = F) +
+    labs(x = "Controls", y="Synthesized", title = "Figure 2-2. Number of households: Control vs. Synthesized")
+gg <- gg + annotate("text",x=ggplot_build(gg)$layout$panel_params[[1]]$x.range[2]*0.66,
+              y=mean(ggplot_build(gg)$layout$panel_params[[1]]$y.range),label=bquote(R^2~'='~.(rsq)) )
+pp <- gg %>% ggplotly() 
+pp %>% layout(annotations =list(x=max(df1$Control)*0.66,y=max(df1$Synthesized)*0.33,text=paste0('R-squared = ',rsq),showarrow=F))
+
+```
+
+```{r echo=FALSE, warning = FALSE, message=FALSE,progress=FALSE, verbose=FALSE,  fig.width=7, fig.height=7}
+
+
+df1 <- obsLevelData %>% filter(controlCat=='HHSIZE6')
+mdl <- lm(Synthesized ~ 0 + Control, data = df1)
+rsq <- signif(summary(mdl)$adj.r.squared, 5)
+gg <- ggplot(df1, aes(Control, Synthesized))+
+    geom_point() + geom_smooth(method = "lm", se = F) +
+    labs(x = "Controls", y="Synthesized", title = "Figure 2-3. Number of households with size=6+: Control vs. Synthesized")
+gg <- gg + annotate("text",x=ggplot_build(gg)$layout$panel_params[[1]]$x.range[2]*0.66,
+              y=mean(ggplot_build(gg)$layout$panel_params[[1]]$y.range),label=bquote(R^2~'='~.(rsq)) )
+pp <- gg %>% ggplotly() 
+pp %>% layout(annotations =list(x=max(df1$Control)*0.66,y=max(df1$Synthesized)*0.33,text=paste0('R-squared = ',rsq),showarrow=F))
+```
+

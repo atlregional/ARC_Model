@@ -1,0 +1,203 @@
+---
+title: "Section 1 - Model Framework"
+output: html_document
+---
+
+
+# Section 1.1 Introduction
+
+The Activity-Based Model (ABM) of the Atlanta Regional Commission (ARC) forecasts typical weekday travel undertaken by residents of the ARC region. It is one of the components of the ARC regional travel demand model, along with the truck, airport, external-external and external-internal models.  This model has been developed to ensure that the regional transportation planning process can rely on forecasting tools that are adequate for new socioeconomic environments and emerging planning challenges.  It is equally suitable for conventional highway projects, transit projects, and various policy studies such as highway pricing and HOV analysis. 
+The ARC model is based on the CT-RAMP (Coordinated Travel Regional Activity-Based Modeling Platform) family of Activity-Based Models.  The CT-RAMP framework, which is fully described in the following section, adheres to the following basic principles:
+
+*	The CT-RAMP design follows advanced principles of modeling individual travel choices with maximum behavioral realism.  In particular, it addresses both household-level and person-level travel choices including intra-household interactions between household members.  
+*	The ARC ABM operates at a detailed temporal (half-hour) level, and considers congestion and pricing effects on time-of-day choice, thus allowing for peak spreading.
+*	The ARC ABM reflects and responds to detailed demographic information, including household structure, aging, changes in wealth, and other key attributes.
+*	The ARC ABM is implemented in the Common Modeling Framework, an open-source library created by Parsons Brinckerhoff specifically for implementing advanced travel demand forecasting models.  
+*	The ARC ABM offers sensitivity to demographic and socio-economic changes observed or expected in the dynamic Atlanta region.  This is ensured by the enhanced and flexible population synthesis procedures as well as by the fine level of model segmentation.  In particular, the ARC ABM incorporates different household, family, and housing types as well as the relationships between different household compositions and person activity-travel patterns.
+*	The ARC ABM accounts for the full set of travel modes.  Our experience with previously developed ABMs has shown that mode choice is one of the least transferable model components, because each region has a specific mix of modes developed in the context of the regional urban conditions.  
+*	The ARC ABM integrates with other model components.  The CT-RAMP model is one component (person travel) that is integrated with other components such as truck trip, airport trip and external trip models.
+*	The ARC ABM provides detailed inputs to traffic micro-simulation software.  The ARC ABM time resolution eases the preparation of detailed trip inputs to traffic micro-simulation software for engineering-level analysis of corridor and intersection design.
+
+# Section 1.2 Model Features and ARC Planning Needs
+
+The ARC CT-RAMP model has been tailored specifically to meet ARC planning needs, considering current and future projects and policies and also taking into account the special markets that exist in the Atlanta region.  The model system addresses requirements of the metropolitan planning process and relevant federal requirements, and provides support to ARC member agencies and other stakeholders.    The ABM structure fully complies with the following major planning applications: 
+*	RTP, TIP, and air quality conformity analysis.  The ABM has been carefully validated and calibrated to replicate observed traffic counts and speeds with the necessary level of accuracy.  The output of traffic assignment can be processed in a format required by the emission calculation software used by ARC, including MOVES. 
+*	FTA New Starts analysis. The ABM application software package includes an option that produces the model output in a format required by FTA for the New Starts process.  This output can be used as a direct input to the FTA software Summit used for calculation and analysis of the User Benefits.  In order to meet the FTA "fixed total demand" requirement for comparison across the Baseline and Build alternatives, the ABM includes a run option for the Build alternative with certain travel dimensions fixed from the Baseline run.           
+*	Highway pricing and managed lanes studies.  One of the advantages of an ABM over a 4-step model is a significantly improved sensitivity to highway pricing.  This includes various forms of congestion pricing, dynamic real-time pricing, daily area pricing, license plate rationing and other innovative policies that cannot be effectively modeled with a simplified 4-step model.  The explicit modeling of joint travel was specifically introduced to enhance modeling of HOV/HOT facilities. 
+*	Other transportation demand management measures. There are many new policies aimed at reducing highway congestion in major metropolitan areas, including telecommuting and teleshopping, compressed work weeks, and flexible work hours.  ABMs are specifically effective for modeling these types of policies since these models are based on an individual micro-simulation of daily activity-travel patterns. 
+
+# Section 1.3 General Model Design
+
+The ARC ABM has its roots in a wide array of analytical developments.  They include discrete choice forms (multinomial and nested logit), activity duration models, time-use models, models of individual micro-simulation with constraints, and entropy-maximization models, among others.  These advanced modeling tools are combined in the ABM design to ensure maximum behavioral realism, replication of the observed activity-travel patterns, and model sensitivity to level of service and transportation policies.  
+The model is implemented in a micro-simulation framework.  Micro-simulation methods capture aggregate behavior through the representation of the behavior of individual decision-makers.  In travel demand modeling these decision-makers are typically households and persons.  The following section describes the basic conceptual framework at which the model operates.
+
+# Section 1.3.1 Treatment of Space
+
+Activity-based and tour-based models can exploit more explicit geographic and locational information, but the advantages of additional spatial detail must be balanced against the additional efforts required to develop zone and associated network information at this level of detail, as well as against the increases in model runtime associated primarily with path-building and assignment to more zones.
+Using a more spatially disaggregate zone system helps ensure appropriate model sensitivity.  Use of large zones may produce aggregation biases, especially in destination choice, where the use of aggregate data can lead to illogical parameter estimates due to reduced variation in estimation data.  In can also misrepresent access to transit modes, both in terms of opportunities and walk distances.  Smaller zones help to reduce these effects, and can also support more detailed representation of the highway network and highway loadings.  
+The current version of the ARC ABM utilizes a 5,922 zone system, shown in Figure 1-1. The new detailed zone system encompasses 21 counties in metro Atlanta.
+
+
+![Figure 1-1. ARC Traffic Analysis Zone System](figs/introcountymap.png)
+
+ARC's Research & Analytics Division developed the socioeconomic inputs used by the model.  The current ARC zonal inputs include the total households in each of four income quartiles, as well as the average income within each quartile.  Total population in each of five age categories is also an input.  Age is used as a dimension in developing the synthesized population, but at the level of the age of the householder so as to capture important household life cycle tendencies.
+As part of recent updates, the ARC ABM was revised to utilize the detailed NAICS-based employment categories shown in the right-most column in Table 1-1. Previously, the model utilized only the six aggregate categories shown on the left.
+
+
+
+
+# Section 1.3.2 Decision Making Units
+
+Decision-makers in the model system include both persons and households.   These decision-makers are created (synthesized) for each simulation year based on tables of households and persons from 2010 census data and forecasted TAZ-level distributions of households and persons by key socio-economic categories.  These decision-makers are used in the subsequent discrete-choice models to select a single alternative from a list of available alternatives according to a probability distribution.   The probability distribution is generated from a logit model which takes into account the attributes of the decision-maker and the attributes of the various alternatives.  The decision-making unit is an important element of model estimation and implementation, and is explicitly identified for each model specified in the following sections.
+
+# Section 1.3.3 Person Type Segmentation
+
+The ARC ABM system is implemented in a micro-simulation framework.  A key advantage of using the micro-simulation approach is that there are essentially no computational constraints on the number of explanatory variables that can be included in a model specification.  However, even with this flexibility, the model system will include some segmentation of decision-makers.  Segmentation is a useful tool to structure models (for example, each person type segment could have their own model for certain choices) and also as a way to characterize person roles within a household.  Segments can be created for persons as well as households.
+
+A total of eight segments of person-types, shown in Table 1-2, are used for the ARC model system. The person-types are mutually exclusive with respect to age, work status, and school status, and are based on tabulations of the relevant data items from the 2011 Regional Household Travel Survey (HTS).
+
+Table 1-2 Person Types 
+
+```{r,echo=F,,out.height=700,message=F,warning=F,output=F}
+library(tidyverse)
+library(knitr)
+library(DT)
+library(kableExtra)
+Spec12 <- read_csv('data/Persontypes.csv')
+```
+```{r,echo=F,message=F,out.height=700}
+kable(Spec12, format.args = list(big.mark = ",")) %>%
+  kable_styling("striped",row_label_position = 'r')
+```
+
+
+# Section 1.3.4 Activity Type Segmentation
+
+The 2011 HTS used 16 different codes to identify activity purposes.  Modeling all 16 activity types would add significant complexity to estimating and implementing the model system, so these detailed activity types are grouped into more aggregate activity types, based on the similarity of the activities.  The activity types are used in most model system components, from developing daily activity patterns and to predicting tour and trip destinations and modes by purpose.  
+The proposed set of activity types is shown in Table 1-3.  The activity types are also grouped according to whether the activity is mandatory, maintenance, or discretionary, and eligibility requirements are assigned to determine which person-types generate each activity type.  The classification scheme of each activity type reflects the relative importance or natural hierarchy of the activity, where work and school activities are typically the most inflexible in terms of generation, scheduling and location, whereas discretionary activities are typically the most flexible on each of these dimensions.  However, when generating and scheduling activities, this hierarchy is not rigid, so that scheduling is informed by both activity type and activity duration.
+Each out-of-home location that a person travels to in the simulation is assigned one of these activity types.
+
+Table 1-3 Activity Type Segementation
+
+```{r,echo=F,,out.height=700,message=F,warning=F,output=F}
+Spec13 <- read_csv('data/ActivityTypes.csv')
+```
+```{r,echo=F,message=F,out.height=700}
+kable(Spec13, format.args = list(big.mark = ",")) %>%
+  kable_styling("striped",row_label_position = 'r')
+```
+
+
+# Section 1.3.5 Treatment of Time
+
+The ARC ABM functions at a temporal resolution of 30 minutes.  These half-hour increments begin with 3:00 A.M. and end with 3:00 A.M. the next day - that is, 3:00 A.M. to 3:30 A.M. is Period 1.  To ensure temporal integrity no activities are scheduled with conflicting time windows, with the exception of short activities/tours that are completed within a half-hour period.  For example, a person may have a short tour that begins and ends in the 8:00 A.M. - 8:30 A.M. period, as well as a second longer tour that begins in this time period and ends later in the day.
+A critical aspect of the model system is the relationship between the temporal resolution used for scheduling activities, and the temporal resolution of the network simulation periods.  Although activities are scheduled with 30 minute resolution, level-of-service matrices are only created for five aggregate time periods - early A.M., A.M., Midday, P.M., and evening.  The trips occurring in each time period reference the appropriate transport network depending on their trip mode and the mid-point trip time.  The definition of time periods for level-of-service matrices is given in Table 1-4.
+
+Table 1-4 Time Periods for Level-of-Service Skims and Trip Assignment
+
+```{r,echo=F,,out.height=700,message=F,warning=F,output=F}
+Spec14 <- read_csv('data/TimePeriods.csv')
+```
+```{r,echo=F,message=F,out.height=700}
+kable(Spec14, format.args = list(big.mark = ",")) %>%
+  kable_styling("striped",row_label_position = 'r')
+```
+
+
+# Section 1.3.6 Trip Modes
+
+Table 1-5 lists the trip modes identified in the ARC models.  There are 15 modes, including auto by occupancy and toll/non-toll choice, walk and bike non-motorized modes, and walk and drive access to different transit line-haul modes.
+
+Table 1-5 Trip Modes for Assignment
+
+```{r,echo=F,,out.height=700,message=F,warning=F,output=F}
+Spec15 <- read_csv('data/TripModes.csv')
+```
+```{r,echo=F,message=F,out.height=700}
+kable(Spec15, format.args = list(big.mark = ",")) %>%
+  kable_styling("striped",row_label_position = 'r')
+```
+
+
+# Section 1.3.7 ARC CT-RAMP Basic Design
+
+The general design of the ARC CT-RAMP model is presented in Figure 1-2 below.  The following outline describes the basic sequence of sub-models and associated travel choices: 
+
+1.	Synthetic population:
+
+  1.1.	Zonal distributions of population by controlled variables 
+  
+  1.2.	Household residential location choice (allocation to zones)
+
+2.	Long term level: 
+
+2.1.	Work-From-Home Model
+
+2.2.	Usual location for each mandatory activity for each relevant household member (workplace/university/school) - for workers the usual work location is run only if they have an out-of-home work location
+
+2.3.	Household car ownership
+
+3.	Daily pattern/schedule level: 
+
+3.1.	Daily pattern type for each household member (main activity combination, at home versus on tour) with a linkage of choices across various person categories
+
+3.2.	Individual mandatory activities/tours for each household member (note that locations of mandatory tours have already been determined in long-term choice model)
+
+3.2.1.	Frequency of mandatory tours
+
+3.2.2.	Mandatory tour time of day (departure/arrival time combination)
+
+3.3.	Joint travel tours (conditional upon the available time window left for each person after the scheduling of mandatory activities)
+
+3.3.1.	Joint tour frequency
+
+3.3.2.	Travel party composition (adults, children, mixed)
+
+3.3.3.	Person participation in each joint tour
+
+3.3.4.	Primary destination for each joint tour 
+
+3.3.5.	Joint tour time of day (departure/arrival time combination)
+
+3.4.	Individual non-mandatory activities/tours (conditional upon the available time window left for each person after the scheduling of mandatory and joint non-mandatory activities)
+
+3.4.1.	Person frequency of maintenance/discretionary tours
+
+3.4.2.	Primary destination for each individual maintenance/discretionary tour
+
+3.4.3.	Individual maintenance/discretionary tour departure/arrival time
+
+3.5.	Individual at-work subtours (conditional upon the available time window within the work tour duration)
+
+3.5.1.	Person frequency of at-work sub-tours 
+
+3.5.2.	Primary destination for each at-work sub-tour
+
+3.5.3.	At-work sub-tour departure/arrival time
+
+4.	Tour level: 
+
+4.1.	Tour mode 
+
+4.2.	Frequency of secondary stops 
+
+4.3.	Location of secondary stops
+
+5.	Trip level:
+
+5.1.	Trip depart time model
+
+5.2.	Trip mode choice conditional upon the tour mode
+
+5.3.	Auto trip parking location choice
+
+5.4.	Trip assignment
+
+![Figure 1-2. ARC CT-RAMP Basic Model Design](figs/ctramp_steps.png)
+
+Choices that relate to the entire household or a group of household members and assume explicit modeling of intra-household interactions (sub-models 2.2, 3.1, 3.3.1, 3.3.2) are shadowed in Figure 2. The other models are assumed to be individual-based for the basic design. 
+The model system uses synthetic household population as a base input (sub-model 1).  It is followed by long-term choices that relate to the work-from-home and usual workplace/university/school for each worker and student (sub-model 2.1) and household car ownership (sub-model 2.2).   The daily activity pattern type of each household member (model 3.1) is the first travel-related sub-model in the modeling hierarchy.  This model classifies daily patterns by three types: 1) mandatory (that includes at least one out-of-home mandatory activity), 2) non-mandatory (that includes at least one out-of-home non-mandatory activity, but does not include out-of-home mandatory activities), and 3) home (that does not include any out-of-home activity and travel).  However, the pattern type sub-model leaves open the frequency of tours for mandatory and non-mandatory purposes (maintenance, discretionary) since these sub-models are applied later in the model sequence.  The pattern choice set contains a non-travel option in which the person can be engaged in in-home activity only (purposely or as a result of being sick) or can be out of town.  In the model system application, a person who chooses a non-travel pattern is not considered further in the modeling stream.  Daily pattern-type choices of the household members are linked in such a way that decisions made by some members are reflected in the decisions made by the other members.  
+The next set of sub-models (3.2.1-3.2.3) defines the frequency and time-of-day for each mandatory tour.  The scheduling of mandatory activities is generally considered a higher priority decision than any decision regarding non-mandatory activities for either the same person or for the other household members.  As the result of the mandatory activity scheduling, "residual time windows" are calculated for each person and their overlaps across household members are estimated.  Time window overlaps, which are left in the daily schedule after the mandatory commitment of the household members has been made, constitute the potential for joint activity and travel.
+The next major model component relates to joint household travel.  This component produces a number of joint tours by travel purpose for the entire household (3.3.1), travel party composition in terms of adults and children (3.3.2), and then defines the participation of each household member in each joint household tour.  It is followed by choice of destination (3.3.4) and time-of-day (3.3.5).
+The next stage relates to maintenance and discretionary tours that are modeled at the individual person level.  The models include tour frequency (3.4.1), choice of destination (3.4.2) and time of day (3.4.3).    The next set of sub-models relate to the tour-level details on mode (4.1), exact number of intermediate stops on each half-tour (4.2), stop location (4.3) and stop duration (4.4).   It is followed by the last set of sub-models that add details for each trip including trip depart time (5.1), trip mode (5.2) and parking location for auto trips (5.3).  The trips are then assigned to highway and transit networks depending on trip mode (5.4). 
+The next sections describe each model component in greater detail, including the general algorithm for each model, the decision-making unit, the choices considered, the market segmentation utilized (if any), and the explanatory variables used.  Estimated model parameters, after calibration, are given in Appendix B. 

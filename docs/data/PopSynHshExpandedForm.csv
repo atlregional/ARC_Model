@@ -1,0 +1,13 @@
+FIELD,Description
+HHID,Unique household ID
+TEMPID,Unexpanded household ID
+DISTRICT,District code (ARC County) in which HH is located
+PUMA,PUMA code for HH record
+TAZ,TAZ (ARC PECAS zone) code in which HH is located
+MAZ,MAZ (ARC TAZ) code in which HH is located
+WGTP,Housing Weight
+FINALPUMSID,HH ID generated during population synthesis
+FINALWEIGHT,HH weight generated during population synthesis
+SERIALNO,Unique housing PUMS record identifier
+NWRKRS_ESR,Number of workers in the household
+*,Other PUMS HH fields

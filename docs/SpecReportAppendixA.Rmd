@@ -1,0 +1,27 @@
+---
+title: "Appendix A"
+output: html_document
+---
+
+# Section A.1 Integrated ABM and Land Use Model Development
+
+ARC has implemented a PECAS (Production, Exchange and Consumption Allocation System) land use model and integrated the model with the activity-based travel demand model. ARC has many years of experience running integrated land use/travel demand models. In the 1990s and early 2000s, ARC used the discrete choice model DRAM/EMPAL to account for land use/transport interactions. DRAM/EMPAL was a very useful tool in its time, but today's models are much more theoretically rigorous and powerful. Hence, ARC sought to explore alternative land use models suiting their needs. ARC considered UrbanSim, but exploration of implementing the model for ARC was not encouraging.  ARC also considered CUBE Land, but at that time, CUBE Land did not appear sufficiently advanced. 
+
+Ultimately, ARC evaluated and selected PECAS as the land use model. Implementing PECAS and integrating it with ARC's travel demand model took about three years. After three years, ARC was able to run a scenario to analyze transit-oriented development with the integrated land use/travel demand model. 
+
+# Section A.2 Model Development and Model Applications
+
+ARC has worked closely with the model developer to implement and maintain PECAS in the Atlanta Region. The model developer works with ARC staff on model implementations and enhancements. In order to independently inform model applications, ARC formed a Technical Advisory Panel to review implementation of the PECAS model. The twelve-panel members consist of bankers, real estate experts, economists, academics from Georgia Tech and the University of Georgia, utility providers, Georgia DOT and the transit agency MARTA. The Panel had two important purposes. Firstly, group oversight helped generate higher quality model output. ARC was able to identify unrealistic model results early and made corrections in the model before using land use forecasts for planning purposes. Secondly, the panel substantially increased regional knowledge about and acceptance of the PECAS model.
+
+ARC implements PECAS for the 21-county area, the model generates results annually, and ARC updates forecasts on a semi-annual basis. The base year is, in line with ARC's activity-based model, 2015, and models forecast through year 2050. Parcel-level data is the main foundation of the model. Local jurisdictions provide parcel-level data. ARC also obtains the QCEW (Quarterly Census of Employment and Wages) employment dataset for the base year. ARC maintains the economic forecast model REMI, which provides region-wide forecasts of employment and population for PECAS. 
+
+ARC discovered through several iterations of model data improvements that PECAS, like all small-area land use models, is very sensitive to availability of developable land, accuracy of parcel data, and the nature of zoning applied at the parcel level. ARC gave special attention to these important constraints and refined distributions and allocations have notably improved the reasonability of direct model output.
+
+# Section A.3 Land Use and Travel Demand Model Integration
+
+ARC's activity-based model is run in 5 to 10 year increments. PECAS, which runs on a year-by-year basis, integrates with the activity-based model. The activity-based model provides zone-to-zone travel time skims to PECAS that are kept unchanged for every modeling year. Vice versa, PECAS provides forecasts of socio-economic data, both population by household size and income categories and employment by sector, to the activity-based model. In the activity-based model, PECAS forecasts inform the synthetic population generator to synthesize micro-data that respects PECAS output as zonal control totals. 
+
+In addition, REMI provides regional and sub-regional (county) control totals of population and employment for the entire study area. Controlling at this higher-level allows for policy sensitivity in PECAS, as the land use model can reallocate socio-demographic data across the entire study area according to scenario settings.
+
+
+

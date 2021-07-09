@@ -1,0 +1,215 @@
+"tour_category","summary","agg1","agg2","num"
+"Individual Non-Mandatory","ptype_purpose","Pre-school","Discretionary_1",60425
+"Individual Non-Mandatory","ptype_purpose","Full-time worker","Discretionary_1",222508
+"Individual Non-Mandatory","ptype_purpose","Non-working adult","Discretionary_1",91779
+"Individual Non-Mandatory","ptype_purpose","Part-time worker","Discretionary_1",69955
+"Individual Non-Mandatory","ptype_purpose","Non-working senior","Discretionary_1",52825
+"Individual Non-Mandatory","ptype_purpose","Driving-age student","Discretionary_1",25011
+"Individual Non-Mandatory","ptype_purpose","Non-driving student","Discretionary_1",111461
+"Individual Non-Mandatory","ptype_purpose","College student","Discretionary_1",23856
+"Individual Non-Mandatory","ptype_purpose","Pre-school","Discretionary_2",3554
+"Individual Non-Mandatory","ptype_purpose","Full-time worker","Discretionary_2",15784
+"Individual Non-Mandatory","ptype_purpose","Non-working adult","Discretionary_2",5123
+"Individual Non-Mandatory","ptype_purpose","Part-time worker","Discretionary_2",8526
+"Individual Non-Mandatory","ptype_purpose","Non-working senior","Discretionary_2",4954
+"Individual Non-Mandatory","ptype_purpose","Driving-age student","Discretionary_2",1718
+"Individual Non-Mandatory","ptype_purpose","Non-driving student","Discretionary_2",19736
+"Individual Non-Mandatory","ptype_purpose","College student","Discretionary_2",1128
+"Individual Non-Mandatory","ptype_purpose","Pre-school","EatOut_1",14420
+"Individual Non-Mandatory","ptype_purpose","Full-time worker","EatOut_1",97310
+"Individual Non-Mandatory","ptype_purpose","Non-working adult","EatOut_1",33089
+"Individual Non-Mandatory","ptype_purpose","Part-time worker","EatOut_1",23327
+"Individual Non-Mandatory","ptype_purpose","Non-working senior","EatOut_1",18487
+"Individual Non-Mandatory","ptype_purpose","Driving-age student","EatOut_1",4848
+"Individual Non-Mandatory","ptype_purpose","Non-driving student","EatOut_1",19350
+"Individual Non-Mandatory","ptype_purpose","College student","EatOut_1",11262
+"Individual Non-Mandatory","ptype_purpose","Pre-school","EatOut_2",367
+"Individual Non-Mandatory","ptype_purpose","Full-time worker","EatOut_2",1445
+"Individual Non-Mandatory","ptype_purpose","Non-working adult","EatOut_2",324
+"Individual Non-Mandatory","ptype_purpose","Part-time worker","EatOut_2",489
+"Individual Non-Mandatory","ptype_purpose","Non-working senior","EatOut_2",258
+"Individual Non-Mandatory","ptype_purpose","Driving-age student","EatOut_2",129
+"Individual Non-Mandatory","ptype_purpose","Non-driving student","EatOut_2",116
+"Individual Non-Mandatory","ptype_purpose","College student","EatOut_2",251
+"Individual Non-Mandatory","ptype_purpose","Pre-school","Escorting_1",28522
+"Individual Non-Mandatory","ptype_purpose","Full-time worker","Escorting_1",129999
+"Individual Non-Mandatory","ptype_purpose","Non-working adult","Escorting_1",62610
+"Individual Non-Mandatory","ptype_purpose","Part-time worker","Escorting_1",38861
+"Individual Non-Mandatory","ptype_purpose","Non-working senior","Escorting_1",19141
+"Individual Non-Mandatory","ptype_purpose","Driving-age student","Escorting_1",8254
+"Individual Non-Mandatory","ptype_purpose","Non-driving student","Escorting_1",37425
+"Individual Non-Mandatory","ptype_purpose","College student","Escorting_1",21364
+"Individual Non-Mandatory","ptype_purpose","Pre-school","Escorting_2",29794
+"Individual Non-Mandatory","ptype_purpose","Full-time worker","Escorting_2",48738
+"Individual Non-Mandatory","ptype_purpose","Non-working adult","Escorting_2",67926
+"Individual Non-Mandatory","ptype_purpose","Part-time worker","Escorting_2",25705
+"Individual Non-Mandatory","ptype_purpose","Non-working senior","Escorting_2",11120
+"Individual Non-Mandatory","ptype_purpose","Driving-age student","Escorting_2",1911
+"Individual Non-Mandatory","ptype_purpose","Non-driving student","Escorting_2",4968
+"Individual Non-Mandatory","ptype_purpose","College student","Escorting_2",9324
+"Individual Non-Mandatory","ptype_purpose","Pre-school","Maintenance_1",44802
+"Individual Non-Mandatory","ptype_purpose","Full-time worker","Maintenance_1",173804
+"Individual Non-Mandatory","ptype_purpose","Non-working adult","Maintenance_1",147505
+"Individual Non-Mandatory","ptype_purpose","Part-time worker","Maintenance_1",56334
+"Individual Non-Mandatory","ptype_purpose","Non-working senior","Maintenance_1",69984
+"Individual Non-Mandatory","ptype_purpose","Driving-age student","Maintenance_1",11223
+"Individual Non-Mandatory","ptype_purpose","Non-driving student","Maintenance_1",53913
+"Individual Non-Mandatory","ptype_purpose","College student","Maintenance_1",21212
+"Individual Non-Mandatory","ptype_purpose","Pre-school","Maintenance_2",3788
+"Individual Non-Mandatory","ptype_purpose","Full-time worker","Maintenance_2",14973
+"Individual Non-Mandatory","ptype_purpose","Non-working adult","Maintenance_2",15337
+"Individual Non-Mandatory","ptype_purpose","Part-time worker","Maintenance_2",4973
+"Individual Non-Mandatory","ptype_purpose","Non-working senior","Maintenance_2",9083
+"Individual Non-Mandatory","ptype_purpose","Driving-age student","Maintenance_2",1239
+"Individual Non-Mandatory","ptype_purpose","Non-driving student","Maintenance_2",1839
+"Individual Non-Mandatory","ptype_purpose","College student","Maintenance_2",759
+"Individual Non-Mandatory","ptype_purpose","Pre-school","Shopping_1",40302
+"Individual Non-Mandatory","ptype_purpose","Full-time worker","Shopping_1",212009
+"Individual Non-Mandatory","ptype_purpose","Non-working adult","Shopping_1",177400
+"Individual Non-Mandatory","ptype_purpose","Part-time worker","Shopping_1",66118
+"Individual Non-Mandatory","ptype_purpose","Non-working senior","Shopping_1",111769
+"Individual Non-Mandatory","ptype_purpose","Driving-age student","Shopping_1",9782
+"Individual Non-Mandatory","ptype_purpose","Non-driving student","Shopping_1",43604
+"Individual Non-Mandatory","ptype_purpose","College student","Shopping_1",20561
+"Individual Non-Mandatory","ptype_purpose","Pre-school","Shopping_2",2489
+"Individual Non-Mandatory","ptype_purpose","Full-time worker","Shopping_2",22313
+"Individual Non-Mandatory","ptype_purpose","Non-working adult","Shopping_2",16995
+"Individual Non-Mandatory","ptype_purpose","Part-time worker","Shopping_2",13934
+"Individual Non-Mandatory","ptype_purpose","Non-working senior","Shopping_2",19350
+"Individual Non-Mandatory","ptype_purpose","Driving-age student","Shopping_2",738
+"Individual Non-Mandatory","ptype_purpose","Non-driving student","Shopping_2",1272
+"Individual Non-Mandatory","ptype_purpose","College student","Shopping_2",1093
+"Individual Non-Mandatory","ptype_purpose","Pre-school","Social_1",19609
+"Individual Non-Mandatory","ptype_purpose","Full-time worker","Social_1",52370
+"Individual Non-Mandatory","ptype_purpose","Non-working adult","Social_1",47219
+"Individual Non-Mandatory","ptype_purpose","Part-time worker","Social_1",19728
+"Individual Non-Mandatory","ptype_purpose","Non-working senior","Social_1",19959
+"Individual Non-Mandatory","ptype_purpose","Driving-age student","Social_1",11736
+"Individual Non-Mandatory","ptype_purpose","Non-driving student","Social_1",22078
+"Individual Non-Mandatory","ptype_purpose","College student","Social_1",13134
+"Individual Non-Mandatory","ptype_purpose","Pre-school","Social_2",1117
+"Individual Non-Mandatory","ptype_purpose","Full-time worker","Social_2",3884
+"Individual Non-Mandatory","ptype_purpose","Non-working adult","Social_2",2485
+"Individual Non-Mandatory","ptype_purpose","Part-time worker","Social_2",2491
+"Individual Non-Mandatory","ptype_purpose","Non-working senior","Social_2",2260
+"Individual Non-Mandatory","ptype_purpose","Driving-age student","Social_2",1366
+"Individual Non-Mandatory","ptype_purpose","Non-driving student","Social_2",1312
+"Individual Non-Mandatory","ptype_purpose","College student","Social_2",345
+"Individual Non-Mandatory","ptype_purpose","Pre-school","Discretionary_0",297687
+"Individual Non-Mandatory","ptype_purpose","Full-time worker","Discretionary_0",1720359
+"Individual Non-Mandatory","ptype_purpose","Non-working adult","Discretionary_0",387260
+"Individual Non-Mandatory","ptype_purpose","Part-time worker","Discretionary_0",303951
+"Individual Non-Mandatory","ptype_purpose","Non-working senior","Discretionary_0",208343
+"Individual Non-Mandatory","ptype_purpose","Driving-age student","Discretionary_0",177650
+"Individual Non-Mandatory","ptype_purpose","Non-driving student","Discretionary_0",637092
+"Individual Non-Mandatory","ptype_purpose","College student","Discretionary_0",159458
+"Individual Non-Mandatory","ptype_purpose","Pre-school","EatOut_0",346879
+"Individual Non-Mandatory","ptype_purpose","Full-time worker","EatOut_0",1859896
+"Individual Non-Mandatory","ptype_purpose","Non-working adult","EatOut_0",450749
+"Individual Non-Mandatory","ptype_purpose","Part-time worker","EatOut_0",358616
+"Individual Non-Mandatory","ptype_purpose","Non-working senior","EatOut_0",247377
+"Individual Non-Mandatory","ptype_purpose","Driving-age student","EatOut_0",199402
+"Individual Non-Mandatory","ptype_purpose","Non-driving student","EatOut_0",748823
+"Individual Non-Mandatory","ptype_purpose","College student","EatOut_0",172929
+"Individual Non-Mandatory","ptype_purpose","Pre-school","Escorting_0",303350
+"Individual Non-Mandatory","ptype_purpose","Full-time worker","Escorting_0",1779914
+"Individual Non-Mandatory","ptype_purpose","Non-working adult","Escorting_0",353626
+"Individual Non-Mandatory","ptype_purpose","Part-time worker","Escorting_0",317866
+"Individual Non-Mandatory","ptype_purpose","Non-working senior","Escorting_0",235861
+"Individual Non-Mandatory","ptype_purpose","Driving-age student","Escorting_0",194214
+"Individual Non-Mandatory","ptype_purpose","Non-driving student","Escorting_0",725896
+"Individual Non-Mandatory","ptype_purpose","College student","Escorting_0",153754
+"Individual Non-Mandatory","ptype_purpose","Pre-school","Maintenance_0",313076
+"Individual Non-Mandatory","ptype_purpose","Full-time worker","Maintenance_0",1769874
+"Individual Non-Mandatory","ptype_purpose","Non-working adult","Maintenance_0",321320
+"Individual Non-Mandatory","ptype_purpose","Part-time worker","Maintenance_0",321125
+"Individual Non-Mandatory","ptype_purpose","Non-working senior","Maintenance_0",187055
+"Individual Non-Mandatory","ptype_purpose","Driving-age student","Maintenance_0",191917
+"Individual Non-Mandatory","ptype_purpose","Non-driving student","Maintenance_0",712537
+"Individual Non-Mandatory","ptype_purpose","College student","Maintenance_0",162471
+"Individual Non-Mandatory","ptype_purpose","Pre-school","Shopping_0",318875
+"Individual Non-Mandatory","ptype_purpose","Full-time worker","Shopping_0",1724329
+"Individual Non-Mandatory","ptype_purpose","Non-working adult","Shopping_0",289767
+"Individual Non-Mandatory","ptype_purpose","Part-time worker","Shopping_0",302380
+"Individual Non-Mandatory","ptype_purpose","Non-working senior","Shopping_0",135003
+"Individual Non-Mandatory","ptype_purpose","Driving-age student","Shopping_0",193859
+"Individual Non-Mandatory","ptype_purpose","Non-driving student","Shopping_0",723413
+"Individual Non-Mandatory","ptype_purpose","College student","Shopping_0",162788
+"Individual Non-Mandatory","ptype_purpose","Pre-school","Social_0",340940
+"Individual Non-Mandatory","ptype_purpose","Full-time worker","Social_0",1902397
+"Individual Non-Mandatory","ptype_purpose","Non-working adult","Social_0",434458
+"Individual Non-Mandatory","ptype_purpose","Part-time worker","Social_0",360213
+"Individual Non-Mandatory","ptype_purpose","Non-working senior","Social_0",243903
+"Individual Non-Mandatory","ptype_purpose","Driving-age student","Social_0",191277
+"Individual Non-Mandatory","ptype_purpose","Non-driving student","Social_0",744899
+"Individual Non-Mandatory","ptype_purpose","College student","Social_0",170963
+"Joint","jnttourtype","No Joint Tours",,1226354
+"Joint","numtour_hhs","0","2",548478
+"Joint","numtour_hhs","0","3",307036
+"Joint","numtour_hhs","0","4",228863
+"Joint","numtour_hhs","0","5",91088
+"Joint","numtour_hhs","0","6",50889
+"Joint","jnttourtype","Discretionary_1",,88973
+"Joint","jnttourtype","Discretionary_1/EatOut_1",,3611
+"Joint","jnttourtype","Discretionary_1/Maintenance_1",,7113
+"Joint","jnttourtype","Discretionary_1/Shopping_1",,7102
+"Joint","jnttourtype","Discretionary_1/Social_1",,1600
+"Joint","jnttourtype","Discretionary_2",,6540
+"Joint","jnttourtype","EatOut_1",,46090
+"Joint","jnttourtype","EatOut_1/Maintenance_1",,2347
+"Joint","jnttourtype","EatOut_1/Shopping_1",,4364
+"Joint","jnttourtype","EatOut_1/Social_1",,512
+"Joint","jnttourtype","EatOut_2",,465
+"Joint","jnttourtype","Maintenance_1",,64957
+"Joint","jnttourtype","Maintenance_1/Shopping_1",,5595
+"Joint","jnttourtype","Maintenance_1/Social_1",,923
+"Joint","jnttourtype","Maintenance_2",,5887
+"Joint","jnttourtype","Shopping_1",,92628
+"Joint","jnttourtype","Shopping_1/Social_1",,2721
+"Joint","jnttourtype","Shopping_2",,8170
+"Joint","jnttourtype","Social_1",,18679
+"Joint","jnttourtype","Social_2",,504
+"Joint","numtour_hhs","1","2",94047
+"Joint","numtour_hhs","1","3",74655
+"Joint","numtour_hhs","1","4",77639
+"Joint","numtour_hhs","1","5",37339
+"Joint","numtour_hhs","1","6",27647
+"Joint","numtour_hhs","2","2",11565
+"Joint","numtour_hhs","2","3",12217
+"Joint","numtour_hhs","2","4",14622
+"Joint","numtour_hhs","2","5",7440
+"Joint","numtour_hhs","2","6",11610
+"Joint","tourcomp_ps","Adult only","2",160714
+"Joint","tourcomp_ps","Adult only","3",9327
+"Joint","tourcomp_ps","Adult only","4",406
+"Joint","tourcomp_ps","Adult only","5",8
+"Joint","tourcomp_ps","Child only","2",4327
+"Joint","tourcomp_ps","Child only","3",706
+"Joint","tourcomp_ps","Child only","4",120
+"Joint","tourcomp_ps","Child only","5",29
+"Joint","tourcomp_ps","Child only","6",6
+"Joint","tourcomp_ps","Mixed party","2",95620
+"Joint","tourcomp_ps","Mixed party","3",52868
+"Joint","tourcomp_ps","Mixed party","4",32433
+"Joint","tourcomp_ps","Mixed party","5",8884
+"Joint","tourcomp_ps","Mixed party","6",3333
+"At_Work","ptype_numtour","Full-time worker","atwork_1",639830
+"At_Work","ptype_numtour","Part-time worker","atwork_1",34048
+"At_Work","ptype_numtour","Driving-age student","atwork_1",434
+"At_Work","ptype_numtour","College student","atwork_1",6897
+"At_Work","ptype_numtour","Full-time worker","atwork_2",27231
+"At_Work","ptype_numtour","Part-time worker","atwork_2",2950
+"At_Work","ptype_numtour","Driving-age student","atwork_2",38
+"At_Work","ptype_numtour","College student","atwork_2",625
+"At_Work","ptype_numtour","Full-time worker","atwork_3",185
+"At_Work","ptype_numtour","Part-time worker","atwork_3",5
+"At_Work","ptype_numtour","Driving-age student","atwork_3",0
+"At_Work","ptype_numtour","College student","atwork_3",1
+"At_Work","ptype_numtour","Full-time worker","atwork_4",8
+"At_Work","ptype_numtour","Part-time worker","atwork_4",2
+"At_Work","ptype_numtour","Driving-age student","atwork_4",0
+"At_Work","ptype_numtour","College student","atwork_4",0
+"At_Work","ptype_numtour","Full-time worker","atwork_0",1291405
+"At_Work","ptype_numtour","Part-time worker","atwork_0",345429
+"At_Work","ptype_numtour","Driving-age student","atwork_0",203907
+"At_Work","ptype_numtour","College student","atwork_0",176919

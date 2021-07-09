@@ -1,0 +1,16 @@
+Mode,Level of Service (Skim) Matrices
+Drive-alone free,"All general purpose lanes available.  HOV lanes, HOT lanes, and toll lanes unavailable."
+Drive-alone pay,All general purpose lanes and toll lanes are available.  HOV lanes and unavailable.  HOT lanes are available for the SOV toll rate.
+Shared-2 free,All general purpose lanes available. 2+ occupancy HOV lanes available. Toll lanes unavailable.  HOT lanes where 2 occupant vehicles go free are available.
+Shared-2 pay,All general purpose lanes available. 2+ occupancy HOV lanes and HOT lanes where 2 occupant vehicles go free are available for free.  Toll lanes and HOT lanes where 2-occupant vehicles are tolled at the 2-occupant toll rate are available.
+Shared-3+ free,All general purpose lanes available.  2 and 3+ occupancy HOV lanes available. Toll lanes unavailable.  HOT lanes where 3+ occupant vehicles go free are available.
+Shared-3+ pay,All general purpose lanes available.  2 and 3+ occupancy HOV lanes and HOT lanes where 3+ occupant vehicles go free are available for free.  Toll lanes and HOT lanes where 3+ occupant vehicles are tolled at the 3+ occupant toll rate are available.
+Walk,"Highway distance, excluding freeways"
+Bike,"Highway distance, excluding freeways"
+Walk-Non-premium/Premium,Non-premium/Premium transit by walk access/egress
+Walk-Premium,Premium only transit by walk access/egress.
+PNR-Non-premium/Premium,Non-premium/Premium transit by park-and-ride access/egress
+PNR-Premium,Premium only transit by park-and-ride access/egress.
+KNR-Non-premium/Premium,Non-premium/Premium transit by kiss-and-ride access/egress
+KNR-Premium,Premium only transit by kiss-and-ride access/egress.
+School bus,Highway distance

@@ -1,0 +1,380 @@
+---
+title: "Section 4 - Running the Model"
+output: html_document
+---
+
+
+The main model run script starts all required Java and Cube processes on the main machine.  The main run script is executed in Cube.  All the model components on the machine communicate to one project directory on the machine.  All inputs are read, and all outputs are written to this folder, thereby simplifying model setup, inspection, and error detection. While the model will run using Cube 6.4 versions and later, it is recommended to use Cube 6.4.5. This version of Cube includes multi-threading, which enables parallel processing in the adjust phase of the highway assignment. In previous versions of the ABM, the highway assignments were distributed using multi-step and intra-step clustering (i.e., all assignments were run at the same time with different cluster nodes). With the multi-threading option, the multi-step clustering was removed. In the newest version, the assignments are run sequentially (intra-step) with each assignment using the full allotment of cluster nodes {XCPU}. 
+
+**If the model is run in Cube versions before 6.4.5, the model will take substantially more time to run.**
+
+# Section 4.1 Setting Up a Run
+
+To set up a model run:    
+1)	Create a project folder, and    
+2)	Configure and run the model in Cube Base.    
+
+
+## Section 4.1.1 Create a Project Folder
+1)	Create a root folder on the main computer (ModCalc7) that will house scenarios.  For example:    
+C:\\ARCABM
+
+2)	Create a scenario specific project folder inside the root folder.  For example:     
+C:\\ARCABM\\Base2015
+
+3)	The model files and subfolders in the project folder are the following:     
+a.	config folder - contains configuration files for setting up and running JPPF task processes.  Also contains JPPF Java code files (jar files).
+b.	ctrampModels folder - contains all the model utility expression calculator (UEC) model description files.
+c.	Exec folder - contains the CT-RAMP arc-all.jar Java code file.
+d.	Inputs folder - contains model input files such as the population and employment data by TAZ, the person and household population synthesizer files and other model data inputs.
+e.	Parameters folder - contains parameter files used by the non-CT-RAMP Cube components of the model.
+f.	WarmStart folder - contains auto and truck seed trip tables for warm start.
+g.	ARC_ABM_{date}.s - the main run script/GUI for running the model.
+
+
+## Section 4.1.2 Configure JPPF Services
+
+After creating the project folder, the JPPF services may need to be configured.  If necessary, edit the following properties files in the config folder:
+
+1)	Main Computer DOS Command File - StartHHMgrForNonDist.cmd    
+a.	set JAVA_PATH=C:/Program Files/Java/jdk1.8.0_171 	#JDK 64bit path    
+
+2)	JPPF Client Local Properties File - jppf-clientLocal.properties    
+a.	jppf.local.execution.threads = 60 		#number of threads to use
+
+3)	JPPF GUI Properties File - jppf-gui.properties    
+a.	jppf.local.execution.threads = 60 			#number of threads to use
+
+
+As an option, start jConsole sessions to track computer usage of the JPPF services.  In the config folder is the runJConsole.cmd file that starts a JConsole session which requires the user to select a Java process.  Running a JConsole session can be useful for troubleshooting memory problems.
+
+![Figure 4-1. Computer Usage for Node Runner in JConsole](figs/JConsole.png)
+
+## Section 4.1.3 Cube Cluster
+
+The main run script automatically launches and closes cluster nodes specified in "Extra CPUs Available for Cube Cluster" in the model GUI.  The model GUI is explained in the following sections. 
+
+## Section 4.1.4 Configure and Run the Model
+
+To run the main model script (ARC_ABM_{date}.s), which creates a Voyager macro processor GUI in Cube, do the following:
+
+1)	Open ARC_ABM_{date}.s via File + Open.  
+2)	Run the script via Run + Current File to start the GUI, which is shown in Figure 4-2.
+
+![Figure 4-2. ARC ABM GUI](figs/ARCABMGUI.png)
+
+3)	Set the various settings, including the project folder, and click Done.  Cube then creates an ARC_ABM_{date}.00X Cube script with the tokens in the script replaced with the GUI settings.
+
+![Figure 4-3. Execute Main Run Script](figs/ExecuteMainScript.png)
+
+4)	Click Start to run the model.  As discussed in the GUI Settings and Model Outputs sections of this document, the Cube script dynamically writes the CT-RAMP properties file and calls CT-RAMP for each feedback loop via a System call.  The Cube script parses the CT-RAMP indivTripData_(feedback_iteration).csv file and jointTripData_(feedback_iteration).csv file to create the demand matrices used for assignment.
+
+If the model fails, it's better to kill any Java processes still running on the computer.  The killjava.cmd file located in the config folder can be run on the computer to kill all running Java processes.
+
+# Section 4.2 Warm Start
+
+The Cube GUI allows for the option of running the model with a warm start (using existing trip tables and shadow prices). This differs from a cold start model run in two major ways:
+
+1) Uses trip tables from previous model applications for an initial assignment
+2) Uses previous shadow pricing for usual work and school location choice models
+
+*	The following files need to be copied from a previous run to the current project directory prior to start running the model:
+
+![Figure 4-4. Additional Files Needed for a Warm Start Run](figs/WarmStartFiles.png)
+
+* The {year} in the naming of the trip tables "TOD{period}{year}_asgn.VTT" need to be consistent with the two-digit year specified in the GUI for the model run. 
+
+*	In the GUI, turn on "Warm Start Peak Period Highway Assignment" and "Use Initial Shadow Pricing File for 1st Feedback Loop". Set "Initial Usual Work And School Location Choice Shadow Pricing Input File" to the appropriate file name. The shadow pricing file also includes the two-digit year specified in the GUI for the model run.
+
+
+# Section 4.3 GUI Settings
+The ARC ABM GUI contains various settings for running the model.  The GUI contains groups of settings, which are summarized below.
+
+## Section 4.3.1 General Settings and Modules to Run
+
+General Settings:
+
+*	Year - The year for current model run.  Only the last two digits of the year should be specified. This value is used to name input and output filenames and to specify parameters in model control files.
+
+*	Max Assignment Iterations - Describes the maximum number of iterations the highway assignments will apply until the network reaches equilibrium. This parameter applies to all highway assignments within the model stream (i.e., Feedback Loop and Time-of-Day).  The default is 200 iterations.
+
+*	Maximum Number of Feedback Loops - Describes the maximum number of iterative loops the model will go through during the Feedback Loop Module.
+
+*	Minimum Number of Feedback Loops - Describes the minimum number of feedback loops.  The first loop can begin by calculating new AM and PM trip tables for assignment or by using seed AM and PM trip tables.  Each successive loop uses new assignment trip tables calculated by the model.  The default number of overall model loops is three.  Convergence is met if the percent RMSE (root mean square error) between the current and previous loop AM assignment link volumes is less than 5.0 percent.
+
+*	Total Zones (w/Externals) - Total Number of zones in current model including external stations.
+
+*	Range of Internal Zones - Provides the list of internal zones, for specific model steps that are performed only on internal zones.
+
+*	Last Internal Before Externals - The highest value internal zone that is less than the lowest external station. This is used as an input to model control files and is particularly important if external stations are imbedded within the internal zone range.
+
+*	First External Station - The lowest value external station. This is used as an input to model control files and is particularly important if external stations are imbedded within the internal zone range.
+
+*	Last External Station - The highest value external station. This is used as an input to model control files and is particularly important if external stations are imbedded within the internal zone range.
+
+*	Airport Zone Number - The TAZ number for the Hartsfield-Jackson Atlanta International Airport. This is used as a parameter for model control files and functions.
+
+*	Dobbins Zone Number - The TAZ number for Dobbins Air Reserve Base. This is used as a parameter for model control files and functions.
+
+*	Maximum External County ID - The maximum external station number for the surrounding external counties that are used to develop external trips.
+
+*	Auto Operating Cost - used to compute generalized cost. The default is 17.29 cents per mile.
+
+*	Truck Operating Cost - used to compute generalized cost. The default is 53.60 cents per mile.
+
+*	Auto Value of Time - used to compute generalized cost. The default is 21.50 dollars per hour.
+
+*	Auto Value of Time (toll skims) - used to compute generalized cost. The default is 30 dollars per hour.
+
+*	Truck Value of Time - used to compute generalized cost. The default is 36 dollars per hour.
+
+*	Distance weight for generalized cost - applied to generalized cost calculation. The default is 0.5.
+
+*	Cube Cluster Process ID - The process label to use for Cube Cluster.  The default is "ARC."
+
+*	Extra CPUs Available for Cube Cluster - The number of additional CPUs available for distributing/threading tasks with Cube Cluster. 
+
+
+*	Cluster Node Restart Wait Time - The length of time allowed to wait for cluster nodes to restart.
+
+*	Archive (Zip Results) - After deleting extra files (feature is not currently active), the model will compress the model results folder using 7-zip command line tool. The default for archiving the model results is set to false.
+
+![Figure 4-5. General Settings and Modules to Run](figs/GeneralSettingsModulesToRun.png)
+
+
+Modules to Run - Each model component to be run includes a checkbox.
+
+*	Model Preparation - This module will update area type, highway speed, and capacity for any changes made to the initial highway network links and will rebuild the updated network.  The module will also update any toll costs and build the peak and off-peak highway (free-flow and midday) skims. The module also has an option to run a warm start highway assignment with user specific demand matrix.
+
+*	Commercial Vehicle and Truck Model - This module will build the commercial vehicle and truck model.
+
+*	Feedback Loops - Prepares time-of-day trips tables. Assigns trips to the highway network for each of the five time-of-day (TOD) periods: EA, AM, MD, PM, and EV. This module will build congested highway travel time skims. The module also includes functions that build transit support links, calculate TAZ transit walk accessibility and estimates transit walk times. It will also run CT-RAMP and the IE/EI models.
+
+*	Transit Assignment - Assigns trips from the person trip tables to the transit network.
+
+*	Assignment Post-Processing - This module will also sum the TOD networks to create a total daily network as well as VMT and VHT statistics.
+
+*	Performance Measures - This module creates a number of predefined performances measures.
+
+
+## Section 4.3.2 Feedback Modules
+Within each feedback loop, each module to run has specific settings that are configured in the following section.  It is recommended to run the entire model anytime a network or land use change is made to the model.
+
+Model Preparation
+
+*	Assign Area Types - This procedure calculates a floating zone population and employment density for each TAZ, assigns an area type to each TAZ based on the densities, determines the nearest TAZ to each link in the network and then assigns the associated TAZ area type to each link.
+
+*	Build Networks - This procedure sets the proper highway capacity and speed based on a lookup table that references the area type and facility type of each link.
+
+*	Build Peak Period Skims - Creates matrices of toll, distance and time for every zone-to-zone combination within the peak network.  Initially the peak travel time skims are based on lookup tables, but they are updated during the feedback loop.
+
+*	Warm Start Peak Period Highway Assignment - Warm start the TOD-period highway assignments by assigning a previously calculated trip matrix.  
+
+*	Build Free-Flow Skims - Creates matrices of toll, distance, and time for every zone-to-zone combination.
+
+*	Update External Trips - This flag is to indicate whether or not to update the external trips.  Whenever the highway network changes and/or the socio-economic data for both internal and external surrounding areas changes, the external trips need to be updated as well.
+
+![Figure 4-6. Model Preparation, Commercial Vehicle and Truck Model, Feedback Loops, Transit Assignment, and Post Process Assignments](figs/FeedbackLoopSettings.png)
+
+Commercial Vehicle and Truck Model
+
+*	Commercial Vehicle and Truck Trip Generation - Generate commercial vehicle and truck trips.
+
+*	Commercial Vehicle and Truck Trip Distribution - Distribute commercial vehicle and truck trips.
+
+*	Commercial Vehicle and Truck TOD Trip Tables - Create trip tables for commercial vehicle and truck trips by time-of-day.
+
+Feedback Loops
+
+*	Update Peak Period Travel Skims - Generate new travel time skims (SOV and HOV) based on the current TOD loaded networks in the feedback loop.
+
+*	Transit Skims - Creates travel time tables for passengers using the transit system.
+
+*	Create Accessibilities - Creates the accessibility measures based on the skims for use in CT-RAMP.
+
+*	Create IE and Air Passenger demand matrices - Creates IE/EI and airport demand matrices.
+
+*	Create II demand with CT-RAMP Model - Runs CT-RAMP model via a system call to generate internal travel demand.  This step also runs the Cube script code to create trip tables for assignment from the CT-RAMP trip lists.
+
+*	Highway Assignment - Runs highway assignments using the TOD trip tables to obtain TOD period congested networks.
+
+Transit Assignment
+
+*	Transit Assignment - Assigns transit trips to transit networks for five time periods plus the air passenger trips.
+
+Post Process Assignments
+
+*	Assign transit drive access - egress to network - Assign transit drive access trips to loaded highway networks from feedback.
+
+*	Merge and Summarize Highway Networks - Summarizes the five TOD highway networks into a total daily network.  Also computes the VMT and VHT statistics for each TOD period and total daily statistics.
+
+*	Merge and Summarize Transit Networks - Summarizes the transit assignments results by tabulating route level boardings, rail station boardings, and shapefile for boardings/alightings by transit stop.
+
+
+Performance Measures
+
+*	Run Main Model Summary - Summarizes a number of measures such as total trips, VMT, VHT, etc. and prints the results to a text file.
+
+* Run Performance Measures - Provides additional summaries of the ABM output including person type, household type, trips by purpose, etc.
+
+
+
+## Section 4.3.3 CT-RAMP Settings I
+
+The CT-RAMP settings define the parameters required to run the main CT-RAMP Java process.  CT-RAMP reads its settings from a Java properties file that is written dynamically by the ARC ABM GUI.  The properties in this file are set in the GUI.  
+
+Most of the CT-RAMP settings should not be changed when running a new scenario.  The settings that are likely to change with a new scenario are:
+
+*	Project Directory
+
+*	Population Synthesizer Household File
+
+*	Population Synthesizer Person File
+
+*	Population Synthesizer Sample Percents
+
+*	Population Synthesizer Sample Seed
+
+In addition, the following settings may need to be changed if a new model setup is configured:
+
+*	Directory to 64bit JDK
+
+*	Directory to 64bit Cube Voyager File Access API
+
+What follows is an exhaustive list of all the CT-RAMP settings in the ARC ABM GUI.
+
+CT-RAMP General Inputs
+
+*	Java Properties File - The name of the CT-RAMP properties file to create that will be read by CT-RAMP.
+
+*	Project Directory - The project directory.  This should be set to the location of the project directory (i.e. the directory that contains the ARC_ABM_{date}.s script).  Use the local project directory reference instead of the network drive to improve the runtimes.
+
+*	Directory to 64bit JDK - The path to the 64bit JDK installed on the main computer.
+
+*	Directory to 64-bit Cube Voyager File API - The path to 64-bit Cube Voyager File Access API installed on the main computer.
+
+*	Java Virtual Memory for ArcTourBasedModel Process Node Launcher - The gigabytes of memory allocated to the main ArcTourBasedModel process.  
+
+*	Model - Random Seed - The random number seed for CT-RAMP.
+
+*	Debug - Trace Household ID List - HH IDs separated by a comma to write debug results for.
+
+![Figure 4-7. CT-RAMP Settings](figs/CTRAMPSettings.png)
+
+CT-RAMP Run Model IP and Port Settings
+
+*	Run Model - Household Server Address - IP address of the CT-RAMP household data server.  The default is localhost.
+
+*	Run Model - Household Server Port - Port of the CT-RAMP household server.
+
+CT-RAMP Models to Run with Restart 1st Iteration
+
+Restart Option - restart CT-RAMP at the following location:
+
+* None - no restart
+*	Usual Work/School Location Choice
+*	Auto Ownership
+*	Individual Mandatory Tour Frequency
+*	Joint Tour Frequency
+*	Individual Non-Mandatory Tour Frequency
+*	Stop Frequency
+
+CT-RAMP Models to Run with Restart Subsequent Iterations
+
+*	Restart Option - restart CT-RAMP at the following location - Same options as the first iteration.
+
+
+
+## Section 4.3.4 CT-RAMP Settings II
+This section defines which CT-RAMP models to run.  By default, all models are run.  These models correspond to CT-RAMP UECs stored in the ctrampModels folder.  
+
+CT-RAMP Distributed Model Run Settings
+
+*	Distributed Task Packet Size - The size of packages to distribute and process in CT-RAMP.
+
+*	Initialization Packet Size - The initialization packet size for distributing tasks in CT-RAMP.
+
+*	Number Initialization Packets - The number of initialization packets in CT-RAMP.
+
+![Figure 4-8. CT-RAMP Models to Run](figs/CTRAMPModelsToRun.png)
+
+
+## Section 4.3.5 CT-RAMP Settings III
+This section describes other CT-RAMP settings.
+
+![Figure 4-9. CT-RAMP Other Settings](figs/CTRAMPOtherSettings.png)
+
+CT-RAMP Population Synthesizer Inputs
+
+*	Population Synthesizer Household File - Location of the household population synthesizer file.
+
+*	Population Synthesizer Person File - Location of the person population synthesizer file.
+
+*	Population Synthesizer Sample Percents - An array, equal in the length to the number of overall model feedback loops, with the HH population sample percent.  A value of 0.5 means that 50% of the household population will be run through CT-RAMP.  The resulting demand matrices will be scaled by 2 (i.e., 1/0.5) before being assigned to the network.
+
+*	Population Synthesizer Sample Seed - The sample seed for sampling households.
+
+CT-RAMP Usual Work and School Location Choice Model Settings
+
+*	Usual Work and School Location Choice - Run Work - Run the usual work location model.
+
+*	Usual Work and School Location Choice - Run University - Run the usual university location model.
+
+*	Usual Work and School Location Choice - Run School - Run the usual school location model.
+
+*	Usual Work and School Location Choice - Shadow Pricing - Max Iterations - 1st Feedback Loop - The maximum number of show pricing iterations for the 1st feedback loop.  The default is 1 iteration.
+
+*	Usual Work and School Location Choice - Shadow Pricing - Max Iterations - Subsequent Feedback Loops - the maximum number of show pricing iterations for subsequent feedback loops.  The default is 1 iteration.
+
+*	Use Initial Shadow Pricing File for 1st Feedback Loop - Use an input shadow pricing file as a starting point for the 1st feedback loop.  In order to improve run times, a previously calculated shadow pricing file can be used as a starting point.
+
+*	Always Use the Initial Shadow Pricing File for Feedback Loops - Use an input shadow pricing file for all feedback loops.
+
+*	Initial Usual Work and School Location Choice Shadow Pricing Input File - The input file to use for re-start with shadow pricing.  This file would have been calculated from previous model run and has the same format as the output shadow pricing file.
+
+CT-RAMP Sample of Alternatives Sample Size Settings
+
+*	Usual Work and School Location Choice Sample of Alts - Sample Size - The number of alternatives.  The default is 30.
+
+*	Joint Tour Location Choice Sample of Alts - Sample Size - The number of alternatives.  The default is 30.
+
+*	Individual Non Mandatory Tour Location Choice Sample of Alts - Sample Size - The number of alternatives.  The default is 30.
+
+*	At Work Subtour Location Choice Sample of Alts - Sample Size - The number of alternatives.  The default is 30.
+
+*	Stop Location Choice Sample of Alts - Sample Size - The number of alternatives.  The default is 30.
+
+CT-RAMP Model Results Files
+
+*	Results - Usual Work and School Local Choice - Results from the usual work and school location choice model.
+
+*	Results - Auto Ownership Choice - Results from the auto ownership choice model.
+
+*	Results - Coordinated Daily Activity Pattern - Results from the CDAP choice model.
+
+CT-RAMP Output Files
+
+* Tour Mode Choice Save Utilities and Probabilities - Include the alternative choice utilities and probabilities from the tour mode choice model in the tour data output file.
+
+*	Output Trips Data for ABMVIZ - Writes out the trips data output file used for ABMVIZ. 
+
+
+## Section 4.3.6 Model Summary Settings
+The section describes the model summary settings.
+
+![Figure 4-10. Model Summary Settings](figs/ModelSummarySettings.png)
+
+*	Annual Work Days - The number of work days in a year. The default is 250.
+
+*	Passenger car value of time - The value of time for passenger cars in $/hour. The default is 21.50 dollars per hour.
+
+*	Commercial vehicle value of time - The value of time for commercial vehicles. The default is 36 dollars per hour.
+
+*	Average Passenger Vehicle Fuel Economy - The fuel efficiency of passenger vehicles. The default is 25 miles/gallon.
+
+*	Average Commercial Vehicle Fuel Economy - The fuel efficiency of commercial vehicles. The default is 6.2 miles/gallon.
+
+*	Car Fuel Cost - The fuel cost of cars. The default is $2.85/gallon.
+
+*	Truck Fuel Cost - The fuel cost of trucks. The default is $2.02/gallon.
+

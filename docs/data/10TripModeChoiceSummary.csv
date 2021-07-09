@@ -1,0 +1,159 @@
+TourCat,ModeABMTour,ModeABMTrip,totTrip
+At-Work Subtours,Bike,Bike,4590
+At-Work Subtours,Bike,Walk,70
+At-Work Subtours,Drive Alone,Drive Alone,1053395
+At-Work Subtours,Shared 2,Drive Alone,55780
+At-Work Subtours,Shared 2,Shared 2,256355
+At-Work Subtours,Shared 2,Walk,1780
+At-Work Subtours,Shared 3+,Drive Alone,2185
+At-Work Subtours,Shared 3+,Shared 2,6415
+At-Work Subtours,Shared 3+,Shared 3+,125130
+At-Work Subtours,Shared 3+,Walk,3330
+At-Work Subtours,Walk,Walk,201140
+At-Work Subtours,Wlk AllTrn,Shared 2,10
+At-Work Subtours,Wlk AllTrn,Shared 3+,240
+At-Work Subtours,Wlk AllTrn,Walk,1055
+At-Work Subtours,Wlk AllTrn,Wlk AllTrn,3915
+At-Work Subtours,Wlk AllTrn,Wlk PremOnly,310
+At-Work Subtours,Wlk PremOnly,Shared 2,15
+At-Work Subtours,Wlk PremOnly,Shared 3+,110
+At-Work Subtours,Wlk PremOnly,Walk,2120
+At-Work Subtours,Wlk PremOnly,Wlk AllTrn,375
+At-Work Subtours,Wlk PremOnly,Wlk PremOnly,1635
+Individual Non-mandatory Tours,Bike,Bike,34400
+Individual Non-mandatory Tours,Bike,Walk,785
+Individual Non-mandatory Tours,Drive Alone,Drive Alone,2924200
+Individual Non-mandatory Tours,KNR AllTrn,KNR AllTrn,5700
+Individual Non-mandatory Tours,KNR AllTrn,KNR PremOnly,100
+Individual Non-mandatory Tours,KNR PremOnly,KNR AllTrn,600
+Individual Non-mandatory Tours,KNR PremOnly,KNR PremOnly,2820
+Individual Non-mandatory Tours,PNR AllTrn,PNR AllTrn,150
+Individual Non-mandatory Tours,PNR AllTrn,PNR PremOnly,20
+Individual Non-mandatory Tours,PNR PremOnly,PNR AllTrn,170
+Individual Non-mandatory Tours,PNR PremOnly,PNR PremOnly,1580
+Individual Non-mandatory Tours,Shared 2,Drive Alone,676725
+Individual Non-mandatory Tours,Shared 2,Shared 2,1101225
+Individual Non-mandatory Tours,Shared 2,Walk,11310
+Individual Non-mandatory Tours,Shared 3+,Drive Alone,214280
+Individual Non-mandatory Tours,Shared 3+,Shared 2,311065
+Individual Non-mandatory Tours,Shared 3+,Shared 3+,885490
+Individual Non-mandatory Tours,Shared 3+,Walk,8910
+Individual Non-mandatory Tours,Walk,Walk,274670
+Individual Non-mandatory Tours,Wlk AllTrn,Shared 2,1840
+Individual Non-mandatory Tours,Wlk AllTrn,Shared 3+,740
+Individual Non-mandatory Tours,Wlk AllTrn,Walk,7600
+Individual Non-mandatory Tours,Wlk AllTrn,Wlk AllTrn,41040
+Individual Non-mandatory Tours,Wlk AllTrn,Wlk PremOnly,3745
+Individual Non-mandatory Tours,Wlk PremOnly,Shared 2,665
+Individual Non-mandatory Tours,Wlk PremOnly,Shared 3+,35
+Individual Non-mandatory Tours,Wlk PremOnly,Walk,2385
+Individual Non-mandatory Tours,Wlk PremOnly,Wlk AllTrn,760
+Individual Non-mandatory Tours,Wlk PremOnly,Wlk PremOnly,3930
+Joint Non-mandatory Tours,Bike,Bike,3460
+Joint Non-mandatory Tours,KNR AllTrn,KNR AllTrn,995
+Joint Non-mandatory Tours,KNR AllTrn,KNR PremOnly,35
+Joint Non-mandatory Tours,PNR PremOnly,PNR AllTrn,20
+Joint Non-mandatory Tours,PNR PremOnly,PNR PremOnly,180
+Joint Non-mandatory Tours,Shared 2,Shared 2,1311810
+Joint Non-mandatory Tours,Shared 2,Walk,4900
+Joint Non-mandatory Tours,Shared 3+,Shared 2,83760
+Joint Non-mandatory Tours,Shared 3+,Shared 3+,1263100
+Joint Non-mandatory Tours,Shared 3+,Walk,12175
+Joint Non-mandatory Tours,Walk,Walk,102650
+Joint Non-mandatory Tours,Wlk AllTrn,Shared 2,550
+Joint Non-mandatory Tours,Wlk AllTrn,Shared 3+,180
+Joint Non-mandatory Tours,Wlk AllTrn,Walk,3540
+Joint Non-mandatory Tours,Wlk AllTrn,Wlk AllTrn,7155
+Joint Non-mandatory Tours,Wlk AllTrn,Wlk PremOnly,420
+Joint Non-mandatory Tours,Wlk PremOnly,Shared 2,20
+Joint Non-mandatory Tours,Wlk PremOnly,Walk,605
+Joint Non-mandatory Tours,Wlk PremOnly,Wlk AllTrn,305
+Joint Non-mandatory Tours,Wlk PremOnly,Wlk PremOnly,735
+School Tours,Bike,Bike,8955
+School Tours,Bike,Walk,515
+School Tours,Drive Alone,Drive Alone,93960
+School Tours,KNR AllTrn,KNR AllTrn,3835
+School Tours,KNR AllTrn,KNR PremOnly,155
+School Tours,KNR PremOnly,KNR AllTrn,895
+School Tours,KNR PremOnly,KNR PremOnly,995
+School Tours,PNR PremOnly,PNR AllTrn,700
+School Tours,PNR PremOnly,PNR PremOnly,1250
+School Tours,School Bus,School Bus,859325
+School Tours,School Bus,Shared 2,120370
+School Tours,School Bus,Shared 3+,134105
+School Tours,School Bus,Walk,21730
+School Tours,Shared 2,Drive Alone,22570
+School Tours,Shared 2,Shared 2,392510
+School Tours,Shared 2,Walk,7680
+School Tours,Shared 3+,Drive Alone,9010
+School Tours,Shared 3+,Shared 2,141810
+School Tours,Shared 3+,Shared 3+,553345
+School Tours,Shared 3+,Walk,15320
+School Tours,Walk,Walk,76310
+School Tours,Wlk AllTrn,Shared 2,7400
+School Tours,Wlk AllTrn,Shared 3+,4005
+School Tours,Wlk AllTrn,Walk,2915
+School Tours,Wlk AllTrn,Wlk AllTrn,17030
+School Tours,Wlk AllTrn,Wlk PremOnly,1150
+School Tours,Wlk PremOnly,Shared 2,445
+School Tours,Wlk PremOnly,Shared 3+,325
+School Tours,Wlk PremOnly,Walk,315
+School Tours,Wlk PremOnly,Wlk AllTrn,865
+School Tours,Wlk PremOnly,Wlk PremOnly,920
+University Tours,Bike,Bike,6100
+University Tours,Bike,Walk,50
+University Tours,Drive Alone,Drive Alone,114985
+University Tours,KNR AllTrn,KNR AllTrn,3695
+University Tours,KNR AllTrn,KNR PremOnly,5
+University Tours,KNR PremOnly,KNR AllTrn,1135
+University Tours,KNR PremOnly,KNR PremOnly,2705
+University Tours,PNR AllTrn,PNR AllTrn,430
+University Tours,PNR PremOnly,PNR AllTrn,1025
+University Tours,PNR PremOnly,PNR PremOnly,5145
+University Tours,Shared 2,Drive Alone,8280
+University Tours,Shared 2,Shared 2,20125
+University Tours,Shared 2,Walk,795
+University Tours,Shared 3+,Drive Alone,2905
+University Tours,Shared 3+,Shared 2,1835
+University Tours,Shared 3+,Shared 3+,5490
+University Tours,Shared 3+,Walk,40
+University Tours,Walk,Walk,1935
+University Tours,Wlk AllTrn,Shared 2,2485
+University Tours,Wlk AllTrn,Shared 3+,280
+University Tours,Wlk AllTrn,Walk,2490
+University Tours,Wlk AllTrn,Wlk AllTrn,18465
+University Tours,Wlk AllTrn,Wlk PremOnly,275
+University Tours,Wlk PremOnly,Shared 2,465
+University Tours,Wlk PremOnly,Shared 3+,20
+University Tours,Wlk PremOnly,Walk,1060
+University Tours,Wlk PremOnly,Wlk AllTrn,3130
+University Tours,Wlk PremOnly,Wlk PremOnly,2810
+Work Tours,Bike,Bike,24880
+Work Tours,Bike,Walk,1280
+Work Tours,Drive Alone,Drive Alone,3663275
+Work Tours,KNR AllTrn,KNR AllTrn,10795
+Work Tours,KNR AllTrn,KNR PremOnly,425
+Work Tours,KNR PremOnly,KNR AllTrn,550
+Work Tours,KNR PremOnly,KNR PremOnly,11590
+Work Tours,PNR AllTrn,PNR AllTrn,2355
+Work Tours,PNR AllTrn,PNR PremOnly,75
+Work Tours,PNR PremOnly,PNR AllTrn,590
+Work Tours,PNR PremOnly,PNR PremOnly,31270
+Work Tours,Shared 2,Drive Alone,453965
+Work Tours,Shared 2,Shared 2,573310
+Work Tours,Shared 2,Walk,8215
+Work Tours,Shared 3+,Drive Alone,168615
+Work Tours,Shared 3+,Shared 2,67680
+Work Tours,Shared 3+,Shared 3+,184205
+Work Tours,Shared 3+,Walk,1975
+Work Tours,Walk,Walk,35500
+Work Tours,Wlk AllTrn,Shared 2,17620
+Work Tours,Wlk AllTrn,Shared 3+,2445
+Work Tours,Wlk AllTrn,Walk,34815
+Work Tours,Wlk AllTrn,Wlk AllTrn,76880
+Work Tours,Wlk AllTrn,Wlk PremOnly,2165
+Work Tours,Wlk PremOnly,Shared 2,1245
+Work Tours,Wlk PremOnly,Shared 3+,150
+Work Tours,Wlk PremOnly,Walk,6340
+Work Tours,Wlk PremOnly,Wlk AllTrn,3050
+Work Tours,Wlk PremOnly,Wlk PremOnly,11370

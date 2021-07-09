@@ -1,0 +1,11 @@
+Type,Purpose,Description,Classification,Eligibility
+1,Work,Working at regular workplace or work-related activities outside the home.,Mandatory,Workers and students
+2,University,College plus,Mandatory,Age 18 plus
+3,High School,Grades 9 to 12,Mandatory,Age 14 to 17
+4,Grade School,Grades K to 8,Mandatory,Age 5 to 13
+5,Escorting,Pick-up/drop-off passengers (auto trips only).,Maintenance,Age 16 plus
+6,Shopping,Shopping away from home.,Maintenance,"5 plus (if joint travel, all persons)"
+7,Other Maintenance,"Personal business and services, and medical appointments.",Maintenance,"5 plus (if joint travel, all persons)"
+8,Social/Recreational,"Recreation, visiting friends and family.",Discretionary,"5 plus (if joint travel, all persons)"
+9,Eat Out,Eating outside of home.,Discretionary,"5 plus (if joint travel, all persons)"
+10,Other Discretionary,Volunteer work and religious activities.,Discretionary,"5 plus (if joint travel, all persons)"

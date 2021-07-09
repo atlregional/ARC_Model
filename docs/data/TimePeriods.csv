@@ -1,0 +1,6 @@
+Number,Description,Begin Time,End Time
+1,Early AM,3:00 AM,5:59 AM
+2,AM Peak,6:00 AM,9:59 AM
+3,Midday,10:00 AM,2:59 PM
+4,PM Peak,3:00 PM,6:59 PM
+5,Evening,7:00 PM,2:59 AM

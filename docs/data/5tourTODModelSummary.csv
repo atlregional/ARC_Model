@@ -1,0 +1,3054 @@
+"TourType","SummaryType","Category","Statistic","Period","numTour"
+"Mandatory","Purpose","School","Depart",1,1010
+"Mandatory","Purpose","School","Depart",2,631
+"Mandatory","Purpose","School","Depart",3,402
+"Mandatory","Purpose","School","Depart",4,239
+"Mandatory","Purpose","School","Depart",5,167
+"Mandatory","Purpose","School","Depart",6,104
+"Mandatory","Purpose","School","Depart",7,28726
+"Mandatory","Purpose","School","Depart",8,126211
+"Mandatory","Purpose","School","Depart",9,313236
+"Mandatory","Purpose","School","Depart",10,337670
+"Mandatory","Purpose","School","Depart",11,168343
+"Mandatory","Purpose","School","Depart",12,41827
+"Mandatory","Purpose","School","Depart",13,19612
+"Mandatory","Purpose","School","Depart",14,10618
+"Mandatory","Purpose","School","Depart",15,6708
+"Mandatory","Purpose","School","Depart",16,4718
+"Mandatory","Purpose","School","Depart",17,3444
+"Mandatory","Purpose","School","Depart",18,2424
+"Mandatory","Purpose","School","Depart",19,1889
+"Mandatory","Purpose","School","Depart",20,1329
+"Mandatory","Purpose","School","Depart",21,992
+"Mandatory","Purpose","School","Depart",22,743
+"Mandatory","Purpose","School","Depart",23,595
+"Mandatory","Purpose","School","Depart",24,924
+"Mandatory","Purpose","School","Depart",25,1004
+"Mandatory","Purpose","School","Depart",26,1080
+"Mandatory","Purpose","School","Depart",27,1192
+"Mandatory","Purpose","School","Depart",28,1012
+"Mandatory","Purpose","School","Depart",29,867
+"Mandatory","Purpose","School","Depart",30,741
+"Mandatory","Purpose","School","Depart",31,712
+"Mandatory","Purpose","School","Depart",32,575
+"Mandatory","Purpose","School","Depart",33,374
+"Mandatory","Purpose","School","Depart",34,235
+"Mandatory","Purpose","School","Depart",35,130
+"Mandatory","Purpose","School","Depart",36,91
+"Mandatory","Purpose","School","Depart",37,71
+"Mandatory","Purpose","School","Depart",38,41
+"Mandatory","Purpose","School","Depart",39,34
+"Mandatory","Purpose","School","Depart",40,20
+"Mandatory","Purpose","School","Depart",41,12
+"Mandatory","Purpose","School","Depart",42,6
+"Mandatory","Purpose","School","Depart",43,6
+"Mandatory","Purpose","School","Depart",44,5
+"Mandatory","Purpose","School","Depart",45,3
+"Mandatory","Purpose","University","Depart",1,260
+"Mandatory","Purpose","University","Depart",2,242
+"Mandatory","Purpose","University","Depart",3,199
+"Mandatory","Purpose","University","Depart",4,394
+"Mandatory","Purpose","University","Depart",5,662
+"Mandatory","Purpose","University","Depart",6,1228
+"Mandatory","Purpose","University","Depart",7,2661
+"Mandatory","Purpose","University","Depart",8,5247
+"Mandatory","Purpose","University","Depart",9,11481
+"Mandatory","Purpose","University","Depart",10,6648
+"Mandatory","Purpose","University","Depart",11,11466
+"Mandatory","Purpose","University","Depart",12,6942
+"Mandatory","Purpose","University","Depart",13,7486
+"Mandatory","Purpose","University","Depart",14,4755
+"Mandatory","Purpose","University","Depart",15,4000
+"Mandatory","Purpose","University","Depart",16,3772
+"Mandatory","Purpose","University","Depart",17,3450
+"Mandatory","Purpose","University","Depart",18,3049
+"Mandatory","Purpose","University","Depart",19,2750
+"Mandatory","Purpose","University","Depart",20,2600
+"Mandatory","Purpose","University","Depart",21,2364
+"Mandatory","Purpose","University","Depart",22,2339
+"Mandatory","Purpose","University","Depart",23,1969
+"Mandatory","Purpose","University","Depart",24,1767
+"Mandatory","Purpose","University","Depart",25,1513
+"Mandatory","Purpose","University","Depart",26,1483
+"Mandatory","Purpose","University","Depart",27,1251
+"Mandatory","Purpose","University","Depart",28,1125
+"Mandatory","Purpose","University","Depart",29,1017
+"Mandatory","Purpose","University","Depart",30,968
+"Mandatory","Purpose","University","Depart",31,844
+"Mandatory","Purpose","University","Depart",32,701
+"Mandatory","Purpose","University","Depart",33,556
+"Mandatory","Purpose","University","Depart",34,535
+"Mandatory","Purpose","University","Depart",35,416
+"Mandatory","Purpose","University","Depart",36,300
+"Mandatory","Purpose","University","Depart",37,274
+"Mandatory","Purpose","University","Depart",38,243
+"Mandatory","Purpose","University","Depart",39,137
+"Mandatory","Purpose","University","Depart",40,67
+"Mandatory","Purpose","University","Depart",41,86
+"Mandatory","Purpose","University","Depart",42,58
+"Mandatory","Purpose","University","Depart",43,10
+"Mandatory","Purpose","University","Depart",44,6
+"Mandatory","Purpose","Work","Depart",1,4726
+"Mandatory","Purpose","Work","Depart",2,7427
+"Mandatory","Purpose","Work","Depart",3,12913
+"Mandatory","Purpose","Work","Depart",4,23318
+"Mandatory","Purpose","Work","Depart",5,44673
+"Mandatory","Purpose","Work","Depart",6,90383
+"Mandatory","Purpose","Work","Depart",7,148359
+"Mandatory","Purpose","Work","Depart",8,224453
+"Mandatory","Purpose","Work","Depart",9,291131
+"Mandatory","Purpose","Work","Depart",10,264074
+"Mandatory","Purpose","Work","Depart",11,192243
+"Mandatory","Purpose","Work","Depart",12,133296
+"Mandatory","Purpose","Work","Depart",13,88482
+"Mandatory","Purpose","Work","Depart",14,52870
+"Mandatory","Purpose","Work","Depart",15,41281
+"Mandatory","Purpose","Work","Depart",16,33641
+"Mandatory","Purpose","Work","Depart",17,29223
+"Mandatory","Purpose","Work","Depart",18,25654
+"Mandatory","Purpose","Work","Depart",19,23237
+"Mandatory","Purpose","Work","Depart",20,21753
+"Mandatory","Purpose","Work","Depart",21,20609
+"Mandatory","Purpose","Work","Depart",22,19780
+"Mandatory","Purpose","Work","Depart",23,17122
+"Mandatory","Purpose","Work","Depart",24,15229
+"Mandatory","Purpose","Work","Depart",25,13159
+"Mandatory","Purpose","Work","Depart",26,11647
+"Mandatory","Purpose","Work","Depart",27,10455
+"Mandatory","Purpose","Work","Depart",28,9377
+"Mandatory","Purpose","Work","Depart",29,8238
+"Mandatory","Purpose","Work","Depart",30,7044
+"Mandatory","Purpose","Work","Depart",31,5860
+"Mandatory","Purpose","Work","Depart",32,4609
+"Mandatory","Purpose","Work","Depart",33,3951
+"Mandatory","Purpose","Work","Depart",34,2926
+"Mandatory","Purpose","Work","Depart",35,2346
+"Mandatory","Purpose","Work","Depart",36,1817
+"Mandatory","Purpose","Work","Depart",37,1408
+"Mandatory","Purpose","Work","Depart",38,1089
+"Mandatory","Purpose","Work","Depart",39,792
+"Mandatory","Purpose","Work","Depart",40,547
+"Mandatory","Purpose","Work","Depart",41,385
+"Mandatory","Purpose","Work","Depart",42,255
+"Mandatory","Purpose","Work","Depart",43,158
+"Mandatory","Purpose","Work","Depart",44,103
+"Mandatory","Purpose","Work","Depart",45,70
+"Mandatory","Purpose","Work","Depart",46,48
+"Mandatory","Purpose","Work","Depart",47,25
+"Mandatory","PersonType","Pre-school","Depart",1,120
+"Mandatory","PersonType","Pre-school","Depart",2,62
+"Mandatory","PersonType","Pre-school","Depart",3,53
+"Mandatory","PersonType","Pre-school","Depart",4,39
+"Mandatory","PersonType","Pre-school","Depart",5,27
+"Mandatory","PersonType","Pre-school","Depart",6,17
+"Mandatory","PersonType","Pre-school","Depart",7,4543
+"Mandatory","PersonType","Pre-school","Depart",8,21203
+"Mandatory","PersonType","Pre-school","Depart",9,56278
+"Mandatory","PersonType","Pre-school","Depart",10,65967
+"Mandatory","PersonType","Pre-school","Depart",11,30226
+"Mandatory","PersonType","Pre-school","Depart",12,6859
+"Mandatory","PersonType","Pre-school","Depart",13,2969
+"Mandatory","PersonType","Pre-school","Depart",14,1433
+"Mandatory","PersonType","Pre-school","Depart",15,855
+"Mandatory","PersonType","Pre-school","Depart",16,539
+"Mandatory","PersonType","Pre-school","Depart",17,371
+"Mandatory","PersonType","Pre-school","Depart",18,251
+"Mandatory","PersonType","Pre-school","Depart",19,192
+"Mandatory","PersonType","Pre-school","Depart",20,131
+"Mandatory","PersonType","Pre-school","Depart",21,86
+"Mandatory","PersonType","Pre-school","Depart",22,73
+"Mandatory","PersonType","Pre-school","Depart",23,58
+"Mandatory","PersonType","Pre-school","Depart",24,51
+"Mandatory","PersonType","Pre-school","Depart",25,23
+"Mandatory","PersonType","Pre-school","Depart",26,23
+"Mandatory","PersonType","Pre-school","Depart",27,19
+"Mandatory","PersonType","Pre-school","Depart",28,3
+"Mandatory","PersonType","Pre-school","Depart",29,1
+"Mandatory","PersonType","Pre-school","Depart",30,2
+"Mandatory","PersonType","Pre-school","Depart",32,3
+"Mandatory","PersonType","Pre-school","Depart",35,1
+"Mandatory","PersonType","Pre-school","Depart",39,1
+"Mandatory","PersonType","Full-time worker","Depart",1,4485
+"Mandatory","PersonType","Full-time worker","Depart",2,6992
+"Mandatory","PersonType","Full-time worker","Depart",3,12128
+"Mandatory","PersonType","Full-time worker","Depart",4,21830
+"Mandatory","PersonType","Full-time worker","Depart",5,41557
+"Mandatory","PersonType","Full-time worker","Depart",6,83243
+"Mandatory","PersonType","Full-time worker","Depart",7,134684
+"Mandatory","PersonType","Full-time worker","Depart",8,200748
+"Mandatory","PersonType","Full-time worker","Depart",9,255180
+"Mandatory","PersonType","Full-time worker","Depart",10,228471
+"Mandatory","PersonType","Full-time worker","Depart",11,164025
+"Mandatory","PersonType","Full-time worker","Depart",12,111780
+"Mandatory","PersonType","Full-time worker","Depart",13,72797
+"Mandatory","PersonType","Full-time worker","Depart",14,42588
+"Mandatory","PersonType","Full-time worker","Depart",15,32390
+"Mandatory","PersonType","Full-time worker","Depart",16,25741
+"Mandatory","PersonType","Full-time worker","Depart",17,21841
+"Mandatory","PersonType","Full-time worker","Depart",18,18719
+"Mandatory","PersonType","Full-time worker","Depart",19,16802
+"Mandatory","PersonType","Full-time worker","Depart",20,15283
+"Mandatory","PersonType","Full-time worker","Depart",21,14127
+"Mandatory","PersonType","Full-time worker","Depart",22,13520
+"Mandatory","PersonType","Full-time worker","Depart",23,11501
+"Mandatory","PersonType","Full-time worker","Depart",24,10161
+"Mandatory","PersonType","Full-time worker","Depart",25,8711
+"Mandatory","PersonType","Full-time worker","Depart",26,7887
+"Mandatory","PersonType","Full-time worker","Depart",27,7156
+"Mandatory","PersonType","Full-time worker","Depart",28,6499
+"Mandatory","PersonType","Full-time worker","Depart",29,5818
+"Mandatory","PersonType","Full-time worker","Depart",30,4926
+"Mandatory","PersonType","Full-time worker","Depart",31,4331
+"Mandatory","PersonType","Full-time worker","Depart",32,3344
+"Mandatory","PersonType","Full-time worker","Depart",33,2907
+"Mandatory","PersonType","Full-time worker","Depart",34,2154
+"Mandatory","PersonType","Full-time worker","Depart",35,1694
+"Mandatory","PersonType","Full-time worker","Depart",36,1281
+"Mandatory","PersonType","Full-time worker","Depart",37,1012
+"Mandatory","PersonType","Full-time worker","Depart",38,757
+"Mandatory","PersonType","Full-time worker","Depart",39,533
+"Mandatory","PersonType","Full-time worker","Depart",40,361
+"Mandatory","PersonType","Full-time worker","Depart",41,260
+"Mandatory","PersonType","Full-time worker","Depart",42,162
+"Mandatory","PersonType","Full-time worker","Depart",43,102
+"Mandatory","PersonType","Full-time worker","Depart",44,55
+"Mandatory","PersonType","Full-time worker","Depart",45,43
+"Mandatory","PersonType","Full-time worker","Depart",46,32
+"Mandatory","PersonType","Full-time worker","Depart",47,15
+"Mandatory","PersonType","Part-time worker","Depart",1,168
+"Mandatory","PersonType","Part-time worker","Depart",2,318
+"Mandatory","PersonType","Part-time worker","Depart",3,594
+"Mandatory","PersonType","Part-time worker","Depart",4,1127
+"Mandatory","PersonType","Part-time worker","Depart",5,2443
+"Mandatory","PersonType","Part-time worker","Depart",6,5615
+"Mandatory","PersonType","Part-time worker","Depart",7,11095
+"Mandatory","PersonType","Part-time worker","Depart",8,19453
+"Mandatory","PersonType","Part-time worker","Depart",9,30157
+"Mandatory","PersonType","Part-time worker","Depart",10,29929
+"Mandatory","PersonType","Part-time worker","Depart",11,23786
+"Mandatory","PersonType","Part-time worker","Depart",12,18137
+"Mandatory","PersonType","Part-time worker","Depart",13,13189
+"Mandatory","PersonType","Part-time worker","Depart",14,8762
+"Mandatory","PersonType","Part-time worker","Depart",15,7548
+"Mandatory","PersonType","Part-time worker","Depart",16,6740
+"Mandatory","PersonType","Part-time worker","Depart",17,6324
+"Mandatory","PersonType","Part-time worker","Depart",18,5977
+"Mandatory","PersonType","Part-time worker","Depart",19,5588
+"Mandatory","PersonType","Part-time worker","Depart",20,5651
+"Mandatory","PersonType","Part-time worker","Depart",21,5654
+"Mandatory","PersonType","Part-time worker","Depart",22,5539
+"Mandatory","PersonType","Part-time worker","Depart",23,4946
+"Mandatory","PersonType","Part-time worker","Depart",24,4438
+"Mandatory","PersonType","Part-time worker","Depart",25,3936
+"Mandatory","PersonType","Part-time worker","Depart",26,3304
+"Mandatory","PersonType","Part-time worker","Depart",27,2924
+"Mandatory","PersonType","Part-time worker","Depart",28,2525
+"Mandatory","PersonType","Part-time worker","Depart",29,2110
+"Mandatory","PersonType","Part-time worker","Depart",30,1851
+"Mandatory","PersonType","Part-time worker","Depart",31,1299
+"Mandatory","PersonType","Part-time worker","Depart",32,1053
+"Mandatory","PersonType","Part-time worker","Depart",33,885
+"Mandatory","PersonType","Part-time worker","Depart",34,624
+"Mandatory","PersonType","Part-time worker","Depart",35,526
+"Mandatory","PersonType","Part-time worker","Depart",36,415
+"Mandatory","PersonType","Part-time worker","Depart",37,310
+"Mandatory","PersonType","Part-time worker","Depart",38,252
+"Mandatory","PersonType","Part-time worker","Depart",39,176
+"Mandatory","PersonType","Part-time worker","Depart",40,127
+"Mandatory","PersonType","Part-time worker","Depart",41,92
+"Mandatory","PersonType","Part-time worker","Depart",42,60
+"Mandatory","PersonType","Part-time worker","Depart",43,40
+"Mandatory","PersonType","Part-time worker","Depart",44,30
+"Mandatory","PersonType","Part-time worker","Depart",45,14
+"Mandatory","PersonType","Part-time worker","Depart",46,11
+"Mandatory","PersonType","Part-time worker","Depart",47,6
+"Mandatory","PersonType","Driving-age student","Depart",1,335
+"Mandatory","PersonType","Driving-age student","Depart",2,231
+"Mandatory","PersonType","Driving-age student","Depart",3,98
+"Mandatory","PersonType","Driving-age student","Depart",4,66
+"Mandatory","PersonType","Driving-age student","Depart",5,54
+"Mandatory","PersonType","Driving-age student","Depart",6,67
+"Mandatory","PersonType","Driving-age student","Depart",7,6471
+"Mandatory","PersonType","Driving-age student","Depart",8,24953
+"Mandatory","PersonType","Driving-age student","Depart",9,56248
+"Mandatory","PersonType","Driving-age student","Depart",10,55481
+"Mandatory","PersonType","Driving-age student","Depart",11,27352
+"Mandatory","PersonType","Driving-age student","Depart",12,7132
+"Mandatory","PersonType","Driving-age student","Depart",13,3377
+"Mandatory","PersonType","Driving-age student","Depart",14,1939
+"Mandatory","PersonType","Driving-age student","Depart",15,1236
+"Mandatory","PersonType","Driving-age student","Depart",16,983
+"Mandatory","PersonType","Driving-age student","Depart",17,697
+"Mandatory","PersonType","Driving-age student","Depart",18,524
+"Mandatory","PersonType","Driving-age student","Depart",19,420
+"Mandatory","PersonType","Driving-age student","Depart",20,340
+"Mandatory","PersonType","Driving-age student","Depart",21,275
+"Mandatory","PersonType","Driving-age student","Depart",22,223
+"Mandatory","PersonType","Driving-age student","Depart",23,193
+"Mandatory","PersonType","Driving-age student","Depart",24,304
+"Mandatory","PersonType","Driving-age student","Depart",25,365
+"Mandatory","PersonType","Driving-age student","Depart",26,357
+"Mandatory","PersonType","Driving-age student","Depart",27,462
+"Mandatory","PersonType","Driving-age student","Depart",28,387
+"Mandatory","PersonType","Driving-age student","Depart",29,334
+"Mandatory","PersonType","Driving-age student","Depart",30,288
+"Mandatory","PersonType","Driving-age student","Depart",31,264
+"Mandatory","PersonType","Driving-age student","Depart",32,222
+"Mandatory","PersonType","Driving-age student","Depart",33,155
+"Mandatory","PersonType","Driving-age student","Depart",34,81
+"Mandatory","PersonType","Driving-age student","Depart",35,58
+"Mandatory","PersonType","Driving-age student","Depart",36,39
+"Mandatory","PersonType","Driving-age student","Depart",37,22
+"Mandatory","PersonType","Driving-age student","Depart",38,12
+"Mandatory","PersonType","Driving-age student","Depart",39,16
+"Mandatory","PersonType","Driving-age student","Depart",40,5
+"Mandatory","PersonType","Driving-age student","Depart",41,1
+"Mandatory","PersonType","Driving-age student","Depart",42,2
+"Mandatory","PersonType","Driving-age student","Depart",43,2
+"Mandatory","PersonType","Driving-age student","Depart",44,1
+"Mandatory","PersonType","Driving-age student","Depart",45,3
+"Mandatory","PersonType","Non-driving student","Depart",1,555
+"Mandatory","PersonType","Non-driving student","Depart",2,339
+"Mandatory","PersonType","Non-driving student","Depart",3,255
+"Mandatory","PersonType","Non-driving student","Depart",4,139
+"Mandatory","PersonType","Non-driving student","Depart",5,101
+"Mandatory","PersonType","Non-driving student","Depart",6,69
+"Mandatory","PersonType","Non-driving student","Depart",7,17855
+"Mandatory","PersonType","Non-driving student","Depart",8,80401
+"Mandatory","PersonType","Non-driving student","Depart",9,201388
+"Mandatory","PersonType","Non-driving student","Depart",10,216873
+"Mandatory","PersonType","Non-driving student","Depart",11,111247
+"Mandatory","PersonType","Non-driving student","Depart",12,28247
+"Mandatory","PersonType","Non-driving student","Depart",13,13543
+"Mandatory","PersonType","Non-driving student","Depart",14,7445
+"Mandatory","PersonType","Non-driving student","Depart",15,4803
+"Mandatory","PersonType","Non-driving student","Depart",16,3351
+"Mandatory","PersonType","Non-driving student","Depart",17,2490
+"Mandatory","PersonType","Non-driving student","Depart",18,1760
+"Mandatory","PersonType","Non-driving student","Depart",19,1360
+"Mandatory","PersonType","Non-driving student","Depart",20,932
+"Mandatory","PersonType","Non-driving student","Depart",21,715
+"Mandatory","PersonType","Non-driving student","Depart",22,519
+"Mandatory","PersonType","Non-driving student","Depart",23,406
+"Mandatory","PersonType","Non-driving student","Depart",24,613
+"Mandatory","PersonType","Non-driving student","Depart",25,671
+"Mandatory","PersonType","Non-driving student","Depart",26,733
+"Mandatory","PersonType","Non-driving student","Depart",27,738
+"Mandatory","PersonType","Non-driving student","Depart",28,638
+"Mandatory","PersonType","Non-driving student","Depart",29,542
+"Mandatory","PersonType","Non-driving student","Depart",30,459
+"Mandatory","PersonType","Non-driving student","Depart",31,456
+"Mandatory","PersonType","Non-driving student","Depart",32,356
+"Mandatory","PersonType","Non-driving student","Depart",33,230
+"Mandatory","PersonType","Non-driving student","Depart",34,159
+"Mandatory","PersonType","Non-driving student","Depart",35,74
+"Mandatory","PersonType","Non-driving student","Depart",36,57
+"Mandatory","PersonType","Non-driving student","Depart",37,50
+"Mandatory","PersonType","Non-driving student","Depart",38,30
+"Mandatory","PersonType","Non-driving student","Depart",39,20
+"Mandatory","PersonType","Non-driving student","Depart",40,18
+"Mandatory","PersonType","Non-driving student","Depart",41,11
+"Mandatory","PersonType","Non-driving student","Depart",42,4
+"Mandatory","PersonType","Non-driving student","Depart",43,5
+"Mandatory","PersonType","Non-driving student","Depart",44,4
+"Mandatory","PersonType","Non-driving student","Depart",45,1
+"Mandatory","PersonType","College student","Depart",1,333
+"Mandatory","PersonType","College student","Depart",2,358
+"Mandatory","PersonType","College student","Depart",3,386
+"Mandatory","PersonType","College student","Depart",4,750
+"Mandatory","PersonType","College student","Depart",5,1320
+"Mandatory","PersonType","College student","Depart",6,2704
+"Mandatory","PersonType","College student","Depart",7,5098
+"Mandatory","PersonType","College student","Depart",8,9153
+"Mandatory","PersonType","College student","Depart",9,16597
+"Mandatory","PersonType","College student","Depart",10,11671
+"Mandatory","PersonType","College student","Depart",11,15416
+"Mandatory","PersonType","College student","Depart",12,9910
+"Mandatory","PersonType","College student","Depart",13,9705
+"Mandatory","PersonType","College student","Depart",14,6076
+"Mandatory","PersonType","College student","Depart",15,5157
+"Mandatory","PersonType","College student","Depart",16,4777
+"Mandatory","PersonType","College student","Depart",17,4394
+"Mandatory","PersonType","College student","Depart",18,3896
+"Mandatory","PersonType","College student","Depart",19,3514
+"Mandatory","PersonType","College student","Depart",20,3345
+"Mandatory","PersonType","College student","Depart",21,3108
+"Mandatory","PersonType","College student","Depart",22,2988
+"Mandatory","PersonType","College student","Depart",23,2582
+"Mandatory","PersonType","College student","Depart",24,2353
+"Mandatory","PersonType","College student","Depart",25,1970
+"Mandatory","PersonType","College student","Depart",26,1906
+"Mandatory","PersonType","College student","Depart",27,1599
+"Mandatory","PersonType","College student","Depart",28,1462
+"Mandatory","PersonType","College student","Depart",29,1317
+"Mandatory","PersonType","College student","Depart",30,1227
+"Mandatory","PersonType","College student","Depart",31,1066
+"Mandatory","PersonType","College student","Depart",32,907
+"Mandatory","PersonType","College student","Depart",33,704
+"Mandatory","PersonType","College student","Depart",34,678
+"Mandatory","PersonType","College student","Depart",35,539
+"Mandatory","PersonType","College student","Depart",36,416
+"Mandatory","PersonType","College student","Depart",37,359
+"Mandatory","PersonType","College student","Depart",38,322
+"Mandatory","PersonType","College student","Depart",39,217
+"Mandatory","PersonType","College student","Depart",40,123
+"Mandatory","PersonType","College student","Depart",41,119
+"Mandatory","PersonType","College student","Depart",42,91
+"Mandatory","PersonType","College student","Depart",43,25
+"Mandatory","PersonType","College student","Depart",44,24
+"Mandatory","PersonType","College student","Depart",45,12
+"Mandatory","PersonType","College student","Depart",46,5
+"Mandatory","PersonType","College student","Depart",47,4
+"Individual Non-Mandatory","Purpose","Discretionary","Depart",1,119
+"Individual Non-Mandatory","Purpose","Discretionary","Depart",2,116
+"Individual Non-Mandatory","Purpose","Discretionary","Depart",3,211
+"Individual Non-Mandatory","Purpose","Discretionary","Depart",4,508
+"Individual Non-Mandatory","Purpose","Discretionary","Depart",5,2405
+"Individual Non-Mandatory","Purpose","Discretionary","Depart",6,2730
+"Individual Non-Mandatory","Purpose","Discretionary","Depart",7,3511
+"Individual Non-Mandatory","Purpose","Discretionary","Depart",8,5959
+"Individual Non-Mandatory","Purpose","Discretionary","Depart",9,13076
+"Individual Non-Mandatory","Purpose","Discretionary","Depart",10,19932
+"Individual Non-Mandatory","Purpose","Discretionary","Depart",11,26011
+"Individual Non-Mandatory","Purpose","Discretionary","Depart",12,25328
+"Individual Non-Mandatory","Purpose","Discretionary","Depart",13,29205
+"Individual Non-Mandatory","Purpose","Discretionary","Depart",14,23490
+"Individual Non-Mandatory","Purpose","Discretionary","Depart",15,16442
+"Individual Non-Mandatory","Purpose","Discretionary","Depart",16,9232
+"Individual Non-Mandatory","Purpose","Discretionary","Depart",17,7976
+"Individual Non-Mandatory","Purpose","Discretionary","Depart",18,6948
+"Individual Non-Mandatory","Purpose","Discretionary","Depart",19,5733
+"Individual Non-Mandatory","Purpose","Discretionary","Depart",20,5064
+"Individual Non-Mandatory","Purpose","Discretionary","Depart",21,5688
+"Individual Non-Mandatory","Purpose","Discretionary","Depart",22,6080
+"Individual Non-Mandatory","Purpose","Discretionary","Depart",23,6818
+"Individual Non-Mandatory","Purpose","Discretionary","Depart",24,9132
+"Individual Non-Mandatory","Purpose","Discretionary","Depart",25,10912
+"Individual Non-Mandatory","Purpose","Discretionary","Depart",26,13140
+"Individual Non-Mandatory","Purpose","Discretionary","Depart",27,15103
+"Individual Non-Mandatory","Purpose","Discretionary","Depart",28,16332
+"Individual Non-Mandatory","Purpose","Discretionary","Depart",29,40923
+"Individual Non-Mandatory","Purpose","Discretionary","Depart",30,39417
+"Individual Non-Mandatory","Purpose","Discretionary","Depart",31,38949
+"Individual Non-Mandatory","Purpose","Discretionary","Depart",32,32883
+"Individual Non-Mandatory","Purpose","Discretionary","Depart",33,13802
+"Individual Non-Mandatory","Purpose","Discretionary","Depart",34,5702
+"Individual Non-Mandatory","Purpose","Discretionary","Depart",35,2570
+"Individual Non-Mandatory","Purpose","Discretionary","Depart",36,1620
+"Individual Non-Mandatory","Purpose","Discretionary","Depart",37,664
+"Individual Non-Mandatory","Purpose","Discretionary","Depart",38,1786
+"Individual Non-Mandatory","Purpose","Discretionary","Depart",39,686
+"Individual Non-Mandatory","Purpose","Discretionary","Depart",40,350
+"Individual Non-Mandatory","Purpose","Discretionary","Depart",41,183
+"Individual Non-Mandatory","Purpose","Discretionary","Depart",42,104
+"Individual Non-Mandatory","Purpose","Discretionary","Depart",43,40
+"Individual Non-Mandatory","Purpose","Discretionary","Depart",44,17
+"Individual Non-Mandatory","Purpose","Discretionary","Depart",45,8
+"Individual Non-Mandatory","Purpose","Discretionary","Depart",46,2
+"Individual Non-Mandatory","Purpose","EatOut","Depart",4,79
+"Individual Non-Mandatory","Purpose","EatOut","Depart",5,83
+"Individual Non-Mandatory","Purpose","EatOut","Depart",6,86
+"Individual Non-Mandatory","Purpose","EatOut","Depart",7,111
+"Individual Non-Mandatory","Purpose","EatOut","Depart",8,124
+"Individual Non-Mandatory","Purpose","EatOut","Depart",9,127
+"Individual Non-Mandatory","Purpose","EatOut","Depart",10,488
+"Individual Non-Mandatory","Purpose","EatOut","Depart",11,546
+"Individual Non-Mandatory","Purpose","EatOut","Depart",12,622
+"Individual Non-Mandatory","Purpose","EatOut","Depart",13,196
+"Individual Non-Mandatory","Purpose","EatOut","Depart",14,284
+"Individual Non-Mandatory","Purpose","EatOut","Depart",15,308
+"Individual Non-Mandatory","Purpose","EatOut","Depart",16,626
+"Individual Non-Mandatory","Purpose","EatOut","Depart",17,4751
+"Individual Non-Mandatory","Purpose","EatOut","Depart",18,9427
+"Individual Non-Mandatory","Purpose","EatOut","Depart",19,5420
+"Individual Non-Mandatory","Purpose","EatOut","Depart",20,6034
+"Individual Non-Mandatory","Purpose","EatOut","Depart",21,4562
+"Individual Non-Mandatory","Purpose","EatOut","Depart",22,1003
+"Individual Non-Mandatory","Purpose","EatOut","Depart",23,1156
+"Individual Non-Mandatory","Purpose","EatOut","Depart",24,1478
+"Individual Non-Mandatory","Purpose","EatOut","Depart",25,1878
+"Individual Non-Mandatory","Purpose","EatOut","Depart",26,2407
+"Individual Non-Mandatory","Purpose","EatOut","Depart",27,2997
+"Individual Non-Mandatory","Purpose","EatOut","Depart",28,3778
+"Individual Non-Mandatory","Purpose","EatOut","Depart",29,4582
+"Individual Non-Mandatory","Purpose","EatOut","Depart",30,5523
+"Individual Non-Mandatory","Purpose","EatOut","Depart",31,8688
+"Individual Non-Mandatory","Purpose","EatOut","Depart",32,9594
+"Individual Non-Mandatory","Purpose","EatOut","Depart",33,6995
+"Individual Non-Mandatory","Purpose","EatOut","Depart",34,6108
+"Individual Non-Mandatory","Purpose","EatOut","Depart",35,3372
+"Individual Non-Mandatory","Purpose","EatOut","Depart",36,1959
+"Individual Non-Mandatory","Purpose","EatOut","Depart",37,1181
+"Individual Non-Mandatory","Purpose","EatOut","Depart",38,727
+"Individual Non-Mandatory","Purpose","EatOut","Depart",39,402
+"Individual Non-Mandatory","Purpose","EatOut","Depart",40,228
+"Individual Non-Mandatory","Purpose","EatOut","Depart",41,191
+"Individual Non-Mandatory","Purpose","EatOut","Depart",42,154
+"Individual Non-Mandatory","Purpose","EatOut","Depart",43,100
+"Individual Non-Mandatory","Purpose","EatOut","Depart",44,62
+"Individual Non-Mandatory","Purpose","EatOut","Depart",45,58
+"Individual Non-Mandatory","Purpose","EatOut","Depart",46,26
+"Individual Non-Mandatory","Purpose","EatOut","Depart",47,9
+"Individual Non-Mandatory","Purpose","EatOut","Depart",48,2
+"Individual Non-Mandatory","Purpose","Escorting","Depart",1,855
+"Individual Non-Mandatory","Purpose","Escorting","Depart",2,812
+"Individual Non-Mandatory","Purpose","Escorting","Depart",3,773
+"Individual Non-Mandatory","Purpose","Escorting","Depart",4,541
+"Individual Non-Mandatory","Purpose","Escorting","Depart",5,1596
+"Individual Non-Mandatory","Purpose","Escorting","Depart",6,4217
+"Individual Non-Mandatory","Purpose","Escorting","Depart",7,10559
+"Individual Non-Mandatory","Purpose","Escorting","Depart",8,29884
+"Individual Non-Mandatory","Purpose","Escorting","Depart",9,82941
+"Individual Non-Mandatory","Purpose","Escorting","Depart",10,103547
+"Individual Non-Mandatory","Purpose","Escorting","Depart",11,41719
+"Individual Non-Mandatory","Purpose","Escorting","Depart",12,28559
+"Individual Non-Mandatory","Purpose","Escorting","Depart",13,7097
+"Individual Non-Mandatory","Purpose","Escorting","Depart",14,7535
+"Individual Non-Mandatory","Purpose","Escorting","Depart",15,8040
+"Individual Non-Mandatory","Purpose","Escorting","Depart",16,8829
+"Individual Non-Mandatory","Purpose","Escorting","Depart",17,9547
+"Individual Non-Mandatory","Purpose","Escorting","Depart",18,10457
+"Individual Non-Mandatory","Purpose","Escorting","Depart",19,11347
+"Individual Non-Mandatory","Purpose","Escorting","Depart",20,12711
+"Individual Non-Mandatory","Purpose","Escorting","Depart",21,14822
+"Individual Non-Mandatory","Purpose","Escorting","Depart",22,21276
+"Individual Non-Mandatory","Purpose","Escorting","Depart",23,44008
+"Individual Non-Mandatory","Purpose","Escorting","Depart",24,47857
+"Individual Non-Mandatory","Purpose","Escorting","Depart",25,31719
+"Individual Non-Mandatory","Purpose","Escorting","Depart",26,36506
+"Individual Non-Mandatory","Purpose","Escorting","Depart",27,32472
+"Individual Non-Mandatory","Purpose","Escorting","Depart",28,27331
+"Individual Non-Mandatory","Purpose","Escorting","Depart",29,22241
+"Individual Non-Mandatory","Purpose","Escorting","Depart",30,18322
+"Individual Non-Mandatory","Purpose","Escorting","Depart",31,15104
+"Individual Non-Mandatory","Purpose","Escorting","Depart",32,12409
+"Individual Non-Mandatory","Purpose","Escorting","Depart",33,18242
+"Individual Non-Mandatory","Purpose","Escorting","Depart",34,13509
+"Individual Non-Mandatory","Purpose","Escorting","Depart",35,9967
+"Individual Non-Mandatory","Purpose","Escorting","Depart",36,7484
+"Individual Non-Mandatory","Purpose","Escorting","Depart",37,5530
+"Individual Non-Mandatory","Purpose","Escorting","Depart",38,4224
+"Individual Non-Mandatory","Purpose","Escorting","Depart",39,2956
+"Individual Non-Mandatory","Purpose","Escorting","Depart",40,2323
+"Individual Non-Mandatory","Purpose","Escorting","Depart",41,1897
+"Individual Non-Mandatory","Purpose","Escorting","Depart",42,1524
+"Individual Non-Mandatory","Purpose","Escorting","Depart",43,1471
+"Individual Non-Mandatory","Purpose","Escorting","Depart",44,1527
+"Individual Non-Mandatory","Purpose","Escorting","Depart",45,1399
+"Individual Non-Mandatory","Purpose","Escorting","Depart",46,1065
+"Individual Non-Mandatory","Purpose","Escorting","Depart",47,663
+"Individual Non-Mandatory","Purpose","Escorting","Depart",48,117
+"Individual Non-Mandatory","Purpose","Maintenance","Depart",1,452
+"Individual Non-Mandatory","Purpose","Maintenance","Depart",2,384
+"Individual Non-Mandatory","Purpose","Maintenance","Depart",3,305
+"Individual Non-Mandatory","Purpose","Maintenance","Depart",4,638
+"Individual Non-Mandatory","Purpose","Maintenance","Depart",5,1178
+"Individual Non-Mandatory","Purpose","Maintenance","Depart",6,2188
+"Individual Non-Mandatory","Purpose","Maintenance","Depart",7,3724
+"Individual Non-Mandatory","Purpose","Maintenance","Depart",8,6108
+"Individual Non-Mandatory","Purpose","Maintenance","Depart",9,9856
+"Individual Non-Mandatory","Purpose","Maintenance","Depart",10,12335
+"Individual Non-Mandatory","Purpose","Maintenance","Depart",11,28415
+"Individual Non-Mandatory","Purpose","Maintenance","Depart",12,27687
+"Individual Non-Mandatory","Purpose","Maintenance","Depart",13,32351
+"Individual Non-Mandatory","Purpose","Maintenance","Depart",14,28150
+"Individual Non-Mandatory","Purpose","Maintenance","Depart",15,34756
+"Individual Non-Mandatory","Purpose","Maintenance","Depart",16,21255
+"Individual Non-Mandatory","Purpose","Maintenance","Depart",17,23304
+"Individual Non-Mandatory","Purpose","Maintenance","Depart",18,16714
+"Individual Non-Mandatory","Purpose","Maintenance","Depart",19,19396
+"Individual Non-Mandatory","Purpose","Maintenance","Depart",20,18600
+"Individual Non-Mandatory","Purpose","Maintenance","Depart",21,25707
+"Individual Non-Mandatory","Purpose","Maintenance","Depart",22,20941
+"Individual Non-Mandatory","Purpose","Maintenance","Depart",23,15786
+"Individual Non-Mandatory","Purpose","Maintenance","Depart",24,9173
+"Individual Non-Mandatory","Purpose","Maintenance","Depart",25,9963
+"Individual Non-Mandatory","Purpose","Maintenance","Depart",26,11051
+"Individual Non-Mandatory","Purpose","Maintenance","Depart",27,7821
+"Individual Non-Mandatory","Purpose","Maintenance","Depart",28,6799
+"Individual Non-Mandatory","Purpose","Maintenance","Depart",29,5481
+"Individual Non-Mandatory","Purpose","Maintenance","Depart",30,5528
+"Individual Non-Mandatory","Purpose","Maintenance","Depart",31,3363
+"Individual Non-Mandatory","Purpose","Maintenance","Depart",32,10260
+"Individual Non-Mandatory","Purpose","Maintenance","Depart",33,7091
+"Individual Non-Mandatory","Purpose","Maintenance","Depart",34,4787
+"Individual Non-Mandatory","Purpose","Maintenance","Depart",35,3310
+"Individual Non-Mandatory","Purpose","Maintenance","Depart",36,2082
+"Individual Non-Mandatory","Purpose","Maintenance","Depart",37,1399
+"Individual Non-Mandatory","Purpose","Maintenance","Depart",38,866
+"Individual Non-Mandatory","Purpose","Maintenance","Depart",39,599
+"Individual Non-Mandatory","Purpose","Maintenance","Depart",40,409
+"Individual Non-Mandatory","Purpose","Maintenance","Depart",41,314
+"Individual Non-Mandatory","Purpose","Maintenance","Depart",42,252
+"Individual Non-Mandatory","Purpose","Maintenance","Depart",43,190
+"Individual Non-Mandatory","Purpose","Maintenance","Depart",44,137
+"Individual Non-Mandatory","Purpose","Maintenance","Depart",45,110
+"Individual Non-Mandatory","Purpose","Maintenance","Depart",46,62
+"Individual Non-Mandatory","Purpose","Maintenance","Depart",47,36
+"Individual Non-Mandatory","Purpose","Maintenance","Depart",48,8
+"Individual Non-Mandatory","Purpose","Shopping","Depart",1,195
+"Individual Non-Mandatory","Purpose","Shopping","Depart",2,164
+"Individual Non-Mandatory","Purpose","Shopping","Depart",3,159
+"Individual Non-Mandatory","Purpose","Shopping","Depart",4,130
+"Individual Non-Mandatory","Purpose","Shopping","Depart",5,137
+"Individual Non-Mandatory","Purpose","Shopping","Depart",6,289
+"Individual Non-Mandatory","Purpose","Shopping","Depart",7,700
+"Individual Non-Mandatory","Purpose","Shopping","Depart",8,1367
+"Individual Non-Mandatory","Purpose","Shopping","Depart",9,3239
+"Individual Non-Mandatory","Purpose","Shopping","Depart",10,7561
+"Individual Non-Mandatory","Purpose","Shopping","Depart",11,19825
+"Individual Non-Mandatory","Purpose","Shopping","Depart",12,17904
+"Individual Non-Mandatory","Purpose","Shopping","Depart",13,29692
+"Individual Non-Mandatory","Purpose","Shopping","Depart",14,24930
+"Individual Non-Mandatory","Purpose","Shopping","Depart",15,36196
+"Individual Non-Mandatory","Purpose","Shopping","Depart",16,29579
+"Individual Non-Mandatory","Purpose","Shopping","Depart",17,25137
+"Individual Non-Mandatory","Purpose","Shopping","Depart",18,25218
+"Individual Non-Mandatory","Purpose","Shopping","Depart",19,24380
+"Individual Non-Mandatory","Purpose","Shopping","Depart",20,23538
+"Individual Non-Mandatory","Purpose","Shopping","Depart",21,22763
+"Individual Non-Mandatory","Purpose","Shopping","Depart",22,21893
+"Individual Non-Mandatory","Purpose","Shopping","Depart",23,21790
+"Individual Non-Mandatory","Purpose","Shopping","Depart",24,21711
+"Individual Non-Mandatory","Purpose","Shopping","Depart",25,20902
+"Individual Non-Mandatory","Purpose","Shopping","Depart",26,19340
+"Individual Non-Mandatory","Purpose","Shopping","Depart",27,17610
+"Individual Non-Mandatory","Purpose","Shopping","Depart",28,16798
+"Individual Non-Mandatory","Purpose","Shopping","Depart",29,16494
+"Individual Non-Mandatory","Purpose","Shopping","Depart",30,16026
+"Individual Non-Mandatory","Purpose","Shopping","Depart",31,14959
+"Individual Non-Mandatory","Purpose","Shopping","Depart",32,13371
+"Individual Non-Mandatory","Purpose","Shopping","Depart",33,11186
+"Individual Non-Mandatory","Purpose","Shopping","Depart",34,9035
+"Individual Non-Mandatory","Purpose","Shopping","Depart",35,6854
+"Individual Non-Mandatory","Purpose","Shopping","Depart",36,4595
+"Individual Non-Mandatory","Purpose","Shopping","Depart",37,2544
+"Individual Non-Mandatory","Purpose","Shopping","Depart",38,1594
+"Individual Non-Mandatory","Purpose","Shopping","Depart",39,903
+"Individual Non-Mandatory","Purpose","Shopping","Depart",40,481
+"Individual Non-Mandatory","Purpose","Shopping","Depart",41,294
+"Individual Non-Mandatory","Purpose","Shopping","Depart",42,245
+"Individual Non-Mandatory","Purpose","Shopping","Depart",43,219
+"Individual Non-Mandatory","Purpose","Shopping","Depart",44,153
+"Individual Non-Mandatory","Purpose","Shopping","Depart",45,104
+"Individual Non-Mandatory","Purpose","Shopping","Depart",46,40
+"Individual Non-Mandatory","Purpose","Shopping","Depart",47,25
+"Individual Non-Mandatory","Purpose","Shopping","Depart",48,4
+"Individual Non-Mandatory","Purpose","Social","Depart",1,188
+"Individual Non-Mandatory","Purpose","Social","Depart",2,248
+"Individual Non-Mandatory","Purpose","Social","Depart",3,336
+"Individual Non-Mandatory","Purpose","Social","Depart",4,494
+"Individual Non-Mandatory","Purpose","Social","Depart",5,654
+"Individual Non-Mandatory","Purpose","Social","Depart",6,855
+"Individual Non-Mandatory","Purpose","Social","Depart",7,1170
+"Individual Non-Mandatory","Purpose","Social","Depart",8,1470
+"Individual Non-Mandatory","Purpose","Social","Depart",9,4822
+"Individual Non-Mandatory","Purpose","Social","Depart",10,4758
+"Individual Non-Mandatory","Purpose","Social","Depart",11,4306
+"Individual Non-Mandatory","Purpose","Social","Depart",12,3814
+"Individual Non-Mandatory","Purpose","Social","Depart",13,8479
+"Individual Non-Mandatory","Purpose","Social","Depart",14,6211
+"Individual Non-Mandatory","Purpose","Social","Depart",15,5555
+"Individual Non-Mandatory","Purpose","Social","Depart",16,5238
+"Individual Non-Mandatory","Purpose","Social","Depart",17,4812
+"Individual Non-Mandatory","Purpose","Social","Depart",18,4796
+"Individual Non-Mandatory","Purpose","Social","Depart",19,4251
+"Individual Non-Mandatory","Purpose","Social","Depart",20,3909
+"Individual Non-Mandatory","Purpose","Social","Depart",21,3737
+"Individual Non-Mandatory","Purpose","Social","Depart",22,3819
+"Individual Non-Mandatory","Purpose","Social","Depart",23,4240
+"Individual Non-Mandatory","Purpose","Social","Depart",24,5001
+"Individual Non-Mandatory","Purpose","Social","Depart",25,5603
+"Individual Non-Mandatory","Purpose","Social","Depart",26,6424
+"Individual Non-Mandatory","Purpose","Social","Depart",27,7184
+"Individual Non-Mandatory","Purpose","Social","Depart",28,7772
+"Individual Non-Mandatory","Purpose","Social","Depart",29,8414
+"Individual Non-Mandatory","Purpose","Social","Depart",30,7630
+"Individual Non-Mandatory","Purpose","Social","Depart",31,10939
+"Individual Non-Mandatory","Purpose","Social","Depart",32,8984
+"Individual Non-Mandatory","Purpose","Social","Depart",33,9159
+"Individual Non-Mandatory","Purpose","Social","Depart",34,4203
+"Individual Non-Mandatory","Purpose","Social","Depart",35,3309
+"Individual Non-Mandatory","Purpose","Social","Depart",36,2638
+"Individual Non-Mandatory","Purpose","Social","Depart",37,2181
+"Individual Non-Mandatory","Purpose","Social","Depart",38,1441
+"Individual Non-Mandatory","Purpose","Social","Depart",39,1012
+"Individual Non-Mandatory","Purpose","Social","Depart",40,648
+"Individual Non-Mandatory","Purpose","Social","Depart",41,392
+"Individual Non-Mandatory","Purpose","Social","Depart",42,268
+"Individual Non-Mandatory","Purpose","Social","Depart",43,163
+"Individual Non-Mandatory","Purpose","Social","Depart",44,98
+"Individual Non-Mandatory","Purpose","Social","Depart",45,57
+"Individual Non-Mandatory","Purpose","Social","Depart",46,25
+"Individual Non-Mandatory","Purpose","Social","Depart",47,11
+"Individual Non-Mandatory","Purpose","Social","Depart",48,1
+"Joint","Purpose","Discretionary","Depart",1,190
+"Joint","Purpose","Discretionary","Depart",2,161
+"Joint","Purpose","Discretionary","Depart",3,330
+"Joint","Purpose","Discretionary","Depart",4,700
+"Joint","Purpose","Discretionary","Depart",5,2763
+"Joint","Purpose","Discretionary","Depart",6,2335
+"Joint","Purpose","Discretionary","Depart",7,2279
+"Joint","Purpose","Discretionary","Depart",8,2315
+"Joint","Purpose","Discretionary","Depart",9,2550
+"Joint","Purpose","Discretionary","Depart",10,2430
+"Joint","Purpose","Discretionary","Depart",11,2458
+"Joint","Purpose","Discretionary","Depart",12,2147
+"Joint","Purpose","Discretionary","Depart",13,2490
+"Joint","Purpose","Discretionary","Depart",14,1971
+"Joint","Purpose","Discretionary","Depart",15,1356
+"Joint","Purpose","Discretionary","Depart",16,748
+"Joint","Purpose","Discretionary","Depart",17,689
+"Joint","Purpose","Discretionary","Depart",18,514
+"Joint","Purpose","Discretionary","Depart",19,456
+"Joint","Purpose","Discretionary","Depart",20,397
+"Joint","Purpose","Discretionary","Depart",21,491
+"Joint","Purpose","Discretionary","Depart",22,578
+"Joint","Purpose","Discretionary","Depart",23,669
+"Joint","Purpose","Discretionary","Depart",24,1033
+"Joint","Purpose","Discretionary","Depart",25,1379
+"Joint","Purpose","Discretionary","Depart",26,1919
+"Joint","Purpose","Discretionary","Depart",27,2729
+"Joint","Purpose","Discretionary","Depart",28,3566
+"Joint","Purpose","Discretionary","Depart",29,10495
+"Joint","Purpose","Discretionary","Depart",30,12714
+"Joint","Purpose","Discretionary","Depart",31,15696
+"Joint","Purpose","Discretionary","Depart",32,16992
+"Joint","Purpose","Discretionary","Depart",33,9478
+"Joint","Purpose","Discretionary","Depart",34,5122
+"Joint","Purpose","Discretionary","Depart",35,2613
+"Joint","Purpose","Discretionary","Depart",36,1729
+"Joint","Purpose","Discretionary","Depart",37,789
+"Joint","Purpose","Discretionary","Depart",38,2265
+"Joint","Purpose","Discretionary","Depart",39,909
+"Joint","Purpose","Discretionary","Depart",40,468
+"Joint","Purpose","Discretionary","Depart",41,261
+"Joint","Purpose","Discretionary","Depart",42,168
+"Joint","Purpose","Discretionary","Depart",43,80
+"Joint","Purpose","Discretionary","Depart",44,36
+"Joint","Purpose","Discretionary","Depart",45,18
+"Joint","Purpose","Discretionary","Depart",46,3
+"Joint","Purpose","EatOut","Depart",1,1
+"Joint","Purpose","EatOut","Depart",4,1323
+"Joint","Purpose","EatOut","Depart",5,980
+"Joint","Purpose","EatOut","Depart",6,710
+"Joint","Purpose","EatOut","Depart",7,465
+"Joint","Purpose","EatOut","Depart",8,312
+"Joint","Purpose","EatOut","Depart",9,257
+"Joint","Purpose","EatOut","Depart",10,155
+"Joint","Purpose","EatOut","Depart",11,141
+"Joint","Purpose","EatOut","Depart",12,136
+"Joint","Purpose","EatOut","Depart",13,126
+"Joint","Purpose","EatOut","Depart",14,149
+"Joint","Purpose","EatOut","Depart",15,195
+"Joint","Purpose","EatOut","Depart",16,257
+"Joint","Purpose","EatOut","Depart",17,1793
+"Joint","Purpose","EatOut","Depart",18,2220
+"Joint","Purpose","EatOut","Depart",19,2103
+"Joint","Purpose","EatOut","Depart",20,1456
+"Joint","Purpose","EatOut","Depart",21,774
+"Joint","Purpose","EatOut","Depart",22,248
+"Joint","Purpose","EatOut","Depart",23,304
+"Joint","Purpose","EatOut","Depart",24,380
+"Joint","Purpose","EatOut","Depart",25,560
+"Joint","Purpose","EatOut","Depart",26,764
+"Joint","Purpose","EatOut","Depart",27,1114
+"Joint","Purpose","EatOut","Depart",28,1595
+"Joint","Purpose","EatOut","Depart",29,2153
+"Joint","Purpose","EatOut","Depart",30,4367
+"Joint","Purpose","EatOut","Depart",31,6752
+"Joint","Purpose","EatOut","Depart",32,6309
+"Joint","Purpose","EatOut","Depart",33,7173
+"Joint","Purpose","EatOut","Depart",34,4683
+"Joint","Purpose","EatOut","Depart",35,3031
+"Joint","Purpose","EatOut","Depart",36,2075
+"Joint","Purpose","EatOut","Depart",37,1188
+"Joint","Purpose","EatOut","Depart",38,641
+"Joint","Purpose","EatOut","Depart",39,335
+"Joint","Purpose","EatOut","Depart",40,146
+"Joint","Purpose","EatOut","Depart",41,155
+"Joint","Purpose","EatOut","Depart",42,100
+"Joint","Purpose","EatOut","Depart",43,77
+"Joint","Purpose","EatOut","Depart",44,66
+"Joint","Purpose","EatOut","Depart",45,46
+"Joint","Purpose","EatOut","Depart",46,32
+"Joint","Purpose","EatOut","Depart",47,7
+"Joint","Purpose","Maintenance","Depart",1,494
+"Joint","Purpose","Maintenance","Depart",2,464
+"Joint","Purpose","Maintenance","Depart",3,377
+"Joint","Purpose","Maintenance","Depart",4,640
+"Joint","Purpose","Maintenance","Depart",5,1122
+"Joint","Purpose","Maintenance","Depart",6,1693
+"Joint","Purpose","Maintenance","Depart",7,2221
+"Joint","Purpose","Maintenance","Depart",8,2486
+"Joint","Purpose","Maintenance","Depart",9,2533
+"Joint","Purpose","Maintenance","Depart",10,1837
+"Joint","Purpose","Maintenance","Depart",11,2964
+"Joint","Purpose","Maintenance","Depart",12,2736
+"Joint","Purpose","Maintenance","Depart",13,3128
+"Joint","Purpose","Maintenance","Depart",14,2936
+"Joint","Purpose","Maintenance","Depart",15,4251
+"Joint","Purpose","Maintenance","Depart",16,2449
+"Joint","Purpose","Maintenance","Depart",17,2459
+"Joint","Purpose","Maintenance","Depart",18,1683
+"Joint","Purpose","Maintenance","Depart",19,1809
+"Joint","Purpose","Maintenance","Depart",20,1652
+"Joint","Purpose","Maintenance","Depart",21,2240
+"Joint","Purpose","Maintenance","Depart",22,1820
+"Joint","Purpose","Maintenance","Depart",23,1455
+"Joint","Purpose","Maintenance","Depart",24,1656
+"Joint","Purpose","Maintenance","Depart",25,2360
+"Joint","Purpose","Maintenance","Depart",26,3729
+"Joint","Purpose","Maintenance","Depart",27,3790
+"Joint","Purpose","Maintenance","Depart",28,3796
+"Joint","Purpose","Maintenance","Depart",29,3270
+"Joint","Purpose","Maintenance","Depart",30,3581
+"Joint","Purpose","Maintenance","Depart",31,2246
+"Joint","Purpose","Maintenance","Depart",32,7133
+"Joint","Purpose","Maintenance","Depart",33,4967
+"Joint","Purpose","Maintenance","Depart",34,3549
+"Joint","Purpose","Maintenance","Depart",35,2382
+"Joint","Purpose","Maintenance","Depart",36,1559
+"Joint","Purpose","Maintenance","Depart",37,990
+"Joint","Purpose","Maintenance","Depart",38,566
+"Joint","Purpose","Maintenance","Depart",39,421
+"Joint","Purpose","Maintenance","Depart",40,319
+"Joint","Purpose","Maintenance","Depart",41,238
+"Joint","Purpose","Maintenance","Depart",42,224
+"Joint","Purpose","Maintenance","Depart",43,156
+"Joint","Purpose","Maintenance","Depart",44,131
+"Joint","Purpose","Maintenance","Depart",45,94
+"Joint","Purpose","Maintenance","Depart",46,73
+"Joint","Purpose","Maintenance","Depart",47,27
+"Joint","Purpose","Maintenance","Depart",48,3
+"Joint","Purpose","Shopping","Depart",1,203
+"Joint","Purpose","Shopping","Depart",2,176
+"Joint","Purpose","Shopping","Depart",3,150
+"Joint","Purpose","Shopping","Depart",4,130
+"Joint","Purpose","Shopping","Depart",5,109
+"Joint","Purpose","Shopping","Depart",6,215
+"Joint","Purpose","Shopping","Depart",7,374
+"Joint","Purpose","Shopping","Depart",8,551
+"Joint","Purpose","Shopping","Depart",9,782
+"Joint","Purpose","Shopping","Depart",10,1189
+"Joint","Purpose","Shopping","Depart",11,2484
+"Joint","Purpose","Shopping","Depart",12,2078
+"Joint","Purpose","Shopping","Depart",13,3897
+"Joint","Purpose","Shopping","Depart",14,3671
+"Joint","Purpose","Shopping","Depart",15,6251
+"Joint","Purpose","Shopping","Depart",16,4835
+"Joint","Purpose","Shopping","Depart",17,4034
+"Joint","Purpose","Shopping","Depart",18,3840
+"Joint","Purpose","Shopping","Depart",19,3685
+"Joint","Purpose","Shopping","Depart",20,3485
+"Joint","Purpose","Shopping","Depart",21,3260
+"Joint","Purpose","Shopping","Depart",22,3179
+"Joint","Purpose","Shopping","Depart",23,3237
+"Joint","Purpose","Shopping","Depart",24,3633
+"Joint","Purpose","Shopping","Depart",25,4007
+"Joint","Purpose","Shopping","Depart",26,4410
+"Joint","Purpose","Shopping","Depart",27,4835
+"Joint","Purpose","Shopping","Depart",28,5593
+"Joint","Purpose","Shopping","Depart",29,6157
+"Joint","Purpose","Shopping","Depart",30,6797
+"Joint","Purpose","Shopping","Depart",31,7331
+"Joint","Purpose","Shopping","Depart",32,7339
+"Joint","Purpose","Shopping","Depart",33,6740
+"Joint","Purpose","Shopping","Depart",34,5997
+"Joint","Purpose","Shopping","Depart",35,4605
+"Joint","Purpose","Shopping","Depart",36,3159
+"Joint","Purpose","Shopping","Depart",37,1990
+"Joint","Purpose","Shopping","Depart",38,1367
+"Joint","Purpose","Shopping","Depart",39,873
+"Joint","Purpose","Shopping","Depart",40,516
+"Joint","Purpose","Shopping","Depart",41,350
+"Joint","Purpose","Shopping","Depart",42,378
+"Joint","Purpose","Shopping","Depart",43,310
+"Joint","Purpose","Shopping","Depart",44,275
+"Joint","Purpose","Shopping","Depart",45,170
+"Joint","Purpose","Shopping","Depart",46,69
+"Joint","Purpose","Shopping","Depart",47,29
+"Joint","Purpose","Shopping","Depart",48,5
+"Joint","Purpose","Social","Depart",1,53
+"Joint","Purpose","Social","Depart",2,78
+"Joint","Purpose","Social","Depart",3,101
+"Joint","Purpose","Social","Depart",4,108
+"Joint","Purpose","Social","Depart",5,120
+"Joint","Purpose","Social","Depart",6,155
+"Joint","Purpose","Social","Depart",7,162
+"Joint","Purpose","Social","Depart",8,179
+"Joint","Purpose","Social","Depart",9,517
+"Joint","Purpose","Social","Depart",10,478
+"Joint","Purpose","Social","Depart",11,364
+"Joint","Purpose","Social","Depart",12,347
+"Joint","Purpose","Social","Depart",13,768
+"Joint","Purpose","Social","Depart",14,547
+"Joint","Purpose","Social","Depart",15,495
+"Joint","Purpose","Social","Depart",16,464
+"Joint","Purpose","Social","Depart",17,426
+"Joint","Purpose","Social","Depart",18,419
+"Joint","Purpose","Social","Depart",19,409
+"Joint","Purpose","Social","Depart",20,388
+"Joint","Purpose","Social","Depart",21,378
+"Joint","Purpose","Social","Depart",22,378
+"Joint","Purpose","Social","Depart",23,440
+"Joint","Purpose","Social","Depart",24,535
+"Joint","Purpose","Social","Depart",25,655
+"Joint","Purpose","Social","Depart",26,810
+"Joint","Purpose","Social","Depart",27,934
+"Joint","Purpose","Social","Depart",28,1124
+"Joint","Purpose","Social","Depart",29,1301
+"Joint","Purpose","Social","Depart",30,1306
+"Joint","Purpose","Social","Depart",31,2209
+"Joint","Purpose","Social","Depart",32,1925
+"Joint","Purpose","Social","Depart",33,2214
+"Joint","Purpose","Social","Depart",34,1095
+"Joint","Purpose","Social","Depart",35,900
+"Joint","Purpose","Social","Depart",36,755
+"Joint","Purpose","Social","Depart",37,609
+"Joint","Purpose","Social","Depart",38,429
+"Joint","Purpose","Social","Depart",39,291
+"Joint","Purpose","Social","Depart",40,201
+"Joint","Purpose","Social","Depart",41,150
+"Joint","Purpose","Social","Depart",42,95
+"Joint","Purpose","Social","Depart",43,59
+"Joint","Purpose","Social","Depart",44,39
+"Joint","Purpose","Social","Depart",45,19
+"Joint","Purpose","Social","Depart",46,9
+"Joint","Purpose","Social","Depart",47,2
+"Joint","Purpose","Social","Depart",48,3
+"At-Work","Purpose","EatOut","Depart",2,4
+"At-Work","Purpose","EatOut","Depart",3,6
+"At-Work","Purpose","EatOut","Depart",4,5
+"At-Work","Purpose","EatOut","Depart",5,5
+"At-Work","Purpose","EatOut","Depart",6,18
+"At-Work","Purpose","EatOut","Depart",7,26
+"At-Work","Purpose","EatOut","Depart",8,48
+"At-Work","Purpose","EatOut","Depart",9,86
+"At-Work","Purpose","EatOut","Depart",10,169
+"At-Work","Purpose","EatOut","Depart",11,325
+"At-Work","Purpose","EatOut","Depart",12,541
+"At-Work","Purpose","EatOut","Depart",13,1074
+"At-Work","Purpose","EatOut","Depart",14,2330
+"At-Work","Purpose","EatOut","Depart",15,5478
+"At-Work","Purpose","EatOut","Depart",16,12642
+"At-Work","Purpose","EatOut","Depart",17,36472
+"At-Work","Purpose","EatOut","Depart",18,97912
+"At-Work","Purpose","EatOut","Depart",19,117804
+"At-Work","Purpose","EatOut","Depart",20,69208
+"At-Work","Purpose","EatOut","Depart",21,30142
+"At-Work","Purpose","EatOut","Depart",22,23878
+"At-Work","Purpose","EatOut","Depart",23,13814
+"At-Work","Purpose","EatOut","Depart",24,8532
+"At-Work","Purpose","EatOut","Depart",25,5044
+"At-Work","Purpose","EatOut","Depart",26,3144
+"At-Work","Purpose","EatOut","Depart",27,1906
+"At-Work","Purpose","EatOut","Depart",28,1220
+"At-Work","Purpose","EatOut","Depart",29,788
+"At-Work","Purpose","EatOut","Depart",30,492
+"At-Work","Purpose","EatOut","Depart",31,334
+"At-Work","Purpose","EatOut","Depart",32,267
+"At-Work","Purpose","EatOut","Depart",33,225
+"At-Work","Purpose","EatOut","Depart",34,198
+"At-Work","Purpose","EatOut","Depart",35,157
+"At-Work","Purpose","EatOut","Depart",36,131
+"At-Work","Purpose","EatOut","Depart",37,128
+"At-Work","Purpose","EatOut","Depart",38,90
+"At-Work","Purpose","EatOut","Depart",39,72
+"At-Work","Purpose","EatOut","Depart",40,35
+"At-Work","Purpose","EatOut","Depart",41,28
+"At-Work","Purpose","EatOut","Depart",42,18
+"At-Work","Purpose","EatOut","Depart",43,9
+"At-Work","Purpose","EatOut","Depart",44,2
+"At-Work","Purpose","EatOut","Depart",45,3
+"At-Work","Purpose","EatOut","Depart",46,2
+"At-Work","Purpose","EatOut","Depart",47,2
+"At-Work","Purpose","Maintenance","Depart",1,1
+"At-Work","Purpose","Maintenance","Depart",2,5
+"At-Work","Purpose","Maintenance","Depart",3,5
+"At-Work","Purpose","Maintenance","Depart",4,17
+"At-Work","Purpose","Maintenance","Depart",5,18
+"At-Work","Purpose","Maintenance","Depart",6,30
+"At-Work","Purpose","Maintenance","Depart",7,23
+"At-Work","Purpose","Maintenance","Depart",8,60
+"At-Work","Purpose","Maintenance","Depart",9,106
+"At-Work","Purpose","Maintenance","Depart",10,209
+"At-Work","Purpose","Maintenance","Depart",11,320
+"At-Work","Purpose","Maintenance","Depart",12,497
+"At-Work","Purpose","Maintenance","Depart",13,841
+"At-Work","Purpose","Maintenance","Depart",14,1548
+"At-Work","Purpose","Maintenance","Depart",15,2811
+"At-Work","Purpose","Maintenance","Depart",16,5092
+"At-Work","Purpose","Maintenance","Depart",17,11627
+"At-Work","Purpose","Maintenance","Depart",18,24343
+"At-Work","Purpose","Maintenance","Depart",19,22362
+"At-Work","Purpose","Maintenance","Depart",20,16477
+"At-Work","Purpose","Maintenance","Depart",21,8625
+"At-Work","Purpose","Maintenance","Depart",22,8110
+"At-Work","Purpose","Maintenance","Depart",23,5487
+"At-Work","Purpose","Maintenance","Depart",24,3856
+"At-Work","Purpose","Maintenance","Depart",25,2654
+"At-Work","Purpose","Maintenance","Depart",26,1783
+"At-Work","Purpose","Maintenance","Depart",27,1297
+"At-Work","Purpose","Maintenance","Depart",28,820
+"At-Work","Purpose","Maintenance","Depart",29,483
+"At-Work","Purpose","Maintenance","Depart",30,339
+"At-Work","Purpose","Maintenance","Depart",31,231
+"At-Work","Purpose","Maintenance","Depart",32,163
+"At-Work","Purpose","Maintenance","Depart",33,142
+"At-Work","Purpose","Maintenance","Depart",34,122
+"At-Work","Purpose","Maintenance","Depart",35,120
+"At-Work","Purpose","Maintenance","Depart",36,108
+"At-Work","Purpose","Maintenance","Depart",37,100
+"At-Work","Purpose","Maintenance","Depart",38,71
+"At-Work","Purpose","Maintenance","Depart",39,66
+"At-Work","Purpose","Maintenance","Depart",40,35
+"At-Work","Purpose","Maintenance","Depart",41,34
+"At-Work","Purpose","Maintenance","Depart",42,32
+"At-Work","Purpose","Maintenance","Depart",43,13
+"At-Work","Purpose","Maintenance","Depart",44,17
+"At-Work","Purpose","Maintenance","Depart",45,5
+"At-Work","Purpose","Maintenance","Depart",46,8
+"At-Work","Purpose","Maintenance","Depart",47,5
+"At-Work","Purpose","Maintenance","Depart",48,1
+"At-Work","Purpose","WorkRelated","Depart",1,198
+"At-Work","Purpose","WorkRelated","Depart",2,341
+"At-Work","Purpose","WorkRelated","Depart",3,567
+"At-Work","Purpose","WorkRelated","Depart",4,650
+"At-Work","Purpose","WorkRelated","Depart",5,809
+"At-Work","Purpose","WorkRelated","Depart",6,853
+"At-Work","Purpose","WorkRelated","Depart",7,877
+"At-Work","Purpose","WorkRelated","Depart",8,1546
+"At-Work","Purpose","WorkRelated","Depart",9,2399
+"At-Work","Purpose","WorkRelated","Depart",10,3369
+"At-Work","Purpose","WorkRelated","Depart",11,4251
+"At-Work","Purpose","WorkRelated","Depart",12,5322
+"At-Work","Purpose","WorkRelated","Depart",13,6640
+"At-Work","Purpose","WorkRelated","Depart",14,8026
+"At-Work","Purpose","WorkRelated","Depart",15,9996
+"At-Work","Purpose","WorkRelated","Depart",16,11966
+"At-Work","Purpose","WorkRelated","Depart",17,18035
+"At-Work","Purpose","WorkRelated","Depart",18,25790
+"At-Work","Purpose","WorkRelated","Depart",19,15676
+"At-Work","Purpose","WorkRelated","Depart",20,13223
+"At-Work","Purpose","WorkRelated","Depart",21,8787
+"At-Work","Purpose","WorkRelated","Depart",22,9805
+"At-Work","Purpose","WorkRelated","Depart",23,8304
+"At-Work","Purpose","WorkRelated","Depart",24,6803
+"At-Work","Purpose","WorkRelated","Depart",25,5520
+"At-Work","Purpose","WorkRelated","Depart",26,4309
+"At-Work","Purpose","WorkRelated","Depart",27,3271
+"At-Work","Purpose","WorkRelated","Depart",28,2317
+"At-Work","Purpose","WorkRelated","Depart",29,1701
+"At-Work","Purpose","WorkRelated","Depart",30,1296
+"At-Work","Purpose","WorkRelated","Depart",31,954
+"At-Work","Purpose","WorkRelated","Depart",32,736
+"At-Work","Purpose","WorkRelated","Depart",33,596
+"At-Work","Purpose","WorkRelated","Depart",34,530
+"At-Work","Purpose","WorkRelated","Depart",35,466
+"At-Work","Purpose","WorkRelated","Depart",36,414
+"At-Work","Purpose","WorkRelated","Depart",37,343
+"At-Work","Purpose","WorkRelated","Depart",38,282
+"At-Work","Purpose","WorkRelated","Depart",39,168
+"At-Work","Purpose","WorkRelated","Depart",40,151
+"At-Work","Purpose","WorkRelated","Depart",41,116
+"At-Work","Purpose","WorkRelated","Depart",42,60
+"At-Work","Purpose","WorkRelated","Depart",43,42
+"At-Work","Purpose","WorkRelated","Depart",44,30
+"At-Work","Purpose","WorkRelated","Depart",45,19
+"At-Work","Purpose","WorkRelated","Depart",46,13
+"At-Work","Purpose","WorkRelated","Depart",47,6
+"At-Work","Purpose","WorkRelated","Depart",48,4
+"Mandatory","Purpose","School","Arrive",1,1
+"Mandatory","Purpose","School","Arrive",2,1
+"Mandatory","Purpose","School","Arrive",3,1
+"Mandatory","Purpose","School","Arrive",4,2
+"Mandatory","Purpose","School","Arrive",5,3
+"Mandatory","Purpose","School","Arrive",6,7
+"Mandatory","Purpose","School","Arrive",7,111
+"Mandatory","Purpose","School","Arrive",8,371
+"Mandatory","Purpose","School","Arrive",9,1030
+"Mandatory","Purpose","School","Arrive",10,1244
+"Mandatory","Purpose","School","Arrive",11,832
+"Mandatory","Purpose","School","Arrive",12,552
+"Mandatory","Purpose","School","Arrive",13,491
+"Mandatory","Purpose","School","Arrive",14,598
+"Mandatory","Purpose","School","Arrive",15,845
+"Mandatory","Purpose","School","Arrive",16,1404
+"Mandatory","Purpose","School","Arrive",17,2122
+"Mandatory","Purpose","School","Arrive",18,2743
+"Mandatory","Purpose","School","Arrive",19,3403
+"Mandatory","Purpose","School","Arrive",20,4332
+"Mandatory","Purpose","School","Arrive",21,6077
+"Mandatory","Purpose","School","Arrive",22,10478
+"Mandatory","Purpose","School","Arrive",23,24773
+"Mandatory","Purpose","School","Arrive",24,162322
+"Mandatory","Purpose","School","Arrive",25,119122
+"Mandatory","Purpose","School","Arrive",26,156230
+"Mandatory","Purpose","School","Arrive",27,175365
+"Mandatory","Purpose","School","Arrive",28,123530
+"Mandatory","Purpose","School","Arrive",29,53274
+"Mandatory","Purpose","School","Arrive",30,43642
+"Mandatory","Purpose","School","Arrive",31,45553
+"Mandatory","Purpose","School","Arrive",32,37135
+"Mandatory","Purpose","School","Arrive",33,28571
+"Mandatory","Purpose","School","Arrive",34,21199
+"Mandatory","Purpose","School","Arrive",35,15115
+"Mandatory","Purpose","School","Arrive",36,10319
+"Mandatory","Purpose","School","Arrive",37,6831
+"Mandatory","Purpose","School","Arrive",38,4447
+"Mandatory","Purpose","School","Arrive",39,2816
+"Mandatory","Purpose","School","Arrive",40,1972
+"Mandatory","Purpose","School","Arrive",41,1440
+"Mandatory","Purpose","School","Arrive",42,1090
+"Mandatory","Purpose","School","Arrive",43,713
+"Mandatory","Purpose","School","Arrive",44,995
+"Mandatory","Purpose","School","Arrive",45,1244
+"Mandatory","Purpose","School","Arrive",46,1563
+"Mandatory","Purpose","School","Arrive",47,2062
+"Mandatory","Purpose","School","Arrive",48,2802
+"Mandatory","Purpose","University","Arrive",3,2
+"Mandatory","Purpose","University","Arrive",4,4
+"Mandatory","Purpose","University","Arrive",5,9
+"Mandatory","Purpose","University","Arrive",6,33
+"Mandatory","Purpose","University","Arrive",7,48
+"Mandatory","Purpose","University","Arrive",8,85
+"Mandatory","Purpose","University","Arrive",9,148
+"Mandatory","Purpose","University","Arrive",10,171
+"Mandatory","Purpose","University","Arrive",11,187
+"Mandatory","Purpose","University","Arrive",12,224
+"Mandatory","Purpose","University","Arrive",13,349
+"Mandatory","Purpose","University","Arrive",14,402
+"Mandatory","Purpose","University","Arrive",15,566
+"Mandatory","Purpose","University","Arrive",16,702
+"Mandatory","Purpose","University","Arrive",17,840
+"Mandatory","Purpose","University","Arrive",18,1047
+"Mandatory","Purpose","University","Arrive",19,1306
+"Mandatory","Purpose","University","Arrive",20,1595
+"Mandatory","Purpose","University","Arrive",21,2082
+"Mandatory","Purpose","University","Arrive",22,2421
+"Mandatory","Purpose","University","Arrive",23,2859
+"Mandatory","Purpose","University","Arrive",24,3479
+"Mandatory","Purpose","University","Arrive",25,4602
+"Mandatory","Purpose","University","Arrive",26,8527
+"Mandatory","Purpose","University","Arrive",27,6968
+"Mandatory","Purpose","University","Arrive",28,4285
+"Mandatory","Purpose","University","Arrive",29,5800
+"Mandatory","Purpose","University","Arrive",30,5956
+"Mandatory","Purpose","University","Arrive",31,5928
+"Mandatory","Purpose","University","Arrive",32,2552
+"Mandatory","Purpose","University","Arrive",33,3169
+"Mandatory","Purpose","University","Arrive",34,3824
+"Mandatory","Purpose","University","Arrive",35,6038
+"Mandatory","Purpose","University","Arrive",36,3429
+"Mandatory","Purpose","University","Arrive",37,2772
+"Mandatory","Purpose","University","Arrive",38,3586
+"Mandatory","Purpose","University","Arrive",39,3895
+"Mandatory","Purpose","University","Arrive",40,2196
+"Mandatory","Purpose","University","Arrive",41,2531
+"Mandatory","Purpose","University","Arrive",42,2293
+"Mandatory","Purpose","University","Arrive",43,1198
+"Mandatory","Purpose","University","Arrive",44,320
+"Mandatory","Purpose","University","Arrive",45,339
+"Mandatory","Purpose","University","Arrive",46,554
+"Mandatory","Purpose","Work","Arrive",2,7
+"Mandatory","Purpose","Work","Arrive",3,10
+"Mandatory","Purpose","Work","Arrive",4,38
+"Mandatory","Purpose","Work","Arrive",5,92
+"Mandatory","Purpose","Work","Arrive",6,164
+"Mandatory","Purpose","Work","Arrive",7,277
+"Mandatory","Purpose","Work","Arrive",8,495
+"Mandatory","Purpose","Work","Arrive",9,856
+"Mandatory","Purpose","Work","Arrive",10,1304
+"Mandatory","Purpose","Work","Arrive",11,2127
+"Mandatory","Purpose","Work","Arrive",12,3053
+"Mandatory","Purpose","Work","Arrive",13,4120
+"Mandatory","Purpose","Work","Arrive",14,5231
+"Mandatory","Purpose","Work","Arrive",15,6419
+"Mandatory","Purpose","Work","Arrive",16,7902
+"Mandatory","Purpose","Work","Arrive",17,9577
+"Mandatory","Purpose","Work","Arrive",18,11696
+"Mandatory","Purpose","Work","Arrive",19,13840
+"Mandatory","Purpose","Work","Arrive",20,16525
+"Mandatory","Purpose","Work","Arrive",21,20218
+"Mandatory","Purpose","Work","Arrive",22,24436
+"Mandatory","Purpose","Work","Arrive",23,32170
+"Mandatory","Purpose","Work","Arrive",24,44064
+"Mandatory","Purpose","Work","Arrive",25,62440
+"Mandatory","Purpose","Work","Arrive",26,78037
+"Mandatory","Purpose","Work","Arrive",27,111014
+"Mandatory","Purpose","Work","Arrive",28,141586
+"Mandatory","Purpose","Work","Arrive",29,193366
+"Mandatory","Purpose","Work","Arrive",30,223279
+"Mandatory","Purpose","Work","Arrive",31,213122
+"Mandatory","Purpose","Work","Arrive",32,174796
+"Mandatory","Purpose","Work","Arrive",33,120651
+"Mandatory","Purpose","Work","Arrive",34,88782
+"Mandatory","Purpose","Work","Arrive",35,61449
+"Mandatory","Purpose","Work","Arrive",36,47483
+"Mandatory","Purpose","Work","Arrive",37,40781
+"Mandatory","Purpose","Work","Arrive",38,31912
+"Mandatory","Purpose","Work","Arrive",39,28194
+"Mandatory","Purpose","Work","Arrive",40,24292
+"Mandatory","Purpose","Work","Arrive",41,19091
+"Mandatory","Purpose","Work","Arrive",42,17909
+"Mandatory","Purpose","Work","Arrive",43,9231
+"Mandatory","Purpose","Work","Arrive",44,8023
+"Mandatory","Purpose","Work","Arrive",45,3824
+"Mandatory","Purpose","Work","Arrive",46,1491
+"Mandatory","Purpose","Work","Arrive",47,2773
+"Mandatory","Purpose","Work","Arrive",48,4039
+"Mandatory","PersonType","Pre-school","Arrive",8,3
+"Mandatory","PersonType","Pre-school","Arrive",9,13
+"Mandatory","PersonType","Pre-school","Arrive",10,20
+"Mandatory","PersonType","Pre-school","Arrive",11,31
+"Mandatory","PersonType","Pre-school","Arrive",12,28
+"Mandatory","PersonType","Pre-school","Arrive",13,50
+"Mandatory","PersonType","Pre-school","Arrive",14,86
+"Mandatory","PersonType","Pre-school","Arrive",15,113
+"Mandatory","PersonType","Pre-school","Arrive",16,176
+"Mandatory","PersonType","Pre-school","Arrive",17,234
+"Mandatory","PersonType","Pre-school","Arrive",18,278
+"Mandatory","PersonType","Pre-school","Arrive",19,348
+"Mandatory","PersonType","Pre-school","Arrive",20,468
+"Mandatory","PersonType","Pre-school","Arrive",21,676
+"Mandatory","PersonType","Pre-school","Arrive",22,1188
+"Mandatory","PersonType","Pre-school","Arrive",23,3087
+"Mandatory","PersonType","Pre-school","Arrive",24,22196
+"Mandatory","PersonType","Pre-school","Arrive",25,17876
+"Mandatory","PersonType","Pre-school","Arrive",26,25338
+"Mandatory","PersonType","Pre-school","Arrive",27,30236
+"Mandatory","PersonType","Pre-school","Arrive",28,22249
+"Mandatory","PersonType","Pre-school","Arrive",29,10295
+"Mandatory","PersonType","Pre-school","Arrive",30,9161
+"Mandatory","PersonType","Pre-school","Arrive",31,10415
+"Mandatory","PersonType","Pre-school","Arrive",32,8928
+"Mandatory","PersonType","Pre-school","Arrive",33,7365
+"Mandatory","PersonType","Pre-school","Arrive",34,5792
+"Mandatory","PersonType","Pre-school","Arrive",35,4329
+"Mandatory","PersonType","Pre-school","Arrive",36,3076
+"Mandatory","PersonType","Pre-school","Arrive",37,2111
+"Mandatory","PersonType","Pre-school","Arrive",38,1380
+"Mandatory","PersonType","Pre-school","Arrive",39,881
+"Mandatory","PersonType","Pre-school","Arrive",40,691
+"Mandatory","PersonType","Pre-school","Arrive",41,427
+"Mandatory","PersonType","Pre-school","Arrive",42,355
+"Mandatory","PersonType","Pre-school","Arrive",43,227
+"Mandatory","PersonType","Pre-school","Arrive",44,284
+"Mandatory","PersonType","Pre-school","Arrive",45,372
+"Mandatory","PersonType","Pre-school","Arrive",46,423
+"Mandatory","PersonType","Pre-school","Arrive",47,572
+"Mandatory","PersonType","Pre-school","Arrive",48,701
+"Mandatory","PersonType","Full-time worker","Arrive",2,5
+"Mandatory","PersonType","Full-time worker","Arrive",3,6
+"Mandatory","PersonType","Full-time worker","Arrive",4,17
+"Mandatory","PersonType","Full-time worker","Arrive",5,54
+"Mandatory","PersonType","Full-time worker","Arrive",6,101
+"Mandatory","PersonType","Full-time worker","Arrive",7,150
+"Mandatory","PersonType","Full-time worker","Arrive",8,279
+"Mandatory","PersonType","Full-time worker","Arrive",9,452
+"Mandatory","PersonType","Full-time worker","Arrive",10,664
+"Mandatory","PersonType","Full-time worker","Arrive",11,1083
+"Mandatory","PersonType","Full-time worker","Arrive",12,1526
+"Mandatory","PersonType","Full-time worker","Arrive",13,2134
+"Mandatory","PersonType","Full-time worker","Arrive",14,2791
+"Mandatory","PersonType","Full-time worker","Arrive",15,3572
+"Mandatory","PersonType","Full-time worker","Arrive",16,4417
+"Mandatory","PersonType","Full-time worker","Arrive",17,5541
+"Mandatory","PersonType","Full-time worker","Arrive",18,7009
+"Mandatory","PersonType","Full-time worker","Arrive",19,8590
+"Mandatory","PersonType","Full-time worker","Arrive",20,10636
+"Mandatory","PersonType","Full-time worker","Arrive",21,13427
+"Mandatory","PersonType","Full-time worker","Arrive",22,16999
+"Mandatory","PersonType","Full-time worker","Arrive",23,23618
+"Mandatory","PersonType","Full-time worker","Arrive",24,33821
+"Mandatory","PersonType","Full-time worker","Arrive",25,49642
+"Mandatory","PersonType","Full-time worker","Arrive",26,64097
+"Mandatory","PersonType","Full-time worker","Arrive",27,93798
+"Mandatory","PersonType","Full-time worker","Arrive",28,122160
+"Mandatory","PersonType","Full-time worker","Arrive",29,169851
+"Mandatory","PersonType","Full-time worker","Arrive",30,198691
+"Mandatory","PersonType","Full-time worker","Arrive",31,189569
+"Mandatory","PersonType","Full-time worker","Arrive",32,155121
+"Mandatory","PersonType","Full-time worker","Arrive",33,107010
+"Mandatory","PersonType","Full-time worker","Arrive",34,78374
+"Mandatory","PersonType","Full-time worker","Arrive",35,53928
+"Mandatory","PersonType","Full-time worker","Arrive",36,41356
+"Mandatory","PersonType","Full-time worker","Arrive",37,35236
+"Mandatory","PersonType","Full-time worker","Arrive",38,27244
+"Mandatory","PersonType","Full-time worker","Arrive",39,23970
+"Mandatory","PersonType","Full-time worker","Arrive",40,20414
+"Mandatory","PersonType","Full-time worker","Arrive",41,15750
+"Mandatory","PersonType","Full-time worker","Arrive",42,14654
+"Mandatory","PersonType","Full-time worker","Arrive",43,7313
+"Mandatory","PersonType","Full-time worker","Arrive",44,6342
+"Mandatory","PersonType","Full-time worker","Arrive",45,2969
+"Mandatory","PersonType","Full-time worker","Arrive",46,1139
+"Mandatory","PersonType","Full-time worker","Arrive",47,2117
+"Mandatory","PersonType","Full-time worker","Arrive",48,2996
+"Mandatory","PersonType","Part-time worker","Arrive",2,2
+"Mandatory","PersonType","Part-time worker","Arrive",3,4
+"Mandatory","PersonType","Part-time worker","Arrive",4,17
+"Mandatory","PersonType","Part-time worker","Arrive",5,33
+"Mandatory","PersonType","Part-time worker","Arrive",6,56
+"Mandatory","PersonType","Part-time worker","Arrive",7,110
+"Mandatory","PersonType","Part-time worker","Arrive",8,190
+"Mandatory","PersonType","Part-time worker","Arrive",9,362
+"Mandatory","PersonType","Part-time worker","Arrive",10,563
+"Mandatory","PersonType","Part-time worker","Arrive",11,893
+"Mandatory","PersonType","Part-time worker","Arrive",12,1315
+"Mandatory","PersonType","Part-time worker","Arrive",13,1720
+"Mandatory","PersonType","Part-time worker","Arrive",14,2129
+"Mandatory","PersonType","Part-time worker","Arrive",15,2471
+"Mandatory","PersonType","Part-time worker","Arrive",16,3053
+"Mandatory","PersonType","Part-time worker","Arrive",17,3524
+"Mandatory","PersonType","Part-time worker","Arrive",18,4136
+"Mandatory","PersonType","Part-time worker","Arrive",19,4643
+"Mandatory","PersonType","Part-time worker","Arrive",20,5213
+"Mandatory","PersonType","Part-time worker","Arrive",21,6019
+"Mandatory","PersonType","Part-time worker","Arrive",22,6586
+"Mandatory","PersonType","Part-time worker","Arrive",23,7616
+"Mandatory","PersonType","Part-time worker","Arrive",24,9149
+"Mandatory","PersonType","Part-time worker","Arrive",25,11326
+"Mandatory","PersonType","Part-time worker","Arrive",26,12277
+"Mandatory","PersonType","Part-time worker","Arrive",27,15050
+"Mandatory","PersonType","Part-time worker","Arrive",28,16877
+"Mandatory","PersonType","Part-time worker","Arrive",29,20167
+"Mandatory","PersonType","Part-time worker","Arrive",30,20944
+"Mandatory","PersonType","Part-time worker","Arrive",31,19829
+"Mandatory","PersonType","Part-time worker","Arrive",32,16409
+"Mandatory","PersonType","Part-time worker","Arrive",33,11263
+"Mandatory","PersonType","Part-time worker","Arrive",34,8406
+"Mandatory","PersonType","Part-time worker","Arrive",35,6003
+"Mandatory","PersonType","Part-time worker","Arrive",36,4798
+"Mandatory","PersonType","Part-time worker","Arrive",37,4250
+"Mandatory","PersonType","Part-time worker","Arrive",38,3541
+"Mandatory","PersonType","Part-time worker","Arrive",39,3163
+"Mandatory","PersonType","Part-time worker","Arrive",40,2876
+"Mandatory","PersonType","Part-time worker","Arrive",41,2369
+"Mandatory","PersonType","Part-time worker","Arrive",42,2239
+"Mandatory","PersonType","Part-time worker","Arrive",43,1293
+"Mandatory","PersonType","Part-time worker","Arrive",44,1089
+"Mandatory","PersonType","Part-time worker","Arrive",45,563
+"Mandatory","PersonType","Part-time worker","Arrive",46,229
+"Mandatory","PersonType","Part-time worker","Arrive",47,393
+"Mandatory","PersonType","Part-time worker","Arrive",48,590
+"Mandatory","PersonType","Driving-age student","Arrive",1,1
+"Mandatory","PersonType","Driving-age student","Arrive",2,1
+"Mandatory","PersonType","Driving-age student","Arrive",3,1
+"Mandatory","PersonType","Driving-age student","Arrive",4,2
+"Mandatory","PersonType","Driving-age student","Arrive",5,3
+"Mandatory","PersonType","Driving-age student","Arrive",6,5
+"Mandatory","PersonType","Driving-age student","Arrive",7,101
+"Mandatory","PersonType","Driving-age student","Arrive",8,297
+"Mandatory","PersonType","Driving-age student","Arrive",9,723
+"Mandatory","PersonType","Driving-age student","Arrive",10,836
+"Mandatory","PersonType","Driving-age student","Arrive",11,570
+"Mandatory","PersonType","Driving-age student","Arrive",12,441
+"Mandatory","PersonType","Driving-age student","Arrive",13,356
+"Mandatory","PersonType","Driving-age student","Arrive",14,328
+"Mandatory","PersonType","Driving-age student","Arrive",15,339
+"Mandatory","PersonType","Driving-age student","Arrive",16,412
+"Mandatory","PersonType","Driving-age student","Arrive",17,517
+"Mandatory","PersonType","Driving-age student","Arrive",18,634
+"Mandatory","PersonType","Driving-age student","Arrive",19,684
+"Mandatory","PersonType","Driving-age student","Arrive",20,874
+"Mandatory","PersonType","Driving-age student","Arrive",21,1095
+"Mandatory","PersonType","Driving-age student","Arrive",22,1741
+"Mandatory","PersonType","Driving-age student","Arrive",23,4055
+"Mandatory","PersonType","Driving-age student","Arrive",24,25856
+"Mandatory","PersonType","Driving-age student","Arrive",25,19264
+"Mandatory","PersonType","Driving-age student","Arrive",26,25025
+"Mandatory","PersonType","Driving-age student","Arrive",27,29601
+"Mandatory","PersonType","Driving-age student","Arrive",28,21897
+"Mandatory","PersonType","Driving-age student","Arrive",29,9906
+"Mandatory","PersonType","Driving-age student","Arrive",30,8534
+"Mandatory","PersonType","Driving-age student","Arrive",31,8849
+"Mandatory","PersonType","Driving-age student","Arrive",32,7353
+"Mandatory","PersonType","Driving-age student","Arrive",33,5640
+"Mandatory","PersonType","Driving-age student","Arrive",34,4272
+"Mandatory","PersonType","Driving-age student","Arrive",35,3160
+"Mandatory","PersonType","Driving-age student","Arrive",36,2148
+"Mandatory","PersonType","Driving-age student","Arrive",37,1454
+"Mandatory","PersonType","Driving-age student","Arrive",38,955
+"Mandatory","PersonType","Driving-age student","Arrive",39,623
+"Mandatory","PersonType","Driving-age student","Arrive",40,401
+"Mandatory","PersonType","Driving-age student","Arrive",41,315
+"Mandatory","PersonType","Driving-age student","Arrive",42,260
+"Mandatory","PersonType","Driving-age student","Arrive",43,180
+"Mandatory","PersonType","Driving-age student","Arrive",44,245
+"Mandatory","PersonType","Driving-age student","Arrive",45,306
+"Mandatory","PersonType","Driving-age student","Arrive",46,405
+"Mandatory","PersonType","Driving-age student","Arrive",47,557
+"Mandatory","PersonType","Driving-age student","Arrive",48,853
+"Mandatory","PersonType","Non-driving student","Arrive",6,2
+"Mandatory","PersonType","Non-driving student","Arrive",7,14
+"Mandatory","PersonType","Non-driving student","Arrive",8,74
+"Mandatory","PersonType","Non-driving student","Arrive",9,304
+"Mandatory","PersonType","Non-driving student","Arrive",10,410
+"Mandatory","PersonType","Non-driving student","Arrive",11,280
+"Mandatory","PersonType","Non-driving student","Arrive",12,165
+"Mandatory","PersonType","Non-driving student","Arrive",13,183
+"Mandatory","PersonType","Non-driving student","Arrive",14,304
+"Mandatory","PersonType","Non-driving student","Arrive",15,527
+"Mandatory","PersonType","Non-driving student","Arrive",16,958
+"Mandatory","PersonType","Non-driving student","Arrive",17,1566
+"Mandatory","PersonType","Non-driving student","Arrive",18,2027
+"Mandatory","PersonType","Non-driving student","Arrive",19,2583
+"Mandatory","PersonType","Non-driving student","Arrive",20,3195
+"Mandatory","PersonType","Non-driving student","Arrive",21,4532
+"Mandatory","PersonType","Non-driving student","Arrive",22,7782
+"Mandatory","PersonType","Non-driving student","Arrive",23,17855
+"Mandatory","PersonType","Non-driving student","Arrive",24,114489
+"Mandatory","PersonType","Non-driving student","Arrive",25,82213
+"Mandatory","PersonType","Non-driving student","Arrive",26,106083
+"Mandatory","PersonType","Non-driving student","Arrive",27,115790
+"Mandatory","PersonType","Non-driving student","Arrive",28,79641
+"Mandatory","PersonType","Non-driving student","Arrive",29,33396
+"Mandatory","PersonType","Non-driving student","Arrive",30,26210
+"Mandatory","PersonType","Non-driving student","Arrive",31,26499
+"Mandatory","PersonType","Non-driving student","Arrive",32,20974
+"Mandatory","PersonType","Non-driving student","Arrive",33,15620
+"Mandatory","PersonType","Non-driving student","Arrive",34,11170
+"Mandatory","PersonType","Non-driving student","Arrive",35,7657
+"Mandatory","PersonType","Non-driving student","Arrive",36,5106
+"Mandatory","PersonType","Non-driving student","Arrive",37,3275
+"Mandatory","PersonType","Non-driving student","Arrive",38,2120
+"Mandatory","PersonType","Non-driving student","Arrive",39,1320
+"Mandatory","PersonType","Non-driving student","Arrive",40,890
+"Mandatory","PersonType","Non-driving student","Arrive",41,703
+"Mandatory","PersonType","Non-driving student","Arrive",42,483
+"Mandatory","PersonType","Non-driving student","Arrive",43,309
+"Mandatory","PersonType","Non-driving student","Arrive",44,469
+"Mandatory","PersonType","Non-driving student","Arrive",45,567
+"Mandatory","PersonType","Non-driving student","Arrive",46,736
+"Mandatory","PersonType","Non-driving student","Arrive",47,933
+"Mandatory","PersonType","Non-driving student","Arrive",48,1248
+"Mandatory","PersonType","College student","Arrive",3,2
+"Mandatory","PersonType","College student","Arrive",4,8
+"Mandatory","PersonType","College student","Arrive",5,14
+"Mandatory","PersonType","College student","Arrive",6,40
+"Mandatory","PersonType","College student","Arrive",7,61
+"Mandatory","PersonType","College student","Arrive",8,108
+"Mandatory","PersonType","College student","Arrive",9,180
+"Mandatory","PersonType","College student","Arrive",10,226
+"Mandatory","PersonType","College student","Arrive",11,289
+"Mandatory","PersonType","College student","Arrive",12,354
+"Mandatory","PersonType","College student","Arrive",13,517
+"Mandatory","PersonType","College student","Arrive",14,593
+"Mandatory","PersonType","College student","Arrive",15,808
+"Mandatory","PersonType","College student","Arrive",16,992
+"Mandatory","PersonType","College student","Arrive",17,1157
+"Mandatory","PersonType","College student","Arrive",18,1402
+"Mandatory","PersonType","College student","Arrive",19,1701
+"Mandatory","PersonType","College student","Arrive",20,2066
+"Mandatory","PersonType","College student","Arrive",21,2628
+"Mandatory","PersonType","College student","Arrive",22,3039
+"Mandatory","PersonType","College student","Arrive",23,3571
+"Mandatory","PersonType","College student","Arrive",24,4354
+"Mandatory","PersonType","College student","Arrive",25,5843
+"Mandatory","PersonType","College student","Arrive",26,9974
+"Mandatory","PersonType","College student","Arrive",27,8872
+"Mandatory","PersonType","College student","Arrive",28,6577
+"Mandatory","PersonType","College student","Arrive",29,8825
+"Mandatory","PersonType","College student","Arrive",30,9337
+"Mandatory","PersonType","College student","Arrive",31,9442
+"Mandatory","PersonType","College student","Arrive",32,5698
+"Mandatory","PersonType","College student","Arrive",33,5493
+"Mandatory","PersonType","College student","Arrive",34,5791
+"Mandatory","PersonType","College student","Arrive",35,7525
+"Mandatory","PersonType","College student","Arrive",36,4747
+"Mandatory","PersonType","College student","Arrive",37,4058
+"Mandatory","PersonType","College student","Arrive",38,4705
+"Mandatory","PersonType","College student","Arrive",39,4948
+"Mandatory","PersonType","College student","Arrive",40,3188
+"Mandatory","PersonType","College student","Arrive",41,3498
+"Mandatory","PersonType","College student","Arrive",42,3301
+"Mandatory","PersonType","College student","Arrive",43,1820
+"Mandatory","PersonType","College student","Arrive",44,909
+"Mandatory","PersonType","College student","Arrive",45,630
+"Mandatory","PersonType","College student","Arrive",46,676
+"Mandatory","PersonType","College student","Arrive",47,263
+"Mandatory","PersonType","College student","Arrive",48,453
+"Individual Non-Mandatory","Purpose","Discretionary","Arrive",1,1
+"Individual Non-Mandatory","Purpose","Discretionary","Arrive",2,2
+"Individual Non-Mandatory","Purpose","Discretionary","Arrive",3,13
+"Individual Non-Mandatory","Purpose","Discretionary","Arrive",4,37
+"Individual Non-Mandatory","Purpose","Discretionary","Arrive",5,100
+"Individual Non-Mandatory","Purpose","Discretionary","Arrive",6,244
+"Individual Non-Mandatory","Purpose","Discretionary","Arrive",7,713
+"Individual Non-Mandatory","Purpose","Discretionary","Arrive",8,1626
+"Individual Non-Mandatory","Purpose","Discretionary","Arrive",9,2892
+"Individual Non-Mandatory","Purpose","Discretionary","Arrive",10,4006
+"Individual Non-Mandatory","Purpose","Discretionary","Arrive",11,4406
+"Individual Non-Mandatory","Purpose","Discretionary","Arrive",12,5138
+"Individual Non-Mandatory","Purpose","Discretionary","Arrive",13,6675
+"Individual Non-Mandatory","Purpose","Discretionary","Arrive",14,8461
+"Individual Non-Mandatory","Purpose","Discretionary","Arrive",15,10442
+"Individual Non-Mandatory","Purpose","Discretionary","Arrive",16,11878
+"Individual Non-Mandatory","Purpose","Discretionary","Arrive",17,12898
+"Individual Non-Mandatory","Purpose","Discretionary","Arrive",18,13133
+"Individual Non-Mandatory","Purpose","Discretionary","Arrive",19,12714
+"Individual Non-Mandatory","Purpose","Discretionary","Arrive",20,12073
+"Individual Non-Mandatory","Purpose","Discretionary","Arrive",21,11585
+"Individual Non-Mandatory","Purpose","Discretionary","Arrive",22,10485
+"Individual Non-Mandatory","Purpose","Discretionary","Arrive",23,9998
+"Individual Non-Mandatory","Purpose","Discretionary","Arrive",24,9709
+"Individual Non-Mandatory","Purpose","Discretionary","Arrive",25,9302
+"Individual Non-Mandatory","Purpose","Discretionary","Arrive",26,9632
+"Individual Non-Mandatory","Purpose","Discretionary","Arrive",27,10134
+"Individual Non-Mandatory","Purpose","Discretionary","Arrive",28,11106
+"Individual Non-Mandatory","Purpose","Discretionary","Arrive",29,13455
+"Individual Non-Mandatory","Purpose","Discretionary","Arrive",30,15810
+"Individual Non-Mandatory","Purpose","Discretionary","Arrive",31,19225
+"Individual Non-Mandatory","Purpose","Discretionary","Arrive",32,13823
+"Individual Non-Mandatory","Purpose","Discretionary","Arrive",33,23517
+"Individual Non-Mandatory","Purpose","Discretionary","Arrive",34,31366
+"Individual Non-Mandatory","Purpose","Discretionary","Arrive",35,39091
+"Individual Non-Mandatory","Purpose","Discretionary","Arrive",36,39934
+"Individual Non-Mandatory","Purpose","Discretionary","Arrive",37,29287
+"Individual Non-Mandatory","Purpose","Discretionary","Arrive",38,19882
+"Individual Non-Mandatory","Purpose","Discretionary","Arrive",39,15337
+"Individual Non-Mandatory","Purpose","Discretionary","Arrive",40,7076
+"Individual Non-Mandatory","Purpose","Discretionary","Arrive",41,4666
+"Individual Non-Mandatory","Purpose","Discretionary","Arrive",42,2511
+"Individual Non-Mandatory","Purpose","Discretionary","Arrive",43,1002
+"Individual Non-Mandatory","Purpose","Discretionary","Arrive",44,825
+"Individual Non-Mandatory","Purpose","Discretionary","Arrive",45,347
+"Individual Non-Mandatory","Purpose","Discretionary","Arrive",46,263
+"Individual Non-Mandatory","Purpose","Discretionary","Arrive",48,87
+"Individual Non-Mandatory","Purpose","EatOut","Arrive",4,2
+"Individual Non-Mandatory","Purpose","EatOut","Arrive",5,4
+"Individual Non-Mandatory","Purpose","EatOut","Arrive",6,8
+"Individual Non-Mandatory","Purpose","EatOut","Arrive",7,14
+"Individual Non-Mandatory","Purpose","EatOut","Arrive",8,35
+"Individual Non-Mandatory","Purpose","EatOut","Arrive",9,43
+"Individual Non-Mandatory","Purpose","EatOut","Arrive",10,63
+"Individual Non-Mandatory","Purpose","EatOut","Arrive",11,75
+"Individual Non-Mandatory","Purpose","EatOut","Arrive",12,120
+"Individual Non-Mandatory","Purpose","EatOut","Arrive",13,148
+"Individual Non-Mandatory","Purpose","EatOut","Arrive",14,240
+"Individual Non-Mandatory","Purpose","EatOut","Arrive",15,294
+"Individual Non-Mandatory","Purpose","EatOut","Arrive",16,264
+"Individual Non-Mandatory","Purpose","EatOut","Arrive",17,201
+"Individual Non-Mandatory","Purpose","EatOut","Arrive",18,448
+"Individual Non-Mandatory","Purpose","EatOut","Arrive",19,836
+"Individual Non-Mandatory","Purpose","EatOut","Arrive",20,2125
+"Individual Non-Mandatory","Purpose","EatOut","Arrive",21,4005
+"Individual Non-Mandatory","Purpose","EatOut","Arrive",22,3526
+"Individual Non-Mandatory","Purpose","EatOut","Arrive",23,5292
+"Individual Non-Mandatory","Purpose","EatOut","Arrive",24,3258
+"Individual Non-Mandatory","Purpose","EatOut","Arrive",25,2347
+"Individual Non-Mandatory","Purpose","EatOut","Arrive",26,2371
+"Individual Non-Mandatory","Purpose","EatOut","Arrive",27,2377
+"Individual Non-Mandatory","Purpose","EatOut","Arrive",28,2533
+"Individual Non-Mandatory","Purpose","EatOut","Arrive",29,2886
+"Individual Non-Mandatory","Purpose","EatOut","Arrive",30,3542
+"Individual Non-Mandatory","Purpose","EatOut","Arrive",31,3875
+"Individual Non-Mandatory","Purpose","EatOut","Arrive",32,3194
+"Individual Non-Mandatory","Purpose","EatOut","Arrive",33,6192
+"Individual Non-Mandatory","Purpose","EatOut","Arrive",34,4943
+"Individual Non-Mandatory","Purpose","EatOut","Arrive",35,11433
+"Individual Non-Mandatory","Purpose","EatOut","Arrive",36,6454
+"Individual Non-Mandatory","Purpose","EatOut","Arrive",37,4567
+"Individual Non-Mandatory","Purpose","EatOut","Arrive",38,4953
+"Individual Non-Mandatory","Purpose","EatOut","Arrive",39,4378
+"Individual Non-Mandatory","Purpose","EatOut","Arrive",40,4325
+"Individual Non-Mandatory","Purpose","EatOut","Arrive",41,1250
+"Individual Non-Mandatory","Purpose","EatOut","Arrive",42,1460
+"Individual Non-Mandatory","Purpose","EatOut","Arrive",43,1356
+"Individual Non-Mandatory","Purpose","EatOut","Arrive",44,1295
+"Individual Non-Mandatory","Purpose","EatOut","Arrive",45,316
+"Individual Non-Mandatory","Purpose","EatOut","Arrive",46,259
+"Individual Non-Mandatory","Purpose","EatOut","Arrive",47,394
+"Individual Non-Mandatory","Purpose","EatOut","Arrive",48,831
+"Individual Non-Mandatory","Purpose","Escorting","Arrive",1,41
+"Individual Non-Mandatory","Purpose","Escorting","Arrive",2,213
+"Individual Non-Mandatory","Purpose","Escorting","Arrive",3,332
+"Individual Non-Mandatory","Purpose","Escorting","Arrive",4,419
+"Individual Non-Mandatory","Purpose","Escorting","Arrive",5,629
+"Individual Non-Mandatory","Purpose","Escorting","Arrive",6,1588
+"Individual Non-Mandatory","Purpose","Escorting","Arrive",7,3677
+"Individual Non-Mandatory","Purpose","Escorting","Arrive",8,8714
+"Individual Non-Mandatory","Purpose","Escorting","Arrive",9,30932
+"Individual Non-Mandatory","Purpose","Escorting","Arrive",10,63496
+"Individual Non-Mandatory","Purpose","Escorting","Arrive",11,79466
+"Individual Non-Mandatory","Purpose","Escorting","Arrive",12,41033
+"Individual Non-Mandatory","Purpose","Escorting","Arrive",13,19668
+"Individual Non-Mandatory","Purpose","Escorting","Arrive",14,13598
+"Individual Non-Mandatory","Purpose","Escorting","Arrive",15,10765
+"Individual Non-Mandatory","Purpose","Escorting","Arrive",16,9491
+"Individual Non-Mandatory","Purpose","Escorting","Arrive",17,9234
+"Individual Non-Mandatory","Purpose","Escorting","Arrive",18,9496
+"Individual Non-Mandatory","Purpose","Escorting","Arrive",19,10193
+"Individual Non-Mandatory","Purpose","Escorting","Arrive",20,10844
+"Individual Non-Mandatory","Purpose","Escorting","Arrive",21,11769
+"Individual Non-Mandatory","Purpose","Escorting","Arrive",22,13167
+"Individual Non-Mandatory","Purpose","Escorting","Arrive",23,12276
+"Individual Non-Mandatory","Purpose","Escorting","Arrive",24,46715
+"Individual Non-Mandatory","Purpose","Escorting","Arrive",25,43136
+"Individual Non-Mandatory","Purpose","Escorting","Arrive",26,48285
+"Individual Non-Mandatory","Purpose","Escorting","Arrive",27,39624
+"Individual Non-Mandatory","Purpose","Escorting","Arrive",28,40667
+"Individual Non-Mandatory","Purpose","Escorting","Arrive",29,32717
+"Individual Non-Mandatory","Purpose","Escorting","Arrive",30,26556
+"Individual Non-Mandatory","Purpose","Escorting","Arrive",31,21812
+"Individual Non-Mandatory","Purpose","Escorting","Arrive",32,17756
+"Individual Non-Mandatory","Purpose","Escorting","Arrive",33,16354
+"Individual Non-Mandatory","Purpose","Escorting","Arrive",34,17123
+"Individual Non-Mandatory","Purpose","Escorting","Arrive",35,14566
+"Individual Non-Mandatory","Purpose","Escorting","Arrive",36,11609
+"Individual Non-Mandatory","Purpose","Escorting","Arrive",37,8746
+"Individual Non-Mandatory","Purpose","Escorting","Arrive",38,6761
+"Individual Non-Mandatory","Purpose","Escorting","Arrive",39,4962
+"Individual Non-Mandatory","Purpose","Escorting","Arrive",40,3707
+"Individual Non-Mandatory","Purpose","Escorting","Arrive",41,2770
+"Individual Non-Mandatory","Purpose","Escorting","Arrive",42,1934
+"Individual Non-Mandatory","Purpose","Escorting","Arrive",43,1456
+"Individual Non-Mandatory","Purpose","Escorting","Arrive",44,1675
+"Individual Non-Mandatory","Purpose","Escorting","Arrive",45,2021
+"Individual Non-Mandatory","Purpose","Escorting","Arrive",46,2261
+"Individual Non-Mandatory","Purpose","Escorting","Arrive",47,2460
+"Individual Non-Mandatory","Purpose","Escorting","Arrive",48,2817
+"Individual Non-Mandatory","Purpose","Maintenance","Arrive",1,8
+"Individual Non-Mandatory","Purpose","Maintenance","Arrive",2,40
+"Individual Non-Mandatory","Purpose","Maintenance","Arrive",3,70
+"Individual Non-Mandatory","Purpose","Maintenance","Arrive",4,131
+"Individual Non-Mandatory","Purpose","Maintenance","Arrive",5,201
+"Individual Non-Mandatory","Purpose","Maintenance","Arrive",6,345
+"Individual Non-Mandatory","Purpose","Maintenance","Arrive",7,801
+"Individual Non-Mandatory","Purpose","Maintenance","Arrive",8,1580
+"Individual Non-Mandatory","Purpose","Maintenance","Arrive",9,2881
+"Individual Non-Mandatory","Purpose","Maintenance","Arrive",10,4118
+"Individual Non-Mandatory","Purpose","Maintenance","Arrive",11,4983
+"Individual Non-Mandatory","Purpose","Maintenance","Arrive",12,6080
+"Individual Non-Mandatory","Purpose","Maintenance","Arrive",13,7250
+"Individual Non-Mandatory","Purpose","Maintenance","Arrive",14,9611
+"Individual Non-Mandatory","Purpose","Maintenance","Arrive",15,12951
+"Individual Non-Mandatory","Purpose","Maintenance","Arrive",16,17730
+"Individual Non-Mandatory","Purpose","Maintenance","Arrive",17,15995
+"Individual Non-Mandatory","Purpose","Maintenance","Arrive",18,22412
+"Individual Non-Mandatory","Purpose","Maintenance","Arrive",19,22787
+"Individual Non-Mandatory","Purpose","Maintenance","Arrive",20,23544
+"Individual Non-Mandatory","Purpose","Maintenance","Arrive",21,24096
+"Individual Non-Mandatory","Purpose","Maintenance","Arrive",22,18597
+"Individual Non-Mandatory","Purpose","Maintenance","Arrive",23,18860
+"Individual Non-Mandatory","Purpose","Maintenance","Arrive",24,23545
+"Individual Non-Mandatory","Purpose","Maintenance","Arrive",25,22898
+"Individual Non-Mandatory","Purpose","Maintenance","Arrive",26,23026
+"Individual Non-Mandatory","Purpose","Maintenance","Arrive",27,24160
+"Individual Non-Mandatory","Purpose","Maintenance","Arrive",28,23587
+"Individual Non-Mandatory","Purpose","Maintenance","Arrive",29,18930
+"Individual Non-Mandatory","Purpose","Maintenance","Arrive",30,15516
+"Individual Non-Mandatory","Purpose","Maintenance","Arrive",31,13120
+"Individual Non-Mandatory","Purpose","Maintenance","Arrive",32,11822
+"Individual Non-Mandatory","Purpose","Maintenance","Arrive",33,12403
+"Individual Non-Mandatory","Purpose","Maintenance","Arrive",34,8306
+"Individual Non-Mandatory","Purpose","Maintenance","Arrive",35,6218
+"Individual Non-Mandatory","Purpose","Maintenance","Arrive",36,7274
+"Individual Non-Mandatory","Purpose","Maintenance","Arrive",37,3493
+"Individual Non-Mandatory","Purpose","Maintenance","Arrive",38,3747
+"Individual Non-Mandatory","Purpose","Maintenance","Arrive",39,1561
+"Individual Non-Mandatory","Purpose","Maintenance","Arrive",40,1733
+"Individual Non-Mandatory","Purpose","Maintenance","Arrive",41,593
+"Individual Non-Mandatory","Purpose","Maintenance","Arrive",42,752
+"Individual Non-Mandatory","Purpose","Maintenance","Arrive",43,1025
+"Individual Non-Mandatory","Purpose","Maintenance","Arrive",44,332
+"Individual Non-Mandatory","Purpose","Maintenance","Arrive",45,463
+"Individual Non-Mandatory","Purpose","Maintenance","Arrive",46,598
+"Individual Non-Mandatory","Purpose","Maintenance","Arrive",47,515
+"Individual Non-Mandatory","Purpose","Maintenance","Arrive",48,633
+"Individual Non-Mandatory","Purpose","Shopping","Arrive",2,27
+"Individual Non-Mandatory","Purpose","Shopping","Arrive",3,73
+"Individual Non-Mandatory","Purpose","Shopping","Arrive",4,112
+"Individual Non-Mandatory","Purpose","Shopping","Arrive",5,121
+"Individual Non-Mandatory","Purpose","Shopping","Arrive",6,142
+"Individual Non-Mandatory","Purpose","Shopping","Arrive",7,191
+"Individual Non-Mandatory","Purpose","Shopping","Arrive",8,357
+"Individual Non-Mandatory","Purpose","Shopping","Arrive",9,686
+"Individual Non-Mandatory","Purpose","Shopping","Arrive",10,1457
+"Individual Non-Mandatory","Purpose","Shopping","Arrive",11,2707
+"Individual Non-Mandatory","Purpose","Shopping","Arrive",12,4773
+"Individual Non-Mandatory","Purpose","Shopping","Arrive",13,6935
+"Individual Non-Mandatory","Purpose","Shopping","Arrive",14,9469
+"Individual Non-Mandatory","Purpose","Shopping","Arrive",15,12860
+"Individual Non-Mandatory","Purpose","Shopping","Arrive",16,16202
+"Individual Non-Mandatory","Purpose","Shopping","Arrive",17,19726
+"Individual Non-Mandatory","Purpose","Shopping","Arrive",18,22526
+"Individual Non-Mandatory","Purpose","Shopping","Arrive",19,24762
+"Individual Non-Mandatory","Purpose","Shopping","Arrive",20,28868
+"Individual Non-Mandatory","Purpose","Shopping","Arrive",21,26908
+"Individual Non-Mandatory","Purpose","Shopping","Arrive",22,25125
+"Individual Non-Mandatory","Purpose","Shopping","Arrive",23,23580
+"Individual Non-Mandatory","Purpose","Shopping","Arrive",24,21960
+"Individual Non-Mandatory","Purpose","Shopping","Arrive",25,28506
+"Individual Non-Mandatory","Purpose","Shopping","Arrive",26,27625
+"Individual Non-Mandatory","Purpose","Shopping","Arrive",27,30934
+"Individual Non-Mandatory","Purpose","Shopping","Arrive",28,28864
+"Individual Non-Mandatory","Purpose","Shopping","Arrive",29,16912
+"Individual Non-Mandatory","Purpose","Shopping","Arrive",30,22992
+"Individual Non-Mandatory","Purpose","Shopping","Arrive",31,24740
+"Individual Non-Mandatory","Purpose","Shopping","Arrive",32,16144
+"Individual Non-Mandatory","Purpose","Shopping","Arrive",33,19425
+"Individual Non-Mandatory","Purpose","Shopping","Arrive",34,15780
+"Individual Non-Mandatory","Purpose","Shopping","Arrive",35,12817
+"Individual Non-Mandatory","Purpose","Shopping","Arrive",36,13108
+"Individual Non-Mandatory","Purpose","Shopping","Arrive",37,11092
+"Individual Non-Mandatory","Purpose","Shopping","Arrive",38,4540
+"Individual Non-Mandatory","Purpose","Shopping","Arrive",39,3811
+"Individual Non-Mandatory","Purpose","Shopping","Arrive",40,2143
+"Individual Non-Mandatory","Purpose","Shopping","Arrive",41,1180
+"Individual Non-Mandatory","Purpose","Shopping","Arrive",42,548
+"Individual Non-Mandatory","Purpose","Shopping","Arrive",43,233
+"Individual Non-Mandatory","Purpose","Shopping","Arrive",44,446
+"Individual Non-Mandatory","Purpose","Shopping","Arrive",45,263
+"Individual Non-Mandatory","Purpose","Shopping","Arrive",46,361
+"Individual Non-Mandatory","Purpose","Shopping","Arrive",47,121
+"Individual Non-Mandatory","Purpose","Shopping","Arrive",48,121
+"Individual Non-Mandatory","Purpose","Social","Arrive",1,1
+"Individual Non-Mandatory","Purpose","Social","Arrive",2,7
+"Individual Non-Mandatory","Purpose","Social","Arrive",3,18
+"Individual Non-Mandatory","Purpose","Social","Arrive",4,57
+"Individual Non-Mandatory","Purpose","Social","Arrive",5,89
+"Individual Non-Mandatory","Purpose","Social","Arrive",6,170
+"Individual Non-Mandatory","Purpose","Social","Arrive",7,324
+"Individual Non-Mandatory","Purpose","Social","Arrive",8,410
+"Individual Non-Mandatory","Purpose","Social","Arrive",9,611
+"Individual Non-Mandatory","Purpose","Social","Arrive",10,896
+"Individual Non-Mandatory","Purpose","Social","Arrive",11,1010
+"Individual Non-Mandatory","Purpose","Social","Arrive",12,1117
+"Individual Non-Mandatory","Purpose","Social","Arrive",13,1310
+"Individual Non-Mandatory","Purpose","Social","Arrive",14,1495
+"Individual Non-Mandatory","Purpose","Social","Arrive",15,1857
+"Individual Non-Mandatory","Purpose","Social","Arrive",16,2091
+"Individual Non-Mandatory","Purpose","Social","Arrive",17,2340
+"Individual Non-Mandatory","Purpose","Social","Arrive",18,2706
+"Individual Non-Mandatory","Purpose","Social","Arrive",19,2782
+"Individual Non-Mandatory","Purpose","Social","Arrive",20,2959
+"Individual Non-Mandatory","Purpose","Social","Arrive",21,3214
+"Individual Non-Mandatory","Purpose","Social","Arrive",22,3322
+"Individual Non-Mandatory","Purpose","Social","Arrive",23,3325
+"Individual Non-Mandatory","Purpose","Social","Arrive",24,3329
+"Individual Non-Mandatory","Purpose","Social","Arrive",25,5006
+"Individual Non-Mandatory","Purpose","Social","Arrive",26,6467
+"Individual Non-Mandatory","Purpose","Social","Arrive",27,7771
+"Individual Non-Mandatory","Purpose","Social","Arrive",28,4140
+"Individual Non-Mandatory","Purpose","Social","Arrive",29,5977
+"Individual Non-Mandatory","Purpose","Social","Arrive",30,6588
+"Individual Non-Mandatory","Purpose","Social","Arrive",31,5726
+"Individual Non-Mandatory","Purpose","Social","Arrive",32,6634
+"Individual Non-Mandatory","Purpose","Social","Arrive",33,7668
+"Individual Non-Mandatory","Purpose","Social","Arrive",34,8712
+"Individual Non-Mandatory","Purpose","Social","Arrive",35,9958
+"Individual Non-Mandatory","Purpose","Social","Arrive",36,7054
+"Individual Non-Mandatory","Purpose","Social","Arrive",37,7415
+"Individual Non-Mandatory","Purpose","Social","Arrive",38,11027
+"Individual Non-Mandatory","Purpose","Social","Arrive",39,11387
+"Individual Non-Mandatory","Purpose","Social","Arrive",40,6594
+"Individual Non-Mandatory","Purpose","Social","Arrive",41,5870
+"Individual Non-Mandatory","Purpose","Social","Arrive",42,3957
+"Individual Non-Mandatory","Purpose","Social","Arrive",43,2594
+"Individual Non-Mandatory","Purpose","Social","Arrive",44,1776
+"Individual Non-Mandatory","Purpose","Social","Arrive",45,1908
+"Individual Non-Mandatory","Purpose","Social","Arrive",46,663
+"Individual Non-Mandatory","Purpose","Social","Arrive",47,464
+"Individual Non-Mandatory","Purpose","Social","Arrive",48,923
+"Joint","Purpose","Discretionary","Arrive",1,1
+"Joint","Purpose","Discretionary","Arrive",2,8
+"Joint","Purpose","Discretionary","Arrive",3,22
+"Joint","Purpose","Discretionary","Arrive",4,65
+"Joint","Purpose","Discretionary","Arrive",5,163
+"Joint","Purpose","Discretionary","Arrive",6,446
+"Joint","Purpose","Discretionary","Arrive",7,1121
+"Joint","Purpose","Discretionary","Arrive",8,2434
+"Joint","Purpose","Discretionary","Arrive",9,3388
+"Joint","Purpose","Discretionary","Arrive",10,2832
+"Joint","Purpose","Discretionary","Arrive",11,1823
+"Joint","Purpose","Discretionary","Arrive",12,1238
+"Joint","Purpose","Discretionary","Arrive",13,1180
+"Joint","Purpose","Discretionary","Arrive",14,1147
+"Joint","Purpose","Discretionary","Arrive",15,1320
+"Joint","Purpose","Discretionary","Arrive",16,1412
+"Joint","Purpose","Discretionary","Arrive",17,1430
+"Joint","Purpose","Discretionary","Arrive",18,1385
+"Joint","Purpose","Discretionary","Arrive",19,1257
+"Joint","Purpose","Discretionary","Arrive",20,1046
+"Joint","Purpose","Discretionary","Arrive",21,989
+"Joint","Purpose","Discretionary","Arrive",22,859
+"Joint","Purpose","Discretionary","Arrive",23,835
+"Joint","Purpose","Discretionary","Arrive",24,691
+"Joint","Purpose","Discretionary","Arrive",25,691
+"Joint","Purpose","Discretionary","Arrive",26,773
+"Joint","Purpose","Discretionary","Arrive",27,885
+"Joint","Purpose","Discretionary","Arrive",28,1136
+"Joint","Purpose","Discretionary","Arrive",29,1584
+"Joint","Purpose","Discretionary","Arrive",30,2204
+"Joint","Purpose","Discretionary","Arrive",31,3619
+"Joint","Purpose","Discretionary","Arrive",32,3261
+"Joint","Purpose","Discretionary","Arrive",33,6238
+"Joint","Purpose","Discretionary","Arrive",34,9707
+"Joint","Purpose","Discretionary","Arrive",35,13478
+"Joint","Purpose","Discretionary","Arrive",36,14814
+"Joint","Purpose","Discretionary","Arrive",37,11706
+"Joint","Purpose","Discretionary","Arrive",38,8281
+"Joint","Purpose","Discretionary","Arrive",39,6633
+"Joint","Purpose","Discretionary","Arrive",40,3227
+"Joint","Purpose","Discretionary","Arrive",41,2602
+"Joint","Purpose","Discretionary","Arrive",42,1541
+"Joint","Purpose","Discretionary","Arrive",43,678
+"Joint","Purpose","Discretionary","Arrive",44,653
+"Joint","Purpose","Discretionary","Arrive",45,304
+"Joint","Purpose","Discretionary","Arrive",46,278
+"Joint","Purpose","Discretionary","Arrive",47,1
+"Joint","Purpose","Discretionary","Arrive",48,93
+"Joint","Purpose","EatOut","Arrive",4,15
+"Joint","Purpose","EatOut","Arrive",5,118
+"Joint","Purpose","EatOut","Arrive",6,502
+"Joint","Purpose","EatOut","Arrive",7,756
+"Joint","Purpose","EatOut","Arrive",8,850
+"Joint","Purpose","EatOut","Arrive",9,678
+"Joint","Purpose","EatOut","Arrive",10,452
+"Joint","Purpose","EatOut","Arrive",11,310
+"Joint","Purpose","EatOut","Arrive",12,194
+"Joint","Purpose","EatOut","Arrive",13,139
+"Joint","Purpose","EatOut","Arrive",14,114
+"Joint","Purpose","EatOut","Arrive",15,103
+"Joint","Purpose","EatOut","Arrive",16,80
+"Joint","Purpose","EatOut","Arrive",17,98
+"Joint","Purpose","EatOut","Arrive",18,106
+"Joint","Purpose","EatOut","Arrive",19,156
+"Joint","Purpose","EatOut","Arrive",20,1601
+"Joint","Purpose","EatOut","Arrive",21,2340
+"Joint","Purpose","EatOut","Arrive",22,1800
+"Joint","Purpose","EatOut","Arrive",23,1698
+"Joint","Purpose","EatOut","Arrive",24,381
+"Joint","Purpose","EatOut","Arrive",25,341
+"Joint","Purpose","EatOut","Arrive",26,373
+"Joint","Purpose","EatOut","Arrive",27,470
+"Joint","Purpose","EatOut","Arrive",28,494
+"Joint","Purpose","EatOut","Arrive",29,761
+"Joint","Purpose","EatOut","Arrive",30,1102
+"Joint","Purpose","EatOut","Arrive",31,1492
+"Joint","Purpose","EatOut","Arrive",32,2412
+"Joint","Purpose","EatOut","Arrive",33,3434
+"Joint","Purpose","EatOut","Arrive",34,5958
+"Joint","Purpose","EatOut","Arrive",35,7394
+"Joint","Purpose","EatOut","Arrive",36,5601
+"Joint","Purpose","EatOut","Arrive",37,4040
+"Joint","Purpose","EatOut","Arrive",38,3666
+"Joint","Purpose","EatOut","Arrive",39,2924
+"Joint","Purpose","EatOut","Arrive",40,2321
+"Joint","Purpose","EatOut","Arrive",41,624
+"Joint","Purpose","EatOut","Arrive",42,588
+"Joint","Purpose","EatOut","Arrive",43,479
+"Joint","Purpose","EatOut","Arrive",44,407
+"Joint","Purpose","EatOut","Arrive",45,103
+"Joint","Purpose","EatOut","Arrive",46,60
+"Joint","Purpose","EatOut","Arrive",47,118
+"Joint","Purpose","EatOut","Arrive",48,201
+"Joint","Purpose","Maintenance","Arrive",1,4
+"Joint","Purpose","Maintenance","Arrive",2,29
+"Joint","Purpose","Maintenance","Arrive",3,111
+"Joint","Purpose","Maintenance","Arrive",4,179
+"Joint","Purpose","Maintenance","Arrive",5,283
+"Joint","Purpose","Maintenance","Arrive",6,478
+"Joint","Purpose","Maintenance","Arrive",7,1006
+"Joint","Purpose","Maintenance","Arrive",8,1915
+"Joint","Purpose","Maintenance","Arrive",9,3035
+"Joint","Purpose","Maintenance","Arrive",10,2936
+"Joint","Purpose","Maintenance","Arrive",11,1974
+"Joint","Purpose","Maintenance","Arrive",12,1377
+"Joint","Purpose","Maintenance","Arrive",13,1166
+"Joint","Purpose","Maintenance","Arrive",14,1085
+"Joint","Purpose","Maintenance","Arrive",15,1279
+"Joint","Purpose","Maintenance","Arrive",16,1720
+"Joint","Purpose","Maintenance","Arrive",17,1587
+"Joint","Purpose","Maintenance","Arrive",18,2209
+"Joint","Purpose","Maintenance","Arrive",19,2320
+"Joint","Purpose","Maintenance","Arrive",20,2250
+"Joint","Purpose","Maintenance","Arrive",21,2407
+"Joint","Purpose","Maintenance","Arrive",22,1749
+"Joint","Purpose","Maintenance","Arrive",23,1741
+"Joint","Purpose","Maintenance","Arrive",24,2300
+"Joint","Purpose","Maintenance","Arrive",25,2250
+"Joint","Purpose","Maintenance","Arrive",26,2576
+"Joint","Purpose","Maintenance","Arrive",27,3157
+"Joint","Purpose","Maintenance","Arrive",28,3804
+"Joint","Purpose","Maintenance","Arrive",29,3755
+"Joint","Purpose","Maintenance","Arrive",30,3841
+"Joint","Purpose","Maintenance","Arrive",31,3868
+"Joint","Purpose","Maintenance","Arrive",32,4170
+"Joint","Purpose","Maintenance","Arrive",33,5499
+"Joint","Purpose","Maintenance","Arrive",34,4563
+"Joint","Purpose","Maintenance","Arrive",35,3853
+"Joint","Purpose","Maintenance","Arrive",36,4944
+"Joint","Purpose","Maintenance","Arrive",37,2476
+"Joint","Purpose","Maintenance","Arrive",38,2777
+"Joint","Purpose","Maintenance","Arrive",39,1199
+"Joint","Purpose","Maintenance","Arrive",40,1233
+"Joint","Purpose","Maintenance","Arrive",41,486
+"Joint","Purpose","Maintenance","Arrive",42,577
+"Joint","Purpose","Maintenance","Arrive",43,714
+"Joint","Purpose","Maintenance","Arrive",44,237
+"Joint","Purpose","Maintenance","Arrive",45,343
+"Joint","Purpose","Maintenance","Arrive",46,427
+"Joint","Purpose","Maintenance","Arrive",47,363
+"Joint","Purpose","Maintenance","Arrive",48,457
+"Joint","Purpose","Shopping","Arrive",1,4
+"Joint","Purpose","Shopping","Arrive",2,29
+"Joint","Purpose","Shopping","Arrive",3,76
+"Joint","Purpose","Shopping","Arrive",4,108
+"Joint","Purpose","Shopping","Arrive",5,140
+"Joint","Purpose","Shopping","Arrive",6,131
+"Joint","Purpose","Shopping","Arrive",7,204
+"Joint","Purpose","Shopping","Arrive",8,275
+"Joint","Purpose","Shopping","Arrive",9,486
+"Joint","Purpose","Shopping","Arrive",10,654
+"Joint","Purpose","Shopping","Arrive",11,844
+"Joint","Purpose","Shopping","Arrive",12,1031
+"Joint","Purpose","Shopping","Arrive",13,1138
+"Joint","Purpose","Shopping","Arrive",14,1351
+"Joint","Purpose","Shopping","Arrive",15,1787
+"Joint","Purpose","Shopping","Arrive",16,2350
+"Joint","Purpose","Shopping","Arrive",17,2927
+"Joint","Purpose","Shopping","Arrive",18,3486
+"Joint","Purpose","Shopping","Arrive",19,3819
+"Joint","Purpose","Shopping","Arrive",20,4291
+"Joint","Purpose","Shopping","Arrive",21,4057
+"Joint","Purpose","Shopping","Arrive",22,3670
+"Joint","Purpose","Shopping","Arrive",23,3400
+"Joint","Purpose","Shopping","Arrive",24,3108
+"Joint","Purpose","Shopping","Arrive",25,4177
+"Joint","Purpose","Shopping","Arrive",26,4247
+"Joint","Purpose","Shopping","Arrive",27,5222
+"Joint","Purpose","Shopping","Arrive",28,5476
+"Joint","Purpose","Shopping","Arrive",29,3778
+"Joint","Purpose","Shopping","Arrive",30,5811
+"Joint","Purpose","Shopping","Arrive",31,7131
+"Joint","Purpose","Shopping","Arrive",32,5693
+"Joint","Purpose","Shopping","Arrive",33,7759
+"Joint","Purpose","Shopping","Arrive",34,7424
+"Joint","Purpose","Shopping","Arrive",35,6736
+"Joint","Purpose","Shopping","Arrive",36,7587
+"Joint","Purpose","Shopping","Arrive",37,7049
+"Joint","Purpose","Shopping","Arrive",38,3014
+"Joint","Purpose","Shopping","Arrive",39,2810
+"Joint","Purpose","Shopping","Arrive",40,1809
+"Joint","Purpose","Shopping","Arrive",41,1098
+"Joint","Purpose","Shopping","Arrive",42,523
+"Joint","Purpose","Shopping","Arrive",43,248
+"Joint","Purpose","Shopping","Arrive",44,522
+"Joint","Purpose","Shopping","Arrive",45,349
+"Joint","Purpose","Shopping","Arrive",46,526
+"Joint","Purpose","Shopping","Arrive",47,190
+"Joint","Purpose","Shopping","Arrive",48,205
+"Joint","Purpose","Social","Arrive",2,2
+"Joint","Purpose","Social","Arrive",3,13
+"Joint","Purpose","Social","Arrive",4,16
+"Joint","Purpose","Social","Arrive",5,35
+"Joint","Purpose","Social","Arrive",6,56
+"Joint","Purpose","Social","Arrive",7,93
+"Joint","Purpose","Social","Arrive",8,122
+"Joint","Purpose","Social","Arrive",9,165
+"Joint","Purpose","Social","Arrive",10,198
+"Joint","Purpose","Social","Arrive",11,192
+"Joint","Purpose","Social","Arrive",12,161
+"Joint","Purpose","Social","Arrive",13,157
+"Joint","Purpose","Social","Arrive",14,182
+"Joint","Purpose","Social","Arrive",15,224
+"Joint","Purpose","Social","Arrive",16,241
+"Joint","Purpose","Social","Arrive",17,246
+"Joint","Purpose","Social","Arrive",18,312
+"Joint","Purpose","Social","Arrive",19,318
+"Joint","Purpose","Social","Arrive",20,291
+"Joint","Purpose","Social","Arrive",21,316
+"Joint","Purpose","Social","Arrive",22,316
+"Joint","Purpose","Social","Arrive",23,307
+"Joint","Purpose","Social","Arrive",24,354
+"Joint","Purpose","Social","Arrive",25,538
+"Joint","Purpose","Social","Arrive",26,604
+"Joint","Purpose","Social","Arrive",27,804
+"Joint","Purpose","Social","Arrive",28,421
+"Joint","Purpose","Social","Arrive",29,657
+"Joint","Purpose","Social","Arrive",30,744
+"Joint","Purpose","Social","Arrive",31,746
+"Joint","Purpose","Social","Arrive",32,957
+"Joint","Purpose","Social","Arrive",33,1124
+"Joint","Purpose","Social","Arrive",34,1300
+"Joint","Purpose","Social","Arrive",35,1625
+"Joint","Purpose","Social","Arrive",36,1190
+"Joint","Purpose","Social","Arrive",37,1320
+"Joint","Purpose","Social","Arrive",38,2057
+"Joint","Purpose","Social","Arrive",39,2077
+"Joint","Purpose","Social","Arrive",40,1245
+"Joint","Purpose","Social","Arrive",41,1194
+"Joint","Purpose","Social","Arrive",42,772
+"Joint","Purpose","Social","Arrive",43,529
+"Joint","Purpose","Social","Arrive",44,362
+"Joint","Purpose","Social","Arrive",45,389
+"Joint","Purpose","Social","Arrive",46,135
+"Joint","Purpose","Social","Arrive",47,129
+"Joint","Purpose","Social","Arrive",48,207
+"At-Work","Purpose","EatOut","Arrive",2,1
+"At-Work","Purpose","EatOut","Arrive",3,2
+"At-Work","Purpose","EatOut","Arrive",4,3
+"At-Work","Purpose","EatOut","Arrive",5,6
+"At-Work","Purpose","EatOut","Arrive",6,5
+"At-Work","Purpose","EatOut","Arrive",7,12
+"At-Work","Purpose","EatOut","Arrive",8,26
+"At-Work","Purpose","EatOut","Arrive",9,27
+"At-Work","Purpose","EatOut","Arrive",10,70
+"At-Work","Purpose","EatOut","Arrive",11,126
+"At-Work","Purpose","EatOut","Arrive",12,208
+"At-Work","Purpose","EatOut","Arrive",13,339
+"At-Work","Purpose","EatOut","Arrive",14,490
+"At-Work","Purpose","EatOut","Arrive",15,1114
+"At-Work","Purpose","EatOut","Arrive",16,2641
+"At-Work","Purpose","EatOut","Arrive",17,6595
+"At-Work","Purpose","EatOut","Arrive",18,20584
+"At-Work","Purpose","EatOut","Arrive",19,40766
+"At-Work","Purpose","EatOut","Arrive",20,93151
+"At-Work","Purpose","EatOut","Arrive",21,103157
+"At-Work","Purpose","EatOut","Arrive",22,61815
+"At-Work","Purpose","EatOut","Arrive",23,40922
+"At-Work","Purpose","EatOut","Arrive",24,21123
+"At-Work","Purpose","EatOut","Arrive",25,14736
+"At-Work","Purpose","EatOut","Arrive",26,9536
+"At-Work","Purpose","EatOut","Arrive",27,6324
+"At-Work","Purpose","EatOut","Arrive",28,3875
+"At-Work","Purpose","EatOut","Arrive",29,2395
+"At-Work","Purpose","EatOut","Arrive",30,1407
+"At-Work","Purpose","EatOut","Arrive",31,843
+"At-Work","Purpose","EatOut","Arrive",32,512
+"At-Work","Purpose","EatOut","Arrive",33,303
+"At-Work","Purpose","EatOut","Arrive",34,224
+"At-Work","Purpose","EatOut","Arrive",35,195
+"At-Work","Purpose","EatOut","Arrive",36,213
+"At-Work","Purpose","EatOut","Arrive",37,205
+"At-Work","Purpose","EatOut","Arrive",38,193
+"At-Work","Purpose","EatOut","Arrive",39,189
+"At-Work","Purpose","EatOut","Arrive",40,133
+"At-Work","Purpose","EatOut","Arrive",41,109
+"At-Work","Purpose","EatOut","Arrive",42,69
+"At-Work","Purpose","EatOut","Arrive",43,65
+"At-Work","Purpose","EatOut","Arrive",44,41
+"At-Work","Purpose","EatOut","Arrive",45,24
+"At-Work","Purpose","EatOut","Arrive",46,19
+"At-Work","Purpose","EatOut","Arrive",47,9
+"At-Work","Purpose","EatOut","Arrive",48,12
+"At-Work","Purpose","Maintenance","Arrive",2,2
+"At-Work","Purpose","Maintenance","Arrive",3,1
+"At-Work","Purpose","Maintenance","Arrive",4,3
+"At-Work","Purpose","Maintenance","Arrive",5,15
+"At-Work","Purpose","Maintenance","Arrive",6,15
+"At-Work","Purpose","Maintenance","Arrive",7,17
+"At-Work","Purpose","Maintenance","Arrive",8,35
+"At-Work","Purpose","Maintenance","Arrive",9,50
+"At-Work","Purpose","Maintenance","Arrive",10,85
+"At-Work","Purpose","Maintenance","Arrive",11,135
+"At-Work","Purpose","Maintenance","Arrive",12,220
+"At-Work","Purpose","Maintenance","Arrive",13,289
+"At-Work","Purpose","Maintenance","Arrive",14,378
+"At-Work","Purpose","Maintenance","Arrive",15,773
+"At-Work","Purpose","Maintenance","Arrive",16,1525
+"At-Work","Purpose","Maintenance","Arrive",17,3243
+"At-Work","Purpose","Maintenance","Arrive",18,7673
+"At-Work","Purpose","Maintenance","Arrive",19,11299
+"At-Work","Purpose","Maintenance","Arrive",20,22023
+"At-Work","Purpose","Maintenance","Arrive",21,23014
+"At-Work","Purpose","Maintenance","Arrive",22,15139
+"At-Work","Purpose","Maintenance","Arrive",23,11144
+"At-Work","Purpose","Maintenance","Arrive",24,6477
+"At-Work","Purpose","Maintenance","Arrive",25,5036
+"At-Work","Purpose","Maintenance","Arrive",26,3711
+"At-Work","Purpose","Maintenance","Arrive",27,2713
+"At-Work","Purpose","Maintenance","Arrive",28,1900
+"At-Work","Purpose","Maintenance","Arrive",29,1278
+"At-Work","Purpose","Maintenance","Arrive",30,780
+"At-Work","Purpose","Maintenance","Arrive",31,470
+"At-Work","Purpose","Maintenance","Arrive",32,309
+"At-Work","Purpose","Maintenance","Arrive",33,192
+"At-Work","Purpose","Maintenance","Arrive",34,123
+"At-Work","Purpose","Maintenance","Arrive",35,123
+"At-Work","Purpose","Maintenance","Arrive",36,133
+"At-Work","Purpose","Maintenance","Arrive",37,124
+"At-Work","Purpose","Maintenance","Arrive",38,144
+"At-Work","Purpose","Maintenance","Arrive",39,105
+"At-Work","Purpose","Maintenance","Arrive",40,115
+"At-Work","Purpose","Maintenance","Arrive",41,86
+"At-Work","Purpose","Maintenance","Arrive",42,56
+"At-Work","Purpose","Maintenance","Arrive",43,49
+"At-Work","Purpose","Maintenance","Arrive",44,34
+"At-Work","Purpose","Maintenance","Arrive",45,27
+"At-Work","Purpose","Maintenance","Arrive",46,20
+"At-Work","Purpose","Maintenance","Arrive",47,20
+"At-Work","Purpose","Maintenance","Arrive",48,16
+"At-Work","Purpose","WorkRelated","Arrive",1,6
+"At-Work","Purpose","WorkRelated","Arrive",2,13
+"At-Work","Purpose","WorkRelated","Arrive",3,43
+"At-Work","Purpose","WorkRelated","Arrive",4,66
+"At-Work","Purpose","WorkRelated","Arrive",5,161
+"At-Work","Purpose","WorkRelated","Arrive",6,193
+"At-Work","Purpose","WorkRelated","Arrive",7,242
+"At-Work","Purpose","WorkRelated","Arrive",8,314
+"At-Work","Purpose","WorkRelated","Arrive",9,460
+"At-Work","Purpose","WorkRelated","Arrive",10,650
+"At-Work","Purpose","WorkRelated","Arrive",11,890
+"At-Work","Purpose","WorkRelated","Arrive",12,1066
+"At-Work","Purpose","WorkRelated","Arrive",13,1321
+"At-Work","Purpose","WorkRelated","Arrive",14,1528
+"At-Work","Purpose","WorkRelated","Arrive",15,2522
+"At-Work","Purpose","WorkRelated","Arrive",16,3987
+"At-Work","Purpose","WorkRelated","Arrive",17,6584
+"At-Work","Purpose","WorkRelated","Arrive",18,11135
+"At-Work","Purpose","WorkRelated","Arrive",19,12664
+"At-Work","Purpose","WorkRelated","Arrive",20,22087
+"At-Work","Purpose","WorkRelated","Arrive",21,24644
+"At-Work","Purpose","WorkRelated","Arrive",22,18726
+"At-Work","Purpose","WorkRelated","Arrive",23,15873
+"At-Work","Purpose","WorkRelated","Arrive",24,10473
+"At-Work","Purpose","WorkRelated","Arrive",25,9757
+"At-Work","Purpose","WorkRelated","Arrive",26,8711
+"At-Work","Purpose","WorkRelated","Arrive",27,7433
+"At-Work","Purpose","WorkRelated","Arrive",28,5917
+"At-Work","Purpose","WorkRelated","Arrive",29,4703
+"At-Work","Purpose","WorkRelated","Arrive",30,3408
+"At-Work","Purpose","WorkRelated","Arrive",31,2364
+"At-Work","Purpose","WorkRelated","Arrive",32,1524
+"At-Work","Purpose","WorkRelated","Arrive",33,1001
+"At-Work","Purpose","WorkRelated","Arrive",34,671
+"At-Work","Purpose","WorkRelated","Arrive",35,722
+"At-Work","Purpose","WorkRelated","Arrive",36,794
+"At-Work","Purpose","WorkRelated","Arrive",37,787
+"At-Work","Purpose","WorkRelated","Arrive",38,811
+"At-Work","Purpose","WorkRelated","Arrive",39,781
+"At-Work","Purpose","WorkRelated","Arrive",40,671
+"At-Work","Purpose","WorkRelated","Arrive",41,578
+"At-Work","Purpose","WorkRelated","Arrive",42,391
+"At-Work","Purpose","WorkRelated","Arrive",43,313
+"At-Work","Purpose","WorkRelated","Arrive",44,170
+"At-Work","Purpose","WorkRelated","Arrive",45,119
+"At-Work","Purpose","WorkRelated","Arrive",46,120
+"At-Work","Purpose","WorkRelated","Arrive",47,71
+"At-Work","Purpose","WorkRelated","Arrive",48,112
+"Mandatory","Purpose","School","Duration",1,2815
+"Mandatory","Purpose","School","Duration",2,2208
+"Mandatory","Purpose","School","Duration",3,1643
+"Mandatory","Purpose","School","Duration",4,1473
+"Mandatory","Purpose","School","Duration",5,1558
+"Mandatory","Purpose","School","Duration",6,2047
+"Mandatory","Purpose","School","Duration",7,3190
+"Mandatory","Purpose","School","Duration",8,5655
+"Mandatory","Purpose","School","Duration",9,5466
+"Mandatory","Purpose","School","Duration",10,5652
+"Mandatory","Purpose","School","Duration",11,6350
+"Mandatory","Purpose","School","Duration",12,7645
+"Mandatory","Purpose","School","Duration",13,10438
+"Mandatory","Purpose","School","Duration",14,16401
+"Mandatory","Purpose","School","Duration",15,57673
+"Mandatory","Purpose","School","Duration",16,161431
+"Mandatory","Purpose","School","Duration",17,227475
+"Mandatory","Purpose","School","Duration",18,169633
+"Mandatory","Purpose","School","Duration",19,92429
+"Mandatory","Purpose","School","Duration",20,58035
+"Mandatory","Purpose","School","Duration",21,50145
+"Mandatory","Purpose","School","Duration",22,43499
+"Mandatory","Purpose","School","Duration",23,38303
+"Mandatory","Purpose","School","Duration",24,31906
+"Mandatory","Purpose","School","Duration",25,24085
+"Mandatory","Purpose","School","Duration",26,17363
+"Mandatory","Purpose","School","Duration",27,11839
+"Mandatory","Purpose","School","Duration",28,7638
+"Mandatory","Purpose","School","Duration",29,4449
+"Mandatory","Purpose","School","Duration",30,2721
+"Mandatory","Purpose","School","Duration",31,1856
+"Mandatory","Purpose","School","Duration",32,1324
+"Mandatory","Purpose","School","Duration",33,925
+"Mandatory","Purpose","School","Duration",34,710
+"Mandatory","Purpose","School","Duration",35,716
+"Mandatory","Purpose","School","Duration",36,723
+"Mandatory","Purpose","School","Duration",37,878
+"Mandatory","Purpose","School","Duration",38,929
+"Mandatory","Purpose","School","Duration",39,829
+"Mandatory","Purpose","School","Duration",40,488
+"Mandatory","Purpose","School","Duration",41,182
+"Mandatory","Purpose","School","Duration",42,37
+"Mandatory","Purpose","School","Duration",43,3
+"Mandatory","Purpose","School","Duration",44,3
+"Mandatory","Purpose","School","Duration",45,1
+"Mandatory","Purpose","School","Duration",46,2
+"Mandatory","Purpose","School","Duration",47,1
+"Mandatory","Purpose","School","Duration",48,1
+"Mandatory","Purpose","University","Duration",3,574
+"Mandatory","Purpose","University","Duration",4,877
+"Mandatory","Purpose","University","Duration",5,4801
+"Mandatory","Purpose","University","Duration",6,4440
+"Mandatory","Purpose","University","Duration",7,2863
+"Mandatory","Purpose","University","Duration",8,3661
+"Mandatory","Purpose","University","Duration",9,5150
+"Mandatory","Purpose","University","Duration",10,5161
+"Mandatory","Purpose","University","Duration",11,4806
+"Mandatory","Purpose","University","Duration",12,5995
+"Mandatory","Purpose","University","Duration",13,4783
+"Mandatory","Purpose","University","Duration",14,6413
+"Mandatory","Purpose","University","Duration",15,3471
+"Mandatory","Purpose","University","Duration",16,3815
+"Mandatory","Purpose","University","Duration",17,3830
+"Mandatory","Purpose","University","Duration",18,3784
+"Mandatory","Purpose","University","Duration",19,3696
+"Mandatory","Purpose","University","Duration",20,3325
+"Mandatory","Purpose","University","Duration",21,3254
+"Mandatory","Purpose","University","Duration",22,2914
+"Mandatory","Purpose","University","Duration",23,2714
+"Mandatory","Purpose","University","Duration",24,2441
+"Mandatory","Purpose","University","Duration",25,2294
+"Mandatory","Purpose","University","Duration",26,2130
+"Mandatory","Purpose","University","Duration",27,2194
+"Mandatory","Purpose","University","Duration",28,1909
+"Mandatory","Purpose","University","Duration",29,1647
+"Mandatory","Purpose","University","Duration",30,1469
+"Mandatory","Purpose","University","Duration",31,1304
+"Mandatory","Purpose","University","Duration",32,959
+"Mandatory","Purpose","University","Duration",33,792
+"Mandatory","Purpose","University","Duration",34,680
+"Mandatory","Purpose","University","Duration",35,448
+"Mandatory","Purpose","University","Duration",36,279
+"Mandatory","Purpose","University","Duration",37,173
+"Mandatory","Purpose","University","Duration",38,139
+"Mandatory","Purpose","University","Duration",39,68
+"Mandatory","Purpose","University","Duration",40,37
+"Mandatory","Purpose","University","Duration",41,12
+"Mandatory","Purpose","University","Duration",42,10
+"Mandatory","Purpose","University","Duration",43,6
+"Mandatory","Purpose","University","Duration",44,2
+"Mandatory","Purpose","University","Duration",45,1
+"Mandatory","Purpose","Work","Duration",1,1
+"Mandatory","Purpose","Work","Duration",2,9828
+"Mandatory","Purpose","Work","Duration",3,14838
+"Mandatory","Purpose","Work","Duration",4,17031
+"Mandatory","Purpose","Work","Duration",5,22485
+"Mandatory","Purpose","Work","Duration",6,22730
+"Mandatory","Purpose","Work","Duration",7,29527
+"Mandatory","Purpose","Work","Duration",8,27016
+"Mandatory","Purpose","Work","Duration",9,32635
+"Mandatory","Purpose","Work","Duration",10,38796
+"Mandatory","Purpose","Work","Duration",11,36979
+"Mandatory","Purpose","Work","Duration",12,37127
+"Mandatory","Purpose","Work","Duration",13,25856
+"Mandatory","Purpose","Work","Duration",14,35485
+"Mandatory","Purpose","Work","Duration",15,35308
+"Mandatory","Purpose","Work","Duration",16,46018
+"Mandatory","Purpose","Work","Duration",17,55035
+"Mandatory","Purpose","Work","Duration",18,79956
+"Mandatory","Purpose","Work","Duration",19,116233
+"Mandatory","Purpose","Work","Duration",20,159098
+"Mandatory","Purpose","Work","Duration",21,198117
+"Mandatory","Purpose","Work","Duration",22,201650
+"Mandatory","Purpose","Work","Duration",23,175449
+"Mandatory","Purpose","Work","Duration",24,138898
+"Mandatory","Purpose","Work","Duration",25,99635
+"Mandatory","Purpose","Work","Duration",26,83424
+"Mandatory","Purpose","Work","Duration",27,55247
+"Mandatory","Purpose","Work","Duration",28,36923
+"Mandatory","Purpose","Work","Duration",29,25418
+"Mandatory","Purpose","Work","Duration",30,17386
+"Mandatory","Purpose","Work","Duration",31,11983
+"Mandatory","Purpose","Work","Duration",32,8370
+"Mandatory","Purpose","Work","Duration",33,5720
+"Mandatory","Purpose","Work","Duration",34,3779
+"Mandatory","Purpose","Work","Duration",35,2453
+"Mandatory","Purpose","Work","Duration",36,1494
+"Mandatory","Purpose","Work","Duration",37,995
+"Mandatory","Purpose","Work","Duration",38,857
+"Mandatory","Purpose","Work","Duration",39,652
+"Mandatory","Purpose","Work","Duration",40,504
+"Mandatory","Purpose","Work","Duration",41,383
+"Mandatory","Purpose","Work","Duration",42,326
+"Mandatory","Purpose","Work","Duration",43,181
+"Mandatory","Purpose","Work","Duration",44,148
+"Mandatory","Purpose","Work","Duration",45,76
+"Mandatory","Purpose","Work","Duration",46,60
+"Mandatory","Purpose","Work","Duration",47,54
+"Mandatory","Purpose","Work","Duration",48,22
+"Mandatory","PersonType","Pre-school","Duration",1,111
+"Mandatory","PersonType","Pre-school","Duration",2,117
+"Mandatory","PersonType","Pre-school","Duration",3,92
+"Mandatory","PersonType","Pre-school","Duration",4,102
+"Mandatory","PersonType","Pre-school","Duration",5,153
+"Mandatory","PersonType","Pre-school","Duration",6,204
+"Mandatory","PersonType","Pre-school","Duration",7,354
+"Mandatory","PersonType","Pre-school","Duration",8,523
+"Mandatory","PersonType","Pre-school","Duration",9,419
+"Mandatory","PersonType","Pre-school","Duration",10,482
+"Mandatory","PersonType","Pre-school","Duration",11,623
+"Mandatory","PersonType","Pre-school","Duration",12,773
+"Mandatory","PersonType","Pre-school","Duration",13,1153
+"Mandatory","PersonType","Pre-school","Duration",14,2078
+"Mandatory","PersonType","Pre-school","Duration",15,7988
+"Mandatory","PersonType","Pre-school","Duration",16,23261
+"Mandatory","PersonType","Pre-school","Duration",17,35352
+"Mandatory","PersonType","Pre-school","Duration",18,29058
+"Mandatory","PersonType","Pre-school","Duration",19,16941
+"Mandatory","PersonType","Pre-school","Duration",20,11007
+"Mandatory","PersonType","Pre-school","Duration",21,10289
+"Mandatory","PersonType","Pre-school","Duration",22,9779
+"Mandatory","PersonType","Pre-school","Duration",23,9296
+"Mandatory","PersonType","Pre-school","Duration",24,8210
+"Mandatory","PersonType","Pre-school","Duration",25,6496
+"Mandatory","PersonType","Pre-school","Duration",26,5031
+"Mandatory","PersonType","Pre-school","Duration",27,3570
+"Mandatory","PersonType","Pre-school","Duration",28,2439
+"Mandatory","PersonType","Pre-school","Duration",29,1470
+"Mandatory","PersonType","Pre-school","Duration",30,954
+"Mandatory","PersonType","Pre-school","Duration",31,716
+"Mandatory","PersonType","Pre-school","Duration",32,496
+"Mandatory","PersonType","Pre-school","Duration",33,382
+"Mandatory","PersonType","Pre-school","Duration",34,309
+"Mandatory","PersonType","Pre-school","Duration",35,345
+"Mandatory","PersonType","Pre-school","Duration",36,296
+"Mandatory","PersonType","Pre-school","Duration",37,406
+"Mandatory","PersonType","Pre-school","Duration",38,454
+"Mandatory","PersonType","Pre-school","Duration",39,412
+"Mandatory","PersonType","Pre-school","Duration",40,235
+"Mandatory","PersonType","Pre-school","Duration",41,88
+"Mandatory","PersonType","Pre-school","Duration",42,13
+"Mandatory","PersonType","Pre-school","Duration",46,1
+"Mandatory","PersonType","Pre-school","Duration",48,1
+"Mandatory","PersonType","Full-time worker","Duration",1,1
+"Mandatory","PersonType","Full-time worker","Duration",2,5342
+"Mandatory","PersonType","Full-time worker","Duration",3,8315
+"Mandatory","PersonType","Full-time worker","Duration",4,9820
+"Mandatory","PersonType","Full-time worker","Duration",5,13143
+"Mandatory","PersonType","Full-time worker","Duration",6,13623
+"Mandatory","PersonType","Full-time worker","Duration",7,18221
+"Mandatory","PersonType","Full-time worker","Duration",8,17054
+"Mandatory","PersonType","Full-time worker","Duration",9,21214
+"Mandatory","PersonType","Full-time worker","Duration",10,25828
+"Mandatory","PersonType","Full-time worker","Duration",11,25405
+"Mandatory","PersonType","Full-time worker","Duration",12,26281
+"Mandatory","PersonType","Full-time worker","Duration",13,18922
+"Mandatory","PersonType","Full-time worker","Duration",14,26862
+"Mandatory","PersonType","Full-time worker","Duration",15,27425
+"Mandatory","PersonType","Full-time worker","Duration",16,36790
+"Mandatory","PersonType","Full-time worker","Duration",17,45287
+"Mandatory","PersonType","Full-time worker","Duration",18,67317
+"Mandatory","PersonType","Full-time worker","Duration",19,100094
+"Mandatory","PersonType","Full-time worker","Duration",20,139254
+"Mandatory","PersonType","Full-time worker","Duration",21,176185
+"Mandatory","PersonType","Full-time worker","Duration",22,181476
+"Mandatory","PersonType","Full-time worker","Duration",23,159567
+"Mandatory","PersonType","Full-time worker","Duration",24,127224
+"Mandatory","PersonType","Full-time worker","Duration",25,91776
+"Mandatory","PersonType","Full-time worker","Duration",26,77248
+"Mandatory","PersonType","Full-time worker","Duration",27,51214
+"Mandatory","PersonType","Full-time worker","Duration",28,34323
+"Mandatory","PersonType","Full-time worker","Duration",29,23711
+"Mandatory","PersonType","Full-time worker","Duration",30,16174
+"Mandatory","PersonType","Full-time worker","Duration",31,11178
+"Mandatory","PersonType","Full-time worker","Duration",32,7852
+"Mandatory","PersonType","Full-time worker","Duration",33,5342
+"Mandatory","PersonType","Full-time worker","Duration",34,3504
+"Mandatory","PersonType","Full-time worker","Duration",35,2299
+"Mandatory","PersonType","Full-time worker","Duration",36,1386
+"Mandatory","PersonType","Full-time worker","Duration",37,928
+"Mandatory","PersonType","Full-time worker","Duration",38,796
+"Mandatory","PersonType","Full-time worker","Duration",39,604
+"Mandatory","PersonType","Full-time worker","Duration",40,480
+"Mandatory","PersonType","Full-time worker","Duration",41,356
+"Mandatory","PersonType","Full-time worker","Duration",42,301
+"Mandatory","PersonType","Full-time worker","Duration",43,170
+"Mandatory","PersonType","Full-time worker","Duration",44,139
+"Mandatory","PersonType","Full-time worker","Duration",45,72
+"Mandatory","PersonType","Full-time worker","Duration",46,59
+"Mandatory","PersonType","Full-time worker","Duration",47,51
+"Mandatory","PersonType","Full-time worker","Duration",48,20
+"Mandatory","PersonType","Part-time worker","Duration",2,4045
+"Mandatory","PersonType","Part-time worker","Duration",3,5887
+"Mandatory","PersonType","Part-time worker","Duration",4,6481
+"Mandatory","PersonType","Part-time worker","Duration",5,8319
+"Mandatory","PersonType","Part-time worker","Duration",6,8141
+"Mandatory","PersonType","Part-time worker","Duration",7,10194
+"Mandatory","PersonType","Part-time worker","Duration",8,8902
+"Mandatory","PersonType","Part-time worker","Duration",9,10231
+"Mandatory","PersonType","Part-time worker","Duration",10,11469
+"Mandatory","PersonType","Part-time worker","Duration",11,10210
+"Mandatory","PersonType","Part-time worker","Duration",12,9605
+"Mandatory","PersonType","Part-time worker","Duration",13,6110
+"Mandatory","PersonType","Part-time worker","Duration",14,7546
+"Mandatory","PersonType","Part-time worker","Duration",15,6864
+"Mandatory","PersonType","Part-time worker","Duration",16,8012
+"Mandatory","PersonType","Part-time worker","Duration",17,8468
+"Mandatory","PersonType","Part-time worker","Duration",18,10780
+"Mandatory","PersonType","Part-time worker","Duration",19,13644
+"Mandatory","PersonType","Part-time worker","Duration",20,16738
+"Mandatory","PersonType","Part-time worker","Duration",21,18073
+"Mandatory","PersonType","Part-time worker","Duration",22,16351
+"Mandatory","PersonType","Part-time worker","Duration",23,12590
+"Mandatory","PersonType","Part-time worker","Duration",24,9027
+"Mandatory","PersonType","Part-time worker","Duration",25,5937
+"Mandatory","PersonType","Part-time worker","Duration",26,4508
+"Mandatory","PersonType","Part-time worker","Duration",27,2838
+"Mandatory","PersonType","Part-time worker","Duration",28,1704
+"Mandatory","PersonType","Part-time worker","Duration",29,1065
+"Mandatory","PersonType","Part-time worker","Duration",30,739
+"Mandatory","PersonType","Part-time worker","Duration",31,460
+"Mandatory","PersonType","Part-time worker","Duration",32,289
+"Mandatory","PersonType","Part-time worker","Duration",33,199
+"Mandatory","PersonType","Part-time worker","Duration",34,132
+"Mandatory","PersonType","Part-time worker","Duration",35,62
+"Mandatory","PersonType","Part-time worker","Duration",36,36
+"Mandatory","PersonType","Part-time worker","Duration",37,21
+"Mandatory","PersonType","Part-time worker","Duration",38,22
+"Mandatory","PersonType","Part-time worker","Duration",39,20
+"Mandatory","PersonType","Part-time worker","Duration",40,9
+"Mandatory","PersonType","Part-time worker","Duration",41,7
+"Mandatory","PersonType","Part-time worker","Duration",42,8
+"Mandatory","PersonType","Part-time worker","Duration",43,4
+"Mandatory","PersonType","Part-time worker","Duration",47,1
+"Mandatory","PersonType","Driving-age student","Duration",1,1655
+"Mandatory","PersonType","Driving-age student","Duration",2,1267
+"Mandatory","PersonType","Driving-age student","Duration",3,992
+"Mandatory","PersonType","Driving-age student","Duration",4,783
+"Mandatory","PersonType","Driving-age student","Duration",5,812
+"Mandatory","PersonType","Driving-age student","Duration",6,791
+"Mandatory","PersonType","Driving-age student","Duration",7,925
+"Mandatory","PersonType","Driving-age student","Duration",8,1199
+"Mandatory","PersonType","Driving-age student","Duration",9,1161
+"Mandatory","PersonType","Driving-age student","Duration",10,1188
+"Mandatory","PersonType","Driving-age student","Duration",11,1219
+"Mandatory","PersonType","Driving-age student","Duration",12,1329
+"Mandatory","PersonType","Driving-age student","Duration",13,1666
+"Mandatory","PersonType","Driving-age student","Duration",14,2476
+"Mandatory","PersonType","Driving-age student","Duration",15,8585
+"Mandatory","PersonType","Driving-age student","Duration",16,24908
+"Mandatory","PersonType","Driving-age student","Duration",17,36557
+"Mandatory","PersonType","Driving-age student","Duration",18,28518
+"Mandatory","PersonType","Driving-age student","Duration",19,16267
+"Mandatory","PersonType","Driving-age student","Duration",20,10956
+"Mandatory","PersonType","Driving-age student","Duration",21,9816
+"Mandatory","PersonType","Driving-age student","Duration",22,8438
+"Mandatory","PersonType","Driving-age student","Duration",23,7449
+"Mandatory","PersonType","Driving-age student","Duration",24,6509
+"Mandatory","PersonType","Driving-age student","Duration",25,4950
+"Mandatory","PersonType","Driving-age student","Duration",26,3684
+"Mandatory","PersonType","Driving-age student","Duration",27,2593
+"Mandatory","PersonType","Driving-age student","Duration",28,1651
+"Mandatory","PersonType","Driving-age student","Duration",29,1001
+"Mandatory","PersonType","Driving-age student","Duration",30,593
+"Mandatory","PersonType","Driving-age student","Duration",31,414
+"Mandatory","PersonType","Driving-age student","Duration",32,302
+"Mandatory","PersonType","Driving-age student","Duration",33,201
+"Mandatory","PersonType","Driving-age student","Duration",34,136
+"Mandatory","PersonType","Driving-age student","Duration",35,138
+"Mandatory","PersonType","Driving-age student","Duration",36,176
+"Mandatory","PersonType","Driving-age student","Duration",37,192
+"Mandatory","PersonType","Driving-age student","Duration",38,194
+"Mandatory","PersonType","Driving-age student","Duration",39,180
+"Mandatory","PersonType","Driving-age student","Duration",40,128
+"Mandatory","PersonType","Driving-age student","Duration",41,52
+"Mandatory","PersonType","Driving-age student","Duration",42,16
+"Mandatory","PersonType","Driving-age student","Duration",43,2
+"Mandatory","PersonType","Driving-age student","Duration",44,3
+"Mandatory","PersonType","Driving-age student","Duration",45,1
+"Mandatory","PersonType","Driving-age student","Duration",46,1
+"Mandatory","PersonType","Driving-age student","Duration",47,1
+"Mandatory","PersonType","Non-driving student","Duration",1,1049
+"Mandatory","PersonType","Non-driving student","Duration",2,953
+"Mandatory","PersonType","Non-driving student","Duration",3,753
+"Mandatory","PersonType","Non-driving student","Duration",4,787
+"Mandatory","PersonType","Non-driving student","Duration",5,878
+"Mandatory","PersonType","Non-driving student","Duration",6,1315
+"Mandatory","PersonType","Non-driving student","Duration",7,2191
+"Mandatory","PersonType","Non-driving student","Duration",8,4184
+"Mandatory","PersonType","Non-driving student","Duration",9,4154
+"Mandatory","PersonType","Non-driving student","Duration",10,4309
+"Mandatory","PersonType","Non-driving student","Duration",11,4780
+"Mandatory","PersonType","Non-driving student","Duration",12,5766
+"Mandatory","PersonType","Non-driving student","Duration",13,7765
+"Mandatory","PersonType","Non-driving student","Duration",14,12032
+"Mandatory","PersonType","Non-driving student","Duration",15,41222
+"Mandatory","PersonType","Non-driving student","Duration",16,113393
+"Mandatory","PersonType","Non-driving student","Duration",17,155710
+"Mandatory","PersonType","Non-driving student","Duration",18,112238
+"Mandatory","PersonType","Non-driving student","Duration",19,59413
+"Mandatory","PersonType","Non-driving student","Duration",20,36257
+"Mandatory","PersonType","Non-driving student","Duration",21,30241
+"Mandatory","PersonType","Non-driving student","Duration",22,25424
+"Mandatory","PersonType","Non-driving student","Duration",23,21629
+"Mandatory","PersonType","Non-driving student","Duration",24,17222
+"Mandatory","PersonType","Non-driving student","Duration",25,12648
+"Mandatory","PersonType","Non-driving student","Duration",26,8651
+"Mandatory","PersonType","Non-driving student","Duration",27,5680
+"Mandatory","PersonType","Non-driving student","Duration",28,3549
+"Mandatory","PersonType","Non-driving student","Duration",29,1978
+"Mandatory","PersonType","Non-driving student","Duration",30,1174
+"Mandatory","PersonType","Non-driving student","Duration",31,726
+"Mandatory","PersonType","Non-driving student","Duration",32,526
+"Mandatory","PersonType","Non-driving student","Duration",33,342
+"Mandatory","PersonType","Non-driving student","Duration",34,265
+"Mandatory","PersonType","Non-driving student","Duration",35,233
+"Mandatory","PersonType","Non-driving student","Duration",36,251
+"Mandatory","PersonType","Non-driving student","Duration",37,280
+"Mandatory","PersonType","Non-driving student","Duration",38,281
+"Mandatory","PersonType","Non-driving student","Duration",39,237
+"Mandatory","PersonType","Non-driving student","Duration",40,125
+"Mandatory","PersonType","Non-driving student","Duration",41,42
+"Mandatory","PersonType","Non-driving student","Duration",42,8
+"Mandatory","PersonType","Non-driving student","Duration",43,1
+"Mandatory","PersonType","College student","Duration",2,312
+"Mandatory","PersonType","College student","Duration",3,1016
+"Mandatory","PersonType","College student","Duration",4,1408
+"Mandatory","PersonType","College student","Duration",5,5539
+"Mandatory","PersonType","College student","Duration",6,5143
+"Mandatory","PersonType","College student","Duration",7,3695
+"Mandatory","PersonType","College student","Duration",8,4470
+"Mandatory","PersonType","College student","Duration",9,6072
+"Mandatory","PersonType","College student","Duration",10,6333
+"Mandatory","PersonType","College student","Duration",11,5898
+"Mandatory","PersonType","College student","Duration",12,7013
+"Mandatory","PersonType","College student","Duration",13,5461
+"Mandatory","PersonType","College student","Duration",14,7305
+"Mandatory","PersonType","College student","Duration",15,4368
+"Mandatory","PersonType","College student","Duration",16,4900
+"Mandatory","PersonType","College student","Duration",17,4966
+"Mandatory","PersonType","College student","Duration",18,5462
+"Mandatory","PersonType","College student","Duration",19,5999
+"Mandatory","PersonType","College student","Duration",20,6246
+"Mandatory","PersonType","College student","Duration",21,6912
+"Mandatory","PersonType","College student","Duration",22,6595
+"Mandatory","PersonType","College student","Duration",23,5935
+"Mandatory","PersonType","College student","Duration",24,5053
+"Mandatory","PersonType","College student","Duration",25,4207
+"Mandatory","PersonType","College student","Duration",26,3795
+"Mandatory","PersonType","College student","Duration",27,3385
+"Mandatory","PersonType","College student","Duration",28,2804
+"Mandatory","PersonType","College student","Duration",29,2289
+"Mandatory","PersonType","College student","Duration",30,1942
+"Mandatory","PersonType","College student","Duration",31,1649
+"Mandatory","PersonType","College student","Duration",32,1188
+"Mandatory","PersonType","College student","Duration",33,971
+"Mandatory","PersonType","College student","Duration",34,823
+"Mandatory","PersonType","College student","Duration",35,540
+"Mandatory","PersonType","College student","Duration",36,351
+"Mandatory","PersonType","College student","Duration",37,219
+"Mandatory","PersonType","College student","Duration",38,178
+"Mandatory","PersonType","College student","Duration",39,96
+"Mandatory","PersonType","College student","Duration",40,52
+"Mandatory","PersonType","College student","Duration",41,32
+"Mandatory","PersonType","College student","Duration",42,27
+"Mandatory","PersonType","College student","Duration",43,13
+"Mandatory","PersonType","College student","Duration",44,11
+"Mandatory","PersonType","College student","Duration",45,5
+"Mandatory","PersonType","College student","Duration",46,1
+"Mandatory","PersonType","College student","Duration",47,2
+"Mandatory","PersonType","College student","Duration",48,2
+"Individual Non-Mandatory","Purpose","Discretionary","Duration",1,1992
+"Individual Non-Mandatory","Purpose","Discretionary","Duration",2,10576
+"Individual Non-Mandatory","Purpose","Discretionary","Duration",3,33904
+"Individual Non-Mandatory","Purpose","Discretionary","Duration",4,60003
+"Individual Non-Mandatory","Purpose","Discretionary","Duration",5,77890
+"Individual Non-Mandatory","Purpose","Discretionary","Duration",6,61346
+"Individual Non-Mandatory","Purpose","Discretionary","Duration",7,49686
+"Individual Non-Mandatory","Purpose","Discretionary","Duration",8,37178
+"Individual Non-Mandatory","Purpose","Discretionary","Duration",9,27804
+"Individual Non-Mandatory","Purpose","Discretionary","Duration",10,20931
+"Individual Non-Mandatory","Purpose","Discretionary","Duration",11,15906
+"Individual Non-Mandatory","Purpose","Discretionary","Duration",12,12096
+"Individual Non-Mandatory","Purpose","Discretionary","Duration",13,9596
+"Individual Non-Mandatory","Purpose","Discretionary","Duration",14,7689
+"Individual Non-Mandatory","Purpose","Discretionary","Duration",15,6337
+"Individual Non-Mandatory","Purpose","Discretionary","Duration",16,5294
+"Individual Non-Mandatory","Purpose","Discretionary","Duration",17,4542
+"Individual Non-Mandatory","Purpose","Discretionary","Duration",18,3809
+"Individual Non-Mandatory","Purpose","Discretionary","Duration",19,3270
+"Individual Non-Mandatory","Purpose","Discretionary","Duration",20,2684
+"Individual Non-Mandatory","Purpose","Discretionary","Duration",21,2512
+"Individual Non-Mandatory","Purpose","Discretionary","Duration",22,2300
+"Individual Non-Mandatory","Purpose","Discretionary","Duration",23,2030
+"Individual Non-Mandatory","Purpose","Discretionary","Duration",24,1754
+"Individual Non-Mandatory","Purpose","Discretionary","Duration",25,1515
+"Individual Non-Mandatory","Purpose","Discretionary","Duration",26,1297
+"Individual Non-Mandatory","Purpose","Discretionary","Duration",27,954
+"Individual Non-Mandatory","Purpose","Discretionary","Duration",28,714
+"Individual Non-Mandatory","Purpose","Discretionary","Duration",29,462
+"Individual Non-Mandatory","Purpose","Discretionary","Duration",30,343
+"Individual Non-Mandatory","Purpose","Discretionary","Duration",31,203
+"Individual Non-Mandatory","Purpose","Discretionary","Duration",32,124
+"Individual Non-Mandatory","Purpose","Discretionary","Duration",33,76
+"Individual Non-Mandatory","Purpose","Discretionary","Duration",34,37
+"Individual Non-Mandatory","Purpose","Discretionary","Duration",35,26
+"Individual Non-Mandatory","Purpose","Discretionary","Duration",36,11
+"Individual Non-Mandatory","Purpose","Discretionary","Duration",37,9
+"Individual Non-Mandatory","Purpose","Discretionary","Duration",38,5
+"Individual Non-Mandatory","Purpose","Discretionary","Duration",39,1
+"Individual Non-Mandatory","Purpose","Discretionary","Duration",43,1
+"Individual Non-Mandatory","Purpose","EatOut","Duration",1,1693
+"Individual Non-Mandatory","Purpose","EatOut","Duration",2,8433
+"Individual Non-Mandatory","Purpose","EatOut","Duration",3,12412
+"Individual Non-Mandatory","Purpose","EatOut","Duration",4,14657
+"Individual Non-Mandatory","Purpose","EatOut","Duration",5,12979
+"Individual Non-Mandatory","Purpose","EatOut","Duration",6,12656
+"Individual Non-Mandatory","Purpose","EatOut","Duration",7,11258
+"Individual Non-Mandatory","Purpose","EatOut","Duration",8,6043
+"Individual Non-Mandatory","Purpose","EatOut","Duration",9,4222
+"Individual Non-Mandatory","Purpose","EatOut","Duration",10,3083
+"Individual Non-Mandatory","Purpose","EatOut","Duration",11,2252
+"Individual Non-Mandatory","Purpose","EatOut","Duration",12,1678
+"Individual Non-Mandatory","Purpose","EatOut","Duration",13,1388
+"Individual Non-Mandatory","Purpose","EatOut","Duration",14,1029
+"Individual Non-Mandatory","Purpose","EatOut","Duration",15,833
+"Individual Non-Mandatory","Purpose","EatOut","Duration",16,767
+"Individual Non-Mandatory","Purpose","EatOut","Duration",17,698
+"Individual Non-Mandatory","Purpose","EatOut","Duration",18,693
+"Individual Non-Mandatory","Purpose","EatOut","Duration",19,459
+"Individual Non-Mandatory","Purpose","EatOut","Duration",20,341
+"Individual Non-Mandatory","Purpose","EatOut","Duration",21,226
+"Individual Non-Mandatory","Purpose","EatOut","Duration",22,204
+"Individual Non-Mandatory","Purpose","EatOut","Duration",23,141
+"Individual Non-Mandatory","Purpose","EatOut","Duration",24,104
+"Individual Non-Mandatory","Purpose","EatOut","Duration",25,66
+"Individual Non-Mandatory","Purpose","EatOut","Duration",26,77
+"Individual Non-Mandatory","Purpose","EatOut","Duration",27,44
+"Individual Non-Mandatory","Purpose","EatOut","Duration",28,30
+"Individual Non-Mandatory","Purpose","EatOut","Duration",29,28
+"Individual Non-Mandatory","Purpose","EatOut","Duration",30,14
+"Individual Non-Mandatory","Purpose","EatOut","Duration",31,14
+"Individual Non-Mandatory","Purpose","EatOut","Duration",32,3
+"Individual Non-Mandatory","Purpose","EatOut","Duration",33,3
+"Individual Non-Mandatory","Purpose","EatOut","Duration",35,1
+"Individual Non-Mandatory","Purpose","EatOut","Duration",37,1
+"Individual Non-Mandatory","Purpose","EatOut","Duration",38,1
+"Individual Non-Mandatory","Purpose","EatOut","Duration",42,1
+"Individual Non-Mandatory","Purpose","Escorting","Duration",1,119172
+"Individual Non-Mandatory","Purpose","Escorting","Duration",2,332256
+"Individual Non-Mandatory","Purpose","Escorting","Duration",3,137516
+"Individual Non-Mandatory","Purpose","Escorting","Duration",4,70789
+"Individual Non-Mandatory","Purpose","Escorting","Duration",5,35052
+"Individual Non-Mandatory","Purpose","Escorting","Duration",6,14278
+"Individual Non-Mandatory","Purpose","Escorting","Duration",7,11212
+"Individual Non-Mandatory","Purpose","Escorting","Duration",8,8745
+"Individual Non-Mandatory","Purpose","Escorting","Duration",9,7185
+"Individual Non-Mandatory","Purpose","Escorting","Duration",10,5692
+"Individual Non-Mandatory","Purpose","Escorting","Duration",11,4779
+"Individual Non-Mandatory","Purpose","Escorting","Duration",12,4012
+"Individual Non-Mandatory","Purpose","Escorting","Duration",13,3703
+"Individual Non-Mandatory","Purpose","Escorting","Duration",14,3545
+"Individual Non-Mandatory","Purpose","Escorting","Duration",15,3817
+"Individual Non-Mandatory","Purpose","Escorting","Duration",16,3508
+"Individual Non-Mandatory","Purpose","Escorting","Duration",17,3146
+"Individual Non-Mandatory","Purpose","Escorting","Duration",18,2565
+"Individual Non-Mandatory","Purpose","Escorting","Duration",19,1992
+"Individual Non-Mandatory","Purpose","Escorting","Duration",20,1501
+"Individual Non-Mandatory","Purpose","Escorting","Duration",21,1206
+"Individual Non-Mandatory","Purpose","Escorting","Duration",22,843
+"Individual Non-Mandatory","Purpose","Escorting","Duration",23,643
+"Individual Non-Mandatory","Purpose","Escorting","Duration",24,549
+"Individual Non-Mandatory","Purpose","Escorting","Duration",25,413
+"Individual Non-Mandatory","Purpose","Escorting","Duration",26,247
+"Individual Non-Mandatory","Purpose","Escorting","Duration",27,238
+"Individual Non-Mandatory","Purpose","Escorting","Duration",28,172
+"Individual Non-Mandatory","Purpose","Escorting","Duration",29,127
+"Individual Non-Mandatory","Purpose","Escorting","Duration",30,92
+"Individual Non-Mandatory","Purpose","Escorting","Duration",31,77
+"Individual Non-Mandatory","Purpose","Escorting","Duration",32,68
+"Individual Non-Mandatory","Purpose","Escorting","Duration",33,44
+"Individual Non-Mandatory","Purpose","Escorting","Duration",34,36
+"Individual Non-Mandatory","Purpose","Escorting","Duration",35,41
+"Individual Non-Mandatory","Purpose","Escorting","Duration",36,49
+"Individual Non-Mandatory","Purpose","Escorting","Duration",37,53
+"Individual Non-Mandatory","Purpose","Escorting","Duration",38,56
+"Individual Non-Mandatory","Purpose","Escorting","Duration",39,43
+"Individual Non-Mandatory","Purpose","Escorting","Duration",40,43
+"Individual Non-Mandatory","Purpose","Escorting","Duration",41,8
+"Individual Non-Mandatory","Purpose","Escorting","Duration",42,3
+"Individual Non-Mandatory","Purpose","Escorting","Duration",43,5
+"Individual Non-Mandatory","Purpose","Escorting","Duration",44,2
+"Individual Non-Mandatory","Purpose","Escorting","Duration",45,3
+"Individual Non-Mandatory","Purpose","Escorting","Duration",46,1
+"Individual Non-Mandatory","Purpose","Escorting","Duration",47,1
+"Individual Non-Mandatory","Purpose","Escorting","Duration",48,3
+"Individual Non-Mandatory","Purpose","Maintenance","Duration",1,19245
+"Individual Non-Mandatory","Purpose","Maintenance","Duration",2,61952
+"Individual Non-Mandatory","Purpose","Maintenance","Duration",3,45770
+"Individual Non-Mandatory","Purpose","Maintenance","Duration",4,48189
+"Individual Non-Mandatory","Purpose","Maintenance","Duration",5,45624
+"Individual Non-Mandatory","Purpose","Maintenance","Duration",6,41777
+"Individual Non-Mandatory","Purpose","Maintenance","Duration",7,38597
+"Individual Non-Mandatory","Purpose","Maintenance","Duration",8,30493
+"Individual Non-Mandatory","Purpose","Maintenance","Duration",9,23574
+"Individual Non-Mandatory","Purpose","Maintenance","Duration",10,18694
+"Individual Non-Mandatory","Purpose","Maintenance","Duration",11,14615
+"Individual Non-Mandatory","Purpose","Maintenance","Duration",12,11618
+"Individual Non-Mandatory","Purpose","Maintenance","Duration",13,9316
+"Individual Non-Mandatory","Purpose","Maintenance","Duration",14,7472
+"Individual Non-Mandatory","Purpose","Maintenance","Duration",15,5888
+"Individual Non-Mandatory","Purpose","Maintenance","Duration",16,4680
+"Individual Non-Mandatory","Purpose","Maintenance","Duration",17,3678
+"Individual Non-Mandatory","Purpose","Maintenance","Duration",18,2794
+"Individual Non-Mandatory","Purpose","Maintenance","Duration",19,2028
+"Individual Non-Mandatory","Purpose","Maintenance","Duration",20,1568
+"Individual Non-Mandatory","Purpose","Maintenance","Duration",21,1118
+"Individual Non-Mandatory","Purpose","Maintenance","Duration",22,798
+"Individual Non-Mandatory","Purpose","Maintenance","Duration",23,579
+"Individual Non-Mandatory","Purpose","Maintenance","Duration",24,371
+"Individual Non-Mandatory","Purpose","Maintenance","Duration",25,267
+"Individual Non-Mandatory","Purpose","Maintenance","Duration",26,181
+"Individual Non-Mandatory","Purpose","Maintenance","Duration",27,131
+"Individual Non-Mandatory","Purpose","Maintenance","Duration",28,80
+"Individual Non-Mandatory","Purpose","Maintenance","Duration",29,60
+"Individual Non-Mandatory","Purpose","Maintenance","Duration",30,48
+"Individual Non-Mandatory","Purpose","Maintenance","Duration",31,36
+"Individual Non-Mandatory","Purpose","Maintenance","Duration",32,21
+"Individual Non-Mandatory","Purpose","Maintenance","Duration",33,20
+"Individual Non-Mandatory","Purpose","Maintenance","Duration",34,11
+"Individual Non-Mandatory","Purpose","Maintenance","Duration",35,11
+"Individual Non-Mandatory","Purpose","Maintenance","Duration",36,5
+"Individual Non-Mandatory","Purpose","Maintenance","Duration",37,7
+"Individual Non-Mandatory","Purpose","Maintenance","Duration",38,3
+"Individual Non-Mandatory","Purpose","Maintenance","Duration",39,2
+"Individual Non-Mandatory","Purpose","Shopping","Duration",1,15121
+"Individual Non-Mandatory","Purpose","Shopping","Duration",2,88547
+"Individual Non-Mandatory","Purpose","Shopping","Duration",3,113222
+"Individual Non-Mandatory","Purpose","Shopping","Duration",4,89614
+"Individual Non-Mandatory","Purpose","Shopping","Duration",5,60881
+"Individual Non-Mandatory","Purpose","Shopping","Duration",6,49232
+"Individual Non-Mandatory","Purpose","Shopping","Duration",7,30917
+"Individual Non-Mandatory","Purpose","Shopping","Duration",8,21833
+"Individual Non-Mandatory","Purpose","Shopping","Duration",9,15962
+"Individual Non-Mandatory","Purpose","Shopping","Duration",10,11824
+"Individual Non-Mandatory","Purpose","Shopping","Duration",11,8899
+"Individual Non-Mandatory","Purpose","Shopping","Duration",12,6607
+"Individual Non-Mandatory","Purpose","Shopping","Duration",13,5156
+"Individual Non-Mandatory","Purpose","Shopping","Duration",14,3827
+"Individual Non-Mandatory","Purpose","Shopping","Duration",15,2931
+"Individual Non-Mandatory","Purpose","Shopping","Duration",16,2159
+"Individual Non-Mandatory","Purpose","Shopping","Duration",17,1641
+"Individual Non-Mandatory","Purpose","Shopping","Duration",18,1115
+"Individual Non-Mandatory","Purpose","Shopping","Duration",19,801
+"Individual Non-Mandatory","Purpose","Shopping","Duration",20,582
+"Individual Non-Mandatory","Purpose","Shopping","Duration",21,442
+"Individual Non-Mandatory","Purpose","Shopping","Duration",22,280
+"Individual Non-Mandatory","Purpose","Shopping","Duration",23,207
+"Individual Non-Mandatory","Purpose","Shopping","Duration",24,170
+"Individual Non-Mandatory","Purpose","Shopping","Duration",25,111
+"Individual Non-Mandatory","Purpose","Shopping","Duration",26,73
+"Individual Non-Mandatory","Purpose","Shopping","Duration",27,33
+"Individual Non-Mandatory","Purpose","Shopping","Duration",28,40
+"Individual Non-Mandatory","Purpose","Shopping","Duration",29,21
+"Individual Non-Mandatory","Purpose","Shopping","Duration",30,11
+"Individual Non-Mandatory","Purpose","Shopping","Duration",31,8
+"Individual Non-Mandatory","Purpose","Shopping","Duration",32,4
+"Individual Non-Mandatory","Purpose","Shopping","Duration",34,1
+"Individual Non-Mandatory","Purpose","Shopping","Duration",36,1
+"Individual Non-Mandatory","Purpose","Social","Duration",1,1546
+"Individual Non-Mandatory","Purpose","Social","Duration",2,9364
+"Individual Non-Mandatory","Purpose","Social","Duration",3,10753
+"Individual Non-Mandatory","Purpose","Social","Duration",4,13993
+"Individual Non-Mandatory","Purpose","Social","Duration",5,13191
+"Individual Non-Mandatory","Purpose","Social","Duration",6,12183
+"Individual Non-Mandatory","Purpose","Social","Duration",7,16012
+"Individual Non-Mandatory","Purpose","Social","Duration",8,15292
+"Individual Non-Mandatory","Purpose","Social","Duration",9,18563
+"Individual Non-Mandatory","Purpose","Social","Duration",10,12083
+"Individual Non-Mandatory","Purpose","Social","Duration",11,9293
+"Individual Non-Mandatory","Purpose","Social","Duration",12,7457
+"Individual Non-Mandatory","Purpose","Social","Duration",13,6017
+"Individual Non-Mandatory","Purpose","Social","Duration",14,4649
+"Individual Non-Mandatory","Purpose","Social","Duration",15,3886
+"Individual Non-Mandatory","Purpose","Social","Duration",16,3015
+"Individual Non-Mandatory","Purpose","Social","Duration",17,2555
+"Individual Non-Mandatory","Purpose","Social","Duration",18,2088
+"Individual Non-Mandatory","Purpose","Social","Duration",19,1669
+"Individual Non-Mandatory","Purpose","Social","Duration",20,1323
+"Individual Non-Mandatory","Purpose","Social","Duration",21,1213
+"Individual Non-Mandatory","Purpose","Social","Duration",22,967
+"Individual Non-Mandatory","Purpose","Social","Duration",23,856
+"Individual Non-Mandatory","Purpose","Social","Duration",24,657
+"Individual Non-Mandatory","Purpose","Social","Duration",25,606
+"Individual Non-Mandatory","Purpose","Social","Duration",26,535
+"Individual Non-Mandatory","Purpose","Social","Duration",27,401
+"Individual Non-Mandatory","Purpose","Social","Duration",28,301
+"Individual Non-Mandatory","Purpose","Social","Duration",29,271
+"Individual Non-Mandatory","Purpose","Social","Duration",30,233
+"Individual Non-Mandatory","Purpose","Social","Duration",31,200
+"Individual Non-Mandatory","Purpose","Social","Duration",32,135
+"Individual Non-Mandatory","Purpose","Social","Duration",33,118
+"Individual Non-Mandatory","Purpose","Social","Duration",34,72
+"Individual Non-Mandatory","Purpose","Social","Duration",35,66
+"Individual Non-Mandatory","Purpose","Social","Duration",36,62
+"Individual Non-Mandatory","Purpose","Social","Duration",37,22
+"Individual Non-Mandatory","Purpose","Social","Duration",38,20
+"Individual Non-Mandatory","Purpose","Social","Duration",39,23
+"Individual Non-Mandatory","Purpose","Social","Duration",40,10
+"Individual Non-Mandatory","Purpose","Social","Duration",41,6
+"Individual Non-Mandatory","Purpose","Social","Duration",42,3
+"Individual Non-Mandatory","Purpose","Social","Duration",43,5
+"Individual Non-Mandatory","Purpose","Social","Duration",44,1
+"Individual Non-Mandatory","Purpose","Social","Duration",45,1
+"Individual Non-Mandatory","Purpose","Social","Duration",47,1
+"Individual Non-Mandatory","Purpose","Social","Duration",48,2
+"Joint","Purpose","Discretionary","Duration",1,1353
+"Joint","Purpose","Discretionary","Duration",2,4897
+"Joint","Purpose","Discretionary","Duration",3,14968
+"Joint","Purpose","Discretionary","Duration",4,24746
+"Joint","Purpose","Discretionary","Duration",5,20976
+"Joint","Purpose","Discretionary","Duration",6,20582
+"Joint","Purpose","Discretionary","Duration",7,13054
+"Joint","Purpose","Discretionary","Duration",8,8092
+"Joint","Purpose","Discretionary","Duration",9,4794
+"Joint","Purpose","Discretionary","Duration",10,2886
+"Joint","Purpose","Discretionary","Duration",11,1732
+"Joint","Purpose","Discretionary","Duration",12,1010
+"Joint","Purpose","Discretionary","Duration",13,682
+"Joint","Purpose","Discretionary","Duration",14,466
+"Joint","Purpose","Discretionary","Duration",15,295
+"Joint","Purpose","Discretionary","Duration",16,217
+"Joint","Purpose","Discretionary","Duration",17,175
+"Joint","Purpose","Discretionary","Duration",18,140
+"Joint","Purpose","Discretionary","Duration",19,96
+"Joint","Purpose","Discretionary","Duration",20,64
+"Joint","Purpose","Discretionary","Duration",21,57
+"Joint","Purpose","Discretionary","Duration",22,47
+"Joint","Purpose","Discretionary","Duration",23,37
+"Joint","Purpose","Discretionary","Duration",24,37
+"Joint","Purpose","Discretionary","Duration",25,27
+"Joint","Purpose","Discretionary","Duration",26,19
+"Joint","Purpose","Discretionary","Duration",27,7
+"Joint","Purpose","Discretionary","Duration",28,10
+"Joint","Purpose","Discretionary","Duration",29,2
+"Joint","Purpose","Discretionary","Duration",30,4
+"Joint","Purpose","Discretionary","Duration",31,2
+"Joint","Purpose","Discretionary","Duration",32,1
+"Joint","Purpose","Discretionary","Duration",33,2
+"Joint","Purpose","Discretionary","Duration",34,2
+"Joint","Purpose","EatOut","Duration",1,838
+"Joint","Purpose","EatOut","Duration",2,4809
+"Joint","Purpose","EatOut","Duration",3,14944
+"Joint","Purpose","EatOut","Duration",4,13329
+"Joint","Purpose","EatOut","Duration",5,10194
+"Joint","Purpose","EatOut","Duration",6,5682
+"Joint","Purpose","EatOut","Duration",7,3879
+"Joint","Purpose","EatOut","Duration",8,1544
+"Joint","Purpose","EatOut","Duration",9,858
+"Joint","Purpose","EatOut","Duration",10,507
+"Joint","Purpose","EatOut","Duration",11,288
+"Joint","Purpose","EatOut","Duration",12,206
+"Joint","Purpose","EatOut","Duration",13,150
+"Joint","Purpose","EatOut","Duration",14,117
+"Joint","Purpose","EatOut","Duration",15,98
+"Joint","Purpose","EatOut","Duration",16,68
+"Joint","Purpose","EatOut","Duration",17,60
+"Joint","Purpose","EatOut","Duration",18,60
+"Joint","Purpose","EatOut","Duration",19,41
+"Joint","Purpose","EatOut","Duration",20,29
+"Joint","Purpose","EatOut","Duration",21,18
+"Joint","Purpose","EatOut","Duration",22,19
+"Joint","Purpose","EatOut","Duration",23,19
+"Joint","Purpose","EatOut","Duration",24,10
+"Joint","Purpose","EatOut","Duration",25,12
+"Joint","Purpose","EatOut","Duration",26,15
+"Joint","Purpose","EatOut","Duration",27,15
+"Joint","Purpose","EatOut","Duration",28,5
+"Joint","Purpose","EatOut","Duration",29,6
+"Joint","Purpose","EatOut","Duration",30,10
+"Joint","Purpose","EatOut","Duration",31,6
+"Joint","Purpose","EatOut","Duration",32,6
+"Joint","Purpose","EatOut","Duration",33,5
+"Joint","Purpose","EatOut","Duration",34,4
+"Joint","Purpose","EatOut","Duration",35,1
+"Joint","Purpose","EatOut","Duration",38,1
+"Joint","Purpose","EatOut","Duration",42,1
+"Joint","Purpose","Maintenance","Duration",1,4107
+"Joint","Purpose","Maintenance","Duration",2,16705
+"Joint","Purpose","Maintenance","Duration",3,16326
+"Joint","Purpose","Maintenance","Duration",4,13971
+"Joint","Purpose","Maintenance","Duration",5,10935
+"Joint","Purpose","Maintenance","Duration",6,8170
+"Joint","Purpose","Maintenance","Duration",7,6438
+"Joint","Purpose","Maintenance","Duration",8,4355
+"Joint","Purpose","Maintenance","Duration",9,3129
+"Joint","Purpose","Maintenance","Duration",10,2211
+"Joint","Purpose","Maintenance","Duration",11,1673
+"Joint","Purpose","Maintenance","Duration",12,1235
+"Joint","Purpose","Maintenance","Duration",13,899
+"Joint","Purpose","Maintenance","Duration",14,688
+"Joint","Purpose","Maintenance","Duration",15,581
+"Joint","Purpose","Maintenance","Duration",16,378
+"Joint","Purpose","Maintenance","Duration",17,286
+"Joint","Purpose","Maintenance","Duration",18,219
+"Joint","Purpose","Maintenance","Duration",19,130
+"Joint","Purpose","Maintenance","Duration",20,80
+"Joint","Purpose","Maintenance","Duration",21,61
+"Joint","Purpose","Maintenance","Duration",22,48
+"Joint","Purpose","Maintenance","Duration",23,37
+"Joint","Purpose","Maintenance","Duration",24,17
+"Joint","Purpose","Maintenance","Duration",25,11
+"Joint","Purpose","Maintenance","Duration",26,7
+"Joint","Purpose","Maintenance","Duration",27,2
+"Joint","Purpose","Maintenance","Duration",28,5
+"Joint","Purpose","Maintenance","Duration",30,5
+"Joint","Purpose","Shopping","Duration",1,2860
+"Joint","Purpose","Shopping","Duration",2,21817
+"Joint","Purpose","Shopping","Duration",3,35428
+"Joint","Purpose","Shopping","Duration",4,25138
+"Joint","Purpose","Shopping","Duration",5,14970
+"Joint","Purpose","Shopping","Duration",6,10615
+"Joint","Purpose","Shopping","Duration",7,5799
+"Joint","Purpose","Shopping","Duration",8,3789
+"Joint","Purpose","Shopping","Duration",9,2521
+"Joint","Purpose","Shopping","Duration",10,1736
+"Joint","Purpose","Shopping","Duration",11,1281
+"Joint","Purpose","Shopping","Duration",12,820
+"Joint","Purpose","Shopping","Duration",13,623
+"Joint","Purpose","Shopping","Duration",14,404
+"Joint","Purpose","Shopping","Duration",15,297
+"Joint","Purpose","Shopping","Duration",16,204
+"Joint","Purpose","Shopping","Duration",17,149
+"Joint","Purpose","Shopping","Duration",18,81
+"Joint","Purpose","Shopping","Duration",19,56
+"Joint","Purpose","Shopping","Duration",20,54
+"Joint","Purpose","Shopping","Duration",21,45
+"Joint","Purpose","Shopping","Duration",22,22
+"Joint","Purpose","Shopping","Duration",23,19
+"Joint","Purpose","Shopping","Duration",24,5
+"Joint","Purpose","Shopping","Duration",25,8
+"Joint","Purpose","Shopping","Duration",26,4
+"Joint","Purpose","Shopping","Duration",27,2
+"Joint","Purpose","Shopping","Duration",28,2
+"Joint","Purpose","Shopping","Duration",30,1
+"Joint","Purpose","Social","Duration",1,402
+"Joint","Purpose","Social","Duration",2,2143
+"Joint","Purpose","Social","Duration",3,1919
+"Joint","Purpose","Social","Duration",4,2140
+"Joint","Purpose","Social","Duration",5,2726
+"Joint","Purpose","Social","Duration",6,2924
+"Joint","Purpose","Social","Duration",7,2836
+"Joint","Purpose","Social","Duration",8,2309
+"Joint","Purpose","Social","Duration",9,2333
+"Joint","Purpose","Social","Duration",10,1446
+"Joint","Purpose","Social","Duration",11,1017
+"Joint","Purpose","Social","Duration",12,744
+"Joint","Purpose","Social","Duration",13,649
+"Joint","Purpose","Social","Duration",14,408
+"Joint","Purpose","Social","Duration",15,326
+"Joint","Purpose","Social","Duration",16,278
+"Joint","Purpose","Social","Duration",17,179
+"Joint","Purpose","Social","Duration",18,151
+"Joint","Purpose","Social","Duration",19,79
+"Joint","Purpose","Social","Duration",20,72
+"Joint","Purpose","Social","Duration",21,60
+"Joint","Purpose","Social","Duration",22,51
+"Joint","Purpose","Social","Duration",23,43
+"Joint","Purpose","Social","Duration",24,47
+"Joint","Purpose","Social","Duration",25,36
+"Joint","Purpose","Social","Duration",26,26
+"Joint","Purpose","Social","Duration",27,22
+"Joint","Purpose","Social","Duration",28,20
+"Joint","Purpose","Social","Duration",29,19
+"Joint","Purpose","Social","Duration",30,10
+"Joint","Purpose","Social","Duration",31,4
+"Joint","Purpose","Social","Duration",32,9
+"Joint","Purpose","Social","Duration",33,3
+"Joint","Purpose","Social","Duration",34,5
+"Joint","Purpose","Social","Duration",35,3
+"Joint","Purpose","Social","Duration",40,2
+"Joint","Purpose","Social","Duration",41,1
+"Joint","Purpose","Social","Duration",42,1
+"At-Work","Purpose","EatOut","Duration",1,30110
+"At-Work","Purpose","EatOut","Duration",2,153335
+"At-Work","Purpose","EatOut","Duration",3,135087
+"At-Work","Purpose","EatOut","Duration",4,62855
+"At-Work","Purpose","EatOut","Duration",5,27604
+"At-Work","Purpose","EatOut","Duration",6,14840
+"At-Work","Purpose","EatOut","Duration",7,5406
+"At-Work","Purpose","EatOut","Duration",8,2676
+"At-Work","Purpose","EatOut","Duration",9,1320
+"At-Work","Purpose","EatOut","Duration",10,740
+"At-Work","Purpose","EatOut","Duration",11,329
+"At-Work","Purpose","EatOut","Duration",12,180
+"At-Work","Purpose","EatOut","Duration",13,140
+"At-Work","Purpose","EatOut","Duration",14,55
+"At-Work","Purpose","EatOut","Duration",15,30
+"At-Work","Purpose","EatOut","Duration",16,28
+"At-Work","Purpose","EatOut","Duration",17,19
+"At-Work","Purpose","EatOut","Duration",18,14
+"At-Work","Purpose","EatOut","Duration",19,17
+"At-Work","Purpose","EatOut","Duration",20,4
+"At-Work","Purpose","EatOut","Duration",21,5
+"At-Work","Purpose","EatOut","Duration",22,9
+"At-Work","Purpose","EatOut","Duration",23,7
+"At-Work","Purpose","EatOut","Duration",24,2
+"At-Work","Purpose","EatOut","Duration",25,1
+"At-Work","Purpose","EatOut","Duration",28,1
+"At-Work","Purpose","Maintenance","Duration",1,16175
+"At-Work","Purpose","Maintenance","Duration",2,38854
+"At-Work","Purpose","Maintenance","Duration",3,33931
+"At-Work","Purpose","Maintenance","Duration",4,16439
+"At-Work","Purpose","Maintenance","Duration",5,7642
+"At-Work","Purpose","Maintenance","Duration",6,4423
+"At-Work","Purpose","Maintenance","Duration",7,1702
+"At-Work","Purpose","Maintenance","Duration",8,860
+"At-Work","Purpose","Maintenance","Duration",9,482
+"At-Work","Purpose","Maintenance","Duration",10,278
+"At-Work","Purpose","Maintenance","Duration",11,137
+"At-Work","Purpose","Maintenance","Duration",12,69
+"At-Work","Purpose","Maintenance","Duration",13,45
+"At-Work","Purpose","Maintenance","Duration",14,29
+"At-Work","Purpose","Maintenance","Duration",15,14
+"At-Work","Purpose","Maintenance","Duration",16,14
+"At-Work","Purpose","Maintenance","Duration",17,8
+"At-Work","Purpose","Maintenance","Duration",18,2
+"At-Work","Purpose","Maintenance","Duration",19,5
+"At-Work","Purpose","Maintenance","Duration",20,3
+"At-Work","Purpose","Maintenance","Duration",21,2
+"At-Work","Purpose","Maintenance","Duration",22,1
+"At-Work","Purpose","Maintenance","Duration",23,1
+"At-Work","Purpose","Maintenance","Duration",24,1
+"At-Work","Purpose","Maintenance","Duration",25,1
+"At-Work","Purpose","Maintenance","Duration",29,1
+"At-Work","Purpose","WorkRelated","Duration",1,14460
+"At-Work","Purpose","WorkRelated","Duration",2,34073
+"At-Work","Purpose","WorkRelated","Duration",3,39294
+"At-Work","Purpose","WorkRelated","Duration",4,26217
+"At-Work","Purpose","WorkRelated","Duration",5,17915
+"At-Work","Purpose","WorkRelated","Duration",6,14999
+"At-Work","Purpose","WorkRelated","Duration",7,8595
+"At-Work","Purpose","WorkRelated","Duration",8,6540
+"At-Work","Purpose","WorkRelated","Duration",9,5178
+"At-Work","Purpose","WorkRelated","Duration",10,4066
+"At-Work","Purpose","WorkRelated","Duration",11,3368
+"At-Work","Purpose","WorkRelated","Duration",12,2580
+"At-Work","Purpose","WorkRelated","Duration",13,2077
+"At-Work","Purpose","WorkRelated","Duration",14,1700
+"At-Work","Purpose","WorkRelated","Duration",15,1388
+"At-Work","Purpose","WorkRelated","Duration",16,1040
+"At-Work","Purpose","WorkRelated","Duration",17,841
+"At-Work","Purpose","WorkRelated","Duration",18,711
+"At-Work","Purpose","WorkRelated","Duration",19,558
+"At-Work","Purpose","WorkRelated","Duration",20,433
+"At-Work","Purpose","WorkRelated","Duration",21,339
+"At-Work","Purpose","WorkRelated","Duration",22,284
+"At-Work","Purpose","WorkRelated","Duration",23,213
+"At-Work","Purpose","WorkRelated","Duration",24,180
+"At-Work","Purpose","WorkRelated","Duration",25,106
+"At-Work","Purpose","WorkRelated","Duration",26,94
+"At-Work","Purpose","WorkRelated","Duration",27,80
+"At-Work","Purpose","WorkRelated","Duration",28,66
+"At-Work","Purpose","WorkRelated","Duration",29,37
+"At-Work","Purpose","WorkRelated","Duration",30,30
+"At-Work","Purpose","WorkRelated","Duration",31,26
+"At-Work","Purpose","WorkRelated","Duration",32,18
+"At-Work","Purpose","WorkRelated","Duration",33,7
+"At-Work","Purpose","WorkRelated","Duration",34,5
+"At-Work","Purpose","WorkRelated","Duration",35,6
+"At-Work","Purpose","WorkRelated","Duration",36,13
+"At-Work","Purpose","WorkRelated","Duration",37,7
+"At-Work","Purpose","WorkRelated","Duration",38,8
+"At-Work","Purpose","WorkRelated","Duration",39,8
+"At-Work","Purpose","WorkRelated","Duration",40,5
+"At-Work","Purpose","WorkRelated","Duration",41,2
+"At-Work","Purpose","WorkRelated","Duration",42,5
+"At-Work","Purpose","WorkRelated","Duration",43,1
+"At-Work","Purpose","WorkRelated","Duration",44,1
+"At-Work","Purpose","WorkRelated","Duration",46,2
+"At-Work","Purpose","WorkRelated","Duration",47,1

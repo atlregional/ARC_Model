@@ -1,0 +1,46 @@
+---
+title: "ARC Model Documentation"
+output: html_document
+---
+
+Welcome to the Model Documentation for the ARC Travel Demand Model.   
+
+
+# User Guide
+
+  - [Overview](Overview.html): General overview of the model design and set-up.
+  - [System Setup and Design](Setup.html): General overview of the model design and set-up.
+  - [Running Population Synthesizer](RunPopSyn.html): Describes how to run the population synthesizer.
+  - [Running the Model](RunModel.html): Describes how to run the model.
+  - [Model EXEC Folder](ModelEXEC.html): Describes the files in the EXEC folder.
+  - [Model Inputs](ModelInputs.html): Describes the model inputs required.  
+  - [Model Outputs](ModelOutputs.html): Describes the model outputs.  
+  - [Highway Network Coding](HighwayNetworkCoding.html): Provides information related to highway network coding.  
+  - [Transit Network Coding](TransitNetworkCoding.html): Provides information related to transit network coding.  
+  - [Shadow Pricing](ShadowPricing.html): Describes how to perform shadow pricing.  
+  - [Accessibility Calculator](AccessibilityCalculator.html): Describes how to perform shadow pricing.  
+  - [Transit Project Level Forecast](TransitForecast.html): Describes how to perform a transit project level forecast.  
+  - [Activity-Based Model Visualization Tool](ABMVIZ.html): Describes data and visuals in ABMVIZ.  
+  - [Appendix](UserGuideAppendix.html): Includes PopSyn table formats.  
+  
+
+# Specification
+
+  - [Model Framework](ModelFramework.html): Describes the model framework.
+  - [Population Synthesizer](PopulationSynthesizer.html): Describes the population synthesizer.
+  - [Long Term Choice Models](LongTermChoiceModels.html): Describes the long term choice models.
+  - [Activity Pattern and Tour Level Models](ActivityPatternandTourLevelModels.html): Describes the activity pattern and tour level models.
+  - [Trip Level Models](TripLevelModels.html): Describes the trip level models.
+  - [Appendix A](SpecReportAppendixA.html): Appendix A
+  - [Appendix B](SpecReportAppendixB.html): Appendix B
+
+
+# Calibration
+
+  - [Introduction](Introduction.html): Provides general description and data used for calibration.
+  - [Population Synthesizer](PopSyn.html): Describes the population synthesizer.
+  - [CT-RAMP](Ctramp.html): Describes the CT-RAMP activity-based model.
+  - [External Model](ExternalModel.html): Describes the external model.
+  - [Air Passenger Model](AirPassengerModel.html): Describes the air passenger model.
+  - [Truck Model](TruckModel.html): Describes the truck model.
+  - [Trip Assignment](TripAssignment.html): Describes the trip assignment.

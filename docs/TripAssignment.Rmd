@@ -1,0 +1,340 @@
+---
+title: "Section 7 - Trip Assignment"
+output: html_document
+---
+
+
+After producing the origin and destination patterns for passenger vehicles, trucks, and transit passengers, the model assigns those trips to the transportation network. The following subsections provide the validation results of those assignments.
+
+
+
+# Section 7.1 Highway Assignment Validation
+
+The ARC model employs a standard equilibrium methodology to assign vehicle trips to the transportation network using the bi-conjugate Frank-Wolfe algorithm.  The assignment is assumed to reach convergence when the relative gap is less than $10^{-4}$ for three successive iterations.  The highway assignments use a generalized cost function that includes travel time, toll, and distance.  These values are converted to cost using value-of-time (VOT) and auto operating costs.  The generalized cost function is as follows:
+
+
+* Cost = (time * VOT) + toll cost + (distance * operating cost)
+
+The passenger car VOT used in the assignments is $21.50 and is based on average wage rates in the Atlanta region.  The truck VOT is $36.00 and was based on a review of other truck models throughout the United States.  The auto operating cost is $0.1729 per mile and includes the costs associated with fuel, maintenance, and tires using information from AAA.  The AAA costs are broken down in Figure 7-1.  The operating cost for trucks is $0.5360 per mile based on a fuel cost of $3.34 per gallon and a fuel efficiency of 6.2 miles per gallon.  The truck costs were obtained from the American Transportation Research Institute (http://atri-online.org/wp-content/uploads/2017/10/ATRI-Operational-Costs-of-Trucking-2017-10-2017.pdf).
+
+![Figure 7-1. Auto Operating Cost](figs/AutoOperatingCost.png)
+
+
+The ARC model includes highway assignments split into five time of day periods as follows:
+
+*	Early AM = 3:00am to 6:00am
+*	AM Peak = 6:00am to 10:00am
+*	Midday = 10:00am to 3:00pm
+*	PM Peak = 3:00pm to 7:00pm
+*	Evening = 7:00pm to 3:00am
+
+
+Each assignment includes the following vehicle classes:
+
+*	SOV (non-toll eligible)
+*	HOV 2 car (non-toll eligible)
+*	HOV 3+ car (non-toll eligible)
+*	SOV (toll eligible)
+*	HOV 2 car (toll eligible)
+*	HOV 3+ car (toll eligible)
+*	Commercial vehicle
+* Medium Truck
+* Heavy Truck: I-285 by-pass
+* Heavy Truck: remaining
+
+
+# Section 7.1.1 Free-Flow Speeds and Capacities
+Prior to the highway assignment, network link free-flow speeds and capacities are calculated based on the link facility type and area type. The area types used in the model in the subsequent tables are as follows:
+
+* ATYPE1 = CBD
+* ATYPE2 = Urban Commercial
+* ATYPE3 = Urban Residential
+* ATYPE4 = Suburban Commercial
+* ATYPE5 = Suburban Residential
+* ATYPE6 = Exurban
+* ATYPE7 = Rural
+
+
+For free-flow speeds, data from the FHWA's National Performance Management Research Data Set (NPMRDS) from 2013 were joined to ARC's network using the Traffic Message Channels (TMCs). Average free-flow speeds were initially calculated by facility type and area type and were then modified such that the speeds for a given facility type increase as the area types transition from urban to rural. In cases where the facility type or area type did not include data, the free-flow speeds were asserted based on similar facilities. The resulting free-flow speed lookup table is provided in Table 7-1. In addition to the lookup table, several other characteristics determine the final free-flow speed including:
+
+* Ramps identified as "loop" ramps - free-flow speed set to 35 mph
+* Principal arterial speeds varied by number of lanes for CBD area types
+* Links with observed speed - free-flow speed is computed as the average of the observed early AM speed and the look table speed
+
+Table 7-1 Free-Flow Speed Lookup Table
+```{r,echo=F,,out.height=700,message=F,warning=F,output=F}
+library(kableExtra)
+library(tidyverse)
+library(knitr)
+library(DT)
+hwyData1 <- read_csv('data/FreeFlowSpeeds.csv')
+```
+```{r,echo=F,message=F,out.height=700}
+kable(hwyData1) %>%
+  kable_styling("striped",row_label_position = 'r')
+```
+
+Hourly capacities were based in part from general Level-of-Service (LOS) E Highway Capacity Manual assumptions and were then asserted such that as area types transition from urban to rural, the hourly capacities increase. Similarly, the capacities decrease from limited access facilities (e.g., interstates) to facilities with less restricted access (e.g., arterials). The LOS E hourly capacities used in the model are provided in Table 7-2.
+
+Table 7-2 LOS E Hourly Capacities
+```{r,echo=F,,out.height=700,message=F,warning=F,output=F}
+hwyData2 <- read_csv('data/Capacity.csv')
+```
+```{r,echo=F,message=F,out.height=700}
+kable(hwyData2, format.args = list(big.mark = ",")) %>%
+  kable_styling("striped",row_label_position = 'r')
+```
+
+During the calibration of the highway assignment, the model had difficulty in replicating observed interstate speeds near major system-to-system interchanges. This is primarily due to the fact that the user equilibrium highway assignment does not account for operational issues occurring in these segments, weaving for example, or the presence of queues. As a means to improve the model's ability to predict congested speeds at these locations, a network attribute (WEAVEFLAG) was introduced to identify the interstate links adjacent to the major interchanges. The link capacities at these locations are subjected to a modification in the originally calculated capacity when the number of lanes is greater than four. The equation is structured as follows in those cases:
+
+* Weave section capacity = Initial Capacity * $0.98^{(lanes-1)}$
+
+Finally, to compute the period level capacity, rather than multiply the hourly capacity by the number of hours in a time period, adjustments were made to reflect the peaking that occurs within the modeled time periods. These period level adjustments were made based on available GDOT hourly traffic count data and are as follows:
+
+* Early AM = 1.66
+* AM Peak = 3.66
+* Midday = 4.70
+* PM Peak = 3.66
+* Evening = 3.91
+
+# Section 7.1.2 Volume Delay Functions
+The calibration of the highway assignment included updating the volume delay functions (VDF curves). These curves are a modified version of the BPR function with coefficients that vary by facility type. The general formula for the VDF curves is as follows:
+
+ $T_c$ = T0 * A * V/C + D * ($V/C^{B}$)
+
+where,
+
+* $T_c$ = congested time
+* T0 = free-flow time
+* V/C = volume to capacity ratio
+* A, B, D = calibrated coefficients, see Table 7-3
+
+Graphical representation of the VDF curves is provided in Figure 7-2.
+
+Table 7-3 VDF Curve Parameters
+```{r,echo=F,,out.height=700,message=F,warning=F,output=F}
+hwyData3 <- read_csv('data/VDFCoef.csv')
+```
+```{r,echo=F,message=F,out.height=700}
+kable(hwyData3) %>%
+  kable_styling("striped",row_label_position = 'r')
+```
+
+![Figure 7-2. VDF Curves](figs/VDFCurves.png)
+
+
+# Section 7.1.3 Vehicle Miles Traveled
+Validation of the highway assignment results included comparisons of regional vehicle miles traveled (VMT). To compare regional VMT, GDOT HPMS summaries of average annual daily traffic (AADT) were summarized by functional classification for each county. As the model is designed to estimate an average weekday, the AADT-based VMT was converted to represent average weekday VMT by reviewing data from GDOT permanent count stations which continuously record traffic data. This resulted in the following conversion factors:
+
+* 13-county interstates = 1.03
+* 13-county non-interstate = 1.07
+* 8-county interstates = 1.003
+* 8-county non-interstate = 1.065
+
+After converting the GDOT HPMS VMT at the county-level, the observed and estimated data were compared at the regional level as shown in Table 7-4. While the data is provided for both collectors and local roads, the network does not include all of these facilities in the region which explains the large differences in VMT. However, when viewing interstates, principal arterials, and minor arterials, the model is within 5% of the observed VMT.
+
+Table 7-4 Observed vs. Estimated Regional VMT
+```{r,echo=F,,out.height=700,message=F,warning=F,output=F}
+hwyData4 <- read_csv('data/HwyVMT.csv')
+```
+```{r,echo=F,message=F,out.height=700}
+kable(hwyData4, format.args = list(big.mark = ",")) %>%
+  kable_styling("striped",row_label_position = 'r')
+```
+
+# Section 7.1.4 Traffic Counts
+GDOT maintains an extensive traffic counting program which includes daily volume counts, vehicle classification counts, and hourly counts. These count locations were joined to the model network in more than 5,000 locations. For the daily volume counts, the same conversion factors used for the AADT to AWDT VMT calculations were applied to the observed counts for comparing against the model estimates. The daily counts were compared against the model in several ways including:
+
+* Volume groups
+* Facility type
+* Area type
+
+The statistical summaries for these comparisons included the RMSE, % RMSE, and volume-to-count ratios. The analysis is provided in Tables 7-5, 7-6, and 7-7 below. As shown in these tables, the model matches GDOT counts very well at the regional level, particularly for higher volume roadways such as interstates and principal arterials. As expected, the model is less accurate for lower volume roadways. The region-wide % RMSE across all facilities is 38%; however, when calculating the % RMSE for facilities with > 5,000 vehicles per day, it drops to 18%.
+
+Table 7-5 Highway Validation Statistics by Volume Group
+```{r,echo=F,,out.height=700,message=F,warning=F,output=F}
+hwyData5 <- read_csv('data/HwyVolumeGroup.csv')
+```
+```{r,echo=F,message=F,out.height=700}
+kable(hwyData5, format.args = list(big.mark = ",")) %>%
+  kable_styling("striped",row_label_position = 'r')
+```
+
+Table 7-6 Highway Validation Statistics by Facility Type
+```{r,echo=F,,out.height=700,message=F,warning=F,output=F}
+hwyData6 <- read_csv('data/HwyFactype.csv')
+```
+```{r,echo=F,message=F,out.height=700}
+kable(hwyData6, format.args = list(big.mark = ",")) %>%
+  kable_styling("striped",row_label_position = 'r')
+```
+
+Table 7-7 Highway Validation Statistics by Area Type
+```{r,echo=F,,out.height=700,message=F,warning=F,output=F}
+hwyData7 <- read_csv('data/HwyAtype.csv')
+```
+```{r,echo=F,message=F,out.height=700}
+kable(hwyData7, format.args = list(big.mark = ",")) %>%
+  kable_styling("striped",row_label_position = 'r')
+```
+
+The observed and estimated daily volumes were also graphed using a scatterplot which is provided in Figure 7-3. As illustrated, the correlation coefficient of 0.95 and the trendline indicate the model generally reasonably estimates daily volumes when compared to observed counts. 
+
+![Figure 7-3. Daily Estimated Volumes vs. Observed Counts](figs/HwyDailyScatter.png)
+
+Hourly data from GDOT's permanent count stations were aggregated to match the model's five time period assignments. This comparison is provided in Table 7-8 and shows the model estimated volumes match period-level counts reasonably well. The model does appear to be underestimating travel in the evening time period as evidenced by the volume-to-count ratio of 0.80 for that time period. However, it should be noted that there were only 78 permanent count stations which makes it difficult to draw concrete conclusions that warrant modifications to the model. Scatterplots for each time period were also prepared and are provided in Figures 7-4 through 7-8.
+
+
+Table 7-8 Highway Validation Statistics by Time of Day
+```{r,echo=F,,out.height=700,message=F,warning=F,output=F}
+hwyData8 <- read_csv('data/HwyTOD.csv')
+```
+```{r,echo=F,message=F,out.height=700}
+kable(hwyData8, format.args = list(big.mark = ",")) %>%
+  kable_styling("striped",row_label_position = 'r')
+```
+
+
+![Figure 7-4. Early AM Estimated Volumes vs. Observed Counts](figs/EAScatter.png)
+
+![Figure 7-5. AM Peak Estimated Volumes vs. Observed Counts](figs/AMScatter.png)
+
+![Figure 7-6. Midday Estimated Volumes vs. Observed Counts](figs/MDScatter.png)
+
+![Figure 7-7. PM Peak Estimated Volumes vs. Observed Counts](figs/PMScatter.png)
+
+![Figure 7-8. Evening Estimated Volumes vs. Observed Counts](figs/EVScatter.png)
+
+In addition to comparing the model against all vehicle counts, GDOT's vehicle classification percentages were added to the highway network. These percentages were then multiplied by the total vehicle counts to compute the respective truck volumes and subsequently compared against the model estimates by facility type, area type, and inside/outside I-285. The validation summaries are provided below in Tables 7-9 through 7-11.
+
+GDOT's available data include more locations with an overall truck percentage than locations that split the truck percentage into medium and heavy duty trucks. Generally, the model's estimation of total truck traffic, medium trucks, and heavy trucks matches the observed data as evidenced by the overall volume-to-count ratios. When viewing by area type, the model appears to overestimate medium and heavy trucks in the CBD; however, there are relatively few count locations which included the two truck types in this area type. As shown in Table 7-11, the model appears to be estimating the heavy truck traffic inside I-285 reasonably well which is important given that heavy trucks without a destination inside I-285 are prohibited from using I-75/I-85 to travel through the city of Atlanta. 
+
+Table 7-9 Truck Validation Summaries by Facility Type
+```{r,echo=F,message=F,out.height=700}
+library(kableExtra)
+hwyData9 <- read.csv('data/HwyTruckFactype.csv',check.names = F)
+kable(hwyData9, format.args = list(big.mark = ",")) %>%
+  kable_styling("striped") %>%
+  add_header_above(c(" " = 1, "All Truck Count Locations" = 2, "Medium and Heavy Truck Count Locations" = 3))
+```
+
+Table 7-10 Truck Validation Summaries by Area Type
+
+```{r,echo=F,message=F,out.height=700}
+hwyData10 <- read.csv('data/HwyTruckAtype.csv',check.names = F)
+kable(hwyData10, format.args = list(big.mark = ",")) %>%
+  kable_styling("striped") %>%
+  add_header_above(c(" " = 1, "All Truck Count Locations" = 2, "Medium and Heavy Truck Count Locations" = 3))
+```
+
+Table 7-11 Truck Validation Summaries Inside/Outside I-285
+
+```{r,echo=F,message=F,out.height=700}
+hwyData11 <- read.csv('data/HwyTruckI285.csv',check.names = F)
+kable(hwyData11, format.args = list(big.mark = ",")) %>%
+  kable_styling("striped") %>%
+  add_header_above(c(" " = 1, "All Truck Count Locations" = 2, "Medium and Heavy Truck Count Locations" = 3))
+```
+
+In addition to the above summaries, scatterplots were generated for all trucks, medium trucks, and heavy trucks to illustrate graphically the comparison between the estimated versus observed truck volumes. These plots are presented in Figures 7-9 through 7-11 below. The correlation coefficients are all higher than 0.85, with the heavy truck resulting in 0.95. When viewing Figure 7-10, the model does appear to be overestimating medium truck as evidenced by the trendline above the 45-degree line; however, when comparing the total truck volumes in Figure 7-9, this observation is not apparent. As noted previously, the number of observed locations which included medium truck percentages was much lower than the number of locations which included total trucks which could be skewing the medium truck results. That being said, in future updates to the truck model, another review of the medium truck component is likely warranted. 
+
+
+![Figure 7-9. Estimated vs. Observed All Trucks](figs/HwyTruckScatter.png)
+
+
+![Figure 7-10. Estimated vs. Observed Medium Trucks](figs/HwyMediumScatter.png)
+
+
+![Figure 7-11. Estimated vs. Observed Heavy Trucks](figs/HwyHeavyScatter.png)
+
+
+
+Given the planned expansion of the express toll lane system, the model estimated volumes in the I-85 North Express Lanes were compared against observed data from the State Road and Tollway Authority (SRTA), which represent an average weekday from October 2015. The volumes were aggregated by segments, AM peak period, PM peak period, off-peak periods, and by direction of travel. During the assignment validation, an iterative process was used which involves running CT-RAMP, running assignments, and optimizing tolls. A graphical representation of this process is provided in Figure 7-12. Note that CT-RAMP must be run initially to develop toll/non-toll eligible trip tables (outer loop). Those trip tables are then assigned to the network and toll modifications are made within the inner loop where the assignment is run multiple times with the same trip tables. Once the toll volumes appear reasonable in the inner loop, the highway skims are rebuilt and CT-RAMP is run again to generate another set of trip tables. This process is continued until a balance between the toll rates between mode choice and assignment is reached.
+
+The resulting model estimated toll volumes compared to the observed data are provided in Table 7-11 and via scatterplot in Figure 7-13. Generally, the model matches the AM and PM peak periods well, while the model tends to overestimate the off-peak periods. This is a primary function of two things:
+
+ * In reality, the tolls are dynamically priced in small time intervals while the model toll rates are based on a single period spanning multiple hours.
+ 
+ * Very little congestion occurs during the off-peak periods. As a result, the travel time savings between the express lanes and general purpose lanes is small and during the equilibrium assignment, even incremental changes to toll rates can result in large swings in express lane volumes under these conditions. Toll rates that are set too high yield zero toll trips in the lanes, which was avoided.
+ 
+
+![Figure 7-12. Toll Optimization Routine](figs/HwyTollOptimization.png)
+
+
+Table 7-11 I-85 Express Lane Observed vs. Estimated Volumes
+```{r,echo=F,,out.height=700,message=F,warning=F,output=F}
+hwyData11 <- read_csv('data/HwyTolls.csv')
+```
+```{r,echo=F,message=F,out.height=700}
+kable(hwyData11, format.args = list(big.mark = ",")) %>%
+  kable_styling("striped",row_label_position = 'r')
+```
+
+![Figure 7-13. I-85 Express Lanes Estimated vs. Observed Volumes](figs/HwyTolls.png)
+
+
+# Section 7.1.5 Speeds
+The highway assignment validation also included comparisons to observed NPMRDS speeds where available. The raw speed data was averaged to reflect the ARC time-periods and joined to the highway network. The results are provided in the scatterplots below in Figure 7-14 through Figure 7-18. As expected, the model matches the speeds in the off-peak periods well, with the correlation coefficients ranging from 0.87 to 0.91 in the early AM, midday, and evening periods. The AM and PM peak period speeds do not match as closely with the observed speeds which is primarily a function of the static user equilibrium assignment procedures which cannot account for operational characteristics such as signal timing, merge/diverge/weaving, and queue formations that exist in real world conditions. However, in the context of a regional planning model, ARC's assignment matches the AM and PM peak speeds reasonably well as evidenced by the plots.
+
+
+
+![Figure 7-14. Early AM Observed vs. Estimated Speeds](figs/HwySpeedsEA.png)
+
+![Figure 7-15. AM Peak Observed vs. Estimated Speeds](figs/HwySpeedsAM.png)
+
+![Figure 7-16. Midday Observed vs. Estimated Speeds](figs/HwySpeedsMD.png)
+
+
+![Figure 7-17. PM Peak Observed vs. Estimated Speeds](figs/HwySpeedsPM.png)
+
+![Figure 7-18. Evening Observed vs. Estimated Speeds](figs/HwySpeedsEV.png)
+
+
+
+# Section 7.2 Transit Assignment Validation
+
+The ARC model assigns transit trips to the network using the Public Transport (PT) module in Cube. The trips are assigned to the single best path using PT's algorithms for each time period, mode of access, and premium only vs. premium/non-premium transit modes. The assignment results are then aggregated to daily totals for comparison against data provided by the regional transit operators. The overall summary of total boardings by operator is provided in Table 7-12. As shown, the model matches total regional boardings well. The model tends to overestimate suburban transit providers but is within 7% overall for MARTA rail and 9% for MARTA buses, which account for approximately 85% of total regional transit ridership. 
+
+
+Table 7-12 Regional Transit Boardings
+```{r,echo=F,,out.height=700,message=F,warning=F,output=F}
+trnData1 <- read_csv('data/TrnSummary.csv')
+```
+```{r,echo=F,message=F,out.height=700}
+kable(trnData1, format.args = list(big.mark = ",")) %>%
+  kable_styling("striped",row_label_position = 'r')
+```
+
+
+# Section 7.2.1 MARTA Rail
+
+The MARTA rail entries and boardings were further summarized at the station level. For the purposes of this documentation, entries represent patrons that enter the MARTA rail system at a given station. This is an important designation, particularly at Five Points, where a person can enter the system or transfer between MARTA lines. Boardings account for both entries and transfers between lines. The resulting entries and boardings by station are provided in Table 7-13. In the table, the difference between entries and total boardings is clearly shown at Five Points, where the observed entries are approximately 19,000 while the observed boardings are nearly 59,000. At most stations, transferring between lines is not possible, in which case the entries and boardings are identical. 
+
+While in some cases the percentage differences might appear large, these differences should be viewed in the context of the overall station activity. For example, Garnett Station shows a difference of 58%; however, the observed entries/boardings at this location are less than 2,000. Another way to view the results are by means of a scatterplot similar to the highway assignment validation results. The station entries are provided graphically in Figure 7-19. As shown, when viewing in this manner, the model matches the observed data well with a correlation coefficient of 0.93. Finally, a bar graph of the station boardings is provided in Figure 7-20. Since the total at Five Points is much higher than the other stations, it was removed from the graph to provide a closer look at the remaining stations. 
+
+Table 7-13 MARTA Rail Station Entries and Boardings
+```{r,echo=F,,out.height=700,message=F,warning=F,output=F}
+trnData2 <- read_csv('data/TrnRail.csv')
+```
+```{r,echo=F,message=F,out.height=700}
+kable(trnData2, format.args = list(big.mark = ",")) %>%
+  kable_styling("striped",row_label_position = 'r')
+```
+
+
+![Figure 7-19. Observed vs. Estimated MARTA Rail Entries](figs/TrnRailEntries.png)
+
+
+![Figure 7-20. Observed vs. Estimated MARTA Rail Boardings](figs/TrnRailBoardings.png)
+
+# Section 7.2.2 Buses
+
+As previously mentioned, the model matches overall regional bus totals well, but a review of the individual bus routes was also performed by preparing scatterplot comparisons. Two scatterplots were developed which include all buses except shuttles (Figure 7-21) and one of just MARTA buses (Figure 7-22) given it is the largest transit operator in the region. While shuttle buses are included in the transit network, in many cases, these are university shuttles transporting students in and around university campuses. In these instances, the regional model does include the same level of detail as exists in reality. For example, in the model, a university is likely to be located in one TAZ and cannot reflect the intra-campus connectivity that occurs. For these reasons, the shuttles were not included in the route-level analysis. 
+
+As shown in the figures, the model matches the regional and MARTA route level bus boardings reasonably well as evidenced by the trendline generally along the 45-degree line and correlation coefficients of 0.80 and 0.78, respectively.
+
+
+![Figure 7-21. Observed vs. Estimated Regional Buses](figs/TrnBuses.png)
+
+![Figure 7-22. Observed vs. Estimated MARTA Buses](figs/TrnMARTABuses.png)
+

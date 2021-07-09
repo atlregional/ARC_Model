@@ -1,0 +1,131 @@
+---
+title: "Appendix "
+output: html_document
+---
+
+# Section A.1 Database Control Tables
+
+**Table A-1 MAZ (ARC TAZ) Level Control Totals**    
+
+```{r,echo=F,message=F,warning=F,output=F,out.height=700}
+library(tidyverse)
+library(knitr)
+library(DT)
+library(kableExtra)
+library(readxl)
+
+A1<- read_excel('data/UserGuideTables.xlsx','A1','B3:D22')
+A1[is.na(A1)] <- ''
+
+kable(A1) %>%
+  kable_styling("striped")
+
+```
+
+**Table A-2 TAZ (ARC PECAS Zone) Level Control Totals**    
+
+```{r,echo=F,message=F,warning=F,output=F,out.height=700}
+
+A2<- read_excel('data/UserGuideTables.xlsx','A2','B3:D10')
+A2[is.na(A2)] <- ''
+
+kable(A2) %>%
+  kable_styling("striped")
+
+```
+
+
+**Table A-3 Meta-Control (ARC County) Totals**    
+
+```{r,echo=F,message=F,warning=F,output=F,out.height=700}
+
+A3<- read_excel('data/UserGuideTables.xlsx','A3','B3:D14')
+A3[is.na(A3)] <- ''
+
+kable(A3) %>%
+  kable_styling("striped")
+
+```
+
+# Section A.2 Database PUMS Tables
+
+**Table A-4 PUMS Processed Household Table**    
+
+```{r,echo=F,message=F,warning=F,output=F,out.height=700}
+
+A4<- read_excel('data/UserGuideTables.xlsx','A4','B3:D7')
+A4[is.na(A4)] <- ''
+
+kable(A4) %>%
+  kable_styling("striped")
+
+```
+
+**Table A-5 PUMS Processed Person Table**    
+
+```{r,echo=F,message=F,warning=F,output=F,out.height=700}
+
+A5<- read_excel('data/UserGuideTables.xlsx','A5','B3:D9')
+A5[is.na(A5)] <- ''
+
+kable(A5) %>%
+  kable_styling("striped")
+
+```
+
+
+# Section A.3 Database Output Tables
+
+**Table A-6 Synthetic Population Household Table in Unexpanded Form**    
+
+```{r,echo=F,message=F,warning=F,output=F,out.height=700}
+
+A6<- read_excel('data/UserGuideTables.xlsx','A6','B3:C14')
+A6[is.na(A6)] <- ''
+
+kable(A6) %>%
+  kable_styling("striped")
+
+```
+
+
+**Table A-7 Synthetic Population Person Table in Unexpanded Form**    
+
+```{r,echo=F,message=F,warning=F,output=F,out.height=700}
+
+A7<- read_excel('data/UserGuideTables.xlsx','A7','B3:C15')
+A7[is.na(A7)] <- ''
+
+kable(A7) %>%
+  kable_styling("striped")
+
+```
+
+
+**Table A-8 Synthetic Population Household Table in Expanded Form**    
+
+```{r,echo=F,message=F,warning=F,output=F,out.height=700}
+
+A8<- read_excel('data/UserGuideTables.xlsx','A8','B3:C15')
+A8[is.na(A8)] <- ''
+
+kable(A8) %>%
+  kable_styling("striped")
+
+```
+
+**Table A-9 Synthetic Population Person Table in Expanded Form**    
+
+```{r,echo=F,message=F,warning=F,output=F,out.height=700}
+
+A9<- read_excel('data/UserGuideTables.xlsx','A9','B3:C17')
+A9[is.na(A9)] <- ''
+
+kable(A9) %>%
+  kable_styling("striped")
+
+```
+
+
+Notes: The definitions for other PUMS variables can be found in the 2007-2011 ACS PUMS Data Dictionary:   
+$^{*}$ http://www2.census.gov/programs-surveys/acs/tech_docs/pums/data_dict/PUMS_Data_Dictionary_2007-2011.pdf   

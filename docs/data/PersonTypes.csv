@@ -1,0 +1,9 @@
+Number,Person-Type,Age,Work Status,School Status
+1,Full-time worker,18 plus,Full-time,None
+2,Part-time worker,18 plus,Part-time,None
+3,College student,18 plus,Any,College plus
+4,Non-working adult,18 to 64,Unemployed,None
+5,Non-working senior,65 plus,Unemployed,None
+6,Driving age student,16 to 17,Any,Pre-college
+7,Non-driving student,6 to 16,None,Pre-college
+8,Pre-school,0 to 5,None,None

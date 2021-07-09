@@ -1,0 +1,90 @@
+Alternative,Escorting,Shopping,Maintenance,Eating,Visiting,Discretionary
+1,0,0,0,0,0,0
+2,0,0,0,0,0,1 plus
+3,0,0,0,0,1 plus,0
+4,0,0,0,0,1 plus,1 plus
+5,0,0,0,1 plus,0,0
+6,0,0,0,1 plus,0,1 plus
+7,0,0,0,1 plus,1 plus,0
+8,0,0,0,1 plus,1 plus,1 plus
+9,0,0,1 plus,0,0,0
+10,0,0,1 plus,0,0,1 plus
+11,0,0,1 plus,0,1 plus,0
+12,0,0,1 plus,0,1 plus,1 plus
+13,0,0,1 plus,1 plus,0,0
+14,0,0,1 plus,1 plus,0,1 plus
+15,0,0,1 plus,1 plus,1 plus,0
+16,0,0,1 plus,1 plus,1 plus,1 plus
+17,0,1 plus,0,0,0,0
+18,0,1 plus,0,0,0,1 plus
+19,0,1 plus,0,0,1 plus,0
+20,0,1 plus,0,0,1 plus,1 plus
+21,0,1 plus,0,1 plus,0,0
+22,0,1 plus,0,1 plus,0,1 plus
+23,0,1 plus,0,1 plus,1 plus,0
+24,0,1 plus,0,1 plus,1 plus,1 plus
+25,0,1 plus,1 plus,0,0,0
+26,0,1 plus,1 plus,0,0,1 plus
+27,0,1 plus,1 plus,0,1 plus,0
+28,0,1 plus,1 plus,0,1 plus,1 plus
+29,0,1 plus,1 plus,1 plus,0,0
+30,0,1 plus,1 plus,1 plus,0,1 plus
+31,0,1 plus,1 plus,1 plus,1 plus,0
+32,0,1 plus,1 plus,1 plus,1 plus,1 plus
+33,1,0,0,0,0,0
+34,1,0,0,0,0,1 plus
+35,1,0,0,0,1 plus,0
+36,1,0,0,0,1 plus,1 plus
+37,1,0,0,1 plus,0,0
+38,1,0,0,1 plus,0,1 plus
+39,1,0,0,1 plus,1 plus,0
+40,1,0,0,1 plus,1 plus,1 plus
+41,1,0,1 plus,0,0,0
+42,1,0,1 plus,0,0,1 plus
+43,1,0,1 plus,0,1 plus,0
+44,1,0,1 plus,0,1 plus,1 plus
+45,1,0,1 plus,1 plus,0,0
+46,1,0,1 plus,1 plus,0,1 plus
+47,1,0,1 plus,1 plus,1 plus,0
+48,1,0,1 plus,1 plus,1 plus,1 plus
+49,1,1 plus,0,0,0,0
+50,1,1 plus,0,0,0,1 plus
+51,1,1 plus,0,0,1 plus,0
+52,1,1 plus,0,0,1 plus,1 plus
+53,1,1 plus,0,1 plus,0,0
+54,1,1 plus,0,1 plus,0,1 plus
+55,1,1 plus,0,1 plus,1 plus,0
+56,1,1 plus,0,1 plus,1 plus,1 plus
+57,1,1 plus,1 plus,0,0,0
+58,1,1 plus,1 plus,0,0,1 plus
+59,1,1 plus,1 plus,0,1 plus,0
+60,1,1 plus,1 plus,0,1 plus,1 plus
+61,1,1 plus,1 plus,1 plus,0,0
+62,1,1 plus,1 plus,1 plus,0,1 plus
+63,1,1 plus,1 plus,1 plus,1 plus,0
+64,0,0,0,0,0,0
+65,0,0,0,0,0,1 plus
+66,0,0,0,0,1 plus,0
+67,0,0,0,0,1 plus,1 plus
+68,0,0,0,1 plus,0,0
+69,0,0,0,1 plus,0,1 plus
+70,0,0,0,1 plus,1 plus,0
+71,0,0,0,1 plus,1 plus,1 plus
+72,0,0,1 plus,0,0,0
+73,0,0,1 plus,0,0,1 plus
+74,0,0,1 plus,0,1 plus,0
+75,0,0,1 plus,0,1 plus,1 plus
+76,0,0,1 plus,1 plus,0,0
+77,0,0,1 plus,1 plus,0,1 plus
+78,0,0,1 plus,1 plus,1 plus,0
+79,0,1 plus,0,0,0,0
+80,0,1 plus,0,0,0,1 plus
+81,0,1 plus,0,0,1 plus,0
+82,0,1 plus,0,0,1 plus,1 plus
+83,0,1 plus,0,1 plus,0,0
+84,0,1 plus,0,1 plus,0,1 plus
+85,0,1 plus,0,1 plus,1 plus,0
+86,0,1 plus,1 plus,0,0,0
+87,0,1 plus,1 plus,0,0,1 plus
+88,0,1 plus,1 plus,0,1 plus,0
+89,0,1 plus,1 plus,1 plus,0,0

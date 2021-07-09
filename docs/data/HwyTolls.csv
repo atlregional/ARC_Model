@@ -1,0 +1,31 @@
+Segment,Period,Direction,Observed,Modeled
+I-285 to Pleasantdale Rd,AM,NB,460,570
+Pleasantdale Rd to Jimmy Carter Blvd,AM,NB,820,710
+Jimmy Carter Blvd to Indian Trail Rd,AM,NB,870,1090
+Indian Trail Rd to Pleasant Hill Rd,AM,NB,740,810
+Pleasant Hill Rd to Old Peachtree Rd,AM,NB,310,410
+I-285 to Pleasantdale Rd,AM,SB,3910,4320
+Pleasantdale Rd to Jimmy Carter Blvd,AM,SB,5400,4920
+Jimmy Carter Blvd to Indian Trail Rd,AM,SB,5060,4690
+Indian Trail Rd to Pleasant Hill Rd,AM,SB,2710,3030
+Pleasant Hill Rd to Old Peachtree Rd,AM,SB,1260,1120
+I-285 to Pleasantdale Rd,PM,NB,3900,4560
+Pleasantdale Rd to Jimmy Carter Blvd,PM,NB,4950,4870
+Jimmy Carter Blvd to Indian Trail Rd,PM,NB,4660,4320
+Indian Trail Rd to Pleasant Hill Rd,PM,NB,3890,4460
+Pleasant Hill Rd to Old Peachtree Rd,PM,NB,2020,1450
+I-285 to Pleasantdale Rd,PM,SB,1270,1310
+Pleasantdale Rd to Jimmy Carter Blvd,PM,SB,1820,1760
+Jimmy Carter Blvd to Indian Trail Rd,PM,SB,1750,1830
+Indian Trail Rd to Pleasant Hill Rd,PM,SB,930,1110
+Pleasant Hill Rd to Old Peachtree Rd,PM,SB,480,250
+I-285 to Pleasantdale Rd,OP,NB,1860,2480
+Pleasantdale Rd to Jimmy Carter Blvd,OP,NB,3110,4220
+Jimmy Carter Blvd to Indian Trail Rd,OP,NB,3180,4860
+Indian Trail Rd to Pleasant Hill Rd,OP,NB,2770,4100
+Pleasant Hill Rd to Old Peachtree Rd,OP,NB,1340,1330
+I-285 to Pleasantdale Rd,OP,SB,2100,3390
+Pleasantdale Rd to Jimmy Carter Blvd,OP,SB,3080,4230
+Jimmy Carter Blvd to Indian Trail Rd,OP,SB,2990,4500
+Indian Trail Rd to Pleasant Hill Rd,OP,SB,1660,4040
+Pleasant Hill Rd to Old Peachtree Rd,OP,SB,1050,1160

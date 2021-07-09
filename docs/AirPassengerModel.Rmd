@@ -1,0 +1,222 @@
+---
+title: "Section 5 - Air Passenger Model"
+output: html_document
+---
+
+
+
+Specialized travel demand models are commonly developed for unique markets like non-employee travel to and from airports.  Given the magnitude of the number of enplanements occurring at Hartsfield-Jackson Atlanta International Airport (HJAIA), the ARC model includes such a specialized model.  The air passenger model used in the ARC model is periodically updated as new data becomes available.  The most recent update occurred in 2013 which utilized the following key data sources:
+
+*	2009 Atlanta airport peak week survey data and report
+*	Airport Master Plan - aviation activity forecasts report
+*	2009-2010 MARTA on-board survey
+
+Key insights on the air passenger travel from these data sources are listed below:
+
+*	More than 69 percent of the annual enplanements at HJAIA in 2009 were transferring passengers.
+*	Approximately 41 percent of all the trips are business related whereas the remaining 59 percent are pleasure related. 
+*	Approximately 55 percent of all the trips are made by residents in the Atlanta region and 45 percent by non-residents.
+*	The average parking duration at HJAIA is different for business (3 days) and pleasure trips (5 days).
+*	The average parking cost per day at HJAIA is also different for business ($13 per day) and pleasure trips ($10 per day).
+*	Residents in the Atlanta region primarily started their trips from a private residence. 93 percent of the business resident trips and 97 percent of the pleasure resident trips originated at a private residence.
+*	The starting location of the non-residents depended on the trip purpose. 85 percent of the business non-resident trips originated at a non-private residence like a work place or hotel/motel, whereas 67 percent of the pleasure non-resident trips originated from a private residence.
+*	Approximately 54 percent of the passengers using MARTA to reach the airport travel during the off-peak period. Further, trips at the airport stations had a 38/21/41 walk/park-ride/drop-off access mode split.
+
+The air passenger model follows a three-step process:
+
+1.	Estimate total airport passengers
+
+2.	Allocate ground side trip ends
+
+3.	Mode choice
+
+
+# Section 5.1 Airport Enplanements
+
+One of the key drivers in the air passenger model is the number of expected annual enplanements.  This information is provided in the Airport Master Plan and used as direct input into the model.  The number of enplanements in the 2012 Atlanta Airport Master Plan report are shown in Table 5-1. 
+
+Table 5-1 Annual Enplanements
+```{r,echo=F,,out.height=700,message=F,warning=F,output=F}
+library(tidyverse)
+library(knitr)
+library(DT)
+library(kableExtra)
+airData1 <- read_csv('data/Enplanements.csv')
+```
+```{r,echo=F,message=F,out.height=700}
+kable(airData1, format.args = list(big.mark = ",")) %>%
+  kable_styling("striped",row_label_position = 'r')
+```
+
+
+# Section 5.2 Estimating Total Air Passengers
+
+The initial step in estimating the airport passenger travel for the region is to estimate the average daily airport passengers to and from the airport. This estimate requires obtaining enplanements and the trip purpose of these enplanements. ARC obtained the annual enplanements from the 2012 Atlanta Airport Master Plan report. For the year 2010, the Master Plan reported that the HJAIA had 45,816,397 annual enplanements. These enplanements include the transferring passengers as well. The Master Plan also reported that 69.70 percent of these enplanements were transferring passengers. Therefore, of the 45,816,397 annual passengers in 2010, approximately 13,882,368 leave the airport. The annual enplanements are then divided by 365 to get the average daily estimates. This results in 38,034 daily enplaning passengers. Finally, the daily enplanement number is multiplied by 2, resulting in a total of 76,068 total daily airport passengers to and from the airport. The assumption here is that for every enplaning passenger there is one deplaning passenger.
+
+The next phase of this step is to estimate the "purpose" of the airport passenger. For this model, the purpose is defined in two ways; the type of airport passenger and the purpose of the trip. The type of airport passenger is either a resident or non-resident of the region. The purpose is either business or non-business/pleasure. Therefore, this model has four purposes:
+
+1.	Residents on business trips
+
+2.	Non-residents on business trips
+
+3.	Residents on non-business/pleasure trips
+
+4.	Non-residents on non-business/pleasure trips
+
+
+Analysis of the survey data for the proportion of air passengers by trips is shown in Table 5-2.  The model is applied using the number of enplanements, the percentages for transferring passengers, and the splits by trip purpose in subsequent model years. 
+
+
+Table 5-2 Air Passenger Trip Purpose Proportions
+
+```{r,echo=F,,out.height=700,message=F,warning=F,output=F}
+airData2 <- read_csv('data/AirPassTripPurpShares.csv')
+```
+```{r,echo=F,message=F,out.height=700}
+kable(airData2, format.args = list(big.mark = ",")) %>%
+  kable_styling("striped",row_label_position = 'r')
+```
+
+
+
+# Section 5.3 Allocating Ground Side Trip Ends
+
+In this step, the daily passengers are allocated to the ground side locations - either the homes of the residents or the offices, hotels, etc. of the non-residents. A review of the survey data and other studies indicated that the most appropriate allocation procedure would be to use the households by income level and total employment. 
+
+The survey data showed that most of the resident business trips (i.e., over 93 percent) had a non-airport end at a private residence. This means that there were very few people leaving from their place of business to go to the airport. These trip ends were compared to zip-code level data, including households by income level and employment by employment type. This comparison was performed using statistical measures, mainly regression. No significant equations using different employment categories could be determined and the data showed that higher income households made more trips than lower incomes. Hence the regression analysis was constrained so that the trip rates increased with income. Though, it should be noted that these statistical relationships were not extremely significant. The possible reasons for these minor statistical relationships were: 
+
+1. The area of the measures for the non-airport end of the trip was zip code areas, of which there are only 168 in the region.
+
+2. The employment categories were high level SIC categories which do not necessarily have any relationship to the income of the employee.
+
+3. Hotel and motel rooms or employment were not available.
+
+4. The survey was a sample which might have had, at the zip code level, a high degree of variability. 
+
+Given the information from the survey and the analysis, a residential business trip generation model was developed. This model was an allocation model, since the total residential business trips are obtained in the first step of the model; that is the total residential business trips are 20.86 percent of total enplanements. The trips from residences are then allocated to traffic analysis zones based on the number of households in the zone, by income group, with a weight assigned to each income group as shown in Table 5-3.  
+
+For the non-residential business trips, the survey data showed that 85 percent of the non-airport trip ends were employment related and only 15 percent being related to private residences. Since the land use forecasts do not include any specific measures for hotels and motels (such as rooms), the non-residential business model was developed in the same manner as the residential business model. These trips were then allocated to the traffic analysis zones based on the total employment.  Table 5-3 presents these equations.  For the non-business residential trips, the survey data showed that almost all the trips (i.e., over 97 percent) originated from a private residence. Therefore, the model for the non-business residential trips was to allocate the trips based upon the number of households, by income level in the traffic analysis zone. The equations for these trips are also shown in Table 5-3. For the non-residential non-business trips, the survey data showed that 67 percent of the trip ends were private residence related and 33 percent were employment related. To handle this, the allocation model is split into two stages. The first stage separates the non-residential non-business trips into private residential based trips and into non-private residential based trips. This is a simple factoring procedure, with 67 percent of the trips being from residences and 33 being from businesses. The private residence related trips were then allocated to the traffic analysis zones based on the households by income level and the non-private related trips were allocated to the traffic analysis zones based on the total employment.
+
+
+In the development of these models, the basic model under-estimated Fulton County (primarily the city of Atlanta) and over-estimated the outlying counties. To adjust for these errors, a set of K factors were developed. There were K factors associated with the four areas (Fulton, Cobb, DeKalb/Gwinnett and the outlying counties) on the equations for employment related trips and on the equations for household related trips (i.e., eight K factors in all). These K factors are shown in Table 5-4.
+
+Table 5-3 Air Passenger Allocation Coefficients
+
+```{r,echo=F,,out.height=700,message=F,warning=F,output=F}
+airData3 <- read_csv('data/AirPassAllocation.csv')
+```
+```{r,echo=F,message=F,out.height=700}
+kable(airData3) %>%
+  kable_styling("striped",row_label_position = 'r')
+```
+
+
+Table 5-4 Employment and Household Adjustment Factors 
+
+```{r,echo=F,,out.height=700,message=F,warning=F,output=F}
+airData4 <- read_csv('data/AirPassAdjustments.csv')
+```
+```{r,echo=F,message=F,out.height=700}
+kable(airData4) %>%
+  kable_styling("striped",row_label_position = 'r')
+```
+
+The resulting allocation of airport passenger trips by the Cobb, Fulton, DeKalb/Gwinnett and other counties comparing the 2009 survey and model estimates are shown in Table 5-5. 
+
+Table 5-5. Distribution of Air Passenger Trips to HJAIA
+
+```{r,echo=F,message=F,warning=F,output=F,out.height=700}
+library(kableExtra)
+airData5 <- read.csv('data/AirPassDistribution.csv',check.names = F)
+kable(airData5) %>%
+  kable_styling("striped") %>%
+  add_header_above(c(" " = 1, "2009 Survey" = 4, "Model" = 4))
+```
+
+
+
+# Section 5.4 Mode Choice Model
+
+Since the airport passengers have a wide array of modal options, a relatively sophisticated approach to mode choice modeling was used. This was a nested logit model, with different structures and modal options for Resident and Non-resident airport passengers, as shown in Figure 5-1. 
+
+The survey data showed that the five-predominant modes of access of the enplaning passenger are passengers driving their private car, being dropped off, using rental car, using taxi and riding MARTA train. Table 5-6 shows the breakdown of the various modes of access. In defining these modal access choices, hotel courtesy vehicle and commercial shuttle are treated similar to a rental car. No explanatory variable is used in the utility equation of this access mode and charter bus and limousine are treated similar to a taxi. 
+
+The data suggested that the non-residents have three primary modal choices: being dropped off (or picked up) by someone in a private car, using a rental car, or using one of the non-private auto modes. Within the non-private auto mode, there are two choices: public transit with regularly scheduled service and taxi. Similarly, residents of the Atlanta region have a different set of choices, involving one fewer mode at the top level because they are presumed to not be car renters. Within the Private Auto mode, they can be dropped off or can drive to the airport. Within the "Non-private auto" mode, they have the same transit and taxi options as Non-Residents. Throughout the model chain, the Non-resident trips are modeled with Airport as the production zone and one of the other zones in the region as the destination. The Resident trips, on the other hand, are modeled with Airport as the attraction zone and one of the other zones in the region as the production zone.
+
+
+![Figure 5-1. Air Passenger Mode Choice Model Structure](figs/AirPassengerModeChoice.png)
+
+
+Table 5-6 Air Passenger Mode of Access
+
+```{r,echo=F,,out.height=700,message=F,warning=F,output=F}
+airData6 <- read_csv('data/AirPassModeShares.csv')
+```
+```{r,echo=F,message=F,out.height=700}
+kable(airData6) %>%
+  kable_styling("striped",row_label_position = 'r')
+```
+
+
+
+The model is a nested logit, as follows:
+
+$$
+p(m) = \frac{e^{U(m)}}{\sum e^{U(m)} }
+$$
+
+
+where:
+
+* $p(m)$ = probability of choosing mode m
+* $U(m)$ = utility of mode m
+
+The utility equations for each mode are shown in Figure 5-2. The lower nest values are calculated first. For example, in the Non-resident model, the utilities are calculated for Transit, Shuttle, and Taxi. The exponentials of these three utilities are taken and then summed. The natural log of that sum is the "log sum" term that is used in the "top level" nest to compare the Non-private auto mode with Rental Car and Dropped Off. With this structure, trips that "leave" a mode, due to changes in cost and time, are more likely to go to other modes in the same nest, rather than modes on a different "level". The system coefficients on time and cost were obtained from other airport passenger models, mainly Washington and San Francisco's models. 
+
+The mode choice model calculates trips in the Drive Self and Dropped Off private auto modes. The model does not do a separate calculation of auto occupancy, but uses a user-entered average occupancy, which for the calibration was as follows: Drive Self = 1.0, Dropped Off = 1.1 to 2.4 depending on the trip purpose, Rental Car = 1.7-3.7 depending on business or non-business trip and Taxi = 1.1. In the case of Dropped Off trips, it is assumed that each airport passenger being dropped off generates two vehicle trips - one going and one coming. Therefore, the 69,700 passenger trips, which used an automobile mode, generate approximately 61,300 vehicle trips to and from the airport on an average day. 
+
+The 2009-2010 ARC On-Board Transit Survey collected information regarding access mode and trip purpose of the transit trips made by airport passengers. This data was utilized to update the transit targets and calibrate by walk, park-and-ride and dropped off transit access modes. The MARTA survey also suggested that most of the airport passengers (i.e., 54%) travel during the off-peak period. The survey also showed a 38%/21%/41% walk/park-and-ride/kiss-and-ride access mode split at the airport station. Hence, the drive-to-transit option available to Residents in the previous airport passenger mode choice model was split into park-and-ride access and kiss-and-ride access. Also, airport trips from the transit survey primarily used a premium transit mode. Hence, premium only transit skims were used as transit impedances into the airport passenger model. 
+
+The modal bias constants were developed using the airport passenger survey data set. In order to develop these modal bias constants a set of target mode shares (that is the observed mode shares) were required. The mode choice model was re-calibrated by iteratively changing the mode choice constants till reasonable representation of the trip purpose and access modes of the airport passenger trips were obtained. Additional constants were added for park-and-ride and kiss-and-ride access to get the access mode to transit splits right. The bias constants are shown at the bottom of Table 5-7.  Table 5-8 shows these target mode shares and the mode shares estimated by the model, using the Atlanta specific modal constants. Table 5-9 shows the observed and estimated airport passenger trips on MARTA by various access modes. These tables indicate that the model replicates the target mode shares with a good degree of accuracy.
+
+
+![Figure 5-2. Air Passenger Mode Choice Model Equations](figs/AirPassengerModeChoiceEquations.png)
+
+
+Table 5-7 Bias Coefficients by Mode and Purpose
+
+```{r,echo=F,,out.height=700,message=F,warning=F,output=F}
+airData7 <- read_csv('data/AirPassBiasCoef.csv')
+```
+```{r,echo=F,message=F,out.height=700}
+kable(airData7) %>%
+  kable_styling("striped",row_label_position = 'r')
+```
+
+&#42; NA: not a choice for market/purpose
+
+
+Table 5-8 Mode Choice Model Results
+```{r,echo=F,message=F,out.height=700}
+airData8 <- read.csv('data/AirPassModeChoice.csv',check.names = F)
+kable(airData8) %>%
+  kable_styling("striped",row_label_position = 'r') %>%
+  add_header_above(c("OBSERVED MODE SHARES" = 6)) %>% 
+  group_rows("ESTIMATED MODE SHARES", 7,13, label_row_css = "text-align: center;",indent = F) %>%
+  group_rows("PERCENT DIFFERENCE (ESTIMATED - OBSERVED)", 14,19, label_row_css = "text-align: center;",indent = F) %>% 
+    row_spec(7,bold =T ) %>% row_spec(14,bold =T ) %>% 
+    row_spec(1:20,align='c')
+```
+
+
+
+Table 5-9. Observed and Estimated Air Passenger MARTA Trips
+
+```{r,echo=F,message=F,out.height=700}
+airData9 <- read.csv('data/AirPassMARTA.csv',check.names = F)
+kable(airData9) %>%
+  kable_styling("striped") %>%
+  add_header_above(c(" " = 1, "Observed 2009-2010 Survey" = 4, "Model Estimated 2015" = 4))
+```
+
+

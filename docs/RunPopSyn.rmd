@@ -1,0 +1,358 @@
+---
+title: "Section 3 - Running Population Synthesizer"
+output: html_document
+---
+
+The population synthesizer software, called PopSyn, is a Java-based program that uses Microsoft's free MySQL Server. It requires Census PUMS household and person data to be read from the database.  The final synthetic population calculated by the software is written into the database as well. All the data tables are maintained in one database called ARCPopSyn. The database tables are described in Table 3-1. The details of each table can be found in the Appendix.
+
+**Table 3-1 PopSyn Database Tables**    
+
+```{r,echo=F,message=F,warning=F,output=F,out.height=700}
+library(tidyverse)
+library(knitr)
+library(DT)
+library(kableExtra)
+library(readxl)
+
+T31<- read_excel('data/UserGuideTables.xlsx','T31','B3:C14')
+T31[is.na(T31)] <- ''
+
+kable(T31) %>%
+  kable_styling("striped")
+
+```
+
+
+# Section 3.1 PUMS Data Tables Setup
+The first step to setup the database is to load all the Census ACS tables.  The user should download the 2007-2011 5 year ACS household and person csv data file for Georgia:    
+*	Household file: http://www2.census.gov/acs2011_5yr/pums/csv_hga.zip    
+*	Person file: http://www2.census.gov/acs2011_5yr/pums/csv_pga.zip    
+
+The user also needs the file socPECASCwlk.csv, which is a crosswalk between the SOC and PECAS occupation categories, in order to prepare the PUMS tables. Once the user has extracted the PUMS files from the archive, the user must run the PUMSTableCreation.sql script to create the hhtable and perstable tables. This script only needs to be run once.  This script depends on the CSV file names specified in the csv_filenames table created by the run batch file described later.  It can also be run with the run batch file.
+
+
+
+# Section 3.2 Control Data Tables Setup
+In order to setup the control tables, the following input files are required:    
+
+*	hshld{year}g.dat: Number of households segmented by income and household size for each TAZ. 
+*	personByAge.csv: Persons by age group for each county in the model area.
+*	LaborMakeAndUse.csv: Amount of labor make/use by occupation by PECAS zone.
+*	avgWagePUMS00.csv: Average wage by occupation and household type as per 2000 PUMS
+*	geographicCwalk.csv: The geographic correspondence between MAZ, TAZ, PUMA (Census 2000 definitions) and META geographies.
+*	EMP.csv: number of jobs by TAZ.
+*	HHbyNumWorker.csv: Number of households with workers between 0 and 4 for each MAZ.
+*	PecasZoneWorkerControls.csv: Number of workers by PECAS zone.
+*	persByOccpCountyDist.csv: Number of workers by sector by County Group.
+*	ageScalingFactors.csv: Age scaling factors by age bin by County Group
+
+The ControlsTableCreation.sql script run by the run batch file setups up the control tables: control_totals_maz, control_total_taz, and control_totals_meta.
+
+For the ControlsTableCreation.sql script to properly load the household information, it needs to be updated with the correct name of the Hshld[year]g.txt file. For example, if the year 2020 is being run, the file name should read "Hshld20g.txt" in the SQL script. This should already be done, but it can often be a troubleshooting issue.
+
+
+# Section 3.3 Control Totals
+
+The new version of the PopSyn matches both household and person distributions, as well as controls at multiple levels of geography. There are three main levels of geography at which controls can be set - microzones (MAZ), traffic analysis zones (TAZ), and district.  For ARC, these correspond to TAZs, PECAS zones, and County. Controls at the district-level (ARC County) are known as meta-controls.  In addition, PUMAs must nest within meta-geographies.  As a result, some of the counties were grouped since each meta-geography must be at least as big as a PUMA.  The controls being used for ARC are summarized in Table 3-2 below.
+
+The raw PUMS data needs to be processed to generate the required control attributes. The household and person datasets are read into a temporary table. All group quarter (GQ) records are dropped from the datasets. Using employment status attributes in the person database, the number of workers is assigned to each household. The SOC code is extracted for each person and socPECASCwlk.csv crosswalk is used to generate the occupation category.  
+
+The ARC PopSyn uses the persons by occupation at the PECAS zone level as a control. In order to map that data into PopSyn, the PECAS total wages by occupation by PECAS zone are divided by the average wage by occupation from Census 2000 to create the total persons by occupation by PECAS zone. The occupation totals thus generated are scaled to match the number of households by numbers of worker controls defined earlier for the MAZ geography.
+
+**Table 3-2 ARC Population Synthesis Controls**    
+
+```{r,echo=F,message=F,warning=F,output=F,out.height=700}
+
+T32<- read_excel('data/UserGuideTables.xlsx','T32','B3:E15')
+T32[is.na(T32)] <- ''
+
+kable(T32) %>%
+  kable_styling("striped")
+
+```
+
+
+# Section 3.4 File Setup
+
+PopSyn is configured to run using the batch file runpopsyn.bat. The files that are critical for the population synthesizer are all housed in the directory runtime. Both the batch file and the runtime directory should also be present in the working directory at the time of program execution. A brief description of the file directory setup follows.    
+
+*	Working directory
+
+**Table 3-3 Working Directory Contents**    
+
+```{r,echo=F,message=F,warning=F,output=F,out.height=700}
+
+T33<- read_excel('data/UserGuideTables.xlsx','T33','B3:C6')
+T33[is.na(T33)] <- ''
+
+kable(T33) %>%
+  kable_styling("striped")
+
+```
+
+*	Runtime
+
+**Table 3-4 Runtime Directory Contents**    
+
+```{r,echo=F,message=F,warning=F,output=F,out.height=700}
+
+T34<- read_excel('data/UserGuideTables.xlsx','T34','B3:C7')
+T34[is.na(T34)] <- ''
+
+kable(T34) %>%
+  kable_styling("striped")
+
+```
+
+*	Outputs
+
+**Table 3-5 Outputs Directory Contents**    
+
+```{r,echo=F,message=F,warning=F,output=F,out.height=700}
+
+T35<- read_excel('data/UserGuideTables.xlsx','T35','B3:C9')
+T35[is.na(T35)] <- ''
+
+kable(T35) %>%
+  kable_styling("striped")
+
+```
+
+*	Scripts
+
+**Table 3-6 Scripts Directory Contents**    
+
+```{r,echo=F,message=F,warning=F,output=F,out.height=700}
+
+T36<- read_excel('data/UserGuideTables.xlsx','T36','B3:C7')
+T36[is.na(T36)] <- ''
+
+kable(T36) %>%
+  kable_styling("striped")
+
+```
+
+*	Runtime/Lib - This sub-directory has all the necessary external dependencies for PopSyn. The details are tabulated below:
+
+**Table 3-7 Lib Directory Contents**    
+
+```{r,echo=F,message=F,warning=F,output=F,out.height=700}
+
+T37<- read_excel('data/UserGuideTables.xlsx','T37','B3:C10')
+T37[is.na(T37)] <- ''
+
+kable(T37) %>%
+  kable_styling("striped")
+
+```
+
+*	Runtime/config
+
+**Table 3-8 Config Directory Contents**    
+
+```{r,echo=F,message=F,warning=F,output=F,out.height=700}
+
+T38<- read_excel('data/UserGuideTables.xlsx','T38','B3:C6')
+T38[is.na(T38)] <- ''
+
+kable(T38) %>%
+  kable_styling("striped")
+
+```
+
+
+
+# Section 3.5 PopSyn Configuration File
+
+Using the file settings.xml, the user can configure the database connection settings as well as specify database attributes that are to be used for balancing the controls. The settings available to the user are discussed below:
+
+**Table 3-9 Database Connection Setting ({database} attribute)**    
+
+```{r,echo=F,message=F,warning=F,output=F,out.height=700}
+
+T39<- read_excel('data/UserGuideTables.xlsx','T39','B3:C8')
+T39[is.na(T39)] <- ''
+
+kable(T39 ) %>%  
+  kable_styling("striped")
+
+```
+
+*XML Instance*
+
+```html
+
+<database>
+    <server>localhost</server>
+    <port>3306</port>
+    <type>MYSQL</type>
+    <user>root</user>
+    <password>root</password>
+    <dbName>ARCPopSyn</dbName>
+</database>
+
+
+```
+
+**Table 3-10 PUMS Table Setting ({pumsData} attribute)**    
+
+```{r,echo=F,message=F,warning=F,output=F,out.height=700}
+
+T310<- read_excel('data/UserGuideTables.xlsx','T310','B3:C19')
+T310[is.na(T310)] <- ''
+
+kable(T310) %>%
+  kable_styling("striped")
+
+```
+
+*XML Instance*
+
+```html
+    <pumsData>
+	      <idField>hhnum</idField>
+	      <pumaFieldName>PUMA</pumaFieldName>
+	      <metaFieldName>DISTRICT2</metaFieldName>
+	      <tazFieldName>TAZ</tazFieldName>
+	      <mazFieldName>MAZ</mazFieldName>
+	      <weightField>WGTP</weightField>
+	      <hhTable>hhtable</hhTable>
+	      <persTable>perstable</persTable>
+	      <pumsHhTable>hhtable</pumsHhTable>
+	      <pumsHhIdField>hhnum</pumsHhIdField>
+	      <pumsPersTable>perstable</pumsPersTable>
+	      <maxExpansionFactor>15</maxExpansionFactor>
+	      <synpopOutputHhTableName>synpop_hh</synpopOutputHhTableName>
+	      <synpopOutputPersTableName>synpop_person</synpopOutputPersTableName>
+	      <outputHhAttributes>serialno, np, nwrkrs_esr, hincp, hhincAdj, adjinc, veh, hht, bld, type</outputHhAttributes>
+	      <outputPersAttributes>sporder, agep, employed, pecasOcc, sex, esr, wkw, wkhp, mil, schg, schl, indp02, indp07, occp02, occp10</outputPersAttributes>
+    </pumsData>
+```
+
+**Table 3-11 Control Table Settings ([maz/taz/meta]ControlsTable attributes)**    
+
+```{r,echo=F,message=F,warning=F,output=F,out.height=700}
+
+T311<- read_excel('data/UserGuideTables.xlsx','T311','B3:C6')
+T311[is.na(T311)] <- ''
+
+kable(T311) %>%
+  kable_styling("striped")
+
+```
+
+*XML Instance*
+
+```html
+	<mazControlsTable>
+	   	<mazTable id="1">
+	   		<table_name>control_totals_maz</table_name>
+	   		<id_field_name>MAZ</id_field_name>
+	   		<aggregation_level>MAZ</aggregation_level>
+	   	</mazTable>
+	</mazControlsTable>
+```
+
+**Table 3-12 Specifying Controls ({target} attribute)**    
+
+```{r,echo=F,message=F,warning=F,output=F,out.height=700}
+
+T312<- read_excel('data/UserGuideTables.xlsx','T312','B3:C27')
+T312[is.na(T312)] <- ''
+
+kable(T312) %>%
+  kable_styling("striped")
+
+```
+
+*XML Instance*
+
+```html
+<!-- Defining a 2 category control for Number of HHs by Persons per HH at MAZ level -->
+<!-- Category 1: One person household <type> equality-->
+<!-- Category 2: 2+ person household <type> interval-->
+
+<target>
+<!-- Define conditions for the 6 persons per household controls for households -->
+  <marginals>
+    <id>1</id>
+    <description>MAZ Controls: Number of Households by Persons per Households</description>
+    <geographyType>MAZ</geographyType>
+    <controlType>simple</controlType>
+    <table>hhtable</table>
+    <constraint id="1">
+      <importance>100000</importance>
+      <field>NP</field>
+      <controlField>HHSIZE1</controlField>
+      <type>equality</type>
+      <value>1</value>
+    </constraint>
+    <constraint id="2">
+      <importance>100000</importance>
+      <field>NP</field>
+      <controlField>HHSIZE2</controlField>
+      <type>equality</type>
+      <value>2</value>
+    </constraint>
+  </marginals>
+</target>
+```
+
+
+# Section 3.6 Running PopSyn
+
+PopSyn runs using Microsoft's free MySQL software. Download and install the MySQL Community Edition install from https://dev.mysql.com/downloads/windows/installer/5.7.html.  Note that there are two versions of the software. Select the mysql-install-community-5.7.22 (the larger one) or newer versions. Run the .msi installer file and agree to the terms of the open-source license.  The installer will then step through a number of pages allowing the user to specify the installation. In general, select the default or classic options.  If asked what version to install, select x64 on a 64-bit machine or x86 for a 32-bit machine.
+
+* Select Developer Machine config type
+* MySQL requires the user to set a password for the root user. The PopSyn scripts assume the root user password is 'root'. 
+* If a password is entered other than 'root', the user will need to change both runpopsyn.bat and runtime/config/settings.xml.
+* Add the MySQL binaries to the system path following the directions from the MySQL website: https://dev.mysql.com/doc/mysql-windows-excerpt/5.7/en/mysql-installation-windows-path.html
+
+
+
+
+A MySQL database must be created prior to running PopSyn. Open the command line and execute the following commands:
+
+**Table 3-13 PopSyn Execution**    
+
+```{r,echo=F,message=F,warning=F,output=F,out.height=700}
+
+T313<- read_excel('data/UserGuideTables.xlsx','T313','B3:C6')
+T313[is.na(T313)] <- ''
+
+kable(T313) %>%
+  kable_styling("striped")
+
+```
+
+Note: if the default username "root" and/or default password "root" is changed during the installation of MySQL Community Server, be sure to replace those characters in the login command. However, it is not recommended that you choose an alternative name for the database. The name "arcpopsyn" is coded into the SQL scripts that run the model and would need to be manually changed to an alternative name.
+
+You do not have to clear the arcpopsyn database between multiple PopSyn runs, however a new run will replace the data and the previous data will not be recoverable if overwritten. The households, persons, and control totals tables will be exported as CSV files after each run as part of the SQL scripts, and it is unlikely that any other data will need to be extracted before being overwritten.
+
+Additional commands that are useful to navigating the MySQL databases:
+
+**Table 3-14 PopSyn Additional Commands**    
+
+```{r,echo=F,message=F,warning=F,output=F,out.height=700}
+
+T314<- read_excel('data/UserGuideTables.xlsx','T314','B3:C7')
+T314[is.na(T314)] <- ''
+
+kable(T314) %>%
+  kable_styling("striped")
+
+```
+
+PopSyn is run with the runpopsyn.bat file. The batch file creates the control tables, runs PopSyn, creates the household and persons CSV files for use in the model, and creates the control totals CSV files for reference.  The batch file can also be used to import the PUMS data. PopSyn needs to be run from a locally-stored folder, such as the desktop or the C: drive.
+
+To run a new scenario, including future year scenarios, the follow input files need to be adjusted:    
+*	EMP.csv    
+*	Hshld{year}g.txt    
+*	LaborMakeAndUse.csv    
+*	PersonsByAge.csv    
+*	avgWagePUMS00.csv (if new data is available)    
+
+At the end of the run, the synthesized household and person tables described in the Appendix are saved as CSV files in the output directory. The Control Totals tables are also exported and stored in the output directory for reference. The Control Totals tables are not necessary inputs for the ABM.
+
+
+
